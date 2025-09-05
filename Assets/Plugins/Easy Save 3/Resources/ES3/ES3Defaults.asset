@@ -35,6 +35,7 @@ MonoBehaviour:
     - OdinSerializer
     - UniTask
     - Vertx.Debugging.Runtime
+    - Kcc.Example
     - UniTask.Linq
     - DOTween.Modules
     - Coffee.UIParticle
@@ -42,8 +43,10 @@ MonoBehaviour:
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro
     - Hichu.Editor
+    - JoystickPack
     - Coffee.UIParticle.Editor
     - Sirenix.OdinInspector.Modules.Unity.Addressables
+    - Kcc
     - Assembly-CSharp-firstpass
     - DOTweenPro.EditorScripts
     - Vertx.Debugging.Editor
