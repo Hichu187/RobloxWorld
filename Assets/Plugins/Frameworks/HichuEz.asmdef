@@ -1,0 +1,24 @@
+{
+    "name": "HichuEz",
+    "rootNamespace": "Hichu",
+    "references": [
+        "Unity.TextMeshPro",
+        "Unity.ResourceManager",
+        "Unity.Addressables",
+        "DOTween.Modules",
+        "OdinSerializer",
+        "UniTask",
+        "Vertx.Debugging.Runtime",
+        "Unity.Mathematics",
+        "ES3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
