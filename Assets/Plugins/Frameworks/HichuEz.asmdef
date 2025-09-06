@@ -10,7 +10,8 @@
         "UniTask",
         "Vertx.Debugging.Runtime",
         "Unity.Mathematics",
-        "ES3"
+        "ES3",
+        "JoystickPack"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

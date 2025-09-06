@@ -35,7 +35,7 @@ MonoBehaviour:
     - OdinSerializer
     - UniTask
     - Vertx.Debugging.Runtime
-    - Kcc.Example
+    - Kcc.Base
     - UniTask.Linq
     - DOTween.Modules
     - Coffee.UIParticle
