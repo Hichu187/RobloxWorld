@@ -21,7 +21,7 @@ MonoBehaviour:
   _airAccelerationSpeed: 1000
   _airDrag: 0.1
   _jumpSpeed: 11
-  _jumpMultipleCount: 2
+  _jumpMultipleCount: 1
   _jumpMultipleDelayBetween: 0.5
   _jumpRequestBufferTime: 0.5
   _jumpCoyoteTime: 0.5
@@ -30,7 +30,7 @@ MonoBehaviour:
   _ladderClimbDetectHeight: 0.8
   _ladderClimbDetectLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _ladderClimbSpeedMax: 4.5
   _ladderClimbSharpness: 1000
   _ladderClimbTowardAngleMax: 90

@@ -1,29 +1,46 @@
-using Hichu;
+﻿using Hichu;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Kcc.Base
 {
     public class PlayerControl : MonoBehaviour
     {
+        [Title("Input")]
+        public bool canMove = true;
+        [SerializeField] private bool _useMobileControl = false;
+        [SerializeField] private float _lookSensitive = 20f;
+
         private CharacterController _characterControl;
         private CharacterCamera _characterCamera;
+        private PlayerGUI _gui;
         public Transform _cameraFollowTarget;
 
-        private const string MouseXInput = "Mouse X";
-        private const string MouseYInput = "Mouse Y";
+        private float _inputLookX;
+        private float _inputLookY;
+        private bool _inputJumpDown = false;
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
 
+        private bool _isDraggingMouse = false;
+        private Vector3 _lastMousePosition;
+
+        public bool useMobileControl { get { return _useMobileControl; } }
         private void Awake()
         {
             _characterControl = Player.Instance.cControl;
             _characterCamera = Player.Instance.cCamera;
+            _gui = Player.Instance.gui;
         }
 
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+#if !UNITY_EDITOR
+_useMobileControl = true;
+#endif
 
             // Tell camera to follow transform
             _characterCamera.SetFollowTransform(_cameraFollowTarget ? _cameraFollowTarget : _characterControl.TransformCached);
@@ -32,15 +49,31 @@ namespace Kcc.Base
             _characterCamera.IgnoredColliders.Clear();
             _characterCamera.IgnoredColliders.AddRange(_characterControl.GetComponentsInChildren<Collider>());
 
-            LDebug.Log<PlayerControl>($"{Player.Instance.Test}");
+            UIPointerDrag look = _gui.look;
+            look.eventDrag += UILook_EventDrag;
+            look.eventDragEnd += UILook_EventDragEnd;
+
+            UIPointerClick action = _gui.jumpButton;
+            action.eventDown += UIAction_EventDown;
+            action.eventUp += UIAction_EventUp;
         }
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!_useMobileControl)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    _isDraggingMouse = true;
+                    _lastMousePosition = Input.mousePosition;
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    _isDraggingMouse = false;
+                }
             }
+
             HandleCharacterInput();
         }
 
@@ -56,70 +89,108 @@ namespace Kcc.Base
             HandleCameraInput();
         }
 
+        private void UILook_EventDrag(PointerEventData e)
+        {
+            _inputLookX = e.delta.x * _lookSensitive / Screen.dpi;
+            _inputLookY = e.delta.y * (_lookSensitive / 2) / Screen.dpi;
+        }
+
+        private void UILook_EventDragEnd(PointerEventData e)
+        {
+            _inputLookX = 0f;
+            _inputLookY = 0f;
+        }
+        private void UIAction_EventDown()
+        {
+            _inputJumpDown = true;
+        }
+
+        private void UIAction_EventUp()
+        {
+            _inputJumpDown = false;;
+        }
+
         private void HandleCameraInput()
         {
-            // Create the look input vector for the camera
-            float mouseLookAxisUp = Input.GetAxisRaw(MouseYInput);
-            float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput);
-            Vector3 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
+            Vector3 lookInputVector = Vector3.zero;
 
-            // Prevent moving the camera while the cursor isn't locked
-            if (Cursor.lockState != CursorLockMode.Locked)
+            if (_useMobileControl)
             {
-                lookInputVector = Vector3.zero;
+                lookInputVector = new Vector3(_inputLookX, _inputLookY, 0f);
+            }
+            else if (_isDraggingMouse)
+            {
+                Vector3 currentMousePosition = Input.mousePosition;
+                Vector3 delta = currentMousePosition - _lastMousePosition;
+
+                float deltaX = delta.x * _lookSensitive * 0.02f;
+                float deltaY = delta.y * _lookSensitive * 0.02f;
+
+                lookInputVector = new Vector3(deltaX, deltaY, 0f);
+                _lastMousePosition = currentMousePosition;
             }
 
-            // Input for zooming the camera (disabled in WebGL because it can cause problems)
             float scrollInput = -Input.GetAxis(MouseScrollInput);
-#if UNITY_WEBGL
-        scrollInput = 0f;
-#endif
-
-            // Apply inputs to the camera
             _characterCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
-
-            // Handle toggling zoom level
-            if (Input.GetMouseButtonDown(1))
-            {
-                _characterCamera.TargetDistance = (_characterCamera.TargetDistance == 0f) ? _characterCamera.DefaultDistance : 0f;
-            }
         }
 
         private void HandleCharacterInput()
         {
             CharacterInput characterInputs = new CharacterInput();
 
-            Vector3 inputMove = new Vector3(Input.GetAxisRaw(HorizontalInput), 0f, Input.GetAxisRaw(VerticalInput));
+            float rawH, rawV;
+            if (_useMobileControl)
+            {
+                rawV = _gui.joystick.Vertical;
+                rawH = _gui.joystick.Horizontal;
+                characterInputs.Jump = _inputJumpDown;
+            }
+            else
+            {
+                rawV = Input.GetAxisRaw(VerticalInput);
+                rawH = Input.GetAxisRaw(HorizontalInput);
+                characterInputs.Jump = Input.GetKeyDown(KeyCode.Space);
+                //characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+                //characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+            }
 
-            // Build the CharacterInputs struct
-            //characterInputs.MoveVector.z = Input.GetAxisRaw(VerticalInput);
-            //characterInputs.MoveVector.x = Input.GetAxisRaw(HorizontalInput);
-            //characterInputs.CameraRotation = _characterCamera.Transform.rotation;
-            characterInputs.Jump = Input.GetKeyDown(KeyCode.Space);
-            //characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
-            //characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+            Vector3 inputMove = new Vector3(rawH, 0f, rawV);
 
-            Transform cameraTransform = Camera.main.transform;
+            Transform camT = _characterCamera != null ? _characterCamera.transform : Camera.main.transform;
+            Vector3 characterUp = _characterControl != null ? _characterControl.Motor.CharacterUp : Vector3.up;
 
-            // Calculate camera direction and rotation on the character plane
-            Vector3 cameraPlanarDirection = Vector3.ProjectOnPlane(cameraTransform.rotation * Vector3.forward, _characterControl.Motor.CharacterUp).normalized;
+            Vector3 cameraRelativeMove = AdjustInputByCameraView(camT, inputMove, characterUp);
 
-            if (cameraPlanarDirection.sqrMagnitude == 0f)
-                cameraPlanarDirection = Vector3.ProjectOnPlane(cameraTransform.rotation * Vector3.up, _characterControl.Motor.CharacterUp).normalized;
+            characterInputs.MoveVector = cameraRelativeMove;
 
-            Quaternion cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, _characterControl.Motor.CharacterUp);
+            if (cameraRelativeMove.sqrMagnitude > 0.0001f)
+                characterInputs.LookVector = cameraRelativeMove.normalized;
+            else
+                characterInputs.LookVector = Vector3.zero;
 
-            // Move and look inputs
-            characterInputs.MoveVector = cameraPlanarRotation * inputMove;
-            characterInputs.LookVector = characterInputs.MoveVector.normalized;
-
-            // Apply inputs to character
             _characterControl.SetInputs(ref characterInputs);
         }
 
-        private void AdjustInputByCameraView(Transform cameraTransform, Vector3 inputMove, Vector3 characterUp)
+        private Vector3 AdjustInputByCameraView(Transform cameraTransform, Vector3 inputMove, Vector3 characterUp)
         {
+            if (inputMove.sqrMagnitude <= 0.0001f)
+                return Vector3.zero;
 
+            Vector3 camFwd = Vector3.ProjectOnPlane(cameraTransform.forward, characterUp);
+            if (camFwd.sqrMagnitude < 1e-6f)
+                camFwd = Vector3.ProjectOnPlane(cameraTransform.up, characterUp); 
+            camFwd.Normalize();
+
+            Vector3 camRight = Vector3.Cross(characterUp, camFwd).normalized;
+
+            Vector3 move = camFwd * inputMove.z + camRight * inputMove.x;
+
+            if (move.sqrMagnitude > 1f)
+                move.Normalize();
+
+            move = Vector3.ProjectOnPlane(move, characterUp);
+
+            return move;
         }
     }
 }

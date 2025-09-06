@@ -11,6 +11,5 @@ namespace Kcc.Base
         public CharacterCamera cCamera;
         public PlayerGUI gui;
 
-        public string Test = "AAAA";
     }
 }
