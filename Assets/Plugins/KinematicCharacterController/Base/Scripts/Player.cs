@@ -10,6 +10,7 @@ namespace Kcc.Base
         public CharacterController cControl;
         public CharacterCamera cCamera;
         public PlayerGUI gui;
+        public FieldOfView fov;
 
     }
 }

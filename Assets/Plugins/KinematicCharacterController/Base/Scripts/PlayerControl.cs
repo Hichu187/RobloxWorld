@@ -16,6 +16,7 @@ namespace Kcc.Base
         private CharacterController _characterControl;
         private CharacterCamera _characterCamera;
         private PlayerGUI _gui;
+        private FieldOfView _fov;
         public Transform _cameraFollowTarget;
 
         private float _inputLookX;
@@ -34,6 +35,7 @@ namespace Kcc.Base
             _characterControl = Player.Instance.cControl;
             _characterCamera = Player.Instance.cCamera;
             _gui = Player.Instance.gui;
+            _fov = Player.Instance.fov;
         }
 
         private void Start()
@@ -53,7 +55,11 @@ _useMobileControl = true;
             look.eventDrag += UILook_EventDrag;
             look.eventDragEnd += UILook_EventDragEnd;
 
-            UIPointerClick action = _gui.jumpButton;
+            UIPointerClick jump = _gui.jumpButton;
+            jump.eventDown += UIJump_EventDown;
+            jump.eventUp += UIJump_EventUp;
+
+            UIPointerClick action = _gui.actionBtn;
             action.eventDown += UIAction_EventDown;
             action.eventUp += UIAction_EventUp;
         }
@@ -102,13 +108,26 @@ _useMobileControl = true;
         }
         private void UIAction_EventDown()
         {
-            _inputJumpDown = true;
+            if (_fov.visibleTargets.Count == 0 || _fov.visibleTargets == null) return;
+
+            LDebug.Log<FieldOfView>(_fov.visibleTargets.Count);
         }
 
         private void UIAction_EventUp()
         {
-            _inputJumpDown = false;;
+
         }
+
+        private void UIJump_EventDown()
+        {
+            _inputJumpDown = true;
+
+        }
+        private void UIJump_EventUp()
+        {
+            _inputJumpDown = false;
+        }
+
 
         private void HandleCameraInput()
         {
