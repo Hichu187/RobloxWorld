@@ -15,6 +15,7 @@ namespace Kcc.Base
 
         private CharacterController _characterControl;
         private CharacterCamera _characterCamera;
+        private CharacterCombat _cCombat;
         private PlayerGUI _gui;
         private FieldOfView _fov;
         public Transform _cameraFollowTarget;
@@ -32,10 +33,11 @@ namespace Kcc.Base
         public bool useMobileControl { get { return _useMobileControl; } }
         private void Awake()
         {
-            _characterControl = Player.Instance.cControl;
-            _characterCamera = Player.Instance.cCamera;
+            _characterControl = Player.Instance.character.cControl;
+            _characterCamera = Player.Instance.character.cCamera;
+            _cCombat = Player.Instance.character.cCombat;
             _gui = Player.Instance.gui;
-            _fov = Player.Instance.fov;
+            _fov = Player.Instance.character.fov;
         }
 
         private void Start()
@@ -108,9 +110,7 @@ _useMobileControl = true;
         }
         private void UIAction_EventDown()
         {
-            if (_fov.visibleTargets.Count == 0 || _fov.visibleTargets == null) return;
-
-            LDebug.Log<FieldOfView>(_fov.visibleTargets.Count);
+            _cCombat.Attack(_fov);
         }
 
         private void UIAction_EventUp()

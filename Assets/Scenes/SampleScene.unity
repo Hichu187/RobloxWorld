@@ -2169,10 +2169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 1805232042}
-  cControl: {fileID: 2061680092}
-  cCamera: {fileID: 1213671571}
   gui: {fileID: 941805936}
-  fov: {fileID: 2061680094}
+  character: {fileID: 2061680096}
 --- !u!1001 &1908909186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2385,9 +2383,11 @@ GameObject:
   - component: {fileID: 2061680089}
   - component: {fileID: 2061680093}
   - component: {fileID: 2061680091}
+  - component: {fileID: 2061680096}
   - component: {fileID: 2061680092}
   - component: {fileID: 2061680090}
   - component: {fileID: 2061680094}
+  - component: {fileID: 2061680095}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2542,6 +2542,36 @@ MonoBehaviour:
   targetHeightFallback: 1
   triggerInteraction: 1
   visibleTargets: []
+  seeingTarget: 0
+--- !u!114 &2061680095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061680088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a573f9a353f415d478525fd47c685f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 1
+--- !u!114 &2061680096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061680088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35af29f42fcd05a4d8f586ee8cca74c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cControl: {fileID: 2061680092}
+  cCamera: {fileID: 1213671571}
+  cCombat: {fileID: 2061680095}
+  fov: {fileID: 2061680094}
 --- !u!1 &2118220541
 GameObject:
   m_ObjectHideFlags: 0

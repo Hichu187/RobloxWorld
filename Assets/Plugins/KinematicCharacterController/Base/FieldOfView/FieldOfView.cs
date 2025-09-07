@@ -101,6 +101,18 @@ namespace Kcc.Base
                 angle,
                 radius
             );
+
+            if (visibleTargets != null && visibleTargets.Count > 0)
+            {
+                Handles.color = Color.red;
+                foreach (var t in visibleTargets)
+                {
+                    if (t != null)
+                    {
+                        Handles.DrawLine(eyePos, t.position);
+                    }
+                }
+            }
         }
 #endif
     }
