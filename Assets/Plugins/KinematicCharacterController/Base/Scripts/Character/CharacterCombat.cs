@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kcc.Base
 {
-    public class CharacterCombat : MonoBehaviour
+    public class CharacterCombat : TargetTrait
     {
         [Header("Stats")]
         [SerializeField] private int _maxHealth = 100;
@@ -29,7 +29,8 @@ namespace Kcc.Base
 
                 foreach (var target in fov.visibleTargets)
                 {
-                    target.GetComponent<CharacterCombat>().TakeDamage(_damage);
+                    if (target.GetComponent<CharacterCombat>())
+                        target.GetComponent<CharacterCombat>().TakeDamage(_damage);
                 }
             }
             else

@@ -24,12 +24,5 @@ namespace Kcc.Base
         {
             _fov = Player.Instance.character.fov;
         }
-        private void Update()
-        {
-            if (_fov == null || _fov == null) return;
-
-            bool hasTarget = _fov.nearestInteractable != null;
-            interactiveBtn.gameObject.SetActive(hasTarget);
-        }
     }
 }
