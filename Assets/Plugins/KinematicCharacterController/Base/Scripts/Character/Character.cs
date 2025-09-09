@@ -25,17 +25,26 @@ namespace Kcc.Base
         public event Action eventDie;
         public event Action eventRevive;
 
+
         private void OnCollisionEnter(Collision collision)
         {
-            ICharacterCollidable collidable = collision.collider.GetComponentInParent<ICharacterCollidable>();
+            ICharacterCollidable collidable = collision.gameObject.GetComponent<ICharacterCollidable>();
 
             if (collidable != null)
                 collidable.OnCollisionEnter(this);
         }
 
+        private void OnCollisionExit(Collision collision)
+        {
+            ICharacterCollidable collidable = collision.gameObject.GetComponent<ICharacterCollidable>();
+
+            if (collidable != null)
+                collidable.OnCollisionExit(this);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            ICharacterCollidable collidable = other.GetComponentInParent<ICharacterCollidable>();
+            ICharacterCollidable collidable = other.GetComponent<ICharacterCollidable>();
 
             if (collidable != null)
                 collidable.OnTriggerEnter(this);
@@ -43,11 +52,13 @@ namespace Kcc.Base
 
         private void OnTriggerExit(Collider other)
         {
-            ICharacterCollidable collidable = other.GetComponentInParent<ICharacterCollidable>();
+            ICharacterCollidable collidable = other.GetComponent<ICharacterCollidable>();
 
             if (collidable != null)
                 collidable.OnTriggerExit(this);
         }
+
+
         [Button]
         public void Kill()
         {

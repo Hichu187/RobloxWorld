@@ -36,7 +36,10 @@ namespace Game
         {
             FadeOut();
         }
+        void ICharacterCollidable.OnCollisionExit(Character character)
+        {
 
+        }
         void ICharacterCollidable.OnTriggerEnter(Character character)
         {
             FadeOut();

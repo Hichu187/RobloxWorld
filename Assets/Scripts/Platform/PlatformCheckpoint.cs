@@ -1,12 +1,14 @@
-using UnityEngine;
+using Hichu;
 using Kcc.Base;
+using UnityEngine;
+
 namespace Game
 {
-    public class PlatformKill : MonoBehaviour, ICharacterCollidable
+    public class PlatformCheckpoint : MonoBehaviour, ICharacterCollidable
     {
         void ICharacterCollidable.OnCollisionEnter(Character character)
         {
-            character.GetComponent<Character>().Kill();
+
         }
         void ICharacterCollidable.OnCollisionExit(Character character)
         {
@@ -14,7 +16,7 @@ namespace Game
         }
         void ICharacterCollidable.OnTriggerEnter(Character character)
         {
-            character.GetComponent<Character>().Kill();
+            StaticBus<Event_Checkpoint>.Post(new Event_Checkpoint(this, character));
         }
 
         void ICharacterCollidable.OnTriggerExit(Character character)

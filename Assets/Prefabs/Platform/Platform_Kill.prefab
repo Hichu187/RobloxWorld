@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8086806101562444431}
   - component: {fileID: 8010481396754480549}
   - component: {fileID: 3831573955235154734}
-  - component: {fileID: 932067186642258887}
+  - component: {fileID: 347655275944721821}
   m_Layer: 0
   m_Name: Platform_Kill
   m_TagString: Kill
@@ -60,6 +60,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -106,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &932067186642258887
+--- !u!114 &347655275944721821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +118,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 124174933229918588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cb7b17802c0654ab39ce49e139cb41, type: 3}
+  m_Script: {fileID: 11500000, guid: 647d376060763ea4da4cdf1d1f67679a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

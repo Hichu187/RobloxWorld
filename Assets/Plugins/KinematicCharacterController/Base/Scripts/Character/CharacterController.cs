@@ -73,39 +73,6 @@ namespace Kcc.Base
 
             D.raw(new Shape.Text(TransformCached.position + _motor.Capsule.center, _stateMachine.CurrentState));
         }
-
-/*        private void OnCollisionEnter(Collision collision)
-        {
-            ICharacterCollidable collidable = collision.gameObject.GetComponent<ICharacterCollidable>();
-
-            if (collidable != null)
-                collidable.OnCollisionEnter(this);
-        }
-
-        private void OnCollisionExit(Collision collision)
-        {
-            ICharacterCollidable collidable = collision.gameObject.GetComponent<ICharacterCollidable>();
-
-            if (collidable != null)
-                collidable.OnCollisionExit(this);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            ICharacterCollidable collidable = other.GetComponent<ICharacterCollidable>();
-
-            if (collidable != null)
-                collidable.OnTriggerEnter(this);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            ICharacterCollidable collidable = other.GetComponent<ICharacterCollidable>();
-
-            if (collidable != null)
-                collidable.OnTriggerExit(this);
-        }
-*/
         #endregion
 
         #region Function -> Private
