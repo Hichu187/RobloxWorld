@@ -25,9 +25,9 @@ namespace Kcc.Base
             {
                 _lastAttackTime = Time.time;
 
-                if (fov.visibleTargets.Count == 0 || fov.visibleTargets == null) return;
+                if (fov.combatables.Count == 0 || fov.combatables == null) return;
 
-                foreach (var target in fov.visibleTargets)
+                foreach (var target in fov.combatables)
                 {
                     if (target.GetComponent<CharacterCombat>())
                         target.GetComponent<CharacterCombat>().TakeDamage(_damage);

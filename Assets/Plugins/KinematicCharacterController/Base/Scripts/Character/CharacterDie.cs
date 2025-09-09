@@ -1,0 +1,73 @@
+using Hichu;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace Kcc.Base
+{
+    public class CharacterDie : MonoBehaviour
+    {
+        [Title("Config")]
+        [SerializeField] private AudioConfig _sfx;
+        [SerializeField] private GameObject _vfx;
+
+        private Character _character;
+
+        private GameObject _objVfx;
+        private GameObject _objRagdoll;
+
+        [SerializeField] private GameObject _objRoot; /*{ get { return _character.rendererComp.skin == null ? null : _character.rendererComp.skin.gameObjectCached; } }*/
+
+        private void Start()
+        {
+            _character = GetComponent<Character>();
+
+            _character.eventDie += Character_EventDie;
+            _character.eventRevive += Character_EventRevive;
+        }
+
+        private void Character_EventRevive()
+        {
+            if (_objRoot != null)
+                _objRoot.SetActive(true);
+
+            if (_objRagdoll != null)
+            {
+                Destroy(_objRagdoll);
+                _objRagdoll = null;
+            }
+
+            if (_objVfx != null)
+            {
+                Destroy(_objVfx);
+                _objVfx = null;
+            }
+        }
+
+        private void Character_EventDie()
+        {
+            if (_objRoot != null)
+                _objRoot.SetActive(false);
+
+            /*            if (_objRoot != null && _objRoot.GetComponentInChildren<CharacterRagdoll>())
+                        {
+                            _objRagdoll = _objRoot.Create(_objRoot.transform.parent);
+
+                            _objRagdoll.SetActive(true);
+
+                            _objRagdoll.GetComponentInChildren<CharacterRagdoll>().Explode();
+                        }*/
+
+            LDebug.Log<CharacterDie>("Character Die");
+
+            if (_objVfx != null)
+            {
+                _objVfx = _vfx.Create(_character.transformCached.position + Vector3.up, _character.transformCached.rotation);
+            }
+
+            if(_sfx != null)
+            {
+                AudioManager.Play(_sfx).transformCached.position = transform.position;
+            }
+        }
+    }
+}

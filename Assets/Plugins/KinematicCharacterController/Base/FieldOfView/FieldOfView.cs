@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,30 +9,30 @@ namespace Kcc.Base
 {
     public class FieldOfView : MonoBehaviour
     {
-        [Header("FOV")]
-        public float radius = 12f;
+        [Min(0f)] public float radius = 12f;
         [Range(0, 360)] public float angle = 100f;
 
-        [Header("Layers")]
         public LayerMask targetMask;
         public LayerMask obstructionMask;
 
-        [Header("Query Options")]
         [SerializeField] private float eyeHeight = 1.5f;
         [SerializeField] private float targetHeightFallback = 1.0f;
         [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Ignore;
 
-        [Header("NonAlloc Buffer")]
-        [Tooltip("Kích thước buffer cho OverlapSphereNonAlloc. Tự tăng khi đầy.")]
         [SerializeField] private int initialBufferSize = 64;
 
-        public readonly List<Transform> visibleTargets = new();
+        [SerializeField] private int maxVisibleTargets = 64;
+        [SerializeField] private int maxCombatables = 8;
+        [SerializeField] private int maxInteractables = 8;
+
+        private List<Transform> visibleTargets = new();
         public readonly List<Transform> combatables = new();
         public readonly List<Transform> interactables = new();
 
         public Transform nearestInteractable { get; private set; }
 
         private readonly Dictionary<Collider, TargetTraits> _traitCache = new();
+        private readonly Dictionary<Transform, float> _distCache = new();
 
         private Collider[] _hits;
 
@@ -46,27 +45,25 @@ namespace Kcc.Base
         {
             FieldOfViewCheck();
         }
+
         private void FieldOfViewCheck()
         {
             visibleTargets.Clear();
             combatables.Clear();
             interactables.Clear();
             nearestInteractable = null;
+            _distCache.Clear();
 
             Vector3 eyePos = transform.position + Vector3.up * eyeHeight;
 
             int count = Physics.OverlapSphereNonAlloc(
-                eyePos,
-                radius,
-                _hits,
-                targetMask,
-                triggerInteraction
+                eyePos, radius, _hits, targetMask, triggerInteraction
             );
 
             if (count >= _hits.Length)
             {
                 int newSize = _hits.Length * 2;
-                Array.Resize(ref _hits, newSize);
+                System.Array.Resize(ref _hits, newSize);
                 count = Physics.OverlapSphereNonAlloc(
                     eyePos, radius, _hits, targetMask, triggerInteraction
                 );
@@ -78,13 +75,15 @@ namespace Kcc.Base
             {
                 var col = _hits[i];
                 if (col == null) continue;
-
                 if (col.attachedRigidbody && col.attachedRigidbody.gameObject == gameObject) continue;
                 if (col.gameObject == gameObject) continue;
 
                 if (IsTargetVisible(col, eyePos))
                 {
                     Transform tr = col.transform;
+                    float sqrDist = (tr.position - eyePos).sqrMagnitude;
+                    _distCache[tr] = sqrDist;
+
                     visibleTargets.Add(tr);
 
                     TargetTraits traits = GetTraits(col);
@@ -92,16 +91,22 @@ namespace Kcc.Base
                     if ((traits & TargetTraits.Interactable) != 0)
                     {
                         interactables.Add(tr);
-
-                        float d = Vector3.SqrMagnitude(tr.position - eyePos);
-                        if (d < nearestDist)
+                        if (sqrDist < nearestDist)
                         {
-                            nearestDist = d;
+                            nearestDist = sqrDist;
                             nearestInteractable = tr;
                         }
                     }
                 }
             }
+
+            SortByDistance(visibleTargets);
+            SortByDistance(combatables);
+            SortByDistance(interactables);
+
+            TrimList(visibleTargets, maxVisibleTargets);
+            TrimList(combatables, maxCombatables);
+            TrimList(interactables, maxInteractables);
         }
 
         private bool IsTargetVisible(Collider targetCol, Vector3 eyePos)
@@ -110,34 +115,27 @@ namespace Kcc.Base
                 ? targetCol.bounds.center
                 : targetCol.transform.position + Vector3.up * targetHeightFallback;
 
-            Vector3 dir = (targetPos - eyePos);
-
+            Vector3 dir = targetPos - eyePos;
             dir.y = 0f;
             if (dir.sqrMagnitude < 0.0001f) return false;
             dir.Normalize();
 
-            if (Vector3.Angle(transform.forward, dir) > angle * 0.5f)
-                return false;
+            if (Vector3.Angle(transform.forward, dir) > angle * 0.5f) return false;
 
             float dist = Vector3.Distance(eyePos, targetPos);
-
-            if (Physics.Raycast(eyePos, dir, dist, obstructionMask, triggerInteraction))
-                return false;
+            if (Physics.Raycast(eyePos, dir, dist, obstructionMask, triggerInteraction)) return false;
 
             return true;
         }
 
         private TargetTraits GetTraits(Collider col)
         {
-            if (_traitCache.TryGetValue(col, out var cached))
-                return cached;
+            if (_traitCache.TryGetValue(col, out var cached)) return cached;
 
             var go = col.attachedRigidbody ? col.attachedRigidbody.gameObject : col.gameObject;
             TargetTraits traits = TargetTraits.None;
 
-            if (go.TryGetComponent(out TargetTrait tt))
-                traits |= tt.traits;
-
+            if (go.TryGetComponent(out TargetTrait tt)) traits |= tt.traits;
             if (HasComponentInParents<ICombatable>(go)) traits |= TargetTraits.Combatable;
             if (HasComponentInParents<IInteractable>(go)) traits |= TargetTraits.Interactable;
 
@@ -148,6 +146,25 @@ namespace Kcc.Base
         private bool HasComponentInParents<T>(GameObject go)
         {
             return go.GetComponentInParent(typeof(T)) != null;
+        }
+
+        private void SortByDistance(List<Transform> list)
+        {
+            list.Sort((a, b) =>
+            {
+                if (a == null && b == null) return 0;
+                if (a == null) return 1;
+                if (b == null) return -1;
+                float da = _distCache.TryGetValue(a, out var va) ? va : float.MaxValue;
+                float db = _distCache.TryGetValue(b, out var vb) ? vb : float.MaxValue;
+                return da.CompareTo(db);
+            });
+        }
+
+        private void TrimList(List<Transform> list, int maxCount)
+        {
+            if (maxCount <= 0) { list.Clear(); return; }
+            if (list.Count > maxCount) list.RemoveRange(maxCount, list.Count - maxCount);
         }
 
 #if UNITY_EDITOR
@@ -173,16 +190,13 @@ namespace Kcc.Base
                 both.IntersectWith(interactables);
 
                 Handles.color = Color.magenta;
-                foreach (var t in both)
-                    if (t) Handles.DrawLine(eyePos, t.position);
+                foreach (var t in both) if (t) Handles.DrawLine(eyePos, t.position);
 
                 Handles.color = Color.red;
-                foreach (var t in combatables)
-                    if (t && !both.Contains(t)) Handles.DrawLine(eyePos, t.position);
+                foreach (var t in combatables) if (t && !both.Contains(t)) Handles.DrawLine(eyePos, t.position);
 
                 Handles.color = Color.cyan;
-                foreach (var t in interactables)
-                    if (t && !both.Contains(t)) Handles.DrawLine(eyePos, t.position);
+                foreach (var t in interactables) if (t && !both.Contains(t)) Handles.DrawLine(eyePos, t.position);
             }
         }
 #endif

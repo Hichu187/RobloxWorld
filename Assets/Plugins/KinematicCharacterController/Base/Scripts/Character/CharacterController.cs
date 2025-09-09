@@ -74,7 +74,7 @@ namespace Kcc.Base
             D.raw(new Shape.Text(TransformCached.position + _motor.Capsule.center, _stateMachine.CurrentState));
         }
 
-        private void OnCollisionEnter(Collision collision)
+/*        private void OnCollisionEnter(Collision collision)
         {
             ICharacterCollidable collidable = collision.gameObject.GetComponent<ICharacterCollidable>();
 
@@ -105,7 +105,7 @@ namespace Kcc.Base
             if (collidable != null)
                 collidable.OnTriggerExit(this);
         }
-
+*/
         #endregion
 
         #region Function -> Private
