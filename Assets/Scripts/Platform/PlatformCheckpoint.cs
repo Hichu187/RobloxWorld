@@ -6,6 +6,12 @@ namespace Game
 {
     public class PlatformCheckpoint : MonoBehaviour, ICharacterCollidable
     {
+        private int _index;
+        public void SetIndex(int index)
+        {
+            _index = index;
+        }
+
         void ICharacterCollidable.OnCollisionEnter(Character character)
         {
 
