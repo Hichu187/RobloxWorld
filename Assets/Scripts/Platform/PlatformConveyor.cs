@@ -82,7 +82,7 @@ namespace Game
                 Destroy(go);
             });
 
-            _tw = DOVirtual.DelayedCall(1.25f, () =>
+            _tw = DOVirtual.DelayedCall(1.5f, () =>
             {
                 SpawnArrow();
             });
@@ -91,15 +91,15 @@ namespace Game
         [Button("Generate")]
         private void Generate()
         {
-            var collider = _model.GetComponent<BoxCollider>();
+            var collider = GetComponent<BoxCollider>();
 
             float zStart = size % 2 != 0 ? size / 2 : size / 2 - 0.5f;
 
-            collider.size = new Vector3(collider.size.x, collider.size.y, size);
+            collider.size = new Vector3(_model.localScale.x, collider.size.y, size);
 
             for (int i = 0; i < _model.childCount; i++)
             {
-                Destroy(_model.GetChild(i).gameObject);
+                DestroyImmediate(_model.GetChild(i).gameObject);
             }
 
             for (int i = 0; i < size; i++)

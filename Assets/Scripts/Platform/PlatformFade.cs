@@ -34,7 +34,6 @@ namespace Game
 
         void ICharacterCollidable.OnCollisionEnter(Character character)
         {
-            Debug.Log("hit");
             FadeOut();
         }
         void ICharacterCollidable.OnCollisionExit(Character character)
@@ -68,8 +67,8 @@ namespace Game
                                     .ChangeStartValue(colorStart);
 
             // Play sfx
-            AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
-            s_triggerIndex++;
+            //AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
+            //s_triggerIndex++;
         }
 
         private void OnFadeComplete()

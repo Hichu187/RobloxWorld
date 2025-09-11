@@ -70,15 +70,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434}
   _fadeDuration: 0.75
   _appearDelay: 2
-  _sfxTrigger:
-  - {fileID: 11400000, guid: e6d98a63b15a972498eab0d3279bf913, type: 2}
-  - {fileID: 11400000, guid: 761f82e448c6a9c40b481c311f64ecb0, type: 2}
-  - {fileID: 11400000, guid: 50d430ab88edc5047bdbc454308bd38a, type: 2}
-  - {fileID: 11400000, guid: fef82c16fe6bb2642aba80f1f9e77e23, type: 2}
-  - {fileID: 11400000, guid: 513efb0dd1bbc234eb248ec4e5091d16, type: 2}
-  - {fileID: 11400000, guid: c7a87bb6056cab0428bfdf4dedb988ac, type: 2}
-  - {fileID: 11400000, guid: c02cb70aacab311478ea29bd45faae26, type: 2}
-  - {fileID: 11400000, guid: 4d2e545b08f3826418bffed6b0f8d016, type: 2}
+  _sfxTrigger: []
 --- !u!1 &7824758822073472633
 GameObject:
   m_ObjectHideFlags: 0
