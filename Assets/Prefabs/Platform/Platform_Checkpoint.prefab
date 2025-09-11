@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8200163672650187214}
   - component: {fileID: 607143889266764142}
-  - component: {fileID: 4205961778757195994}
   m_Layer: 0
   m_Name: Platform_Checkpoint
   m_TagString: Untagged
@@ -46,27 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff55c70b4cda6944adafe86d729c134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &4205961778757195994
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4135027872769436279}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5, y: 1, z: 5}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6934360761914975212
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,11 @@ namespace Game
 
         [SerializeField] private float _velocity = 2f;
 
-        private Collider _collider;
+        [SerializeField] private Collider _collider;
 
         Tween _tw;
 
-        //[HideInInspector]
+        [HideInInspector]
         public List<Character> _controllers = new List<Character>();
 
         void ICharacterCollidable.OnCollisionEnter(Character character)
@@ -49,7 +49,7 @@ namespace Game
             if (_collider == null)
                 _collider = GetComponentInChildren<Collider>();
 
-            //SpawnArrow();
+            SpawnArrow();
         }
 
         private void FixedUpdate()
@@ -82,7 +82,7 @@ namespace Game
                 Destroy(go);
             });
 
-            _tw = DOVirtual.DelayedCall(0.8f, () =>
+            _tw = DOVirtual.DelayedCall(1.25f, () =>
             {
                 SpawnArrow();
             });
@@ -106,7 +106,9 @@ namespace Game
             {
                 var go = _cubePrefab.Create(_model);
                 go.transform.localPosition = new Vector3(0, 0, -zStart + i);
-                go.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+
+                Collider col = go.GetComponentInChildren<Collider>();
+                DestroyImmediate(col);
             }
         }
     }
