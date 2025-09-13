@@ -18,7 +18,6 @@ namespace Game
         [Header("Refs")]
         [SerializeField] private Animator anim;
 
-        [Header("Sequences (auto-managed, do not remove)")]
         [SerializeField] private AnimationSequence sequence;
         [SerializeField] private AnimationSequence sequenceBack;
 
@@ -81,75 +80,5 @@ namespace Game
             if (anim == null)
                 anim = GetComponentInChildren<Animator>();
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            EnsureAnimator();
-            EnsureExactlyTwoSequences(showDialog: true);
-            if (!Application.isPlaying)
-                EditorUtility.SetDirty(this);
-        }
-
-
-
-        private void EnsureExactlyTwoSequences(bool showDialog)
-        {
-            List<AnimationSequence> all = GetComponents<AnimationSequence>().ToList();
-
-            if (sequence == null || !all.Contains(sequence))
-            {
-                if (all.Count > 0) sequence = all[0];
-            }
-
-            while (all.Count < 2)
-            {
-                var added = gameObject.AddComponent<AnimationSequence>();
-                all.Add(added);
-                if (showDialog)
-                    EditorUtility.DisplayDialog("Không thể xóa",
-                        "ButtonAction yêu cầu chính xác 2 AnimationSequence. Thành phần vừa bị xóa đã được khôi phục.",
-                        "OK");
-            }
-
-            if (all.Count > 2)
-            {
-                if (sequence == null || !all.Contains(sequence))
-                    sequence = all[0];
-
-                AnimationSequence keepOther = all.FirstOrDefault(x => x != sequence);
-
-                foreach (var extra in all)
-                {
-                    if (extra == sequence || extra == keepOther) continue;
-                    if (!Application.isPlaying) DestroyImmediate(extra);
-                    else Destroy(extra);
-
-                }
-
-                if (showDialog)
-                    EditorUtility.DisplayDialog("Limit 2 AnimationSequence",
-                        "Cannot Remove Component",
-                        "OK");
-
-                all = GetComponents<AnimationSequence>().ToList();
-            }
-
-            if (sequence == null || !all.Contains(sequence))
-                sequence = all[0];
-
-            sequenceBack = all.First(x => x != sequence);
-
-            LockComponentNotEditable(sequence);
-            LockComponentNotEditable(sequenceBack);
-            EditorUtility.SetDirty(sequence);
-            EditorUtility.SetDirty(sequenceBack);
-        }
-
-        private void LockComponentNotEditable(Component c)
-        {
-
-        }
-#endif
     }
 }
