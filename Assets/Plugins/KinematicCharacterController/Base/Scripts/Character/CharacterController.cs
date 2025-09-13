@@ -4,6 +4,7 @@ using System.Linq;
 using Vertx.Debugging;
 using System;
 using Hichu;
+using UnityEngine.Windows;
 
 namespace Kcc.Base
 {
@@ -212,6 +213,18 @@ namespace Kcc.Base
 
             // Jumping input
             if (input.Jump)
+                _jumpTimeSinceRequest = 0f;
+        }
+
+        public void SetInputs(ref CharacterInputAI aiInput)
+        {
+            aiInput.moveVector.y = 0f;
+            aiInput.moveVector = aiInput.moveVector.normalized;
+
+            _inputMove = aiInput.moveVector;
+            _inputRotation = aiInput.lookVector;
+
+            if (aiInput.jump)
                 _jumpTimeSinceRequest = 0f;
         }
 

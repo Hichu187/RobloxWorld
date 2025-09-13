@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff97ac8fb2c248479d887a92da2834b, type: 3}
+  m_Name: AICharacterConfig
+  m_EditorClassIdentifier: 
+  _orientationBonusMethod: 1
+  _orientationSharpness: 10
+  _orientationBonusSharpness: 1000
+  _groundMoveSpeedMax: 8
+  _groundMoveSharpness: 1000
+  _airMoveSpeedMax: 8
+  _airAccelerationSpeed: 1000
+  _airDrag: 0.1
+  _jumpSpeed: 9
+  _jumpMultipleCount: 1
+  _jumpMultipleDelayBetween: 0.5
+  _jumpRequestBufferTime: 0.5
+  _jumpCoyoteTime: 0.5
+  _jumpOffLadderSpeed: 3
+  _ladderClimbDetectDistance: 0.1
+  _ladderClimbDetectHeight: 0.8
+  _ladderClimbDetectLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _ladderClimbSpeedMax: 4.5
+  _ladderClimbSharpness: 1000
+  _ladderClimbTowardAngleMax: 90
+  _gravity: {x: 0, y: -30, z: 0}

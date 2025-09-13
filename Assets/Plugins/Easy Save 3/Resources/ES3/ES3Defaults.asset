@@ -36,6 +36,7 @@ MonoBehaviour:
     - UniTask
     - Vertx.Debugging.Runtime
     - UniTask.Linq
+    - Kcc.Base
     - DOTween.Modules
     - Game
     - Coffee.UIParticle
@@ -44,7 +45,6 @@ MonoBehaviour:
     - Hichu.Editor
     - JoystickPack
     - Coffee.UIParticle.Editor
-    - Kcc.Base
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - Kcc
     - Assembly-CSharp-firstpass

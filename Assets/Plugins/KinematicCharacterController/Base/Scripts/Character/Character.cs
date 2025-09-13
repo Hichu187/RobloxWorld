@@ -59,7 +59,6 @@ namespace Kcc.Base
         }
 
 
-        [Button]
         public void Kill()
         {
             Die();
@@ -76,7 +75,6 @@ namespace Kcc.Base
             eventDie?.Invoke();
         }
 
-        [Button]
         public void Revive(Vector3 position, Quaternion rotation)
         {
             _state = State.Normal;
