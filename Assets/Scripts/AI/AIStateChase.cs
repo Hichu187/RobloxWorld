@@ -65,7 +65,7 @@ namespace Game
             }
         }
 
-        void IStateMachine.OnFixUpdate()
+        void IStateMachine.OnFixedUpdate()
         {
 
         }

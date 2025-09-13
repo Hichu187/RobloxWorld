@@ -12,6 +12,9 @@ namespace Kcc.Base
             Normal,
             Die,
         }
+
+        public bool isPlayer = false;
+
         public KccMotor motor;
         public CharacterController cControl;
         public CharacterCamera cCamera;

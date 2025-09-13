@@ -69,7 +69,7 @@ namespace Game
             if (_target != null && Vector3.Distance(_ai.character.transformCached.position, _target.position) < _targetDistance)
                 Complete();
         }
-        void IStateMachine.OnFixUpdate()
+        void IStateMachine.OnFixedUpdate()
         {
 
         }

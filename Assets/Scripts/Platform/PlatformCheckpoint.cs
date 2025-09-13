@@ -22,7 +22,10 @@ namespace Game
         }
         void ICharacterCollidable.OnTriggerEnter(Character character)
         {
-            StaticBus<Event_Checkpoint>.Post(new Event_Checkpoint(this, character));
+            if (character.GetComponentInParent<Player>())
+            {
+                StaticBus<Event_Checkpoint>.Post(new Event_Checkpoint(this, character));
+            }
         }
 
         void ICharacterCollidable.OnTriggerExit(Character character)

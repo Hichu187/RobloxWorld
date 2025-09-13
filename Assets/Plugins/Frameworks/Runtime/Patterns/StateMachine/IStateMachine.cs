@@ -5,7 +5,7 @@
         void Init();
         void OnStart();
         void OnUpdate();
-        void OnFixUpdate();
+        void OnFixedUpdate();
         void OnStop();
     }
 }

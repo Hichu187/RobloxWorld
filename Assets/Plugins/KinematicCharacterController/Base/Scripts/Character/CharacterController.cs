@@ -228,6 +228,8 @@ namespace Kcc.Base
                 _jumpTimeSinceRequest = 0f;
         }
 
+
+
         public void AddVelocity(Vector3 velocity, bool isAirForce = false)
         {
             switch (_stateMachine.CurrentState)

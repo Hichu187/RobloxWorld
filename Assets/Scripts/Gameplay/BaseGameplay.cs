@@ -1,11 +1,15 @@
 using Hichu;
+using Kcc.Base;
 using UnityEngine;
 
 namespace Game
 {
     public abstract class BaseGameplay : MonoBehaviour
     {
-        public PlatformCheckpoint _curCheckpoint;
+        public Player player;
+        public Transform startPosition;
+        public PlatformCheckpoint curCheckpoint;
+
         private void Start()
         {
             SubscribeEvent();
@@ -26,9 +30,24 @@ namespace Game
             StaticBus<Event_Checkpoint>.Unsubscribe(EventCheckpoint);
         }
 
-        public void EventCheckpoint(Event_Checkpoint e)
+        public void RespawnStartPosition()
         {
-            _curCheckpoint = e.checkpoint;
+            if (startPosition == null) return;
+            if (player == null) return;
+            player.character.Revive(startPosition.transform.position, startPosition.transform.rotation);
+        }
+
+        public void RespawnCheckpoint()
+        {
+            if (curCheckpoint == null) return;
+            if (player == null) return;
+
+            player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
+        }
+
+        private void EventCheckpoint(Event_Checkpoint e)
+        {
+            curCheckpoint = e.checkpoint;
         }
     }
 }

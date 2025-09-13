@@ -16,6 +16,8 @@ namespace Game
             Stop,
             Idle,
             Chase,
+            Patrol,
+            FindWeapon
         }
 
         [Title("Reference")]
@@ -34,6 +36,7 @@ namespace Game
 
         private AIStateIdle _stateIdle;
         private AIStateChase _stateChase;
+        private AIStatePatrol _statePatrol;
 
         private Transform _targetTransform;
         private Vector3 _targetPosition;
@@ -89,9 +92,11 @@ namespace Game
 
             _stateIdle.eventComplete += StateIdle_EventComplete;
             _stateChase.eventComplete += StateChase_EventComplete;
+            _statePatrol = new AIStatePatrol(this);
 
             _stateMachine.AddState(State.Idle, _stateIdle);
             _stateMachine.AddState(State.Chase, _stateChase);
+            _stateMachine.AddState(State.Patrol, _statePatrol);
             _stateMachine.AddState(State.Stop);
 
             Stop();
@@ -147,6 +152,12 @@ namespace Game
             _targetTransform = null;
 
             _stateMachine.CurrentState = State.Chase;
+        }
+
+        public void Patrol(Vector3 middle,float radius = 5f)
+        {
+            _statePatrol.SetRadius(radius, middle);
+            _stateMachine.CurrentState = State.Patrol;
         }
 
         public void JumpIfNecessery()
