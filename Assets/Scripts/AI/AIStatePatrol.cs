@@ -1,7 +1,6 @@
 using Hichu;
 using System;
 using UnityEngine;
-using Kcc.Base;
 
 namespace Game
 {

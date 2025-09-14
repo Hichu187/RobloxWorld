@@ -1,9 +1,7 @@
-﻿using Kcc.Base;
-using UnityEngine;
+﻿using UnityEngine;
 using Hichu;
 using DG.Tweening;
-using System.Linq;
-using System.Collections.Generic;
+using Kcc;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -26,10 +24,10 @@ namespace Game
 
         private bool isMoved = false;
 
-        void ICharacterCollidable.OnCollisionEnter(Character character) { }
-        void ICharacterCollidable.OnTriggerEnter(Character character) { MovingDown(); }
-        void ICharacterCollidable.OnTriggerExit(Character character) { MovingUp(); }
-        void ICharacterCollidable.OnCollisionExit(Character character) { }
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character) { }
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character) { MovingDown(); }
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character) { MovingUp(); }
+        void ICharacterCollidable.OnCollisionExit(CharacterControl  character) { }
 
         private void Awake()
         {

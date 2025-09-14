@@ -1,6 +1,5 @@
 using DG.Tweening;
 using Hichu;
-using Kcc.Base;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,22 +23,22 @@ namespace Game
         [HideInInspector]
         public List<Character> _controllers = new List<Character>();
 
-        void ICharacterCollidable.OnCollisionEnter(Character character)
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
-            _controllers.Add(character);
+            _controllers.Add(character.GetComponent<Character>());
         }
 
-        void ICharacterCollidable.OnTriggerEnter(Character character)
-        {
-        }
-
-        void ICharacterCollidable.OnTriggerExit(Character character)
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
         }
 
-        void ICharacterCollidable.OnCollisionExit(Character character)
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character)
         {
-            _controllers.Remove(character);
+        }
+
+        void ICharacterCollidable.OnCollisionExit(CharacterControl character)
+        {
+            _controllers.Add(character.GetComponent<Character>());
         }
 
         private void Start()

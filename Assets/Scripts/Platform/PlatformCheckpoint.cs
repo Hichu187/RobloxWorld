@@ -1,5 +1,4 @@
 using Hichu;
-using Kcc.Base;
 using UnityEngine;
 
 namespace Game
@@ -12,15 +11,15 @@ namespace Game
             _index = index;
         }
 
-        void ICharacterCollidable.OnCollisionEnter(Character character)
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
 
         }
-        void ICharacterCollidable.OnCollisionExit(Character character)
+        void ICharacterCollidable.OnCollisionExit(CharacterControl character)
         {
 
         }
-        void ICharacterCollidable.OnTriggerEnter(Character character)
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
             if (character.GetComponentInParent<Player>())
             {
@@ -28,7 +27,7 @@ namespace Game
             }
         }
 
-        void ICharacterCollidable.OnTriggerExit(Character character)
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character)
         {
 
         }

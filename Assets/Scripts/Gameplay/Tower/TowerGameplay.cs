@@ -1,6 +1,5 @@
 using DG.Tweening.Core.Easing;
 using Hichu;
-using Kcc.Base;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

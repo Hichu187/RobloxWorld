@@ -1,5 +1,4 @@
 using Hichu;
-using Kcc.Base;
 using UnityEngine;
 
 namespace Game
@@ -7,9 +6,9 @@ namespace Game
     public class Event_Checkpoint : IEvent
     {
         public PlatformCheckpoint checkpoint { get; private set; }
-        public Character character { get; private set; }
+        public CharacterControl character { get; private set; }
 
-        public Event_Checkpoint(PlatformCheckpoint checkpoint, Character character)
+        public Event_Checkpoint(PlatformCheckpoint checkpoint, CharacterControl character)
         {
             this.checkpoint = checkpoint;
             this.character = character;

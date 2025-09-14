@@ -2,7 +2,6 @@ using DG.Tweening;
 using Hichu;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Kcc.Base;
 
 namespace Game
 {
@@ -32,20 +31,20 @@ namespace Game
             _tween?.Kill();
         }
 
-        void ICharacterCollidable.OnCollisionEnter(Character character)
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
             FadeOut();
         }
-        void ICharacterCollidable.OnCollisionExit(Character character)
+        void ICharacterCollidable.OnCollisionExit(CharacterControl character)
         {
 
         }
-        void ICharacterCollidable.OnTriggerEnter(Character character)
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
             FadeOut();
         }
 
-        void ICharacterCollidable.OnTriggerExit(Character character)
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character)
         {
         }
 

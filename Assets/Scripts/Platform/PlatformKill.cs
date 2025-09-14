@@ -1,23 +1,22 @@
 using UnityEngine;
-using Kcc.Base;
 namespace Game
 {
     public class PlatformKill : MonoBehaviour, ICharacterCollidable
     {
-        void ICharacterCollidable.OnCollisionEnter(Character character)
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
             character.GetComponent<Character>().Kill();
         }
-        void ICharacterCollidable.OnCollisionExit(Character character)
+        void ICharacterCollidable.OnCollisionExit(CharacterControl character)
         {
 
         }
-        void ICharacterCollidable.OnTriggerEnter(Character character)
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
             character.GetComponent<Character>().Kill();
         }
 
-        void ICharacterCollidable.OnTriggerExit(Character character)
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character)
         {
 
         }

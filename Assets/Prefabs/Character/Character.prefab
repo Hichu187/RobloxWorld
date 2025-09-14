@@ -164,9 +164,9 @@ GameObject:
   - component: {fileID: 214178629716720430}
   - component: {fileID: 380968863022838189}
   - component: {fileID: 6207748118617446757}
-  - component: {fileID: 3101639169456041305}
   - component: {fileID: 2593960828409894946}
   - component: {fileID: 8391187971766255621}
+  - component: {fileID: 7099523407771847612}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -253,12 +253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35af29f42fcd05a4d8f586ee8cca74c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   motor: {fileID: 380968863022838189}
   cControl: {fileID: 6207748118617446757}
   cCamera: {fileID: 0}
   cCombat: {fileID: 2593960828409894946}
   cInteract: {fileID: 0}
-  fov: {fileID: 3101639169456041305}
+  fov: {fileID: 7099523407771847612}
 --- !u!114 &380968863022838189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,33 +317,6 @@ MonoBehaviour:
   _motor: {fileID: 380968863022838189}
   _ignoredColliders: []
   _config: {fileID: 11400000, guid: b06292ed39bd9bf4bb6b87594ac7b843, type: 2}
---- !u!114 &3101639169456041305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325134468661154976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5452f284c5cd4e42989c17c68c0ed46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
-  angle: 120
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 65
-  eyeHeight: 1
-  targetHeightFallback: 1
-  triggerInteraction: 1
-  initialBufferSize: 64
-  maxVisibleTargets: 64
-  maxCombatables: 8
-  maxInteractables: 8
 --- !u!114 &2593960828409894946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,10 +330,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traits: 1
+  isTakeDamage: 0
   _maxHealth: 100
   _currentHealth: 0
   _damage: 10
   _attackSpeed: 1
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 127
+  _knockbackForce: 10
+  _knockbackAngleDeg: 45
 --- !u!114 &8391187971766255621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +355,33 @@ MonoBehaviour:
   _sfx: {fileID: 0}
   _vfx: {fileID: 0}
   _objRoot: {fileID: 0}
+--- !u!114 &7099523407771847612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325134468661154976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa7322f70680b745a21ee82139bf06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 12
+  angle: 100
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 65
+  eyeHeight: 1.5
+  targetHeightFallback: 1
+  triggerInteraction: 1
+  initialBufferSize: 64
+  maxVisibleTargets: 64
+  maxCombatables: 8
+  maxInteractables: 8
 --- !u!1 &4472486398177683177
 GameObject:
   m_ObjectHideFlags: 0

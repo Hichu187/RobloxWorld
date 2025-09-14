@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using Vertx.Debugging;
-using Kcc.Base;
 
 namespace Game
 {

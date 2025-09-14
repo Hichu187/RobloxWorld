@@ -36,9 +36,8 @@ MonoBehaviour:
     - UniTask
     - Vertx.Debugging.Runtime
     - UniTask.Linq
-    - Kcc.Base
-    - DOTween.Modules
     - Game
+    - DOTween.Modules
     - Coffee.UIParticle
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro
