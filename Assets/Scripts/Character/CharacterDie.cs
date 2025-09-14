@@ -57,7 +57,13 @@ namespace Game
                             _objRagdoll.GetComponentInChildren<CharacterRagdoll>().Explode();
                         }*/
 
-            LDebug.Log<CharacterDie>("Character Die");
+            if (_character.isPlayer)
+            {
+                StaticBus<Event_Player_Dead>.Post(null);
+
+                LDebug.Log<CharacterDie>("Player Dead");
+            }
+
 
             if (_objVfx != null)
             {

@@ -25,7 +25,7 @@ namespace Game
 
         void IStateMachine.OnStart()
         {
-            _center = _ai.character.transform.position;
+            //_center = _ai.character.transform.position;
             PickNextPoint();
         }
 

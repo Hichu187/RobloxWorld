@@ -44,6 +44,11 @@ namespace Game
             player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
         }
 
+        private void EventPlayerDead(Event_Player_Dead e)
+        {
+
+        }
+
         private void EventCheckpoint(Event_Checkpoint e)
         {
             curCheckpoint = e.checkpoint;
