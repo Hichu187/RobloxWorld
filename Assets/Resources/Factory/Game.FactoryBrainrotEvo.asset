@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f884aa7643bd28647a0cfb134a127e4a, type: 3}
+  m_Name: Game.FactoryBrainrotEvo
+  m_EditorClassIdentifier: 
+  _brainrotConfigs:
+  - {fileID: 11400000, guid: 2a57dda297f74bc4ba9013964eaa7a88, type: 2}
+  - {fileID: 11400000, guid: cb8dbc1270030e8489a8bcd1262f3c1c, type: 2}
+  - {fileID: 11400000, guid: 405a53297816849429b3ab79d2a3b95e, type: 2}
+  - {fileID: 11400000, guid: 52475734f6adef1429a3e0a21632c890, type: 2}
+  - {fileID: 11400000, guid: ba1bccb51d0f7744b9fd3781a8311094, type: 2}
+  - {fileID: 11400000, guid: bb370b7bbdb8aee42a4a8dc9b22869f9, type: 2}
+  - {fileID: 11400000, guid: 14cd8b25dbe0e2147a5b595c160bffea, type: 2}
+  - {fileID: 11400000, guid: 73be5129d0564c44181d5791043e5e21, type: 2}
