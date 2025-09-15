@@ -11,15 +11,16 @@ namespace Game
         [Title("Stats")]
         [SerializeField] private bool isTakeDamage = false;
         [ShowIf("isTakeDamage", true)]
-        [SerializeField] private int _maxHealth = 100;
+        public int _maxHealth = 100;
         [ShowIf("isTakeDamage", true)]
-        [SerializeField] private int _currentHealth;
+        public int _currentHealth;
         [ShowIf("isTakeDamage", true)]
-        [SerializeField] private int _damage = 10;
+        public int _damage = 10;
 
         [Title("Combat Settings")]
         [SerializeField] private float _attackSpeed = 1f;
         [Title("Knockback Config")]
+        [SerializeField] private bool _knockback = false;
         [SerializeField]
         private LayerMask _hitMask = ~0;
         [SerializeField] private float _knockbackForce = 10f;
@@ -62,8 +63,6 @@ namespace Game
                     }
                     horiz.Normalize();
 
-                    // Nâng góc lên 45° (hoặc theo _knockbackAngleDeg)
-                    // dir = horiz * cos(θ) + up * sin(θ)
                     Vector3 dir = horiz * Mathf.Cos(angRad) + Vector3.up * Mathf.Sin(angRad);
 
                     dir.Normalize();
@@ -97,6 +96,7 @@ namespace Game
                 }
             }
 
+            if (!_knockback) return;
             KnockBack(force, direction);
 
         }
@@ -149,7 +149,7 @@ namespace Game
             }
 
         }
-        private void Die()
+        protected virtual void Die()
         {
             hasDied = true;
             LDebug.Log($"[{name}] has died.");
