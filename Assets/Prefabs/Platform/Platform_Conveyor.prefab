@@ -57,7 +57,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999290250194009061}
@@ -116,7 +116,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 1, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8795356315293783375
 MonoBehaviour:
@@ -131,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 3279461949425361399}
-  _cubePrefab: {fileID: 1906331200612516322, guid: 3739dd95019ebe14aba3dff016c564ee, type: 3}
+  _cubePrefab: {fileID: 2991968802959500428, guid: 73d347da9cb58854393c3ab7c43e24a7, type: 3}
   _arrowParent: {fileID: 6163825561658919669}
   _arrow: {fileID: 726662762062301838, guid: 5f4e0eea824ca104388b969fb574522f, type: 3}
   size: 15
+  sizeX: 3
   _velocity: 100
   _collider: {fileID: 0}
   _controllers: []

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4659056626042529103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7535313841780371238}
   - component: {fileID: 7718815769759378644}
   - component: {fileID: 1575181771686881531}
-  - component: {fileID: 6404462631316044112}
   m_Layer: 6
   m_Name: Ladder
   m_TagString: Untagged
@@ -59,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 7177713701215046109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.95, y: 1.33, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85,8 +84,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Size: {x: 1, y: 5, z: 1}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &1575181771686881531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,20 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9676f561591f4b04dbce6efd3743512e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 10
---- !u!114 &6404462631316044112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177713701215046109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d839bf7666f8042909b3c2ed0eaaad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _modelRoot: {fileID: 6793499673743845588}
+  _modelTransform: {fileID: 6793499673743845588}
+  _height: 5
   _modelMaterial: {fileID: 2100000, guid: 60c42fb470eea2b4198867ba20e2b905, type: 2}
   _modelHeight: 1
   _modelPrefab: {fileID: 1906331200612516322, guid: 3739dd95019ebe14aba3dff016c564ee, type: 3}
