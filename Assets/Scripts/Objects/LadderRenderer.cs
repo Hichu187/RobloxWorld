@@ -18,7 +18,7 @@ namespace Game
         [Button]
         public void UpdateRenderer()
         {
-            float height = GetComponent<Ladder>().Height;
+            float height = GetComponent<Ladder>().height;
 
             BoxCollider collider = GetComponent<BoxCollider>();
 
