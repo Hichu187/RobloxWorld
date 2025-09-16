@@ -114,5 +114,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _modelRoot: {fileID: 6793499673743845588}
   _modelMaterial: {fileID: 2100000, guid: 60c42fb470eea2b4198867ba20e2b905, type: 2}
-  _modelHeight: 10
+  _modelHeight: 1
   _modelPrefab: {fileID: 1906331200612516322, guid: 3739dd95019ebe14aba3dff016c564ee, type: 3}
