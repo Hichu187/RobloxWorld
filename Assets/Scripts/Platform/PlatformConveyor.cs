@@ -106,7 +106,7 @@ namespace Game
             {
                 var go = _cubePrefab.Create(_model);
                 go.transform.localPosition = new Vector3(0, 0, -zStart + i);
-                go.GetComponent<Probuid>
+
                 Collider col = go.GetComponentInChildren<Collider>();
                 DestroyImmediate(col);
             }
