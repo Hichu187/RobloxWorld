@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] Transform _arrowParent;
         [SerializeField] GameObject _arrow;
         [SerializeField] int size = 5;
+        [SerializeField] int sizeX = 3;
 
         [SerializeField] private float _velocity = 2f;
 
@@ -94,7 +95,7 @@ namespace Game
 
             float zStart = size % 2 != 0 ? size / 2 : size / 2 - 0.5f;
 
-            collider.size = new Vector3(_model.localScale.x, collider.size.y, size);
+            collider.size = new Vector3(sizeX, collider.size.y, size);
 
             for (int i = 0; i < _model.childCount; i++)
             {
@@ -105,10 +106,11 @@ namespace Game
             {
                 var go = _cubePrefab.Create(_model);
                 go.transform.localPosition = new Vector3(0, 0, -zStart + i);
-
+                go.GetComponent<Probuid>
                 Collider col = go.GetComponentInChildren<Collider>();
                 DestroyImmediate(col);
             }
+
         }
     }
 }
