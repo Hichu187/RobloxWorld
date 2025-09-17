@@ -107,6 +107,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5825415833199005490, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_Center.y
       value: 0

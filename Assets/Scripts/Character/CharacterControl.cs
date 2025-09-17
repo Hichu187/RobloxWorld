@@ -8,7 +8,7 @@ using Kcc;
 
 namespace Game
 {
-    public class CharacterControl : MonoBase, IKccMotor
+    public class CharacterControl : MonoCached, IKccMotor
     {
         public enum State
         {
@@ -24,6 +24,8 @@ namespace Game
         [SerializeField] private Collider[] _ignoredColliders;
         [SerializeField] private CharacterConfig _config;
 
+
+        private CharacterAnimator _animator;
         // Current input value
         private Vector3 _inputMove;
         private Vector3 _inputRotation;
@@ -49,11 +51,8 @@ namespace Game
         private RaycastHit _raycastHit;
 
         private StateMachine<State> _stateMachine;
-
         public StateMachine<State> StateMachine { get { return _stateMachine; } }
-
         public KccMotor Motor { get { return _motor; } }
-
         public CharacterConfig Config { get { return _config; } }
 
         #region MonoBehaviour
@@ -65,6 +64,7 @@ namespace Game
 
             // Assign the characterController to the motor
             _motor.CharacterController = this;
+            _animator = GetComponent<CharacterAnimator>();
         }
 
         private void OnDrawGizmos()
@@ -72,7 +72,7 @@ namespace Game
             if (!Application.isPlaying || _stateMachine == null || _motor == null)
                 return;
 
-            D.raw(new Shape.Text(TransformCached.position + _motor.Capsule.center, _stateMachine.CurrentState));
+            D.raw(new Shape.Text(transformCached.position + _motor.Capsule.center, _stateMachine.CurrentState));
         }
         #endregion
 
@@ -93,11 +93,11 @@ namespace Game
         private bool CanClimbLadder()
         {
             // Cast bottom
-            DrawPhysics.Raycast(TransformCached.position, TransformCached.forward, out _raycastHit, _motor.Capsule.radius + _config.LadderClimbDetectDistance, _config.LadderClimbDetectLayerMask);
+            DrawPhysics.Raycast(transformCached.position, transformCached.forward, out _raycastHit, _motor.Capsule.radius + _config.LadderClimbDetectDistance, _config.LadderClimbDetectLayerMask);
 
             // If nothing detect when cast bottom then cast top
             if (_raycastHit.collider == null)
-                DrawPhysics.Raycast(TransformCached.TransformPoint(Vector3.up * _motor.Capsule.height * _config.LadderClimbDetectHeight), TransformCached.forward, out _raycastHit, _motor.Capsule.radius + _config.LadderClimbDetectDistance, _config.LadderClimbDetectLayerMask);
+                DrawPhysics.Raycast(transformCached.TransformPoint(Vector3.up * _motor.Capsule.height * _config.LadderClimbDetectHeight), transformCached.forward, out _raycastHit, _motor.Capsule.radius + _config.LadderClimbDetectDistance, _config.LadderClimbDetectLayerMask);
 
             if (_raycastHit.collider == null)
                 return false;
@@ -119,10 +119,10 @@ namespace Game
 
         private bool IsLeavingLadder()
         {
-            if (TransformCached.position.y > _ladder.TopPosition.y)
+            if (transformCached.position.y > _ladder.TopPosition.y)
                 return true;
 
-            if (TransformCached.position.y + _motor.Capsule.height * _config.LadderClimbDetectHeight < _ladder.BottomPosition.y)
+            if (transformCached.position.y + _motor.Capsule.height * _config.LadderClimbDetectHeight < _ladder.BottomPosition.y)
                 return true;
 
             return false;
@@ -175,6 +175,8 @@ namespace Game
             _jumpTimeSinceLast = 0f;
             // Increase jump count
             _jumpCount++;
+
+            if (_animator != null) _animator.SetJumping(true);
         }
 
         private void DoJumpOffLadder(ref Vector3 currentVelocity)
@@ -267,7 +269,7 @@ namespace Game
             if (_ladder == null)
                 return 0f;
 
-            return _ladder.TransformCached.TransformPoint(TransformCached.position).y;
+            return _ladder.TransformCached.TransformPoint(transformCached.position).y;
         }
 
         #endregion
@@ -281,7 +283,10 @@ namespace Game
                 case State.Air:
                 case State.Ground:
                     if (_inputMove.sqrMagnitude > Mathf.Epsilon && CanClimbLadder())
+                    {
                         _stateMachine.CurrentState = State.ClimbLadder;
+                    }
+
                     break;
             }
         }
@@ -394,7 +399,7 @@ namespace Game
                     break;
 
                 case State.Ground:
-                    D.raw(new Shape.Text(TransformCached.position + Vector3.up, currentVelocity));
+                    D.raw(new Shape.Text(transformCached.position + Vector3.up, currentVelocity));
 
                     if (_motor.GroundingStatus.IsStableOnGround)
                     {
@@ -430,7 +435,7 @@ namespace Game
                 case State.ClimbLadder:
                     float desireVelocityY = 0f;
                     // Move foward climb direction equal climb up and vice versa
-                    desireVelocityY = TransformCached.InverseTransformPoint(TransformCached.position + _inputMove).z * _config.LadderClimbSpeedMax;
+                    desireVelocityY = transformCached.InverseTransformPoint(transformCached.position + _inputMove).z * _config.LadderClimbSpeedMax;
 
                     // Smooth movement velocity
                     currentVelocity.y = Mathf.Lerp(currentVelocity.y, desireVelocityY, 1f - Mathf.Exp(-_config.LadderClimbSharpness * deltaTime));
@@ -446,7 +451,7 @@ namespace Game
                     {
                         // Force change to air state
                         _stateMachine.CurrentState = State.Air;
-
+                        _animator.SetJumping(true);
                         DoJumpOffLadder(ref currentVelocity);
                     }
 
@@ -465,7 +470,11 @@ namespace Game
 
                 case State.Air:
                     if (_motor.GroundingStatus.IsStableOnGround)
+                    {
                         _stateMachine.CurrentState = State.Ground;
+                        if (_animator != null) _animator.SetJumping(false);
+                    }
+
                     break;
 
                 case State.ClimbLadder:
@@ -473,7 +482,13 @@ namespace Game
                         _stateMachine.CurrentState = State.Ground;
 
                     if (IsLeavingLadder())
+                    {
+                        if (_animator != null) _animator.SetJumping(false);
+                        if (_animator != null) _animator.SetClimbing(false);
+
                         _stateMachine.CurrentState = State.Air;
+                    }
+
 
                     break;
             }
@@ -493,7 +508,10 @@ namespace Game
 
             // Update time since last stable on ground
             if (_motor.GroundingStatus.IsStableOnGround)
+            {
                 _groundStableTime = 0f;
+            }
+
             else
                 _groundStableTime += deltaTime;
         }
@@ -515,6 +533,7 @@ namespace Game
 
         void IKccMotor.OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
         {
+
         }
 
         void IKccMotor.OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)

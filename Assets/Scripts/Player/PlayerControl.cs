@@ -47,7 +47,7 @@ _useMobileControl = true;
 #endif
 
             // Tell camera to follow transform
-            _characterCamera.SetFollowTransform(_cameraFollowTarget ? _cameraFollowTarget : _characterControl.TransformCached);
+            _characterCamera.SetFollowTransform(_cameraFollowTarget ? _cameraFollowTarget : _characterControl.transformCached);
 
             // Ignore the character's collider(s) for camera obstruction checks
             _characterCamera.IgnoredColliders.Clear();
@@ -169,8 +169,6 @@ _useMobileControl = true;
                 rawV = Input.GetAxisRaw(VerticalInput);
                 rawH = Input.GetAxisRaw(HorizontalInput);
                 characterInputs.Jump = Input.GetKeyDown(KeyCode.Space);
-                //characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
-                //characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
             }
 
             Vector3 inputMove = new Vector3(rawH, 0f, rawV);
