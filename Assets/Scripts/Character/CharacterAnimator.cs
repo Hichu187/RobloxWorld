@@ -11,7 +11,6 @@ namespace Game
         {
             if (animator == null)
                 return;
-
             animator.SetBool(HashDictionary.jumping, isJumping);
         }
 
