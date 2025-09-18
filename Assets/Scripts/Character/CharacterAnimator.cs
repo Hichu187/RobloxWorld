@@ -20,6 +20,11 @@ namespace Game
                 return;
 
             animator.SetBool(HashDictionary.climbing, isClimbing);
+
+            if(isClimbing == false)
+            {
+                animator.speed = 1;
+            }
         }
 
         public void SetClimbY(float y)
@@ -27,7 +32,7 @@ namespace Game
             if (animator == null)
                 return;
 
-            animator.SetFloat(HashDictionary.climbY, y * 0.5f);
+            animator.SetFloat(HashDictionary.climbY, Mathf.Clamp(y, -1f, 1f));
         }
 
         public void SetVelocityZ(float z)

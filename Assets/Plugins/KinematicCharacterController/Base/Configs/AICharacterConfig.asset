@@ -17,10 +17,10 @@ MonoBehaviour:
   _orientationBonusSharpness: 1000
   _groundMoveSpeedMax: 8
   _groundMoveSharpness: 1000
-  _airMoveSpeedMax: 8
+  _airMoveSpeedMax: 5
   _airAccelerationSpeed: 1000
   _airDrag: 0.1
-  _jumpSpeed: 9
+  _jumpSpeed: 7
   _jumpMultipleCount: 1
   _jumpMultipleDelayBetween: 0.5
   _jumpRequestBufferTime: 0.5

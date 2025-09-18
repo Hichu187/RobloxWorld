@@ -172,6 +172,7 @@ MonoBehaviour:
   cControl: {fileID: 6207748118617446757}
   cCamera: {fileID: 0}
   cCombat: {fileID: 2593960828409894946}
+  cAnim: {fileID: 0}
   cInteract: {fileID: 0}
   fov: {fileID: 7099523407771847612}
 --- !u!114 &380968863022838189
@@ -231,6 +232,7 @@ MonoBehaviour:
   _motor: {fileID: 380968863022838189}
   _ignoredColliders: []
   _config: {fileID: 11400000, guid: b06292ed39bd9bf4bb6b87594ac7b843, type: 2}
+  _animVelSharpness: 12
 --- !u!114 &3512705354490901042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,8 +434,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4994527869124029830}
   m_Father: {fileID: 7539344515415811922}
@@ -452,15 +454,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6779531964081082784, guid: f94280ddc4b93da4ab9a9eb991f9da22, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6779531964081082784, guid: f94280ddc4b93da4ab9a9eb991f9da22, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6779531964081082784, guid: f94280ddc4b93da4ab9a9eb991f9da22, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6779531964081082784, guid: f94280ddc4b93da4ab9a9eb991f9da22, type: 3}
       propertyPath: m_LocalPosition.x

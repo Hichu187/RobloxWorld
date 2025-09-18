@@ -85,7 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 380968863022838189, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: CapsuleYOffset
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: isTakeDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _hitMask.m_Bits
@@ -109,19 +113,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4994527869124029830, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5825415833199005490, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: angle
@@ -133,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: eyeHeight
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: targetHeightFallback
@@ -145,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227963875544603896, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8227963875544603896, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalPosition.z
@@ -331,8 +335,16 @@ PrefabInstance:
       value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
+      propertyPath: MaxDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
+      propertyPath: DefaultDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
       propertyPath: MinVerticalAngle
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
       propertyPath: ObstructionLayers.m_Bits

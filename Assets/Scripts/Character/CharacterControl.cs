@@ -114,7 +114,6 @@ namespace Game
             _jumpTimeSinceRequest = Mathf.Infinity;
             _jumpTimeSinceLast = 0f;
             _jumpCount++;
-            if (_animator != null) _animator.SetJumping(true);
         }
 
         private void DoJumpOffLadder(ref Vector3 currentVelocity)
@@ -124,7 +123,6 @@ namespace Game
             _jumpTimeSinceLast = 0f;
             _jumpCount++;
             if (_animator != null) _animator.SetClimbing(false);
-            if (_animator != null) _animator.SetJumping(true);
         }
 
         private void HandleAdditiveVelocity(ref Vector3 currentVelocity)
@@ -320,9 +318,6 @@ namespace Game
                     if (_animator != null)
                     {
                         _animator.SetVelocityZ(_animVelZ);
-                        float climb01 = 0f;
-                        if (_config.LadderClimbSpeedMax > 0f) climb01 = Mathf.Clamp(currentVelocity.y / _config.LadderClimbSpeedMax, -1f, 1f);
-                        _animator.SetClimbY(climb01);
                     }
                     break;
             }
@@ -339,14 +334,17 @@ namespace Game
                 case State.Air:
                     if (_motor.GroundingStatus.IsStableOnGround)
                     {
-                        _animator.SetJumping(false);
                         _stateMachine.CurrentState = State.Ground;
                     }
 
                     break;
                 case State.ClimbLadder:
                     if (_motor.GroundingStatus.IsStableOnGround)
+                    {
                         _stateMachine.CurrentState = State.Ground;
+                        _animator.SetClimbing(false);
+                    }
+
                     if (IsLeavingLadder())
                     {
                         _animator.SetClimbing(false);
@@ -367,7 +365,17 @@ namespace Game
             else _groundStableTime += deltaTime;
         }
 
-        void IKccMotor.PostGroundingUpdate(float deltaTime) { }
+        void IKccMotor.PostGroundingUpdate(float deltaTime)
+        {
+            if (_motor.GroundingStatus.IsStableOnGround && !_motor.LastGroundingStatus.IsStableOnGround)
+            {
+                OnLanded();
+            }
+            else if (!_motor.GroundingStatus.IsStableOnGround && _motor.LastGroundingStatus.IsStableOnGround)
+            {
+                OnLeaveStableGround();
+            }
+        }
 
         bool IKccMotor.IsColliderValidForCollisions(Collider collider)
         {
@@ -380,5 +388,15 @@ namespace Game
         void IKccMotor.OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport) { }
         void IKccMotor.ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport) { }
         void IKccMotor.OnDiscreteCollisionDetected(Collider hitCollider) { }
+
+        protected void OnLanded()
+        {
+            _animator.SetJumping(false);
+        }
+
+        protected void OnLeaveStableGround()
+        {
+            _animator.SetJumping(true);
+        }
     }
 }
