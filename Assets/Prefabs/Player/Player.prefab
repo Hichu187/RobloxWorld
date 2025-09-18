@@ -107,6 +107,14 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3512705354490901042, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3512705354490901042, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: groundProbeDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4325134468661154976, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_Name
       value: Character
