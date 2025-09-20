@@ -189,7 +189,21 @@ namespace Game
         [Button]
         public void ActivateRagdoll()
         {
+            GetComponent<Animator>().enabled = false;
 
+            SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+            if (meshRenderer != null)
+                meshRenderer.updateWhenOffscreen = true;
+
+            for (int i = 0; i < _parts.Length; i++)
+            {
+                _parts[i].collider.enabled = true;
+                _parts[i].rigidbody.isKinematic = false;
+                //_parts[i].transform.SetParent(transform);
+
+                //_parts[i].rigidbody.AddExplosionForce(_explodeForce, transform.position, _explodeRadius);
+            }
         }
 
         [Button]
