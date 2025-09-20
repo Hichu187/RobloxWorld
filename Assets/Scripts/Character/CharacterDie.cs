@@ -15,7 +15,7 @@ namespace Game
         private GameObject _objVfx;
         private GameObject _objRagdoll;
 
-        [SerializeField] private GameObject _objRoot; /*{ get { return _character.rendererComp.skin == null ? null : _character.rendererComp.skin.gameObjectCached; } }*/
+        [SerializeField] private GameObject _objRoot;
 
         private void Start()
         {
@@ -48,14 +48,14 @@ namespace Game
             if (_objRoot != null)
                 _objRoot.SetActive(false);
 
-            /*            if (_objRoot != null && _objRoot.GetComponentInChildren<CharacterRagdoll>())
-                        {
-                            _objRagdoll = _objRoot.Create(_objRoot.transform.parent);
+            if (_objRoot != null && _objRoot.GetComponentInChildren<CharacterRagdoll>())
+            {
+                _objRagdoll = _objRoot.Create(_objRoot.transform.parent);
 
-                            _objRagdoll.SetActive(true);
+                _objRagdoll.SetActive(true);
 
-                            _objRagdoll.GetComponentInChildren<CharacterRagdoll>().Explode();
-                        }*/
+                _objRagdoll.GetComponentInChildren<CharacterRagdoll>().Explode();
+            }
 
             if (_character.isPlayer)
             {
