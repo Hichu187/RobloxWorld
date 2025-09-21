@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Game.BrainrotEvoBotConfig
   m_EditorClassIdentifier: 
   brainrotName: 
-  model: {fileID: 0}
+  model: {fileID: 3624812079341498224, guid: 4a215aef4eae27c489d77d801aa77944, type: 3}
   exp: 0
   damage: 10
   health: 1

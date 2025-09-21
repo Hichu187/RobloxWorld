@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2485944875850187040, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2596298184153460083, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1036,6 +1040,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1291851413}
   m_SourcePrefab: {fileID: 100100000, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+--- !u!4 &559856994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6477141205445805217, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+  m_PrefabInstance: {fileID: 382710594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &658367166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCombat: {fileID: 2077703270}
   _currentConfig: {fileID: 0}
+  _meshTransform: {fileID: 559856994}
 --- !u!1 &1419736848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1584,7 @@ MonoBehaviour:
   hasDied: 0
   type: 0
   botName: Bot 1
-  exp: 10
+  exp: 2
   coin: 0
   _model: {fileID: 13756273}
   _stats: {fileID: 1267596670}

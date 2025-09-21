@@ -8,11 +8,16 @@ namespace Game
         public Animator animator { get { if (_animator == null) _animator = GetComponentInChildren<Animator>(); return _animator; } }
 
         [SerializeField] private float groundProbeDistance = 2f;
-        [SerializeField] private LayerMask groundMask = ~0; // mặc định mọi layer
+        [SerializeField] private LayerMask groundMask = ~ 0;
         [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Ignore;
 
         private bool inAir = false;
         private Coroutine _airProbeRoutine;
+
+        public void InitAnimator()
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
 
         public void SetJumping(bool isJumping)
         {
@@ -160,7 +165,6 @@ namespace Game
                 {
                     if (animator != null) 
                     animator.speed = 1f;
-                    Debug.Log("hit");
                     inAir = false;
                     break;
                 }
