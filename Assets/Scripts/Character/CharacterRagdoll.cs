@@ -201,7 +201,6 @@ namespace Game
                 _parts[i].collider.enabled = true;
                 _parts[i].rigidbody.isKinematic = false;
                 //_parts[i].transform.SetParent(transform);
-
                 //_parts[i].rigidbody.AddExplosionForce(_explodeForce, transform.position, _explodeRadius);
             }
         }
@@ -224,6 +223,15 @@ namespace Game
 
             _smrs.Clear();
             _smrs.AddRange(GetComponentsInChildren<SkinnedMeshRenderer>(true));
+        }
+
+        public void ResetCanmove()
+        {
+            PlayerControl pControl = GetComponentInParent<PlayerControl>();
+
+            if (pControl == null) return;
+
+            pControl.canMove = true;
         }
     }
 }

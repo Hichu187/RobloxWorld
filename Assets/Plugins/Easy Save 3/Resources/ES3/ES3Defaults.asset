@@ -35,6 +35,7 @@ MonoBehaviour:
     - OdinSerializer
     - UniTask
     - Vertx.Debugging.Runtime
+    - Assembly-CSharp
     - UniTask.Linq
     - Game
     - DOTween.Modules
@@ -52,6 +53,7 @@ MonoBehaviour:
     - UniTask.Editor
     - DOTweenPro.Scripts
     - Sirenix.OdinInspector.Modules.UnityMathematics
+    - ScriptablePacker
     - UniTask.Addressables
     - UniTask.DOTween
     showAdvancedSettings: 1

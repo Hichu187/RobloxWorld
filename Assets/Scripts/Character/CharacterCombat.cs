@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace Game
 {
@@ -16,15 +17,13 @@ namespace Game
         public int _currentHealth;
         [ShowIf("isTakeDamage", true)]
         public int _damage = 10;
+        public float attackSpeed = 1f;
 
-        [Title("Combat Settings")]
-        [SerializeField] private float _attackSpeed = 1f;
         [Title("Knockback Config")]
         [SerializeField] private bool _knockback = false;
-        [SerializeField]
-        private LayerMask _hitMask = ~0;
-        [SerializeField] private float _knockbackForce = 10f;
-        [SerializeField, Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
+        [SerializeField, ShowIf("_knockback",true)] private LayerMask _hitMask = ~0;
+        [SerializeField, ShowIf("_knockback", true)] private float _knockbackForce = 10f;
+        [SerializeField, ShowIf("_knockback", true), Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
 
         [Title("Explosion")]
         float distanceFactor = 1f;
@@ -42,14 +41,26 @@ namespace Game
             _character = GetComponent<Character>();
         }
 
-        public void Attack(FieldOfView fov)
+        public async void Attack(FieldOfView fov)
         {
-            if (Time.time >= _lastAttackTime + _attackSpeed)
+            if (_character.cControl.StateMachine.CurrentState != CharacterControl.State.Ground) return;
+
+            if (Time.time >= _lastAttackTime + attackSpeed)
             {
                 _lastAttackTime = Time.time;
 
+                _character.cAnim.Attack();
+
+                PlayerControl pControl = GetComponentInParent<PlayerControl>();
+                if (pControl != null)
+                {
+                    pControl.canMove = false;
+                }
+
                 if (fov.combatables.Count == 0 || fov.combatables == null) return;
                 float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
+
+                await UniTask.WaitForSeconds(0.4f);
 
                 foreach (var target in fov.combatables)
                 {
@@ -68,19 +79,23 @@ namespace Game
                     dir.Normalize();
 
                     if (target.GetComponent<CharacterCombat>())
+                    {
                         target.GetComponent<CharacterCombat>().TakeDamage(_damage, _knockbackForce, dir);
+                    }
+
                 }
             }
             else
             {
-                float remain = _lastAttackTime + _attackSpeed - Time.time;
+                float remain = _lastAttackTime + attackSpeed - Time.time;
             }
         }
 
 
-        public void TakeDamage(int amount, float force, Vector3 direction)
+        public virtual void TakeDamage(int amount, float force, Vector3 direction)
         {
             if (hasDied) return;
+
             if (isTakeDamage)
             {
                 _currentHealth -= amount;
@@ -96,9 +111,10 @@ namespace Game
                 }
             }
 
-            if (!_knockback) return;
-            KnockBack(force, direction);
-
+            if (_knockback)
+            {
+                KnockBack(force, direction);
+            }
         }
         private void KnockBack(float force, Vector3 direction)
         {

@@ -47,6 +47,14 @@ namespace Game
             }
         }
 
+        public void Attack()
+        {
+            if (animator == null) return;
+
+            animator.SetTrigger(HashDictionary.attack);
+
+        }
+
         public void SetClimbY(float y)
         {
             if (animator == null) return;

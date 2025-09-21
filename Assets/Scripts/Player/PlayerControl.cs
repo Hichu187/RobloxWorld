@@ -155,6 +155,13 @@ _useMobileControl = true;
 
         private void HandleCharacterInput()
         {
+            if (!canMove) 
+            {
+                StopByAttack();
+
+                return;
+            }
+
             CharacterInput characterInputs = new CharacterInput();
 
             float rawH, rawV;
@@ -184,6 +191,16 @@ _useMobileControl = true;
                 characterInputs.LookVector = cameraRelativeMove.normalized;
             else
                 characterInputs.LookVector = Vector3.zero;
+
+            _characterControl.SetInputs(ref characterInputs);
+        }
+
+        public void StopByAttack()
+        {
+            CharacterInput characterInputs = new CharacterInput();
+
+            characterInputs.Jump = false;
+            characterInputs.MoveVector = Vector3.zero;
 
             _characterControl.SetInputs(ref characterInputs);
         }

@@ -35,7 +35,7 @@ namespace Game
             _exp -= requiredExp;
             _level++;
 
-            LDebug.Log($"Player level Up {_level}, exp : {_exp}");
+            StaticBus<Event_Player_Level_Up>.Post(new Event_Player_Level_Up(_level));
         }
     }
 }

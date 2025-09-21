@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
   m_Name: Game.BrainrotEvoBotConfig
   m_EditorClassIdentifier: 
-  brainrotName: Game.BrainrotEvoBotConfig
+  brainrotName: 
   model: {fileID: 0}
   exp: 0
   damage: 10

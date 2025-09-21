@@ -12,9 +12,9 @@ namespace Game
         public GameObject model;
 
         [Title("Config")]
-        public float exp;
-        public float damage = 0;
-        public float health;
+        public int exp;
+        public int damage = 0;
+        public int health;
 
     }
 }

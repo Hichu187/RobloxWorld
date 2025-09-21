@@ -20,7 +20,7 @@ namespace Game
         public static int tug = Animator.StringToHash("Tug");
         public static int sit = Animator.StringToHash("Sitting");
 
-        public static int block = Animator.StringToHash("SlashEnd");
+        public static int attack = Animator.StringToHash("Attack");
         
         public static int IsHolding = Animator.StringToHash("IsHolding");
         public static int HoldingMotion = Animator.StringToHash("HoldingMotion");
