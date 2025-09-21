@@ -34,7 +34,7 @@ namespace Game
 
         private Character _character;
         private float _lastAttackTime;
-        private bool hasDied = false;
+        public bool hasDied = false;
         private void Awake()
         {
             _currentHealth = _maxHealth;
@@ -43,13 +43,18 @@ namespace Game
 
         public async void Attack(FieldOfView fov)
         {
-            if (_character.cControl.StateMachine.CurrentState != CharacterControl.State.Ground) return;
+            if (hasDied) return;
+
+            if (_character != null)
+            {
+                if (_character.cControl.StateMachine.CurrentState != CharacterControl.State.Ground) return;
+            }
 
             if (Time.time >= _lastAttackTime + attackSpeed)
             {
                 _lastAttackTime = Time.time;
 
-                _character.cAnim.Attack();
+                if(_character)_character.cAnim.Attack();
 
                 PlayerControl pControl = GetComponentInParent<PlayerControl>();
                 if (pControl != null)
@@ -57,10 +62,10 @@ namespace Game
                     pControl.canMove = false;
                 }
 
+                await UniTask.WaitForSeconds(0.4f);
+
                 if (fov.combatables.Count == 0 || fov.combatables == null) return;
                 float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
-
-                await UniTask.WaitForSeconds(0.4f);
 
                 foreach (var target in fov.combatables)
                 {
@@ -82,7 +87,6 @@ namespace Game
                     {
                         target.GetComponent<CharacterCombat>().TakeDamage(_damage, _knockbackForce, dir);
                     }
-
                 }
             }
             else
@@ -90,8 +94,6 @@ namespace Game
                 float remain = _lastAttackTime + attackSpeed - Time.time;
             }
         }
-
-
         public virtual void TakeDamage(int amount, float force, Vector3 direction)
         {
             if (hasDied) return;
@@ -126,7 +128,6 @@ namespace Game
             _coroutineExplosion = StartCoroutine(HandleExplosion(force, dirNormalized));
 
         }
-
         IEnumerator HandleExplosion(float force, Vector3 direction)
         {
             trajectoryPoints.Clear();
@@ -171,7 +172,6 @@ namespace Game
             LDebug.Log($"[{name}] has died.");
             // TODO: thêm logic chết (disable, animation, v.v.)
         }
-
         public bool IsAlive()
         {
             return _currentHealth > 0;
