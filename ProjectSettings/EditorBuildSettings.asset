@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tower Troll.unity
     guid: 1c72a0964028de0428febdf7d3f660a2
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: c4de23547d0aaa9488efdd927acfa0da, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -8,7 +8,7 @@ namespace Game
         [RuntimeInitializeOnLoadMethod]
         private static void StartupInit()
         {
-            //FactoryPrefab.gameInit.Create();
+            FactoryPrefab.gameInit.Create();
         }
 
         private void Start()
