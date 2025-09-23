@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using TMPro;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -19,8 +21,15 @@ namespace Game
         public int _damage = 10;
         public float attackSpeed = 1f;
 
+        [Title("Reference")]
+        public GameObject _stats;
+        public TextMeshProUGUI _nameText;
+        public TextMeshProUGUI _hpText;
+        public Image _hp_Bar;
+
+
         [Title("Damage Bonus")]
-        [Min(1)] public int petBonus = 1;   // đảm bảo tối thiểu = 1
+        [Min(1)] public float petBonus = 1;   // đảm bảo tối thiểu = 1
         public int specialBonus = 0;
 
         [Title("Knockback Config")]
@@ -46,9 +55,9 @@ namespace Game
             _character = GetComponent<Character>();
         }
 
-        public int GetTotalDamage()
+        public float GetTotalDamage()
         {
-            int safePetBonus = Mathf.Max(1, petBonus);
+            float safePetBonus = Mathf.Max(1, petBonus);
             return (_damage * safePetBonus) + specialBonus;
         }
 
@@ -78,7 +87,7 @@ namespace Game
                 if (fov.combatables == null || fov.combatables.Count == 0) return;
                 float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
 
-                int totalDamage = GetTotalDamage();
+                float totalDamage = GetTotalDamage();
 
                 foreach (var target in fov.combatables)
                 {
@@ -97,7 +106,7 @@ namespace Game
 
                     if (target.GetComponent<CharacterCombat>())
                     {
-                        target.GetComponent<CharacterCombat>().TakeDamage(totalDamage, _knockbackForce, dir);
+                        target.GetComponent<CharacterCombat>().TakeDamage((int)totalDamage, _knockbackForce, dir);
                     }
                 }
             }
@@ -118,6 +127,7 @@ namespace Game
 
                 if (_currentHealth <= 0)
                 {
+
                     Die();
                 }
                 else
@@ -130,6 +140,13 @@ namespace Game
             {
                 KnockBack(force, direction);
             }
+
+            if (_character != null && _character.isPlayer)
+            {
+                _stats.SetActive(true);
+            }
+
+            InitData();
         }
 
         private void KnockBack(float force, Vector3 direction)
@@ -181,11 +198,27 @@ namespace Game
             }
         }
 
+        public void InitData()
+        {
+            _hpText.text = $"{_currentHealth}/{_maxHealth}";
+
+            float denom = Mathf.Max(1, _maxHealth);
+            float fill = Mathf.Clamp01((float)_currentHealth / denom);
+
+            _hp_Bar.fillAmount =fill;
+        }
+
         protected virtual void Die()
         {
             hasDied = true;
             LDebug.Log($"[{name}] has died.");
-            // TODO: thêm logic chết (disable, animation, v.v.)
+
+            if (_stats != null) _stats.SetActive(false);
+
+            if (_character != null && _character.isPlayer)
+            {
+                _character.Kill();
+            }
         }
 
         public bool IsAlive()

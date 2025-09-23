@@ -17,6 +17,12 @@ namespace Game
 
         [SerializeField] private GameObject _objRoot;
 
+        public GameObject ObjRoot
+        {
+            get => _objRoot;
+            set => _objRoot = value;
+        }
+
         private void Start()
         {
             _character = GetComponent<Character>();

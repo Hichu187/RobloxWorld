@@ -621,6 +621,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5931040197694610763, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: _objRoot
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6075897751687799291, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -790,7 +794,8 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2485944875850187040, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6323474893161233760, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
@@ -1236,6 +1241,7 @@ MonoBehaviour:
   characterCombat: {fileID: 2077703270}
   _currentConfig: {fileID: 0}
   _meshTransform: {fileID: 559856994}
+  _pets: []
 --- !u!114 &2077703270 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}

@@ -24,10 +24,6 @@ namespace Game
 
         [Title("Reference")]
         [SerializeField] private GameObject _model;
-        [SerializeField] private GameObject _stats;
-        [SerializeField] private TextMeshProUGUI _nameText;
-        [SerializeField] private TextMeshProUGUI _hpText;
-        [SerializeField] private Image _hp_Bar;
 
         // === CounterAttack state ===
         private CancellationTokenSource _counterAttackCts;
@@ -98,12 +94,6 @@ namespace Game
                 _counterAttackCts?.Dispose();
                 _counterAttackCts = null;
             }
-        }
-
-        public void InitData()
-        {
-            _hpText.text = $"{_currentHealth}/{_maxHealth}";
-            _hp_Bar.fillAmount = _currentHealth / _maxHealth;
         }
 
         public void Respawn()

@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Hichu;
-using log4net.Core;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] CharacterCombat characterCombat;
         [SerializeField] BrainrotEvoConfig _currentConfig;
         [SerializeField] Transform _meshTransform;
+        [SerializeField] List<BrainrotPet> _pets;
 
         private Player _player;
         private void Start()
@@ -33,6 +34,14 @@ namespace Game
         {
             _currentConfig = FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level];
 
+            float totalPetBonus = 0;
+
+            foreach(var pet in _pets)
+            {
+                totalPetBonus += pet.bonusDamage;
+            }
+
+            characterCombat.petBonus = totalPetBonus;
             characterCombat._maxHealth = (int)_currentConfig.health;
             characterCombat._currentHealth = characterCombat._maxHealth;
             characterCombat._damage = (int)_currentConfig.damage;
@@ -50,6 +59,7 @@ namespace Game
 
             _player.character.cAnim.InitAnimator();
             _player.control.canMove = true;
+            _player.character.GetComponent<CharacterDie>().ObjRoot = model.gameObject;
         }
 
         private void EventAddExp(Event_Player_Add_Exp e)

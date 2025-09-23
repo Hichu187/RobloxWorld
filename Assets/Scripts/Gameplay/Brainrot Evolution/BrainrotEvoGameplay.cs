@@ -13,7 +13,7 @@ namespace Game
         private GameObject _currentMap;
         private void Awake()
         {
-            _currentMap = FactoryBrainrotEvo.map[DataBrainrotEvo.currentMap].Create(_mapParent);
+            _currentMap = FactoryBrainrotEvo.maps[DataBrainrotEvo.currentMap].Create(_mapParent);
 
         }
 
