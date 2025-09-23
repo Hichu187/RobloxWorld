@@ -20,7 +20,7 @@ namespace Game
         public UIPointerClick interactiveBtn { get { return _interactiveBtn; } }
 
         private FieldOfView _fov;
-        private void Awake()
+        private void Start()
         {
             _fov = Player.Instance.character.fov;
         }

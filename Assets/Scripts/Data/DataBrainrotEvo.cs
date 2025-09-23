@@ -7,9 +7,11 @@ namespace Game
     {
         [SerializeField] private int _level = 0;
         [SerializeField] private int _exp = 0;
+        [SerializeField] private int _currentMap = 0;
 
         public static int level { get { return instance._level; } set { instance._level = value; } }
         public static int exp { get { return instance._exp; } set { instance._exp = value; } }
+        public static int currentMap { get { return instance._currentMap; } set { instance._currentMap = value; } }
 
         public void AddExp(int amount)
         {
@@ -36,6 +38,13 @@ namespace Game
             _level++;
 
             StaticBus<Event_Player_Level_Up>.Post(new Event_Player_Level_Up(_level));
+        }
+
+        public static void MoveNextMap()
+        {
+            currentMap++;
+
+            Save();
         }
     }
 }

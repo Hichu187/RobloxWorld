@@ -19,9 +19,13 @@ namespace Game
         public int _damage = 10;
         public float attackSpeed = 1f;
 
+        [Title("Damage Bonus")]
+        [Min(1)] public int petBonus = 1;   // đảm bảo tối thiểu = 1
+        public int specialBonus = 0;
+
         [Title("Knockback Config")]
         [SerializeField] private bool _knockback = false;
-        [SerializeField, ShowIf("_knockback",true)] private LayerMask _hitMask = ~0;
+        [SerializeField, ShowIf("_knockback", true)] private LayerMask _hitMask = ~0;
         [SerializeField, ShowIf("_knockback", true)] private float _knockbackForce = 10f;
         [SerializeField, ShowIf("_knockback", true), Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
 
@@ -35,10 +39,17 @@ namespace Game
         private Character _character;
         private float _lastAttackTime;
         public bool hasDied = false;
+
         private void Awake()
         {
             _currentHealth = _maxHealth;
             _character = GetComponent<Character>();
+        }
+
+        public int GetTotalDamage()
+        {
+            int safePetBonus = Mathf.Max(1, petBonus);
+            return (_damage * safePetBonus) + specialBonus;
         }
 
         public async void Attack(FieldOfView fov)
@@ -54,7 +65,7 @@ namespace Game
             {
                 _lastAttackTime = Time.time;
 
-                if(_character)_character.cAnim.Attack();
+                if (_character) _character.cAnim.Attack();
 
                 PlayerControl pControl = GetComponentInParent<PlayerControl>();
                 if (pControl != null)
@@ -64,8 +75,10 @@ namespace Game
 
                 await UniTask.WaitForSeconds(0.4f);
 
-                if (fov.combatables.Count == 0 || fov.combatables == null) return;
+                if (fov.combatables == null || fov.combatables.Count == 0) return;
                 float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
+
+                int totalDamage = GetTotalDamage();
 
                 foreach (var target in fov.combatables)
                 {
@@ -80,12 +93,11 @@ namespace Game
                     horiz.Normalize();
 
                     Vector3 dir = horiz * Mathf.Cos(angRad) + Vector3.up * Mathf.Sin(angRad);
-
                     dir.Normalize();
 
                     if (target.GetComponent<CharacterCombat>())
                     {
-                        target.GetComponent<CharacterCombat>().TakeDamage(_damage, _knockbackForce, dir);
+                        target.GetComponent<CharacterCombat>().TakeDamage(totalDamage, _knockbackForce, dir);
                     }
                 }
             }
@@ -94,6 +106,7 @@ namespace Game
                 float remain = _lastAttackTime + attackSpeed - Time.time;
             }
         }
+
         public virtual void TakeDamage(int amount, float force, Vector3 direction)
         {
             if (hasDied) return;
@@ -118,16 +131,18 @@ namespace Game
                 KnockBack(force, direction);
             }
         }
+
         private void KnockBack(float force, Vector3 direction)
         {
             LDebug.Log<CharacterCombat>($"KnockBack");
 
             if (_coroutineExplosion != null)
                 StopCoroutine(_coroutineExplosion);
+
             Vector3 dirNormalized = direction.normalized;
             _coroutineExplosion = StartCoroutine(HandleExplosion(force, dirNormalized));
-
         }
+
         IEnumerator HandleExplosion(float force, Vector3 direction)
         {
             trajectoryPoints.Clear();
@@ -164,14 +179,15 @@ namespace Game
 
                 yield return null;
             }
-
         }
+
         protected virtual void Die()
         {
             hasDied = true;
             LDebug.Log($"[{name}] has died.");
             // TODO: thêm logic chết (disable, animation, v.v.)
         }
+
         public bool IsAlive()
         {
             return _currentHealth > 0;

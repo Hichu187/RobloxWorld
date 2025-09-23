@@ -30,6 +30,7 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - ES3
+    - Boxophobic.Utils.Editor
     - HichuEz
     - BetterHierarchy
     - OdinSerializer
@@ -38,8 +39,10 @@ MonoBehaviour:
     - Assembly-CSharp
     - UniTask.Linq
     - Game
+    - Boxophobic.SkyboxCubemapExtended.Editor
     - DOTween.Modules
     - Coffee.UIParticle
+    - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro
     - Hichu.Editor

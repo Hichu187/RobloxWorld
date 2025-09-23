@@ -9,12 +9,12 @@ namespace Game
         public Transform startPosition;
         public PlatformCheckpoint curCheckpoint;
 
-        private void Start()
+        public virtual void Start()
         {
             SubscribeEvent();
         }
 
-        private void OnDestroy()
+        public virtual void OnDestroy()
         {
             UnsubscribeEvent();
         }

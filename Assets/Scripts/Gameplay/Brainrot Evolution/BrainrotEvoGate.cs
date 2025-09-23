@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using Hichu;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -16,15 +18,19 @@ namespace Game
 
         }
 
-        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
+        async void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
             if (!character.GetComponent<Character>().isPlayer) return;
             
             if(DataBrainrotEvo.level >= levelOpen)
             {
-                LDebug.Log<BrainrotEvoGate>("Change Space");
-                StaticBus<Event_BrainrotEvo_Change_Space>.Post(null);
+                DataBrainrotEvo.MoveNextMap();
                 character.Motor.enabled = false;
+
+                await UniTask.WaitForEndOfFrame();
+
+                StaticBus<Event_BrainrotEvo_Change_Space>.Post(null);
+
             }
             else
             {
