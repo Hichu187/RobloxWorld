@@ -53,6 +53,7 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - DOTweenPro.EditorScripts
     - Vertx.Debugging.Editor
+    - VoxelLabs.UltimatePreview.Lib
     - UniTask.Editor
     - DOTweenPro.Scripts
     - Sirenix.OdinInspector.Modules.UnityMathematics

@@ -127,7 +127,6 @@ namespace Game
 
                 if (_currentHealth <= 0)
                 {
-
                     Die();
                 }
                 else
@@ -211,7 +210,6 @@ namespace Game
         protected virtual void Die()
         {
             hasDied = true;
-            LDebug.Log($"[{name}] has died.");
 
             if (_stats != null) _stats.SetActive(false);
 

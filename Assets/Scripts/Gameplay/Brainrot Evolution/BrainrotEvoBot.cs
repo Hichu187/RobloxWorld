@@ -24,6 +24,7 @@ namespace Game
 
         [Title("Reference")]
         [SerializeField] private GameObject _model;
+        [SerializeField] private Animator _anim;
 
         // === CounterAttack state ===
         private CancellationTokenSource _counterAttackCts;
@@ -36,6 +37,8 @@ namespace Game
         public override void TakeDamage(int amount, float force, Vector3 direction)
         {
             base.TakeDamage(amount, force, direction);
+
+            _anim.SetTrigger("TakeDamage");
 
             if (hasDied) return;
 
@@ -80,6 +83,7 @@ namespace Game
                     if (!fov.haveTarget)
                         break;
 
+                    _anim.SetTrigger("Attack");
                     Attack(fov);
 
                     await UniTask.WaitForSeconds(interval, cancellationToken: token);
@@ -101,6 +105,7 @@ namespace Game
             _currentHealth = _maxHealth;
             InitData();
             hasDied = false;
+            
 
             _model.gameObject.SetActive(true);
             _stats.gameObject.SetActive(true);
@@ -110,6 +115,8 @@ namespace Game
         protected override async void Die()
         {
             base.Die();
+
+            _anim.SetTrigger("Die");
 
             StaticBus<Event_Player_Add_Exp>.Post(new Event_Player_Add_Exp(exp));
 
