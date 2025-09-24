@@ -16,7 +16,7 @@ namespace Game
     }
     public class BrainrotEvoBot : CharacterCombat
     {
-        [Title("Data")]
+        [Title("===== Monster Data =====")]
         public BrainroEvoType type;
         public string botName;
         public int exp = 0;
