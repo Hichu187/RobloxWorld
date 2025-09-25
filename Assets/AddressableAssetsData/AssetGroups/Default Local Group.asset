@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1bc1554a75470e4197a8c03b5e73eb5
+    m_Address: Assets/Prefabs/GUI/Pet Bag/Pet Bag View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acad8e452a9374741ac371f69fa5e2d3
     m_Address: Assets/Prefabs/GUI/Setting/Setting View.prefab
     m_ReadOnly: 0

@@ -8,10 +8,10 @@ namespace Game
     {
         [SerializeField] private List<BrainrotEvoConfig> _brainrotConfigs;
         [SerializeField] private List<GameObject> _maps;
-        [SerializeField] private List<BrainrotPet> _pets;
+        [SerializeField] private List<BrainrotEvoPetConfig> _pets;
 
         public static List<BrainrotEvoConfig> brainrotConfigs => instance._brainrotConfigs;
         public static List<GameObject> maps => instance._maps;
-        public static List<BrainrotPet> pets => instance._pets;
+        public static List<BrainrotEvoPetConfig> pets => instance._pets;
     }
 }

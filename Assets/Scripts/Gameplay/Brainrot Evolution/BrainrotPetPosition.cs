@@ -6,8 +6,6 @@ namespace Game
 {
     public class BrainrotPetPosition : MonoBehaviour
     {
-        public enum MoveMode { Fly, Run, Hop }
-
         [Title("Target")]
         public Transform target;
         [Tooltip("Offset tương đối so với target.")]

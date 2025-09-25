@@ -49,6 +49,7 @@ MonoBehaviour:
     - JoystickPack
     - Coffee.UIParticle.Editor
     - Sirenix.OdinInspector.Modules.Unity.Addressables
+    - IconCreator.Core
     - Kcc
     - Assembly-CSharp-firstpass
     - DOTweenPro.EditorScripts

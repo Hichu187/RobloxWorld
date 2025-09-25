@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ff7f37d30ab934ea689f51ff83f00b, type: 3}
+  m_Name: Evo Pet LuckyCat
+  m_EditorClassIdentifier: 
+  petName: LuckyCat
+  petIcon: {fileID: 21300000, guid: 890eddf2057395241ab108a9b8e3cfcc, type: 3}
+  petModel: {fileID: 7511343335046367643, guid: 99fc1562d9b612244a11cd9baa44d99a, type: 3}
+  petRank: 3
+  petMove: 0
+  bonusDamage: 0

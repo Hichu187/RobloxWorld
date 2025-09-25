@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ff7f37d30ab934ea689f51ff83f00b, type: 3}
+  m_Name: Evo Pet Tigo
+  m_EditorClassIdentifier: 
+  petName: Tigo
+  petIcon: {fileID: 21300000, guid: 15024661be0c1234b8d563b3fd4faf09, type: 3}
+  petModel: {fileID: 9053072515041431357, guid: e2d119a8b38c15d40b548ac3465fabb1, type: 3}
+  petRank: 4
+  petMove: 0
+  bonusDamage: 0

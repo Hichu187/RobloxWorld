@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ff7f37d30ab934ea689f51ff83f00b, type: 3}
+  m_Name: Evo Pet Owlie
+  m_EditorClassIdentifier: 
+  petName: Owlie
+  petIcon: {fileID: 21300000, guid: ffaef1520d212ba4eb5dd975fd45f3a6, type: 3}
+  petModel: {fileID: 341294307291526777, guid: 79c30e6ab3481f545be9f646ed401b2c, type: 3}
+  petRank: 0
+  petMove: 0
+  bonusDamage: 0

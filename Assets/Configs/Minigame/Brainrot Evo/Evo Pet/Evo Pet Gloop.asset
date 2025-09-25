@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ff7f37d30ab934ea689f51ff83f00b, type: 3}
+  m_Name: Evo Pet Gloop
+  m_EditorClassIdentifier: 
+  petName: Gloop
+  petIcon: {fileID: 21300000, guid: d971ff4b0b818c141b3a0c5850aa70a5, type: 3}
+  petModel: {fileID: 1567521115673301698, guid: 9f9e3e69ce24dd1459981a03bc7751ae, type: 3}
+  petRank: 1
+  petMove: 0
+  bonusDamage: 0
