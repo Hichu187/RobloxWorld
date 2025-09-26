@@ -19,28 +19,23 @@ namespace Game
         private void Start()
         {
             Refresh();
-            WireOptionButtons(); // <-- gắn listener lần đầu
+            WireOptionButtons();
         }
 
         [Button("Refresh Spawn")]
         public void Refresh()
         {
             ClearOptions();
-
             ordered = BuildOrderedPetList();
-
             SpawnOptions(ordered);
-
-            if (_preview != null)
-                _preview.InitPreview(-1);
-
-            WireOptionButtons(); // <-- sau khi respawn thì gắn lại listener
+            if (_preview != null) _preview.InitPreview(-1);
+            WireOptionButtons();
         }
 
         public void ShowPreview(int index)
         {
             if (index < 0 || index >= ordered.Count) return;
-            _preview.InitPreview(ordered[index]);
+            _preview.InitPreviewByIndex(index);
         }
 
         private List<int> BuildOrderedPetList()
@@ -142,13 +137,6 @@ namespace Game
             DataBrainrotEvo.Save();
         }
 
-        // ===========================
-        //        NEW: EQUIP API
-        // ===========================
-
-        /// <summary>
-        /// Bỏ 1 bản sao pet khỏi equipped (theo ID) rồi reload list.
-        /// </summary>
         public void UnequipOne(int petId)
         {
             bool ok = DataBrainrotEvo.UnequipPet(petId);
@@ -156,9 +144,6 @@ namespace Game
             else Debug.Log($"[PetBag] Unequip failed for id={petId} (not equipped?).");
         }
 
-        /// <summary>
-        /// Thêm 1 bản sao pet vào equipped (theo ID, tối đa 5 & theo quota owned) rồi reload list.
-        /// </summary>
         public void EquipOne(int petId)
         {
             bool ok = DataBrainrotEvo.EquipPet(petId);
@@ -166,27 +151,18 @@ namespace Game
             else Debug.Log($"[PetBag] Equip failed for id={petId} (limit/quota?).");
         }
 
-        /// <summary>
-        /// Convenience: Unequip theo index trong danh sách hiển thị hiện tại (ordered).
-        /// </summary>
         public void UnequipAtIndex(int index)
         {
             if (index < 0 || index >= ordered.Count) return;
             UnequipOne(ordered[index]);
         }
 
-        /// <summary>
-        /// Convenience: Equip theo index trong danh sách hiển thị hiện tại (ordered).
-        /// </summary>
         public void EquipAtIndex(int index)
         {
             if (index < 0 || index >= ordered.Count) return;
             EquipOne(ordered[index]);
         }
 
-        // ===========================
-        //  Rewire option button callbacks after refresh
-        // ===========================
         private void WireOptionButtons()
         {
             for (int i = 0; i < _options.Count; i++)
@@ -199,6 +175,7 @@ namespace Game
                 btn.onClick.AddListener(() => ShowPreview(index));
             }
         }
+
         public bool ShowPreviewByPetId(int petId)
         {
             if (ordered == null || ordered.Count == 0) return false;
@@ -211,16 +188,29 @@ namespace Game
             return false;
         }
 
+        public int GetEquippedCount()
+        {
+            return DataBrainrotEvo.equippedPet != null ? DataBrainrotEvo.equippedPet.Count : 0;
+        }
+
+        public int GetIndexOfPetId(int petId)
+        {
+            if (ordered == null || ordered.Count == 0) return -1;
+            return ordered.IndexOf(petId);
+        }
+
+        public int GetPetIdAt(int index)
+        {
+            if (ordered == null || index < 0 || index >= ordered.Count) return -1;
+            return ordered[index];
+        }
+
         public void RefreshAndReselect(int petId)
         {
             Refresh();
-            // cố gắng chọn lại đúng pet ID sau khi danh sách được sắp lại
-            bool ok = ShowPreviewByPetId(petId);
-            if (!ok && _preview != null)
-            {
-                // nếu petId không còn (vd bị remove) thì ẩn preview
-                _preview.InitPreview(-1);
-            }
+            int idx = GetIndexOfPetId(petId);
+            if (idx >= 0) ShowPreview(idx);
+            else if (_preview != null) _preview.InitPreview(-1);
         }
     }
 }

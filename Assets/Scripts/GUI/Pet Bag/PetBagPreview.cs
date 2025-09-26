@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +12,11 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _petExp;
         [SerializeField] private Button _btnEquip;
         [SerializeField] private TextMeshProUGUI _btnText;
+        [SerializeField] private System.Collections.Generic.List<Color> _rankColor;
 
-        [SerializeField] List<Color> _rankColor;
-
-        PetBag petBag;
-
-        // Lưu lại ID pet đang preview để xử lý click
+        private PetBag petBag;
         private int _currentPetId = -1;
+        private int _currentIndex = -1;
 
         private void Start()
         {
@@ -31,19 +28,37 @@ namespace Game
             if (petId == -1)
             {
                 _currentPetId = -1;
+                _currentIndex = -1;
                 transform.GetChild(0).gameObject.SetActive(false);
             }
             else
             {
+                // Nếu chỉ có petId, cố gắng tìm index đầu tiên (fallback)
+                int idx = petBag != null ? petBag.GetPetIdAt(0) : -1;
                 _currentPetId = petId;
+                _currentIndex = -1;
                 transform.GetChild(0).gameObject.SetActive(true);
                 DataInit(petId);
             }
         }
 
+        public void InitPreviewByIndex(int index)
+        {
+            _currentIndex = index;
+            _currentPetId = (petBag != null) ? petBag.GetPetIdAt(index) : -1;
+
+            if (_currentPetId == -1)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+                return;
+            }
+
+            transform.GetChild(0).gameObject.SetActive(true);
+            DataInit(_currentPetId);
+        }
+
         private void DataInit(int id)
         {
-            // id ở đây là ID của pet (index vào FactoryBrainrotEvo.pets)
             BrainrotEvoPetConfig petData = FactoryBrainrotEvo.pets[id];
             _petName.text = petData.petName;
             _petRank.text = petData.petRank.ToString();
@@ -53,60 +68,53 @@ namespace Game
             _petExp.text = $"x {petData.bonusDamage} muscle";
             _petExp.color = _rankColor[(int)petData.petRank];
 
-            // Cập nhật button text + callback theo trạng thái equipped hiện tại
-            RefreshEquipButtonVisual(id);
-            WireEquipButton(id);
+            RefreshEquipButtonVisual();
+            WireEquipButton();
         }
 
-        private void RefreshEquipButtonVisual(int id)
+        private void RefreshEquipButtonVisual()
         {
-            bool isEquipped = DataBrainrotEvo.equippedPet != null &&
-                              DataBrainrotEvo.equippedPet.Contains(id);
+            if (petBag == null || _currentIndex < 0)
+            {
+                _btnText.text = "Equip";
+                return;
+            }
 
-            _btnText.text = isEquipped ? "Equipped" : "Equip";
+            int eqCount = petBag.GetEquippedCount();
+            bool isEquippedByIndex = (_currentIndex < eqCount);
+            _btnText.text = isEquippedByIndex ? "Equipped" : "Equip";
         }
 
-        private void WireEquipButton(int id)
+        private void WireEquipButton()
         {
             _btnEquip.onClick.RemoveAllListeners();
 
             _btnEquip.onClick.AddListener(() =>
             {
-                bool isEquippedNow = DataBrainrotEvo.equippedPet != null &&
-                                     DataBrainrotEvo.equippedPet.Contains(id);
+                if (petBag == null || _currentPetId == -1) return;
 
-                if (isEquippedNow)
+                int eqCount = petBag.GetEquippedCount();
+
+                if (_currentIndex >= 0 && _currentIndex < eqCount)
                 {
-                    bool ok = DataBrainrotEvo.UnequipPet(id);
-                    if (!ok)
-                    {
-                        Debug.Log($"[PetBagPreview] Unequip failed for id={id}");
-                    }
-                    // Reload list & reselect đúng pet
-                    if (petBag != null) petBag.RefreshAndReselect(id);
-                    else RefreshEquipButtonVisual(id); // fallback nếu không có petBag
+                    bool ok = DataBrainrotEvo.UnequipPet(_currentPetId);
+                    if (!ok) Debug.Log($"[PetBagPreview] Unequip failed for id={_currentPetId}");
+                    petBag.RefreshAndReselect(_currentPetId);
                 }
                 else
                 {
-                    if (DataBrainrotEvo.equippedPet != null &&
-                        DataBrainrotEvo.equippedPet.Count >= 5)
+                    if (eqCount < 5)
                     {
-                        Debug.Log("Equipped full");
+                        bool ok = DataBrainrotEvo.EquipPet(_currentPetId);
+                        if (!ok) Debug.Log($"[PetBagPreview] Equip failed for id={_currentPetId} (limit/quota?)");
                     }
                     else
                     {
-                        bool ok = DataBrainrotEvo.EquipPet(id); // cho phép multi-instance theo quota
-                        if (!ok)
-                        {
-                            Debug.Log($"[PetBagPreview] Equip failed for id={id} (limit/quota?)");
-                        }
-                        // Reload list & reselect đúng pet
-                        if (petBag != null) petBag.RefreshAndReselect(id);
-                        else RefreshEquipButtonVisual(id); // fallback
+                        Debug.Log("FULL SLOT");
                     }
+                    petBag.RefreshAndReselect(_currentPetId);
                 }
             });
         }
-
     }
 }

@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ded84c2ae35aeb343b7cee40276b202b
   m_SerializeEntries:
+  - m_GUID: 8ecdec0ef9436e84ebe19b1336392fb9
+    m_Address: Assets/Prefabs/GUI/Pet Bag/Open Egg View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 986296149432945429ae82f0e1b97898
     m_Address: Assets/Prefabs/GameInit.prefab
     m_ReadOnly: 0
