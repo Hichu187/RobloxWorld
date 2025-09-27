@@ -17,4 +17,4 @@ MonoBehaviour:
   petModel: {fileID: 6030521783482816008, guid: 2b95fa4ae1d1cbe499a03cab1abf74d1, type: 3}
   petRank: 4
   petMove: 0
-  bonusDamage: 0
+  bonusDamage: 8

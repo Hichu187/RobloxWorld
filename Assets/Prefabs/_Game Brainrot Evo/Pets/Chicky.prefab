@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eba48c33484a8e54d93496fc7eefc7da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eba48c33484a8e54d93496fc7eefc7da, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eba48c33484a8e54d93496fc7eefc7da, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eba48c33484a8e54d93496fc7eefc7da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,14 +137,14 @@ MonoBehaviour:
   target: {fileID: 0}
   followOffset: {x: -0.5, y: 0, z: -0.5}
   maxTeleportDistance: 20
-  moveMode: 0
+  moveMode: 1
   flySpeed: 6
   flyRotSpeed: 8
   runSpeed: 4.5
   runRotSpeed: 10
   groundMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65
   groundRayLength: 3
   groundHeightOffset: 0.05
   hopPower: 0.75
@@ -156,3 +156,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   hopRayLength: 3
   hopHeightOffset: 0.05
+  randomRadius: 1.5
+  wanderAmplitude: 0.25
+  wanderFrequency: 0.8
+  rotateTowardMove: 1

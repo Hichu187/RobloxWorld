@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &367333079
 Transform:
   m_ObjectHideFlags: 0
@@ -1438,6 +1438,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8407046474342013670, guid: 8ecdec0ef9436e84ebe19b1336392fb9, type: 3}
   m_PrefabInstance: {fileID: 1144564989}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1166358695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6117652429419859044, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+  m_PrefabInstance: {fileID: 382710594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1180095816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1562,7 @@ MonoBehaviour:
   characterCombat: {fileID: 2077703270}
   _currentConfig: {fileID: 0}
   _meshTransform: {fileID: 559856994}
+  _petTarget: {fileID: 1166358695}
   _pets: []
 --- !u!114 &2077703270 stripped
 MonoBehaviour:

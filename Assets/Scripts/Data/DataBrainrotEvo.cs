@@ -119,6 +119,9 @@ namespace Game
                 return false;
 
             instance._equippedPet.Add(petId);
+
+            StaticBus<Event_BrainrotEvo_EquipPet>.Post(new Event_BrainrotEvo_EquipPet(FactoryBrainrotEvo.pets[petId]));
+
             Save();
             return true;
         }
@@ -130,6 +133,9 @@ namespace Game
             if (idx >= 0)
             {
                 instance._equippedPet.RemoveAt(idx);
+
+                StaticBus<Event_BrainrotEvo_UnequipPet>.Post(new Event_BrainrotEvo_UnequipPet(FactoryBrainrotEvo.pets[petId]));
+
                 Save();
                 return true;
             }

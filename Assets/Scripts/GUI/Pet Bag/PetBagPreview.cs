@@ -99,7 +99,7 @@ namespace Game
                 {
                     bool ok = DataBrainrotEvo.UnequipPet(_currentPetId);
                     if (!ok) Debug.Log($"[PetBagPreview] Unequip failed for id={_currentPetId}");
-                    petBag.RefreshAndReselect(_currentPetId);
+                    petBag.RefreshAndReselect(-1);
                 }
                 else
                 {
@@ -112,7 +112,8 @@ namespace Game
                     {
                         Debug.Log("FULL SLOT");
                     }
-                    petBag.RefreshAndReselect(_currentPetId);
+
+                    petBag.RefreshAndReselect(-1);
                 }
             });
         }

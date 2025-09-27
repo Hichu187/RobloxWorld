@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5538889592cfcf14e9994dc74be689b7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5538889592cfcf14e9994dc74be689b7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5538889592cfcf14e9994dc74be689b7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5538889592cfcf14e9994dc74be689b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,3 +156,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   hopRayLength: 3
   hopHeightOffset: 0.05
+  randomRadius: 1.5
+  wanderAmplitude: 0.25
+  wanderFrequency: 0.8
+  rotateTowardMove: 1
