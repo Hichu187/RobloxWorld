@@ -56,7 +56,20 @@ namespace Game
 
         private void StartCounterAttackLoop(FieldOfView fov)
         {
-            if (_counterAttackCts != null) return;
+            if (fov == null) return;
+
+            // Không có target -> dừng counter-attack nếu đang chạy và thoát
+            bool hasAnyTarget = fov.haveTarget || (fov.combatables != null && fov.combatables.Count > 0);
+            if (!hasAnyTarget)
+            {
+                if (_counterAttackCts != null)
+                {
+                    _counterAttackCts.Cancel();
+                    _counterAttackCts.Dispose();
+                    _counterAttackCts = null;
+                }
+                return;
+            }
 
             if (fov.combatables != null && fov.combatables.Count > 0)
             {
@@ -65,13 +78,12 @@ namespace Game
                 if (dir.sqrMagnitude > 0.0001f)
                     transform.rotation = Quaternion.LookRotation(dir);
             }
+            if (_counterAttackCts != null) return;
 
             _counterAttackCts = new CancellationTokenSource();
             var token = _counterAttackCts.Token;
-
             CounterAttackLoop(fov, token).Forget();
         }
-
         private async UniTaskVoid CounterAttackLoop(FieldOfView fov, CancellationToken token)
         {
             float interval = (attackSpeed > 0f) ? attackSpeed : 1f;
@@ -104,8 +116,7 @@ namespace Game
         {
             _currentHealth = _maxHealth;
             InitData();
-            hasDied = false;
-            
+            hasDied = false;   
 
             _model.gameObject.SetActive(true);
             _stats.gameObject.SetActive(true);

@@ -1,13 +1,20 @@
 using Cysharp.Threading.Tasks;
 using Hichu;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace Game
 {
     public class BrainrotEvoGate : MonoBehaviour, ICharacterCollidable
     {
+        [SerializeField] TextMeshPro _text;
         [SerializeField] int levelOpen = 0;
+
+        private void Start()
+        {
+            _text.text = $"Escape _name_ \n Level {levelOpen}";
+        }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
 ;

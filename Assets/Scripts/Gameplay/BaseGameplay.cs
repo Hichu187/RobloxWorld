@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using Hichu;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -44,9 +46,12 @@ namespace Game
             player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
         }
 
-        private void EventPlayerDead(Event_Player_Dead e)
+        public virtual async void EventPlayerDead(Event_Player_Dead e)
         {
+            await UniTask.WaitForSeconds(2);
 
+            player.character.Revive(transform.position + Vector3.up, transform.rotation);
+            player.control.canMove = true;
         }
 
         private void EventCheckpoint(Event_Checkpoint e)

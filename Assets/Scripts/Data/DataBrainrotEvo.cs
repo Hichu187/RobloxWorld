@@ -10,6 +10,7 @@ namespace Game
         [SerializeField] private int _level = 0;
         [SerializeField] private int _exp = 0;
         [SerializeField] private int _currentMap = 0;
+        [SerializeField] private int _cash = 0;
 
         // Multi-instance: cho phép trùng
         [SerializeField] private List<int> _ownedPet = new List<int>();
@@ -19,6 +20,7 @@ namespace Game
         public static int level { get { return instance._level; } set { instance._level = value; } }
         public static int exp { get { return instance._exp; } set { instance._exp = value; } }
         public static int currentMap { get { return instance._currentMap; } set { instance._currentMap = value; } }
+        public static int cash { get { return instance._cash; } set { instance._cash = value; } }
 
         // Cho phép set trực tiếp nhưng sẽ sanitize + sort
         public static List<int> ownedPet { get { return instance._ownedPet; } set { instance.SetOwnedPets(value); } }
@@ -29,6 +31,15 @@ namespace Game
         {
             _exp += amount;
             while (CanLevelUp()) LevelUp();
+            Save();
+        }
+
+        public void CashUpdate(int cash)
+        {
+            _cash += cash;
+
+            StaticBus<Event_Cash_Update>.Post(null);
+
             Save();
         }
 
@@ -52,9 +63,6 @@ namespace Game
             Save();
         }
 
-        // ===== Owned Pet (multi-instance) =====
-
-        /// <summary>Thêm 1 bản sao pet sở hữu, sort giảm dần, sanitize equipped, save.</summary>
         public static void AddOwnedPet(int petId)
         {
             instance._ownedPet.Add(petId);
@@ -105,9 +113,6 @@ namespace Game
             _ownedPet.Sort((a, b) => b.CompareTo(a)); // giữ trùng, sort giảm dần
         }
 
-        // ===== Equipped (multi-instance) =====
-
-        /// <summary>Equip thêm 1 bản sao pet. Fail nếu vượt 5 slot hoặc không đủ bản sao sở hữu.</summary>
         public static bool EquipPet(int petId)
         {
             // Giới hạn 5

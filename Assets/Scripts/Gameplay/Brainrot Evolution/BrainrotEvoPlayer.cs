@@ -25,6 +25,8 @@ namespace Game
             _player = GetComponent<Player>();
 
             InitData();
+
+            SpawnPet();
         }
 
         private void OnDestroy()
@@ -38,9 +40,6 @@ namespace Game
         public async void InitData()
         {
             _currentConfig = FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level];
-
-
-
 
             characterCombat._maxHealth = (int)_currentConfig.health;
             characterCombat._currentHealth = characterCombat._maxHealth;
@@ -60,16 +59,10 @@ namespace Game
             _player.character.cAnim.InitAnimator();
             _player.control.canMove = true;
             _player.character.GetComponent<CharacterDie>().ObjRoot = model.gameObject;
-
-            SpawnPet();
-
-            await UniTask.WaitForEndOfFrame();
-
-            SetPetBonusDamage();
         }
 
 
-        private void SpawnPet()
+        private async void SpawnPet()
         {
             foreach(var petID in DataBrainrotEvo.equippedPet)
             {
@@ -81,6 +74,10 @@ namespace Game
                 pet.GetComponent<BrainrotPetPosition>().target = _petTarget;
                 _pets.Add(pet);
             }
+
+            await UniTask.WaitForEndOfFrame();
+
+            SetPetBonusDamage();
         }
 
         public void SetPetBonusDamage()

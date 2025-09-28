@@ -1,0 +1,437 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4049153230852086984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749760226990751393}
+  - component: {fileID: 168028880521493393}
+  m_Layer: 6
+  m_Name: Announcement_Countdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1749760226990751393
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049153230852086984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7280406446590500080}
+  - {fileID: 3137238335213387027}
+  - {fileID: 3690889598924173332}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &168028880521493393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049153230852086984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6444f7139c1e694f9768dcf0042b833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animCountdown: {fileID: 2625295622703856598}
+  _animEnd: {fileID: 8582824082261424811}
+  _txtCountdown: {fileID: 2640236389032610118}
+--- !u!1 &5585052379180562887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7280406446590500080}
+  - component: {fileID: 1173580558225027964}
+  - component: {fileID: 2640236389032610118}
+  m_Layer: 6
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7280406446590500080
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585052379180562887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1749760226990751393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1173580558225027964
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585052379180562887}
+  m_CullTransparentMesh: 1
+--- !u!114 &2640236389032610118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585052379180562887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: GO!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 12ebe18b93b7c134494dd1f2411bb3a8, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 7e9e5736e0027ce44a041ca68d3bee0a, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 250
+  m_fontSizeBase: 250
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8146979986040584289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3137238335213387027}
+  - component: {fileID: 2625295622703856598}
+  m_Layer: 6
+  m_Name: AnimCountdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3137238335213387027
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146979986040584289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1749760226990751393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2625295622703856598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146979986040584289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834079eb7e5944041870add573e37136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _steps:
+  - rid: 6698490436832460845
+  - rid: 6698490436832460849
+  - rid: 6698490436832460847
+  _isAutoKill: 0
+  _actionOnEnable: 0
+  _actionOnDisable: 0
+  _loopCount: 0
+  _loopType: 0
+  _updateType: 0
+  _isIndependentUpdate: 0
+  _delay: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6698490436832460845
+      type: {class: AnimationSequenceStepRectTransformAnchorPos, ns: LFramework, asm: LFramework}
+      data:
+        _addType: 0
+        _insertTime: 0
+        _isSelf: 0
+        _owner: {fileID: 7280406446590500080}
+        _isSpeedBased: 0
+        _duration: 0.3
+        _ease: 3
+        _updateType: 0
+        _isIndependentUpdate: 0
+        _loopTime: 0
+        _loopType: 0
+        _relative: 1
+        _changeStartValue: 1
+        _value: {x: 0, y: 0, z: 0}
+        _valueStart: {x: 0, y: 200, z: 0}
+        _snapping: 0
+    - rid: 6698490436832460847
+      type: {class: AnimationSequenceStepGraphicColor, ns: LFramework, asm: LFramework}
+      data:
+        _addType: 0
+        _insertTime: 0
+        _isSelf: 0
+        _owner: {fileID: 2640236389032610118}
+        _isSpeedBased: 0
+        _duration: 0.4
+        _ease: 3
+        _updateType: 0
+        _isIndependentUpdate: 0
+        _loopTime: 0
+        _loopType: 0
+        _relative: 0
+        _changeStartValue: 1
+        _value: {r: 1, g: 1, b: 1, a: 0}
+        _valueStart: {r: 1, g: 1, b: 1, a: 1}
+    - rid: 6698490436832460849
+      type: {class: AnimationSequenceStepInterval, ns: LFramework, asm: LFramework}
+      data:
+        _duration: 0.2
+--- !u!1 &8171496296945803280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3690889598924173332}
+  - component: {fileID: 8582824082261424811}
+  m_Layer: 6
+  m_Name: AnimEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3690889598924173332
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171496296945803280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1749760226990751393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8582824082261424811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171496296945803280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834079eb7e5944041870add573e37136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _steps:
+  - rid: 6698490436832460850
+  - rid: 6698490436832460847
+  - rid: 6698490436832460852
+  - rid: 6698490436832460854
+  - rid: 6698490436832460856
+  _isAutoKill: 0
+  _actionOnEnable: 0
+  _actionOnDisable: 0
+  _loopCount: 0
+  _loopType: 0
+  _updateType: 0
+  _isIndependentUpdate: 0
+  _delay: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6698490436832460847
+      type: {class: AnimationSequenceStepGraphicColor, ns: LFramework, asm: LFramework}
+      data:
+        _addType: 1
+        _insertTime: 0
+        _isSelf: 0
+        _owner: {fileID: 2640236389032610118}
+        _isSpeedBased: 0
+        _duration: 0.4
+        _ease: 3
+        _updateType: 0
+        _isIndependentUpdate: 0
+        _loopTime: 0
+        _loopType: 0
+        _relative: 0
+        _changeStartValue: 1
+        _value: {r: 1, g: 1, b: 1, a: 1}
+        _valueStart: {r: 1, g: 1, b: 1, a: 0}
+    - rid: 6698490436832460850
+      type: {class: AnimationSequenceStepTransformScale, ns: LFramework, asm: LFramework}
+      data:
+        _addType: 0
+        _insertTime: 0
+        _isSelf: 0
+        _owner: {fileID: 7280406446590500080}
+        _isSpeedBased: 0
+        _duration: 0.3
+        _ease: 18
+        _updateType: 0
+        _isIndependentUpdate: 0
+        _loopTime: 0
+        _loopType: 0
+        _relative: 0
+        _changeStartValue: 1
+        _value: {x: 1, y: 1, z: 1}
+        _valueStart: {x: 3, y: 3, z: 3}
+    - rid: 6698490436832460852
+      type: {class: AnimationSequenceStepInterval, ns: LFramework, asm: LFramework}
+      data:
+        _duration: 0.1
+    - rid: 6698490436832460854
+      type: {class: AnimationSequenceStepGraphicColor, ns: LFramework, asm: LFramework}
+      data:
+        _addType: 0
+        _insertTime: 0
+        _isSelf: 0
+        _owner: {fileID: 2640236389032610118}
+        _isSpeedBased: 0
+        _duration: 0.3
+        _ease: 1
+        _updateType: 0
+        _isIndependentUpdate: 0
+        _loopTime: 0
+        _loopType: 0
+        _relative: 0
+        _changeStartValue: 0
+        _value: {r: 1, g: 1, b: 1, a: 0}
+        _valueStart: {r: 1, g: 1, b: 1, a: 1}
+    - rid: 6698490436832460856
+      type: {class: AnimationSequenceStepCallback, ns: LFramework, asm: LFramework}
+      data:
+        _isInserted: 0
+        _insertTime: 0
+        _callback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4049153230852086984}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2

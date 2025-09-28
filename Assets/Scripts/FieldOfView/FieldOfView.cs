@@ -48,6 +48,8 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
+        // Reset trạng thái mỗi frame
+        haveTarget = false;
         visibleTargets.Clear();
         combatables.Clear();
         interactables.Clear();
@@ -60,6 +62,7 @@ public class FieldOfView : MonoBehaviour
             eyePos, radius, _hits, targetMask, triggerInteraction
         );
 
+        // Tự mở rộng buffer nếu full
         if (count >= _hits.Length)
         {
             int newSize = _hits.Length * 2;
@@ -70,6 +73,7 @@ public class FieldOfView : MonoBehaviour
         }
 
         float nearestDist = float.MaxValue;
+        bool anyVisible = false;
 
         for (int i = 0; i < count; i++)
         {
@@ -78,29 +82,32 @@ public class FieldOfView : MonoBehaviour
             if (col.attachedRigidbody && col.attachedRigidbody.gameObject == gameObject) continue;
             if (col.gameObject == gameObject) continue;
 
-            haveTarget = IsTargetVisible(col, eyePos);
+            bool visible = IsTargetVisible(col, eyePos);
+            if (!visible) continue;
 
-            if (IsTargetVisible(col, eyePos))
+            anyVisible = true;
+
+            Transform tr = col.transform;
+            float sqrDist = (tr.position - eyePos).sqrMagnitude;
+            _distCache[tr] = sqrDist;
+
+            visibleTargets.Add(tr);
+
+            TargetTraits traits = GetTraits(col);
+            if ((traits & TargetTraits.Combatable) != 0) combatables.Add(tr);
+            if ((traits & TargetTraits.Interactable) != 0)
             {
-                Transform tr = col.transform;
-                float sqrDist = (tr.position - eyePos).sqrMagnitude;
-                _distCache[tr] = sqrDist;
-
-                visibleTargets.Add(tr);
-
-                TargetTraits traits = GetTraits(col);
-                if ((traits & TargetTraits.Combatable) != 0) combatables.Add(tr);
-                if ((traits & TargetTraits.Interactable) != 0)
+                interactables.Add(tr);
+                if (sqrDist < nearestDist)
                 {
-                    interactables.Add(tr);
-                    if (sqrDist < nearestDist)
-                    {
-                        nearestDist = sqrDist;
-                        nearestInteractable = tr;
-                    }
+                    nearestDist = sqrDist;
+                    nearestInteractable = tr;
                 }
             }
         }
+
+        // Cập nhật cờ sau khi xử lý xong tất cả hit
+        haveTarget = anyVisible;
 
         SortByDistance(visibleTargets);
         SortByDistance(combatables);

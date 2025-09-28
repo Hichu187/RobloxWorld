@@ -1,5 +1,6 @@
 ﻿using Hichu;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Game.BrainrotEvoGachaRates;
@@ -20,6 +21,8 @@ namespace Game
         [SerializeField] private OpenEggOption _optionPrefab;
         [SerializeField] private Transform _optionParent;
         [SerializeField] private Button _btnHatch;
+        [SerializeField] private Button _btnAdsCash;
+        [SerializeField] private int openCash = 1000;
 
         [SerializeField] private List<OpenEggOption> _options = new List<OpenEggOption>();
 
@@ -28,6 +31,16 @@ namespace Game
         {
             SpawnOptions();
             _btnHatch.onClick.AddListener(Hatch);
+            _btnAdsCash.onClick.AddListener(AdsCash);
+
+            _btnHatch.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = openCash.ToString();
+            _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = openCash.ToString();
+        }
+
+        private void AdsCash()
+        {
+            DataBrainrotEvo.instance.CashUpdate(openCash);
+
         }
 
         private void SpawnOptions()
@@ -70,29 +83,35 @@ namespace Game
 
         private void Hatch()
         {
-            // 1) Roll rank
-            PetRank rolledRank = RollRank();
-
-            // 2) Chọn petData theo rank (có fallback)
-            BrainrotEvoPetConfig petData = PickPetConfigFromCurrentMapByRankWithFallback(rolledRank);
-            if (petData == null)
+            if(DataBrainrotEvo.cash >= openCash)
             {
-                Debug.LogWarning("[OpenEgg] Không tìm thấy pet nào trong map hiện tại.");
-                return;
-            }
+                DataBrainrotEvo.instance.CashUpdate(-openCash);
 
-            // 3) Đổi sang id toàn cục (index trong FactoryBrainrotEvo.pets) để lưu vào ownedPet
-            int petId = FactoryBrainrotEvo.pets.IndexOf(petData);
-            if (petId < 0)
+                PetRank rolledRank = RollRank();
+
+                BrainrotEvoPetConfig petData = PickPetConfigFromCurrentMapByRankWithFallback(rolledRank);
+                if (petData == null)
+                {
+                    Debug.LogWarning("[OpenEgg] Không tìm thấy pet nào trong map hiện tại.");
+                    return;
+                }
+
+                int petId = FactoryBrainrotEvo.pets.IndexOf(petData);
+                if (petId < 0)
+                {
+                    Debug.LogWarning("[OpenEgg] pet không nằm trong FactoryBrainrotEvo.pets.");
+                    return;
+                }
+
+                DataBrainrotEvo.AddOwnedPet(petId);
+
+                Debug.Log($"[OpenEgg] Hatch -> {petData.petName} ({petData.petRank}) (ID={petId})");
+                ReinitOptions();
+            }
+            else
             {
-                Debug.LogWarning("[OpenEgg] pet không nằm trong FactoryBrainrotEvo.pets.");
-                return;
+                UINotificationText.Push("Not enough money");
             }
-
-            DataBrainrotEvo.AddOwnedPet(petId);
-
-            Debug.Log($"[OpenEgg] Hatch -> {petData.petName} ({petData.petRank}) (ID={petId})");
-            ReinitOptions();
         }
 
         private PetRank RollRank()

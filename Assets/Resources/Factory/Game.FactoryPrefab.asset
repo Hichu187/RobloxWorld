@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Game.FactoryPrefab
   m_EditorClassIdentifier: 
   _gameInit: {fileID: 4337960712945406443, guid: 986296149432945429ae82f0e1b97898, type: 3}
+  _uiNotificationText: {fileID: 4907520297726617435, guid: 0ff546e5fe022dd438d79ba3be824410, type: 3}

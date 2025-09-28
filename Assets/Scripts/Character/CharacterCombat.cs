@@ -207,6 +207,13 @@ namespace Game
             _hp_Bar.fillAmount =fill;
         }
 
+        public void ReSpawn()
+        {
+            _currentHealth = _maxHealth;
+
+            InitData();
+        }
+
         protected virtual void Die()
         {
             hasDied = true;
