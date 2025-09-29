@@ -134,15 +134,20 @@ namespace Game
                 {
                     LDebug.Log<CharacterCombat>($"take {amount} damage");
                 }
+
+                if (_character != null && _character.isPlayer)
+                {
+                    _stats.SetActive(true);
+                }
             }
 
             if (_knockback)
             {
-                //KnockBack(force, direction);
+                KnockBack(force, direction);
 
                 _character.motor.enabled = false;
 
-                _character.cRagdoll.ActivateRagdoll(Vector3.one, Vector3.zero);
+                _character.cRagdoll.ActivateRagdoll(Vector3.up * 5f, direction);
 
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
@@ -156,10 +161,7 @@ namespace Game
                 });
             }
 
-            if (_character != null && _character.isPlayer)
-            {
-                _stats.SetActive(true);
-            }
+
 
             InitData();
         }
