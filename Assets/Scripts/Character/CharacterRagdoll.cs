@@ -30,9 +30,11 @@ namespace Game
         [SerializeField] private bool _useGravityOnClones = true;
 
         private Animator _anim;
+        private Rigidbody[] ragdollBodies;
 
         private void Awake()
         {
+            ragdollBodies = GetComponentsInChildren<Rigidbody>();
             _anim = GetComponent<Animator>();
             if (_smrs.Count == 0)
                 _smrs.AddRange(GetComponentsInChildren<SkinnedMeshRenderer>(true));
@@ -186,23 +188,31 @@ namespace Game
             if (_anim) _anim.enabled = true;
         }
 
-        [Button]
-        public void ActivateRagdoll()
+        public void SetRagdollActive(bool active)
         {
-            GetComponent<Animator>().enabled = false;
-
-            SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-
-            if (meshRenderer != null)
-                meshRenderer.updateWhenOffscreen = true;
-
-            for (int i = 0; i < _parts.Length; i++)
+            foreach (Rigidbody rb in ragdollBodies)
             {
-                _parts[i].collider.enabled = true;
-                _parts[i].rigidbody.isKinematic = false;
-                //_parts[i].transform.SetParent(transform);
-                //_parts[i].rigidbody.AddExplosionForce(_explodeForce, transform.position, _explodeRadius);
+                rb.GetComponent<Collider>().enabled = active;
+                rb.isKinematic = !active;
             }
+
+            _anim.enabled = !active;
+        }
+
+        [Button]
+        public void ActivateRagdoll(Vector3 hitForce, Vector3 hitPosition)
+        {
+            SetRagdollActive(true);
+
+            foreach (Rigidbody rb in ragdollBodies)
+            {
+                rb.AddForceAtPosition(hitForce, hitPosition, ForceMode.Impulse);
+            }
+        }
+
+        public void SetPos(Character character)
+        {
+            character.motor.SetPosition(_parts[0].transform.position);
         }
 
         [Button]

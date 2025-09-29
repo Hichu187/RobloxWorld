@@ -6,6 +6,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Game
 {
@@ -137,7 +138,22 @@ namespace Game
 
             if (_knockback)
             {
-                KnockBack(force, direction);
+                //KnockBack(force, direction);
+
+                _character.motor.enabled = false;
+
+                _character.cRagdoll.ActivateRagdoll(Vector3.one, Vector3.zero);
+
+                DOVirtual.DelayedCall(2.5f, () =>
+                {
+                    _character.motor.enabled = true;
+
+                    _character.cRagdoll.SetRagdollActive(false);
+
+                    _character.cControl.StateMachine.CurrentState = CharacterControl.State.Ground;
+
+                    _character.cRagdoll.SetPos(_character);
+                });
             }
 
             if (_character != null && _character.isPlayer)

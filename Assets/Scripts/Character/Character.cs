@@ -21,6 +21,7 @@ namespace Game
         public CharacterCombat cCombat;
         public CharacterAnimator cAnim;
         public CharacterInteract cInteract;
+        public CharacterRagdoll cRagdoll;
         public FieldOfView fov;
 
 
