@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Steal A Brainrot.unity
+    path: Assets/Scenes/Game Steal Brainrot.unity
     guid: cc060644cb4d0314e9003f6a5230589f
   - enabled: 1
-    path: Assets/Scenes/Tower Troll.unity
+    path: Assets/Scenes/Game Tower Troll.unity
     guid: 1c72a0964028de0428febdf7d3f660a2
   - enabled: 1
-    path: Assets/Scenes/Brainrot Evolution.unity
+    path: Assets/Scenes/Old/Brainrot Evolution.unity
     guid: 4800cc998a4df0d48a024725c59fb54f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c4de23547d0aaa9488efdd927acfa0da, type: 2}
