@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -19,6 +20,7 @@ namespace Game
         public int totalEarn = 0;
 
 
+        [Button]
         public void StartGenerating()
         {
             if (!isGenerating)

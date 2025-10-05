@@ -18,7 +18,7 @@ namespace Hichu
             get
             {
                 if (_root == null)
-                    _root = UnityEngine.Object.FindObjectOfType<Canvas>().transform;
+                    _root = UnityEngine.Object.FindAnyObjectByType<Canvas>().transform;
 
                 return _root;
             }

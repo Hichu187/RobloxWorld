@@ -6,8 +6,8 @@ namespace Game
     {
         public static StealBrainrot_Manager instance;
 
-        public Transform targetPoint;
         public Transform startPoint;
+        public Transform endPoint;
 
         public static string FormatMoney(long value)
         {
