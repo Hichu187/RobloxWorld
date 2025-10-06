@@ -14,12 +14,12 @@ namespace Game
 
             slot = GetComponentInParent<StealBrainrot_Slot>();
 
-            if (slot.brainrot != null && /*basePetSlot.petAi.indBase == 0 &&*/ slot.totalEarn > 0)
+            if (slot.brainrot != null && slot.totalEarn > 0)
             {
                 if (character.GetComponent<Character>().isPlayer)
                 {
                     isCollected = true;
-                    StaticBus<Event_Cash_Update>.Post(null);
+                    slot.CollectCash();
                 }
             }
         }

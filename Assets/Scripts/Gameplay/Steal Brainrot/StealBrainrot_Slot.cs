@@ -1,6 +1,8 @@
-﻿using Sirenix.OdinInspector;
+﻿using Hichu;
+using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
+using UnityEditor.Graphs;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -19,6 +21,13 @@ namespace Game
         private bool isGenerating = false;
         public int totalEarn = 0;
 
+        public void SetBrainrot(StealBrainrot_Brainrot br)
+        {
+            brainrot = br;
+            isEmpty = false;
+
+            //StartGenerating();
+        }
 
         [Button]
         public void StartGenerating()
@@ -46,6 +55,13 @@ namespace Game
                 totalEarn += brainrot.earn;
                 txtTotalEarn.text = "Collect\n" + "$" + StealBrainrot_Manager.FormatMoney(totalEarn);
             }
+        }
+
+        public void CollectCash()
+        {
+            StaticBus<Event_Cash_Update>.Post(new Event_Cash_Update(totalEarn));
+            totalEarn = 0;
+            txtTotalEarn.text = "Collect\n" + "$" + StealBrainrot_Manager.FormatMoney(totalEarn);
         }
     }
 }

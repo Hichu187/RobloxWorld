@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game
 {
@@ -6,7 +6,12 @@ namespace Game
     {
         private void LateUpdate()
         {
-            transform.LookAt(Camera.main.transform);
+            if (Camera.main == null) return;
+
+            Vector3 camPos = Camera.main.transform.position;
+            Vector3 lookPos = new Vector3(camPos.x, transform.position.y, camPos.z);
+
+            transform.LookAt(lookPos);
         }
     }
 }

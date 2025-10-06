@@ -48,12 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainrot: {fileID: 0}
   txtTotalEarn: {fileID: 514600177359048078}
-  stayPosition: {fileID: 0}
+  stayPosition: {fileID: 4602516394331853241}
   buttonCollect: {fileID: 4144021097017688805}
   baseId: 0
   slotId: 0
   isEmpty: 1
-  totalEarn: 100
+  totalEarn: 0
 --- !u!1 &3009737546548922096
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6057791856681674334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -877,7 +877,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Thu nhap
 
-    2000$'
+    0$'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b0a183f1579ca041936a32356e353f9, type: 2}
   m_sharedMaterial: {fileID: 5495303216756298425, guid: 0b0a183f1579ca041936a32356e353f9, type: 2}

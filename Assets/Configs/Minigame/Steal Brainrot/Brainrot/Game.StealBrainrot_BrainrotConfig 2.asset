@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
-  m_Name: Game.StealBrainrot_BrainrotConfig
+  m_Name: Game.StealBrainrot_BrainrotConfig 2
   m_EditorClassIdentifier: 
   ID: 0
-  brainrotName: Brainrot 1
-  rank: 0
+  brainrotName: Brainrot 3
+  rank: 2
   earningPerSecond: 18
   costToBuy: 50
-  texture: {fileID: 21300000, guid: 76a12b8d49820fc428815b96fc7831e7, type: 3}
-  prefab: {fileID: 3060985026828828607, guid: ae6282eea23cfcc4e9d2cbfbef90c311, type: 3}
+  texture: {fileID: 21300000, guid: 44096cf800545244091f3dd4bbfe12d0, type: 3}
+  prefab: {fileID: 4956490015717925802, guid: 2e2fc79ab21436546845a13b3b901e52, type: 3}
   reward: 0

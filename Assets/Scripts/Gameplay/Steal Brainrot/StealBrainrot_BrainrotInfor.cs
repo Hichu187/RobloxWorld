@@ -1,8 +1,7 @@
-using Hichu;
+﻿using Hichu;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace Game
 {
@@ -48,8 +47,6 @@ namespace Game
 
         private void LateUpdate()
         {
-            //this.transform.position = brainrot.transform.GetChild(0).position + Vector3.up * 2f;
-
             if (!brainrot.isBought)
             {
                 if (Vector3.Distance(brainrot.transform.GetChild(0).position, Player.Instance.character.transform.position + Vector3.up*3) <
@@ -153,8 +150,30 @@ namespace Game
 
         public void BuyBrainrot()
         {
-            brainrot.isBought = true;
-        }
-    }
+            var p = FindAnyObjectByType<StealBrainrot_Player>();
+            if (p == null || p.baseSlot == null)
+            {
+                Debug.LogWarning("Không tìm thấy player hoặc baseSlot.");
+                return;
+            }
 
+            var slot = p.baseSlot.GetFirstEmptySlot();
+            if (slot == null)
+            {
+                Debug.Log("FULL");
+                return;
+            }
+
+            var tSlot = slot.stayPosition != null ? slot.stayPosition : slot.transform;
+
+            brainrot.isBought = true;
+            brainrot.targetSlot = slot;
+            brainrot.target = tSlot;
+            brainrot.canMove = true;
+            brainrot.isMovingHome = true;
+
+            brainrot.BuyBrainrot();
+        }
+
+    }
 }

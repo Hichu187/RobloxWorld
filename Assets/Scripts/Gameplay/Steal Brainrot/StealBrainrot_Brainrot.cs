@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Hichu;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,8 +8,9 @@ namespace Game
     public class StealBrainrot_Brainrot : MonoBehaviour
     {
         [Title("Reference")]
-        public StealBrainrot_BrainrotInfor petInfo;
+        public StealBrainrot_BrainrotInfor brainrotInfo;
         public Animator animator;
+        public Transform modelParent;
 
         [Title("Data")]
         public StealBrainrot_BrainrotConfig bConfig;
@@ -59,6 +61,34 @@ namespace Game
         public void Setup(PetRank rank, bool isRun)
         {
             SetSkinBrainrot(rank, isRun);
+        }
+
+        public void BuyBrainrot()
+        {
+            StealBrainrot_Player p = FindAnyObjectByType<StealBrainrot_Player>();
+
+            Transform tSlot = p.baseSlot.GetFirstEmptySlot().transform;
+
+            targetSlot = p.baseSlot.GetFirstEmptySlot();
+
+            targetSlot.SetBrainrot(this);
+
+            target = tSlot;
+
+            indBase = 0;
+        }
+
+        public void InitBrainrotData(StealBrainrot_BrainrotConfig config)
+        {
+            bConfig = config;
+
+            brainrotInfo.SetupData(config);
+
+            GameObject model = config.prefab.Create(modelParent);
+            model.transform.SetScale(0.5f);
+
+            cost = config.costToBuy;
+            earn = config.earningPerSecond;
         }
 
         public void SpawnFromPool(Transform startP, Transform endP, PetRank rank, bool isRun)
@@ -145,12 +175,6 @@ namespace Game
 
                 target = null;
             }
-        }
-
-        private void BuyPet()
-        {
-            Debug.Log($"Bought {bConfig.brainrotName}");
-            isBought = true;
         }
     }
 }
