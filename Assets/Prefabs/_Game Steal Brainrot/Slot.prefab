@@ -875,9 +875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thu nhap
-
-    0$'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b0a183f1579ca041936a32356e353f9, type: 2}
   m_sharedMaterial: {fileID: 5495303216756298425, guid: 0b0a183f1579ca041936a32356e353f9, type: 2}

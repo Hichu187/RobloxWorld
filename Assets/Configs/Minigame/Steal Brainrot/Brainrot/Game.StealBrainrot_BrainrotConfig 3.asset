@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: Game.StealBrainrot_BrainrotConfig 3
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 3
   brainrotName: Brainrot 4
   rank: 3
   earningPerSecond: 18

@@ -11,6 +11,7 @@ namespace Game
     public class StealBrainrot_Spawner : MonoBehaviour
     {
         [Title("Reference")]
+        [SerializeField] private StealBrainrot_Base playerBase;
         [SerializeField] private StealBrainrot_Brainrot _prefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private Transform _startPos;
@@ -29,10 +30,12 @@ namespace Game
         {
             StealBrainrotPool.instance.Configure(_prefab, _parent);
             StealBrainrotPool.instance.Prewarm(20);
+
         }
 
         private void Start()
         {
+            SpawnFromData();
             StartAutoSpawn();
         }
 
@@ -60,25 +63,18 @@ namespace Game
                 safeCount++;
             }
 
-            if (list == null || list.Count == 0)
-            {
-                Debug.LogWarning($"Không có BrainrotConfig hợp lệ (rank {rank} hoặc thấp hơn).");
-                return;
-            }
+            if (list == null || list.Count == 0) return;
 
             var config = list[Random.Range(0, list.Count)];
 
             obj.transform.position = _startPos.position;
             obj.transform.rotation = Quaternion.identity;
-
             obj.InitBrainrotData(config);
             obj.SetPosition(_startPos, _endPos);
             obj.Setup(rank, true);
-
             obj.target = _endPos;
             obj.canMove = true;
         }
-
 
         [Button("Start Auto Spawn")]
         private void StartAutoSpawn()
@@ -129,6 +125,40 @@ namespace Game
             }
 
             return PetRank.Common;
+        }
+
+        [Button("Spawn From Data")]
+        public void SpawnFromData()
+        {
+            if (playerBase == null) return;
+            if (FactoryStealBrainrot.brainrotConfigs == null || FactoryStealBrainrot.brainrotConfigs.Count == 0)
+                return;
+
+            foreach (var kv in DataStealBrainrot.BaseSlots)
+            {
+                int slotIndex = kv.Key;
+                int brainrotId = kv.Value;
+
+                if (slotIndex < 0 || slotIndex >= playerBase.slots.Count) continue;
+                if (brainrotId < 0 || brainrotId >= FactoryStealBrainrot.brainrotConfigs.Count) continue;
+
+                var slot = playerBase.slots[slotIndex];
+                var config = FactoryStealBrainrot.brainrotConfigs[brainrotId];
+
+                var obj = StealBrainrotPool.instance.Get();
+                obj.InitBrainrotData(config);
+                obj.Setup(config.rank, true);
+                obj.targetSlot = slot;
+                obj.transform.position = slot.stayPosition != null ? slot.stayPosition.position : slot.transform.position;
+                obj.transform.rotation = slot.stayPosition.rotation * Quaternion.Euler(0, 180, 0);
+                obj.indBase = 0;
+                obj.isBought = true;
+                obj.canMove = false;
+
+                slot.isEmpty = false;
+                slot.brainrot = obj;
+                slot.StartGenerating();
+            }
         }
     }
 }

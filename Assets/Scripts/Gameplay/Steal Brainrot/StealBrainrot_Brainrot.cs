@@ -78,11 +78,23 @@ namespace Game
             indBase = 0;
         }
 
+        public void SellBrainrot()
+        {
+            targetSlot.ResetBrainrot();
+            DespawnToPool();
+        }
+
         public void InitBrainrotData(StealBrainrot_BrainrotConfig config)
         {
             bConfig = config;
-
             brainrotInfo.SetupData(config);
+
+            for (int i = modelParent.childCount - 1; i >= 0; i--)
+            {
+                var child = modelParent.GetChild(i);
+                if (child != null)
+                    Object.Destroy(child.gameObject);
+            }
 
             GameObject model = config.prefab.Create(modelParent);
             model.transform.SetScale(0.5f);
@@ -161,8 +173,8 @@ namespace Game
                     targetSlot.isEmpty = false;
                     isMovingHome = false;
 
-                    var pos = targetSlot.transform.position;
-                    pos.y += 1f;
+                    var pos = targetSlot.stayPosition.position;
+                    //pos.y += 1f;
                     transform.position = pos;
 
                     var dirT = (targetSlot.buttonCollect.transform.position - targetSlot.stayPosition.position).normalized;

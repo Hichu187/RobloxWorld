@@ -60,7 +60,6 @@ namespace Game
                     btnColect.SetActive(false);
                     if (brainrot.outline) brainrot.outline.SetFloat("_OutlineWidth", 0f);
                 }
-
             }
             else
             {
@@ -70,15 +69,16 @@ namespace Game
                 {
                     if (!isSteal)
                     {
+
                     }
 
                 }
                 else
                 {
-                    if (Vector3.Distance(brainrot.transform.GetChild(0).position,
-                            Player.Instance.character.transform.position) < 1.5f && brainrot.isMovingHome == false)
+                    if (Vector3.Distance(brainrot.transform.GetChild(0).position, Player.Instance.character.transform.position + Vector3.up * 3) < 5f && brainrot.isMovingHome == false)
                     {
                         btnSell.SetActive(true);
+                        btnSell.transform.GetChild(0).GetComponent<TextMeshPro>().text = $"Sell  {(int)(brainrot.cost / 2)}$";
                     }
                     else
                     {
@@ -120,6 +120,13 @@ namespace Game
         private void Sell()
         {
             LDebug.Log<StealBrainrot_BrainrotInfor>($"Sell");
+
+            DataStealBrainrot.instance.CashUpdate((int)(brainrot.cost / 2));
+            DataStealBrainrot.RemoveBaseSlot(brainrot.targetSlot.slotId);
+
+            brainrot.SellBrainrot();
+
+
         }
         public void Steal()
         {
@@ -127,28 +134,6 @@ namespace Game
         }
 
         public void Buy(int playerId, StealBrainrot_Brainrot brainrot)
-        {
-            if (playerId == 0)
-            {
-                if (brainrot.bConfig.reward)
-                {
-                    LDebug.Log<StealBrainrot_BrainrotInfor>($"Ads Buy");
-                    BuyBrainrot();
-                }
-                else
-                {
-                    LDebug.Log<StealBrainrot_BrainrotInfor>($"Cash Buy");
-                    BuyBrainrot();
-                }
-            }
-            else
-            {
-                BuyBrainrot();
-            }
-
-        }
-
-        public void BuyBrainrot()
         {
             var p = FindAnyObjectByType<StealBrainrot_Player>();
             if (p == null || p.baseSlot == null)
@@ -160,9 +145,40 @@ namespace Game
             var slot = p.baseSlot.GetFirstEmptySlot();
             if (slot == null)
             {
-                Debug.Log("FULL");
+                UINotificationText.Push("FULL SLOT");
                 return;
             }
+
+            if (playerId == 0)
+            {
+                if (brainrot.bConfig.reward)
+                {
+                    LDebug.Log<StealBrainrot_BrainrotInfor>("Ads Buy");
+                    BuyBrainrot(p, slot, brainrot);
+                }
+                else
+                {
+                    if (DataStealBrainrot.cash >= brainrot.cost)
+                    {
+                        DataStealBrainrot.instance.CashUpdate(-brainrot.cost);
+                        LDebug.Log<StealBrainrot_BrainrotInfor>("Cash Buy");
+                        BuyBrainrot(p, slot, brainrot);
+                    }
+                    else
+                    {
+                        UINotificationText.Push("NOT ENOUGH CASH");
+                    }
+                }
+            }
+            else
+            {
+                BuyBrainrot(p, slot, brainrot);
+            }
+        }
+
+        private void BuyBrainrot(StealBrainrot_Player p, StealBrainrot_Slot slot, StealBrainrot_Brainrot brainrot)
+        {
+            if (slot == null) return;
 
             var tSlot = slot.stayPosition != null ? slot.stayPosition : slot.transform;
 
@@ -172,8 +188,13 @@ namespace Game
             brainrot.canMove = true;
             brainrot.isMovingHome = true;
 
+            int slotIndex = p.baseSlot.slots.IndexOf(slot);
+            if (slotIndex >= 0)
+                DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, brainrot.bConfig.ID);
+
             brainrot.BuyBrainrot();
         }
+
 
     }
 }

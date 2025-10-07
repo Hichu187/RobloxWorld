@@ -9,7 +9,7 @@ namespace Game
     {
         public int baseID;
 
-        [SerializeField] private List<StealBrainrot_Slot> _slots;
+        public List<StealBrainrot_Slot> slots;
 
 
         public void SetLock(bool isLock)
@@ -21,10 +21,10 @@ namespace Game
         //UTILS
         public StealBrainrot_Slot GetFirstEmptySlot()
         {
-            if (_slots == null || _slots.Count == 0)
+            if (slots == null || slots.Count == 0)
                 return null;
 
-            var slot = _slots
+            var slot = slots
                 .Where(s => s != null && s.isEmpty)
                 .OrderBy(s => s.slotId)
                 .FirstOrDefault();
@@ -37,10 +37,10 @@ namespace Game
         [Button]
         public void SetSlotID()
         {
-            for (int i = 0; i < _slots.Count; i++)
+            for (int i = 0; i < slots.Count; i++)
             {
-                _slots[i].slotId = i;
-                _slots[i].baseId = baseID;
+                slots[i].slotId = i;
+                slots[i].baseId = baseID;
             }
         }
 

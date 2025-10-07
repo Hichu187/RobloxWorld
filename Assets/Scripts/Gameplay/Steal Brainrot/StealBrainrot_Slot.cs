@@ -2,9 +2,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
-using UnityEditor.Graphs;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace Game
 {
@@ -21,47 +19,81 @@ namespace Game
         private bool isGenerating = false;
         public int totalEarn = 0;
 
+        private Coroutine _generateRoutine;
+
         public void SetBrainrot(StealBrainrot_Brainrot br)
         {
             brainrot = br;
             isEmpty = false;
-
-            //StartGenerating();
         }
 
         [Button]
         public void StartGenerating()
         {
-            if (!isGenerating)
-            {
-                txtTotalEarn.gameObject.SetActive(true);
-                isGenerating = true;
-                StartCoroutine(GenerateLoop());
-            }
+            if (isGenerating) return;
+            isGenerating = true;
+            if (txtTotalEarn) txtTotalEarn.gameObject.SetActive(true);
+            _generateRoutine = StartCoroutine(GenerateLoop());
         }
 
         public void StopGenerating()
         {
-            txtTotalEarn.gameObject.SetActive(false);
+            if (!isGenerating) return;
             isGenerating = false;
-            StopCoroutine(GenerateLoop());
+            if (_generateRoutine != null)
+            {
+                StopCoroutine(_generateRoutine);
+                _generateRoutine = null;
+            }
+            if (txtTotalEarn) txtTotalEarn.gameObject.SetActive(false);
         }
 
         private IEnumerator GenerateLoop()
         {
+            var wait = new WaitForSeconds(1f);
             while (isGenerating)
             {
-                yield return new WaitForSeconds(1f);
+                if (brainrot == null)
+                {
+                    isGenerating = false;
+                    _generateRoutine = null;
+                    yield break;
+                }
+
+                yield return wait;
+
+                if (!isGenerating) yield break;
+
                 totalEarn += brainrot.earn;
-                txtTotalEarn.text = "Collect\n" + "$" + StealBrainrot_Manager.FormatMoney(totalEarn);
+                if (txtTotalEarn)
+                    txtTotalEarn.text = "Collect\n$" + StealBrainrot_Manager.FormatMoney(totalEarn);
             }
+            _generateRoutine = null;
         }
 
         public void CollectCash()
         {
-            StaticBus<Event_Cash_Update>.Post(new Event_Cash_Update(totalEarn));
+            if (totalEarn > 0)
+                DataStealBrainrot.instance.CashUpdate(totalEarn);
+
             totalEarn = 0;
-            txtTotalEarn.text = "Collect\n" + "$" + StealBrainrot_Manager.FormatMoney(totalEarn);
+            if (txtTotalEarn)
+                txtTotalEarn.text = "Collect\n$" + StealBrainrot_Manager.FormatMoney(totalEarn);
+        }
+
+        public void ResetBrainrot()
+        {
+            StopGenerating();
+            isEmpty = true;
+            brainrot = null;
+            totalEarn = 0;
+            if (txtTotalEarn)
+                txtTotalEarn.text = "Collect\n$0";
+        }
+
+        private void OnDisable()
+        {
+            StopGenerating();
         }
     }
 }

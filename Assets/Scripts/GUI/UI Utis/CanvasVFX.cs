@@ -18,8 +18,11 @@ namespace Game
 
         private void EventCashUpdate(Event_Cash_Update e)
         {
-            cashVfx.gameObject.SetActive(true);
-            cashVfx.Play();
+            if (e.encreaseCash)
+            {
+                cashVfx.gameObject.SetActive(true);
+                cashVfx.Play();
+            }
         }
     }
 }

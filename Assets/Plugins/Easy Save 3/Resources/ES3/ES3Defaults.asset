@@ -32,13 +32,13 @@ MonoBehaviour:
     - ES3
     - Boxophobic.Utils.Editor
     - HichuEz
+    - Game
     - BetterHierarchy
     - OdinSerializer
     - UniTask
     - Vertx.Debugging.Runtime
     - Assembly-CSharp
     - UniTask.Linq
-    - Game
     - Boxophobic.SkyboxCubemapExtended.Editor
     - DOTween.Modules
     - Coffee.UIParticle

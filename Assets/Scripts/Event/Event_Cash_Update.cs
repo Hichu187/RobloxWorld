@@ -7,9 +7,12 @@ namespace Game
     {
         public int total;
 
-        public Event_Cash_Update(int total)
+        public bool encreaseCash = false;
+
+        public Event_Cash_Update(int total, bool encreaseCash)
         {
             this.total = total;
+            this.encreaseCash = encreaseCash;
         }
     }
 }
