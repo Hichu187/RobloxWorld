@@ -1883,7 +1883,7 @@ MonoBehaviour:
   indBase: -1
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 5
   detectRadius: 3
   outline: {fileID: 0}
   targetSlot: {fileID: 0}

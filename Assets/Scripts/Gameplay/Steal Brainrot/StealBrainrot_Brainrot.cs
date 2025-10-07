@@ -81,6 +81,8 @@ namespace Game
         public void SellBrainrot()
         {
             targetSlot.ResetBrainrot();
+
+            indBase = -1;
             DespawnToPool();
         }
 

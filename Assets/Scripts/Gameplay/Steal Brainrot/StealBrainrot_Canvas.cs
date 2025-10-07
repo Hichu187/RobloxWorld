@@ -2,6 +2,7 @@ using DG.Tweening;
 using Hichu;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Game
 {
@@ -20,7 +21,8 @@ namespace Game
             StaticBus<Event_Cash_Update>.Subscribe(EventCashUpdate);
 
             _displayedCash = DataStealBrainrot.cash;
-            _cashText.text = _displayedCash.ToString();
+
+            SetCashText(_displayedCash);
         }
 
         private void OnDestroy()
@@ -40,7 +42,7 @@ namespace Game
 
             if (target == _displayedCash || target == _lastTarget)
             {
-                if (_cashText) _cashText.text = target.ToString();
+                if (_cashText) SetCashText(target);
                 return;
             }
 
@@ -51,7 +53,7 @@ namespace Game
                 _cashTween = DOTween.To(() => _displayedCash, v =>
                 {
                     _displayedCash = v;
-                    if (_cashText) _cashText.text = v.ToString();
+                    if (_cashText) SetCashText(_displayedCash);
                 }, target, _tweenDuration)
                 .SetEase(Ease.OutCubic)
                 .SetAutoKill(false)
@@ -64,6 +66,18 @@ namespace Game
 
             _cashTween.SetDelay(isIncrease ? _tweenDelay : 0f);
             _cashTween.Restart();
+        }
+
+        public void SetCashText(int totalCash)
+        {
+            if(totalCash > 100000)
+            {
+                _cashText.text = StealBrainrot_Manager.FormatMoney(totalCash);
+            }
+            else
+            {
+                _cashText.text = totalCash.ToString();
+            }
         }
     }
 }
