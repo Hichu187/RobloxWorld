@@ -7,21 +7,55 @@ namespace Game
 {
     public class StealBrainrot_BrainrotInfor : MonoBehaviour
     {
+        [Header("Buttons")]
         [SerializeField] private GameObject btnColect;
         [SerializeField] private GameObject btnSteal;
         [SerializeField] private GameObject btnSell;
 
+        [Header("Texts")]
         public TMP_Text txtName;
         public TMP_Text txtRank;
         public TMP_Text txtEarn;
         public TMP_Text txtCost;
 
+        [Header("Raycast")]
         [SerializeField] private LayerMask layerMaskPet;
-        [SerializeField] private StealBrainrot_Brainrot brainrot;
-        public bool isSteal = false;
 
+        [Header("Refs")]
+        [SerializeField] private StealBrainrot_Brainrot brainrot;
+
+        [Header("Config")]
+        [Min(0.1f)]
+        [SerializeField] private float interactDistance = 5f;
+
+        [Header("State")]
+        public bool isSteal = false;
         public GameObject buy;
         public GameObject ads;
+
+        private Transform _playerT;
+        private Transform _brainrotHead;
+        private float _interactSqr;
+        private StealBrainrot_Player player;
+
+        private void Awake()
+        {
+            _interactSqr = interactDistance * interactDistance;
+        }
+
+        private void Start()
+        {
+            if (Player.Instance && Player.Instance.character)
+            {
+                _playerT = Player.Instance.character.transform;
+                player = Player.Instance.character.GetComponent<StealBrainrot_Player>();
+            }
+
+            if (brainrot && brainrot.transform.childCount > 0)
+                _brainrotHead = brainrot.transform.GetChild(0);
+            else
+                _brainrotHead = brainrot ? brainrot.transform : transform;
+        }
 
         [Button]
         public void SetupData(StealBrainrot_BrainrotConfig config)
@@ -41,78 +75,91 @@ namespace Game
                 Tap();
             }
 
-            transform.LookAt(Camera.main.transform);
-
+            if (Camera.main)
+                transform.LookAt(Camera.main.transform);
         }
 
         private void LateUpdate()
         {
+            if (_playerT == null || _brainrotHead == null || brainrot == null)
+            {
+                SafeSetActive(btnColect, false);
+                SafeSetActive(btnSteal, false);
+                SafeSetActive(btnSell, false);
+                return;
+            }
+
+            bool near = IsPlayerNear();
+
             if (!brainrot.isBought)
             {
-                if (Vector3.Distance(brainrot.transform.GetChild(0).position, Player.Instance.character.transform.position + Vector3.up*3) <
-                    5f)
-                {
-                    btnColect.SetActive(true);
-                    if (brainrot.outline) brainrot.outline.SetFloat("_OutlineWidth", 0.1f);
-                }
-                else
-                {
-                    btnColect.SetActive(false);
-                    if (brainrot.outline) brainrot.outline.SetFloat("_OutlineWidth", 0f);
-                }
+                SafeSetActive(btnColect, near);
+                if (brainrot.outline) brainrot.outline.SetFloat("_OutlineWidth", near ? 0.1f : 0f);
             }
             else
             {
-                btnColect.SetActive(false);
+                SafeSetActive(btnColect, false);
 
                 if (brainrot.indBase != 0)
                 {
-                    if (!isSteal)
-                    {
+                    bool canShowSteal =
+                        near &&
+                        !brainrot.isMovingHome &&
+                        !isSteal &&
+                        !(player != null && player.isStealing);
 
-                    }
-
+                    SafeSetActive(btnSteal, canShowSteal);
+                    SafeSetActive(btnSell, false);
                 }
                 else
                 {
-                    if (Vector3.Distance(brainrot.transform.GetChild(0).position, Player.Instance.character.transform.position + Vector3.up * 3) < 5f && brainrot.isMovingHome == false)
+                    bool canShowSell = near && !brainrot.isMovingHome;
+                    SafeSetActive(btnSell, canShowSell);
+
+                    if (canShowSell && btnSell != null)
                     {
-                        btnSell.SetActive(true);
-                        btnSell.transform.GetChild(0).GetComponent<TextMeshPro>().text = $"Sell  {(int)(brainrot.cost / 2)}$";
-                    }
-                    else
-                    {
-                        btnSell.SetActive(false);
+                        var tmp = btnSell.transform.GetChild(0).GetComponent<TextMeshPro>();
+                        if (tmp != null) tmp.text = $"Sell  {(int)(brainrot.cost / 2)}$";
                     }
 
+                    SafeSetActive(btnSteal, false);
                 }
             }
         }
 
+        private bool IsPlayerNear()
+        {
+            Vector3 playerFocus = _playerT.position + Vector3.up * 3f;
+            Vector3 delta = _brainrotHead.position - playerFocus;
+            return delta.sqrMagnitude <= _interactSqr;
+        }
+
+        private static void SafeSetActive(GameObject go, bool active)
+        {
+            if (go != null && go.activeSelf != active)
+                go.SetActive(active);
+        }
+
         void Tap()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            if (!Camera.main) return;
 
-            if (Physics.Raycast(ray, out hit, 100f, layerMaskPet))
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit, 100f, layerMaskPet))
             {
                 GameObject hitObject = hit.collider.gameObject;
 
-                if (hitObject == btnColect.gameObject)
+                if (hitObject == btnColect)
                 {
                     Buy(0, this.brainrot);
                 }
-                else
+                else if (hitObject == btnSteal)
                 {
-                    if (hitObject == btnSteal.gameObject)
-                    {
-                        Steal();
-                    }
-
-                    if (hitObject == btnSell.gameObject)
-                    {
-                        Sell();
-                    }
+                    Steal();
+                }
+                else if (hitObject == btnSell)
+                {
+                    Sell();
                 }
             }
         }
@@ -123,13 +170,12 @@ namespace Game
 
             DataStealBrainrot.instance.CashUpdate((int)(brainrot.cost / 2));
             DataStealBrainrot.RemoveBaseSlot(brainrot.targetSlot.slotId);
-
             brainrot.SellBrainrot();
-
-
         }
+
         public void Steal()
         {
+            player.StealingBrainrot(brainrot);
             LDebug.Log<StealBrainrot_BrainrotInfor>($"Steal");
         }
 
@@ -187,6 +233,7 @@ namespace Game
             brainrot.target = tSlot;
             brainrot.canMove = true;
             brainrot.isMovingHome = true;
+            brainrot.indBase = p.baseSlot.baseID;
 
             int slotIndex = p.baseSlot.slots.IndexOf(slot);
             if (slotIndex >= 0)
@@ -194,7 +241,5 @@ namespace Game
 
             brainrot.BuyBrainrot();
         }
-
-
     }
 }

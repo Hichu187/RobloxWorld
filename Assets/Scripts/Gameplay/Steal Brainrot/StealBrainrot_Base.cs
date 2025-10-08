@@ -11,6 +11,10 @@ namespace Game
 
         public List<StealBrainrot_Slot> slots;
 
+        private void Awake()
+        {
+            SetSlotID();
+        }
 
         public void SetLock(bool isLock)
         {

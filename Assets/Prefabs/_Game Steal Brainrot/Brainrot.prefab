@@ -1884,7 +1884,7 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
   moveSpeed: 5
-  detectRadius: 3
+  detectRadius: 2
   outline: {fileID: 0}
   targetSlot: {fileID: 0}
   target: {fileID: 0}
@@ -2224,6 +2224,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   brainrot: {fileID: 7039651504622356813}
+  interactDistance: 3
   isSteal: 0
   buy: {fileID: 446796934813612029}
   ads: {fileID: 8079659406584758476}

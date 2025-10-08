@@ -11,8 +11,8 @@ namespace Game
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
             if (isCollected) return;
-
             slot = GetComponentInParent<StealBrainrot_Slot>();
+            if (character.GetComponent<StealBrainrot_Player>().baseSlot.baseID != slot.baseId) return;
 
             if (slot.brainrot != null && slot.totalEarn > 0)
             {

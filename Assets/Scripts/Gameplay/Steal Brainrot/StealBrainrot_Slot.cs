@@ -2,11 +2,12 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
+using UnityEditor.Graphs;
 using UnityEngine;
 
 namespace Game
 {
-    public class StealBrainrot_Slot : MonoBehaviour
+    public class StealBrainrot_Slot : MonoBehaviour, ICharacterCollidable
     {
         public StealBrainrot_Brainrot brainrot;
         public TMP_Text txtTotalEarn;
@@ -20,6 +21,30 @@ namespace Game
         public int totalEarn = 0;
 
         private Coroutine _generateRoutine;
+
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
+        {
+            if (!isEmpty) return;
+            if (character.GetComponent<StealBrainrot_Player>().baseSlot.baseID != baseId) return;
+            if (!character.GetComponent<StealBrainrot_Player>()) return;
+            if (!character.GetComponent<StealBrainrot_Player>().isStealing) return;
+
+            character.GetComponent<StealBrainrot_Player>().StealingDone(this);
+
+        }
+
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
+        {
+        }
+
+        void ICharacterCollidable.OnTriggerExit(CharacterControl character)
+        {
+        }
+
+        void ICharacterCollidable.OnCollisionExit(CharacterControl character)
+        {
+
+        }
 
         public void SetBrainrot(StealBrainrot_Brainrot br)
         {

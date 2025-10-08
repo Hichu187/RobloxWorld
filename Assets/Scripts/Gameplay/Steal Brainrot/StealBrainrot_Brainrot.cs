@@ -24,7 +24,6 @@ namespace Game
         public Transform startPoint;
         public Transform endPoint;
         public float moveSpeed = 3f;
-        public float detectRadius = 3f;
 
         [Title("VFX")]
         public Material outline;
@@ -75,7 +74,7 @@ namespace Game
 
             target = tSlot;
 
-            indBase = 0;
+            //indBase = 0;
         }
 
         public void SellBrainrot()
