@@ -9,16 +9,19 @@ namespace Game
     {
         public int baseID;
 
+        public Transform playerSpawnPosition;
+        public GameObject gateLock;
         public List<StealBrainrot_Slot> slots;
 
         private void Awake()
         {
             SetSlotID();
+            SetLock(false);
         }
 
         public void SetLock(bool isLock)
         {
-
+            gateLock.gameObject.SetActive(isLock);
         }
 
 
