@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public class StealBrainrot_Canvas : MonoBehaviour
+    public class StealBrainrot_View : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _cashText;
         [SerializeField] private float _tweenDuration = 0.35f;
@@ -69,7 +69,7 @@ namespace Game
 
         public void SetCashText(int totalCash)
         {
-            if(totalCash > 100000)
+            if (totalCash > 100000)
             {
                 _cashText.text = StealBrainrot_Manager.FormatMoney(totalCash);
             }

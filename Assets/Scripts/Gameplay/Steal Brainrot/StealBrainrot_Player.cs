@@ -12,6 +12,11 @@ namespace Game
         private StealBrainrot_Brainrot takedBrainrot;
         private Transform _preTrans;
         private StealBrainrot_Slot _preSlot;
+
+        private void Start()
+        {
+            if (baseSlot != null) Player.Instance.character.motor.SetPositionAndRotation(baseSlot.playerSpawnPosition.position, baseSlot.playerSpawnPosition.rotation);
+        }
         public void StealingBrainrot(StealBrainrot_Brainrot brainrot)
         {
             isStealing = true;

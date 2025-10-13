@@ -16,6 +16,7 @@ namespace Game
 
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
+            if (character.GetComponent<StealBrainrot_Player>().baseSlot != _base) return; 
             if (!isLocked)
                 Lock();
         }
