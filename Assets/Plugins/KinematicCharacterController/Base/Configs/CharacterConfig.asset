@@ -17,7 +17,7 @@ MonoBehaviour:
   _orientationBonusSharpness: 1000
   _groundMoveSpeedMax: 7
   _groundMoveSharpness: 1350
-  _airMoveSpeedMax: 6.25
+  _airMoveSpeedMax: 6
   _airAccelerationSpeed: 800
   _airDrag: 0.2
   _jumpSpeed: 14

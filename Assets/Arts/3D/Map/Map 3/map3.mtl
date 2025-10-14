@@ -1,0 +1,946 @@
+newmtl 2001Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.0234425 0.0231273 0.02408 
+
+d 1
+
+Ns 0
+
+newmtl Domempprop1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Domempprop1_diff.png
+map_Kd Domempprop1_diff.png
+map_d Domempprop1_diff.png
+
+newmtl Part1367Mtl
+Material Color
+Ka 0.804559 0.804559 0.84337
+Kd 0.804559 0.804559 0.84337
+Ks 0.318669 0.318669 0.334041 
+
+d 0.501961
+
+Ns 0
+
+newmtl Union1Mtl
+Material Color
+Ka 0.353741 0.363604 0.420508
+Kd 0.353741 0.363604 0.420508
+Ks 0.0416166 0.0427769 0.0494715 
+
+d 1
+
+Ns 0
+
+map_Ka Union1_diff.png
+map_Kd Union1_diff.png
+map_d Union1_diff.png
+
+map_Bump Union1_nmap.png
+
+newmtl Part1360Mtl
+Material Color
+Ka 0.00258583 0.00258583 0.00258583
+Kd 0.00258583 0.00258583 0.00258583
+Ks 0.00102419 0.00102419 0.00102419 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel36Mtl
+Material Color
+Ka 0.91575 0.618686 0.0253713
+Kd 0.91575 0.618686 0.0253713
+Ks 0.0574588 0.0388195 0.00159192 
+
+d 0.85098
+
+Ns 0
+
+newmtl PutTheWeaponInThisBrick6Mtl
+Material Color
+Ka 0.891262 0.899384 0.899384
+Kd 0.891262 0.899384 0.899384
+Ks 0.0559223 0.056432 0.056432 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel16Mtl
+Material Color
+Ka 0.00143313 0.14198 0.420508
+Kd 0.00143313 0.14198 0.420508
+Ks 8.99222e-05 0.00890857 0.0263848 
+
+d 0.701961
+
+Ns 0
+
+newmtl SmoothBlockModel11Mtl
+Material Color
+Ka 0.91575 0.618686 0.0253713
+Kd 0.91575 0.618686 0.0253713
+Ks 0.0574588 0.0388195 0.00159192 
+
+d 0.701961
+
+Ns 0
+
+newmtl SmoothBlockModel1Mtl
+Material Color
+Ka 0.560499 0.0169881 0.00775103
+Kd 0.560499 0.0169881 0.00775103
+Ks 0.0351686 0.00106592 0.000486339 
+
+d 0.701961
+
+Ns 0
+
+newmtl Part1056Mtl
+Material Color
+Ka 0.20471 0.106156 0.0581872
+Kd 0.20471 0.106156 0.0581872
+Ks 0.011239 0.00582818 0.00319459 
+
+d 1
+
+Ns 0
+
+map_Ka Part1056_diff.png
+map_Kd Part1056_diff.png
+map_d Part1056_diff.png
+
+map_Bump Part1056_nmap.png
+
+map_Ns Part1056_spec.png
+
+newmtl Part917Mtl
+Material Color
+Ka 0.121986 0.0143105 0.645555
+Kd 0.121986 0.0143105 0.645555
+Ks 0.00765401 0.000897915 0.0405054 
+
+d 1
+
+Ns 0
+
+newmtl Domvespprop1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Domvespprop1_diff.png
+map_Kd Domvespprop1_diff.png
+map_d Domvespprop1_diff.png
+
+newmtl Part912Mtl
+Material Color
+Ka 0.378676 0.517401 0.0600316
+Kd 0.378676 0.517401 0.0600316
+Ks 0.0237601 0.0324644 0.00376669 
+
+d 1
+
+Ns 0
+
+newmtl Part730Mtl
+Material Color
+Ka 1 0.320382 0.722672
+Kd 1 0.320382 0.722672
+Ks 0.0627451 0.0201024 0.0453442 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel26Mtl
+Material Color
+Ka 0.891262 0.899384 0.899384
+Kd 0.891262 0.899384 0.899384
+Ks 0.0559223 0.056432 0.056432 
+
+d 0.701961
+
+Ns 0
+
+newmtl Part725Mtl
+Material Color
+Ka 0.982826 0.827726 0.271577
+Kd 0.982826 0.827726 0.271577
+Ks 0.0616675 0.0519357 0.0170402 
+
+d 1
+
+Ns 0
+
+newmtl Part713Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Part713_diff.png
+map_Kd Part713_diff.png
+map_d Part713_diff.png
+
+newmtl Part498Mtl
+Material Color
+Ka 0.00143313 0.14198 0.420508
+Kd 0.00143313 0.14198 0.420508
+Ks 0.000129263 0.0128061 0.0379282 
+
+d 0.501961
+
+Ns 0
+
+newmtl Part401Mtl
+Material Color
+Ka 1 0.0986892 0.0986892
+Kd 1 0.0986892 0.0986892
+Ks 0.0627451 0.00619226 0.00619226 
+
+d 1
+
+Ns 0
+
+newmtl Dominfprop1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Dominfprop1_diff.png
+map_Kd Dominfprop1_diff.png
+map_d Dominfprop1_diff.png
+
+newmtl Part325Mtl
+Material Color
+Ka 0.00715504 0.018913 0.0315514
+Kd 0.00715504 0.018913 0.0315514
+Ks 0.000448943 0.0011867 0.0019797 
+
+d 1
+
+Ns 0
+
+newmtl Part174Mtl
+Material Color
+Ka 0.867136 0.487765 0.0356144
+Kd 0.867136 0.487765 0.0356144
+Ks 0.0544085 0.0306049 0.00223463 
+
+d 1
+
+Ns 0
+
+newmtl Part163Mtl
+Material Color
+Ka 0.0384727 0.20836 0.00411618
+Kd 0.0384727 0.20836 0.00411618
+Ks 0.00241398 0.0130735 0.00025827 
+
+d 1
+
+Ns 0
+
+newmtl Domfriprop1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Domfriprop1_diff.png
+map_Kd Domfriprop1_diff.png
+map_d Domfriprop1_diff.png
+
+newmtl Part133Mtl
+Material Color
+Ka 1 0.442323 0
+Kd 1 0.442323 0
+Ks 0.0627451 0.0277536 0 
+
+d 1
+
+Ns 0
+
+newmtl Part496Mtl
+Material Color
+Ka 1 0 0
+Kd 1 0 0
+Ks 0.0901961 0 0 
+
+d 0.501961
+
+Ns 0
+
+newmtl Part122Mtl
+Material Color
+Ka 0.436813 0.729919 1
+Kd 0.436813 0.729919 1
+Ks 0.0274079 0.0457988 0.0627451 
+
+d 1
+
+Ns 0
+
+newmtl Part351Mtl
+Material Color
+Ka 0.409826 0.0891935 1
+Kd 0.409826 0.0891935 1
+Ks 0.0257146 0.00559646 0.0627451 
+
+d 1
+
+Ns 0
+
+newmtl Kill1Mtl
+Material Color
+Ka 1 0 0
+Kd 1 0 0
+Ks 0.0627451 0 0 
+
+d 1
+
+Ns 0
+
+newmtl Part113Mtl
+Material Color
+Ka 0.201096 0.0242229 0.201096
+Kd 0.201096 0.0242229 0.201096
+Ks 0.0126178 0.00151987 0.0126178 
+
+d 1
+
+Ns 0
+
+newmtl Part87Mtl
+Material Color
+Ka 0.991393 0.899384 0.505432
+Kd 0.991393 0.899384 0.505432
+Ks 0.062205 0.056432 0.0317134 
+
+d 1
+
+Ns 0
+
+newmtl Part108Mtl
+Material Color
+Ka 0 0 1
+Kd 0 0 1
+Ks 0 0 0.0627451 
+
+d 1
+
+Ns 0
+
+newmtl Part123Mtl
+Material Color
+Ka 0.409826 0 0.409826
+Kd 0.409826 0 0.409826
+Ks 0.0257146 0 0.0257146 
+
+d 1
+
+Ns 0
+
+newmtl Part99Mtl
+Material Color
+Ka 0.436813 0.302126 0.230998
+Kd 0.436813 0.302126 0.230998
+Ks 0.0274079 0.0189569 0.014494 
+
+d 1
+
+Ns 0
+
+newmtl 2008Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka 2008_diff.png
+map_Kd 2008_diff.png
+map_d 2008_diff.png
+
+newmtl Part112Mtl
+Material Color
+Ka 0 0.280124 0.339223
+Kd 0 0.280124 0.339223
+Ks 0 0.0175764 0.0212846 
+
+d 1
+
+Ns 0
+
+newmtl Part1373Mtl
+Material Color
+Ka 0.687031 0.56681 0.329729
+Kd 0.687031 0.56681 0.329729
+Ks 0.0808272 0.0666835 0.0387917 
+
+d 1
+
+Ns 0
+
+map_Ka Union1_diff.png
+map_Kd Union1_diff.png
+map_d Union1_diff.png
+
+map_Bump Union1_nmap.png
+
+newmtl Part309Mtl
+Material Color
+Ka 0.0824142 0.20471 0.43134
+Kd 0.0824142 0.20471 0.43134
+Ks 0.00517109 0.0128446 0.0270645 
+
+d 1
+
+Ns 0
+
+newmtl Part162Mtl
+Material Color
+Ka 0.560499 0.0169881 0.00775103
+Kd 0.560499 0.0169881 0.00775103
+Ks 0.0351686 0.00106592 0.000486339 
+
+d 1
+
+Ns 0
+
+newmtl Part51Mtl
+Material Color
+Ka 0.394083 0.111299 0.334458
+Kd 0.394083 0.111299 0.334458
+Ks 0.0247268 0.00698349 0.0209856 
+
+d 1
+
+Ns 0
+
+newmtl Part88Mtl
+Material Color
+Ka 0.0209511 0.130352 0.00837312
+Kd 0.0209511 0.130352 0.00837312
+Ks 0.00131458 0.00817897 0.000525372 
+
+d 1
+
+Ns 0
+
+newmtl Part76Mtl
+Material Color
+Ka 0.157281 0.325037 0.598942
+Kd 0.157281 0.325037 0.598942
+Ks 0.0098686 0.0203945 0.0375807 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel31Mtl
+Material Color
+Ka 0.00715504 0.018913 0.0315514
+Kd 0.00715504 0.018913 0.0315514
+Ks 0.000448943 0.0011867 0.0019797 
+
+d 0.701961
+
+Ns 0
+
+newmtl Part177Mtl
+Material Color
+Ka 0.91575 0.618686 0.0253713
+Kd 0.91575 0.618686 0.0253713
+Ks 0.0574588 0.0388195 0.00159192 
+
+d 1
+
+Ns 0
+
+newmtl Truss15Mtl
+Material Color
+Ka 0.00258583 0.00258583 0.00258583
+Kd 0.00258583 0.00258583 0.00258583
+Ks 0.000162248 0.000162248 0.000162248 
+
+d 1
+
+Ns 0
+
+newmtl Part73Mtl
+Material Color
+Ka 0.00226295 0.018913 0.722672
+Kd 0.00226295 0.018913 0.722672
+Ks 0.000141989 0.0011867 0.0453442 
+
+d 1
+
+Ns 0
+
+newmtl Part44Mtl
+Material Color
+Ka 0.180144 0 0
+Kd 0.180144 0 0
+Ks 0.0113032 0 0 
+
+d 1
+
+Ns 0
+
+newmtl Part68Mtl
+Material Color
+Ka 0.0289912 0.0962661 0.227137
+Kd 0.0289912 0.0962661 0.227137
+Ks 0.00181905 0.00604023 0.0142517 
+
+d 1
+
+Ns 0
+
+newmtl Part45Mtl
+Material Color
+Ka 0.447871 0.394083 1
+Kd 0.447871 0.394083 1
+Ks 0.0281017 0.0247268 0.0627451 
+
+d 1
+
+Ns 0
+
+newmtl Part65Mtl
+Material Color
+Ka 0.708298 0.238828 0.0494335
+Kd 0.708298 0.238828 0.0494335
+Ks 0.0444422 0.0149853 0.00310171 
+
+d 1
+
+Ns 0
+
+newmtl Part57Mtl
+Material Color
+Ka 1 0.133209 0.612066
+Kd 1 0.133209 0.612066
+Ks 0.0627451 0.00835818 0.0384041 
+
+d 1
+
+Ns 0
+
+newmtl Truss7Mtl
+Material Color
+Ka 0.00293232 0.859174 0.666117
+Kd 0.00293232 0.859174 0.666117
+Ks 0.000183989 0.0539089 0.0417956 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel21Mtl
+Material Color
+Ka 0.147998 0.0277553 0.20471
+Kd 0.147998 0.0277553 0.20471
+Ks 0.00928615 0.00174151 0.0128446 
+
+d 0.701961
+
+Ns 0
+
+newmtl Part61Mtl
+Material Color
+Ka 0.201096 0 0.201096
+Kd 0.201096 0 0.201096
+Ks 0.0126178 0 0.0126178 
+
+d 1
+
+Ns 0
+
+newmtl Part59Mtl
+Material Color
+Ka 0.511398 0.334458 0.108711
+Kd 0.511398 0.334458 0.108711
+Ks 0.0320877 0.0209856 0.00682109 
+
+d 1
+
+Ns 0
+
+newmtl Part33Mtl
+Material Color
+Ka 0.147998 0.0277553 0.20471
+Kd 0.147998 0.0277553 0.20471
+Ks 0.00928615 0.00174151 0.0128446 
+
+d 1
+
+Ns 0
+
+newmtl Part70Mtl
+Material Color
+Ka 0.00969633 0.21952 0.00837312
+Kd 0.00969633 0.21952 0.00837312
+Ks 0.000608397 0.0137738 0.000525372 
+
+d 1
+
+Ns 0
+
+newmtl Truss4Mtl
+Material Color
+Ka 0.267358 0.103634 0.353741
+Kd 0.267358 0.103634 0.353741
+Ks 0.0167754 0.00650253 0.0221955 
+
+d 1
+
+Ns 0
+
+newmtl Truss12Mtl
+Material Color
+Ka 0.0111261 0.0869013 0.493616
+Kd 0.0111261 0.0869013 0.493616
+Ks 0.000698107 0.00545263 0.030972 
+
+d 1
+
+Ns 0
+
+newmtl Part107Mtl
+Material Color
+Ka 0.042987 0.00411618 0.238828
+Kd 0.042987 0.00411618 0.238828
+Ks 0.00269722 0.00025827 0.0149853 
+
+d 1
+
+Ns 0
+
+newmtl Truss1Mtl
+Material Color
+Ka 1 1 0
+Kd 1 1 0
+Ks 0.0627451 0.0627451 0 
+
+d 1
+
+Ns 0
+
+newmtl Truss5Mtl
+Material Color
+Ka 0.0915184 0.0134734 0.0134734
+Kd 0.0915184 0.0134734 0.0134734
+Ks 0.00574233 0.00084539 0.00084539 
+
+d 1
+
+Ns 0
+
+newmtl Truss3Mtl
+Material Color
+Ka 0.0780566 0.154152 0.0869013
+Kd 0.0780566 0.154152 0.0869013
+Ks 0.00489767 0.0096723 0.00545263 
+
+d 1
+
+Ns 0
+
+newmtl Part169Mtl
+Material Color
+Ka 0.00143313 0.14198 0.420508
+Kd 0.00143313 0.14198 0.420508
+Ks 8.99222e-05 0.00890857 0.0263848 
+
+d 1
+
+Ns 0
+
+newmtl Part34Mtl
+Material Color
+Ka 0.766744 0.334458 0.0477758
+Kd 0.766744 0.334458 0.0477758
+Ks 0.0481094 0.0209856 0.00299769 
+
+d 1
+
+Ns 0
+
+newmtl Part89Mtl
+Material Color
+Ka 0.306635 0.254916 0.25084
+Kd 0.306635 0.254916 0.25084
+Ks 0.0192398 0.0159947 0.015739 
+
+d 1
+
+Ns 0
+
+newmtl Part13Mtl
+Material Color
+Ka 0 1 0
+Kd 0 1 0
+Ks 0 0.0627451 0 
+
+d 1
+
+Ns 0
+
+newmtl Truss2Mtl
+Material Color
+Ka 0.000107187 0.436813 0.84337
+Kd 0.000107187 0.436813 0.84337
+Ks 6.72548e-06 0.0274079 0.0529173 
+
+d 1
+
+Ns 0
+
+newmtl Truss10Mtl
+Material Color
+Ka 0.0677246 0.315763 0.0677246
+Kd 0.0677246 0.315763 0.0677246
+Ks 0.00424939 0.0198126 0.00424939 
+
+d 1
+
+Ns 0
+
+newmtl Part20Mtl
+Material Color
+Ka 0.673049 0.173439 0.042987
+Kd 0.673049 0.173439 0.042987
+Ks 0.0422305 0.0108824 0.00269722 
+
+d 1
+
+Ns 0
+
+newmtl Part56Mtl
+Material Color
+Ka 0.311181 0.136099 0.133209
+Kd 0.311181 0.136099 0.133209
+Ks 0.0195251 0.00853952 0.00835818 
+
+d 1
+
+Ns 0
+
+newmtl SmoothBlockModel6Mtl
+Material Color
+Ka 0.0169881 0.215764 0.0600316
+Kd 0.0169881 0.215764 0.0600316
+Ks 0.00106592 0.0135382 0.00376669 
+
+d 0.701961
+
+Ns 0
+
+newmtl Part52Mtl
+Material Color
+Ka 0.25084 0.0445526 0.0445526
+Kd 0.25084 0.0445526 0.0445526
+Ks 0.015739 0.00279546 0.00279546 
+
+d 1
+
+Ns 0
+
+newmtl Part1057Mtl
+Material Color
+Ka 0.612066 0.275833 0.14198
+Kd 0.612066 0.275833 0.14198
+Ks 0.0336036 0.0151438 0.007795 
+
+d 1
+
+Ns 0
+
+map_Ka Part1056_diff.png
+map_Kd Part1056_diff.png
+map_d Part1056_diff.png
+
+map_Bump Part1056_nmap.png
+
+map_Ns Part1056_spec.png
+
+newmtl Part120Mtl
+Material Color
+Ka 0.315763 0 0
+Kd 0.315763 0 0
+Ks 0.0198126 0 0 
+
+d 1
+
+Ns 0
+
+newmtl Part494Mtl
+Material Color
+Ka 0.103634 0.108711 0.14198
+Kd 0.103634 0.108711 0.14198
+Ks 0.00650253 0.00682109 0.00890857 
+
+d 1
+
+Ns 0
+
+newmtl Kill5Mtl
+Material Color
+Ka 0.560499 0.0169881 0.00775103
+Kd 0.560499 0.0169881 0.00775103
+Ks 0.0505548 0.00153226 0.000699112 
+
+d 0.803922
+
+Ns 0
+
+newmtl Dommessprop1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Dommessprop1_diff.png
+map_Kd Dommessprop1_diff.png
+map_d Dommessprop1_diff.png
+
+newmtl Part6Mtl
+Material Color
+Ka 0.0169881 0.215764 0.0600316
+Kd 0.0169881 0.215764 0.0600316
+Ks 0.00106592 0.0135382 0.00376669 
+
+d 1
+
+Ns 0
+
+newmtl Part249Mtl
+Material Color
+Ka 0.373615 0.0677246 0.0677246
+Kd 0.373615 0.0677246 0.0677246
+Ks 0.0234425 0.00424939 0.00424939 
+
+d 1
+
+Ns 0
+
+newmtl Part54Mtl
+Material Color
+Ka 0.0302565 0.275833 0.0477758
+Kd 0.0302565 0.275833 0.0477758
+Ks 0.00189845 0.0173072 0.00299769 
+
+d 1
+
+Ns 0
+
+newmtl Part60Mtl
+Material Color
+Ka 0.358654 0.113921 0.0315514
+Kd 0.358654 0.113921 0.0315514
+Ks 0.0225038 0.00714798 0.0019797 
+
+d 1
+
+Ns 0
+
+newmtl Part11Mtl
+Material Color
+Ka 0 0.00226295 0.442323
+Kd 0 0.00226295 0.442323
+Ks 0 0.000141989 0.0277536 
+
+d 1
+
+Ns 0
+
+newmtl Part19Mtl
+Material Color
+Ka 0.0160677 0.0581872 0.022013
+Kd 0.0160677 0.0581872 0.022013
+Ks 0.00100817 0.00365096 0.00138121 
+
+d 1
+
+Ns 0
+
+newmtl Truss9Mtl
+Material Color
+Ka 0.0986892 0.0118813 0.0986892
+Kd 0.0986892 0.0118813 0.0986892
+Ks 0.00619226 0.000745496 0.00619226 
+
+d 1
+
+Ns 0
+
+newmtl Truss6Mtl
+Material Color
+Ka 0.176774 0.242796 0.344026
+Kd 0.176774 0.242796 0.344026
+Ks 0.0110917 0.0152343 0.0215859 
+
+d 1
+
+Ns 0
+
+newmtl Part286Mtl
+Material Color
+Ka 0 0.0103978 0.116576
+Kd 0 0.0103978 0.116576
+Ks 0 0.000652411 0.00731456 
+
+d 1
+
+Ns 0
+
+newmtl Part1Mtl
+Material Color
+Ka 0.180144 0 0
+Kd 0.180144 0 0
+Ks 0.0713513 0 0 
+
+d 1
+
+Ns 0
+
