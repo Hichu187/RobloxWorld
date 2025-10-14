@@ -7,11 +7,17 @@ namespace Game
     public class DataStealBrainrot : LDataBlock<DataStealBrainrot>
     {
         [SerializeField] private int _cash = 1000;
-
+        [SerializeField] private int _curSlap = 0;
         public static int cash
         {
             get => instance._cash;
             set => instance._cash = value;
+        }
+
+        public static int curSlap
+        {
+            get => instance._curSlap;
+            set => instance._curSlap = value;
         }
 
         [SerializeField] private Dictionary<int, int> _baseSlots = new();
@@ -23,6 +29,13 @@ namespace Game
             _cash += cashDelta;
             bool increase = cashDelta > 0;
             StaticBus<Event_Cash_Update>.Post(new Event_Cash_Update(cashDelta, increase));
+            Save();
+        }
+
+        public static void SetSlapIndex(int index)
+        {
+            curSlap = index;
+
             Save();
         }
 
@@ -58,5 +71,7 @@ namespace Game
         {
             return !instance._baseSlots.ContainsKey(slotIndex);
         }
+
+
     }
 }

@@ -32,6 +32,7 @@ namespace Game
 
             isLocked = true;
             _base.SetLock(true);
+            lockTxt.color = Color.green;
             if (lockRoutine != null) StopCoroutine(lockRoutine);
             lockRoutine = StartCoroutine(Co_LockCountdown());
         }
@@ -62,7 +63,11 @@ namespace Game
             _base.SetLock(false);
 
             if (lockTxt != null)
-                lockTxt.gameObject.SetActive(false);
+            {
+                lockTxt.text = "Lock";
+                lockTxt.color = Color.red;
+            }
+
 
             lockRoutine = null;
         }

@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ded84c2ae35aeb343b7cee40276b202b
   m_SerializeEntries:
+  - m_GUID: 697c9a8fb1bd0a04eb0f3c3f75e5254a
+    m_Address: Assets/Prefabs/GUI/Slap Bag/Bag View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cbd679fbab12ac44895e3b60bdaa37d
+    m_Address: Assets/Prefabs/GUI/Index/Index View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ecdec0ef9436e84ebe19b1336392fb9
     m_Address: Assets/Prefabs/GUI/Pet Bag/Open Egg View.prefab
     m_ReadOnly: 0
