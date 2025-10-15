@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: b95f836f7d390bf4bbab17c13cdaecee, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
   - _GLOSSYREFLECTIONS_OFF
   - _SPECULARHIGHLIGHTS_OFF
   m_InvalidKeywords: []
@@ -19,7 +20,8 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -30,3 +32,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.25490198, b: 0.21176471, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

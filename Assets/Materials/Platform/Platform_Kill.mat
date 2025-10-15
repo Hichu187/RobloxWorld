@@ -75,7 +75,7 @@ Material:
     - _GlowStencilComp: 6
     - _GlowStencilOp: 0
     - _GlowZTest: 4
-    - _Metallic: 0
+    - _Metallic: 0.5
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -86,9 +86,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1024, g: 0, b: 0, a: 1}
     - _Glow: {r: 1, g: 0.025, b: 0.75, a: 0.5}
     - _Glow2: {r: 0.01, g: 1, b: 0.5, a: 0}
     - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
     - _GlowDirection: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
