@@ -6,8 +6,6 @@ namespace Game
     [DisallowMultipleComponent]
     public class StealBrainrot_BaseGate : MonoBehaviour
     {
-        [SerializeField] private GameObject barriePrefab;
-
         private BoxCollider _collider;
         private StealBrainrot_Base _base;
 
@@ -25,25 +23,25 @@ namespace Game
 
         private void OnCollisionEnter(Collision other)
         {
-            if (!IsValidCharacter(other.transform, out var player))
+            if (!IsValidCharacter(other.transform, out var playerBaseID))
                 return;
 
-            if (player.baseSlot != null && _base != null && player.baseSlot.baseID == _base.baseID)
+            if (_base != null && playerBaseID == _base.baseID)
                 _collider.isTrigger = true;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsValidCharacter(other.transform, out var player))
+            if (!IsValidCharacter(other.transform, out var playerBaseID))
                 return;
 
-            if (player.baseSlot != null && _base != null && player.baseSlot.baseID != _base.baseID)
+            if (_base != null && playerBaseID != _base.baseID)
                 _collider.isTrigger = false;
         }
 
-        private bool IsValidCharacter(Transform target, out StealBrainrot_Player player)
+        private bool IsValidCharacter(Transform target, out int baseID)
         {
-            player = null;
+            baseID = -1;
 
             if (target == null || target.gameObject.layer != LayerMask.NameToLayer("Character"))
                 return false;
@@ -52,8 +50,21 @@ namespace Game
             if (parent == null)
                 return false;
 
-            player = parent.GetComponent<StealBrainrot_Player>();
-            return player != null;
+            var player = parent.GetComponent<StealBrainrot_Player>();
+            if (player != null && player.baseSlot != null)
+            {
+                baseID = player.baseSlot.baseID;
+                return true;
+            }
+
+            var ai = parent.GetComponent<StealBrainrot_AI>();
+            if (ai != null && ai.curBase != null)
+            {
+                baseID = ai.curBase.baseID;
+                return true;
+            }
+
+            return false;
         }
     }
 }

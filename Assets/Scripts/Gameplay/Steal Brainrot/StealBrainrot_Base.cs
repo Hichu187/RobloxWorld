@@ -10,6 +10,7 @@ namespace Game
         public int baseID;
 
         public Transform playerSpawnPosition;
+        public Transform lockButton;
         public GameObject gateLock;
         public List<StealBrainrot_Slot> slots;
 

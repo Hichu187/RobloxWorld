@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.AddressableAssets;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game
 {
@@ -10,21 +10,26 @@ namespace Game
         public Transform startPoint;
         public Transform endPoint;
 
+        public List<StealBrainrot_Base> baseLists;
+        private void Awake()
+        {
+            instance = this;
+        }
         public static string FormatMoney(long value)
         {
-            if (value >= 1_000_000_000_000) // ngàn tỷ
+            if (value >= 1_000_000_000_000)
                 return (value / 1_000_000_000_000f).ToString("0.#") + "T";
 
-            if (value >= 1_000_000_000) // tỷ
+            if (value >= 1_000_000_000)
                 return (value / 1_000_000_000f).ToString("0.#") + "B";
 
-            if (value >= 1_000_000) // triệu
+            if (value >= 1_000_000)
                 return (value / 1_000_000f).ToString("0.#") + "M";
 
-            if (value >= 1_000) // ngàn
+            if (value >= 1_000)
                 return (value / 1_000f).ToString("0.#") + "K";
 
-            return value.ToString(); // nhỏ hơn 1000 thì giữ nguyên
+            return value.ToString();
         }
     }
 }
