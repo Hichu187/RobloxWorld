@@ -12,6 +12,7 @@ namespace Game
         [Title("Reference")]
         [SerializeField] private AIWaypoint[] _waypoints;
 
+        public AIWaypoint[] waypoints { get { return _waypoints; } }
         public AIWaypoint GetNearestWaypoint(Vector3 position)
         {
             AIWaypoint nearestWaypoint = _waypoints[0];

@@ -179,7 +179,7 @@ namespace Game
             LDebug.Log<StealBrainrot_BrainrotInfor>($"Steal");
         }
 
-        public void Buy(int playerId, StealBrainrot_Brainrot brainrot)
+        public void Buy(int playerId, StealBrainrot_Brainrot brainrot, StealBrainrot_AI ai = null)
         {
             var p = FindAnyObjectByType<StealBrainrot_Player>();
             if (p == null || p.baseSlot == null)
@@ -188,15 +188,16 @@ namespace Game
                 return;
             }
 
-            var slot = p.baseSlot.GetFirstEmptySlot();
-            if (slot == null)
-            {
-                UINotificationText.Push("FULL SLOT");
-                return;
-            }
 
             if (playerId == 0)
             {
+                var slot = p.baseSlot.GetFirstEmptySlot();
+                if (slot == null)
+                {
+                    UINotificationText.Push("FULL SLOT");
+                    return;
+                }
+
                 if (brainrot.bConfig.reward)
                 {
                     LDebug.Log<StealBrainrot_BrainrotInfor>("Ads Buy");
@@ -218,7 +219,12 @@ namespace Game
             }
             else
             {
-                BuyBrainrot(p, slot, brainrot);
+                var slot = ai.curBase.GetFirstEmptySlot();
+                if (slot == null)
+                {
+                    return;
+                }
+                AIBuyBrainrot(ai, slot, brainrot);
             }
         }
 
@@ -240,6 +246,26 @@ namespace Game
                 DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, brainrot.bConfig.ID);
 
             brainrot.BuyBrainrot();
+        }
+
+        private void AIBuyBrainrot(StealBrainrot_AI ai, StealBrainrot_Slot slot, StealBrainrot_Brainrot brainrot)
+        {
+            if (slot == null) return;
+
+            var tSlot = slot.stayPosition != null ? slot.stayPosition : slot.transform;
+
+            brainrot.isBought = true;
+            brainrot.targetSlot = slot;
+            brainrot.target = tSlot;
+            brainrot.canMove = true;
+            brainrot.isMovingHome = true;
+            brainrot.indBase = ai.curBase.baseID;
+
+            int slotIndex = ai.curBase.slots.IndexOf(slot);
+            if (slotIndex >= 0)
+                DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, brainrot.bConfig.ID);
+
+            brainrot.AIBuyBrainrot(ai);
         }
     }
 }

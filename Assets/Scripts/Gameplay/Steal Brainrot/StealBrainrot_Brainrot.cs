@@ -1,11 +1,12 @@
 ﻿using DG.Tweening;
 using Hichu;
 using Sirenix.OdinInspector;
+using UnityEditor.Graphs;
 using UnityEngine;
 
 namespace Game
 {
-    public class StealBrainrot_Brainrot : MonoBehaviour
+    public class StealBrainrot_Brainrot : TargetTrait
     {
         [Title("Reference")]
         public StealBrainrot_BrainrotInfor brainrotInfo;
@@ -75,6 +76,17 @@ namespace Game
             target = tSlot;
 
             //indBase = 0;
+        }
+
+        public void AIBuyBrainrot(StealBrainrot_AI ai)
+        {
+            Transform slot = ai.curBase.GetFirstEmptySlot().transform;
+
+            targetSlot = ai.curBase.GetFirstEmptySlot();
+
+            targetSlot.SetBrainrot(this);
+
+            target = slot;
         }
 
         public void SellBrainrot()

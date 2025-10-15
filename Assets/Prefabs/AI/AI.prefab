@@ -290,6 +290,14 @@ PrefabInstance:
       propertyPath: eyeHeight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1032
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7889693202153536713, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_Layer
       value: 3
