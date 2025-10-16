@@ -22,6 +22,7 @@ namespace Game
         [Title("Reference")]
         [SerializeField] private Character _character;
         [SerializeField] private Transform _characterFoward;
+        [SerializeField] private Transform _characterHoldingPos;
 
         [Title("Config")]
         [SerializeField] private float _turnSpeed = 120f;
@@ -43,6 +44,7 @@ namespace Game
         public Character character { get { return _character; } }
 
         public Transform characterFoward { get { return _characterFoward; } }
+        public Transform characterHoldingPos { get { return _characterHoldingPos; } }
 
         public AIAvoidance avoidance { get { return _avoidance; } }
 

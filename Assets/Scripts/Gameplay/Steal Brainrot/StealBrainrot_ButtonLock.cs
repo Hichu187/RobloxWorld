@@ -11,7 +11,7 @@ namespace Game
         [SerializeField] private TextMeshPro lockTxt;
         [SerializeField] private float lockTime = 60f;
 
-        private bool isLocked = false;
+        public bool isLocked = false;
         private Coroutine lockRoutine;
 
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)

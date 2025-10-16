@@ -149,6 +149,20 @@ namespace Game
 
                 _character.cRagdoll.ActivateRagdoll(Vector3.up * 5f, direction);
 
+                StealBrainrot_Player p = _character.GetComponent<StealBrainrot_Player>();
+                StealBrainrot_AI ai = _character.GetComponentInParent<StealBrainrot_AI>();
+
+                if(p != null && p.isStealing)
+                {
+                    p.ResetSteal();
+                }
+
+                if(ai != null && ai.isStealing)
+                {
+                    ai.ResetSteal();
+                }
+
+
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
                     _character.motor.enabled = true;

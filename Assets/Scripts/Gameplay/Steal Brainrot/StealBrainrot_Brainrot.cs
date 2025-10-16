@@ -75,6 +75,8 @@ namespace Game
 
             target = tSlot;
 
+            GetComponent<Collider>().enabled = false;
+
             //indBase = 0;
         }
 
@@ -87,6 +89,8 @@ namespace Game
             targetSlot.SetBrainrot(this);
 
             target = slot;
+
+            GetComponent<Collider>().enabled = false;
         }
 
         public void SellBrainrot()
