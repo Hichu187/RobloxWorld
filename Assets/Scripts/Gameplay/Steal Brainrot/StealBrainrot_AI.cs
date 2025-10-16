@@ -411,6 +411,11 @@ namespace Game
         {
             if (_takedBrainrot == null || slot == null) return;
 
+            if(_takedBrainrot.indBase == 0)
+            {
+                DataStealBrainrot.RemoveBaseSlot(_takedBrainrot.targetSlot.slotId);
+            }
+
             _takedBrainrot.targetSlot = slot;
             _takedBrainrot.target = slot.transform;
             _takedBrainrot.indBase = slot.baseId;
