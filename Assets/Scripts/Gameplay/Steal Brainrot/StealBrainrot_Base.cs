@@ -9,6 +9,7 @@ namespace Game
     {
         public int baseID;
 
+        public StealBrainrot_ButtonLock buttonLock;
         public Transform playerSpawnPosition;
         public Transform lockButton;
         public GameObject gateLock;

@@ -2815,6 +2815,7 @@ MonoBehaviour:
   _base: {fileID: 650858653212479101}
   lockTxt: {fileID: 8827809949697214463}
   lockTime: 60
+  isLocked: 0
 --- !u!65 &4860036392864459267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3649,7 +3650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b409e27c66134f4f91a1287c8c0af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barriePrefab: {fileID: 0}
 --- !u!65 &5140764507413820039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4343,6 +4343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseID: 0
+  buttonLock: {fileID: 2971540396460525923}
   playerSpawnPosition: {fileID: 3489939565281927864}
   lockButton: {fileID: 6396234944239361893}
   gateLock: {fileID: 3933798829542787460}
