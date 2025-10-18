@@ -83628,11 +83628,12 @@ MonoBehaviour:
   _spawnInterval: 2
   _spawnCount: -1
   _rankWeights:
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
+  - 50
+  - 30
+  - 12
+  - 5
+  - 2
+  - 1
 --- !u!43 &2084271650
 Mesh:
   m_ObjectHideFlags: 0

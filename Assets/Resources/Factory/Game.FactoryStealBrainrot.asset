@@ -13,7 +13,24 @@ MonoBehaviour:
   m_Name: Game.FactoryStealBrainrot
   m_EditorClassIdentifier: 
   _brainrotConfigs:
-  - {fileID: 11400000, guid: 3e090adb222ddaf4aa50b7b630f3ad14, type: 2}
   - {fileID: 11400000, guid: f418cd24f57bf6b44959c256f4bb44d3, type: 2}
   - {fileID: 11400000, guid: f24977f0d1bf3c144a1c81146333b9fa, type: 2}
+  - {fileID: 11400000, guid: 3e090adb222ddaf4aa50b7b630f3ad14, type: 2}
   - {fileID: 11400000, guid: 2724b8274f6fe1d4aaa4fbf37666b983, type: 2}
+  - {fileID: 11400000, guid: e1cceae914f16bd46bd3f03fc849acc5, type: 2}
+  - {fileID: 11400000, guid: 39e1e469507a1bf4c9b34176ae419601, type: 2}
+  - {fileID: 11400000, guid: 443860d9205b2e54fb54f295f31cb666, type: 2}
+  - {fileID: 11400000, guid: c784df4571a4ead42a78ec78d3423a92, type: 2}
+  - {fileID: 11400000, guid: e58925df33bf685458af7d1399cd3fe8, type: 2}
+  - {fileID: 11400000, guid: 0292057f7d3fc7245a1c8370401d43d9, type: 2}
+  - {fileID: 11400000, guid: c501563dba735aa4f9330416e776a698, type: 2}
+  - {fileID: 11400000, guid: 1b31ab9935e3e8944954cd6e472d1b30, type: 2}
+  - {fileID: 11400000, guid: e64b88f84d769b44f80a9ad85bbbb1d2, type: 2}
+  - {fileID: 11400000, guid: 65a501cbe243a824cb1e9ae49f74a39b, type: 2}
+  - {fileID: 11400000, guid: ec101ebae1cfe1c48a26a7fa696d3ecc, type: 2}
+  - {fileID: 11400000, guid: 123c3f89d0407f6458cb8b5288e59799, type: 2}
+  - {fileID: 11400000, guid: 77e4211edbac7f04287a3f7492cd5912, type: 2}
+  - {fileID: 11400000, guid: 9a1c525182883c84bb241f8f6bcdfa01, type: 2}
+  - {fileID: 11400000, guid: b0b13e425c0a97248a2aac173d8a5a14, type: 2}
+  - {fileID: 11400000, guid: c4948437441dff94588be0b264960c51, type: 2}
+  - {fileID: 11400000, guid: 03254e596a4c16f4da34d48d35db3db8, type: 2}

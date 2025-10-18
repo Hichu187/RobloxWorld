@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
+  m_Name: StealBrainrot_Common_Timchesse
+  m_EditorClassIdentifier: 
+  ID: 4
+  brainrotName: Timchesse
+  rank: 0
+  earningPerSecond: 9
+  costToBuy: 1000
+  texture: {fileID: 21300000, guid: 76a12b8d49820fc428815b96fc7831e7, type: 3}
+  prefab: {fileID: 743785214035002065, guid: 196c8a992b650c64988a372ea7715244, type: 3}
+  reward: 0

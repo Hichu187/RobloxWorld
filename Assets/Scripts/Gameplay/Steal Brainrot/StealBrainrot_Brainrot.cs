@@ -36,6 +36,11 @@ namespace Game
         public bool canMove = true;
         public bool isMovingHome = false;
 
+        private void OnEnable()
+        {
+
+        }
+
         private void Start()
         {
             if (canMove && startPoint && endPoint)
@@ -123,6 +128,8 @@ namespace Game
             GameObject model = config.prefab.Create(modelParent);
             //model.transform.SetScale(0.5f);
 
+            animator = model.GetComponent<Animator>();
+
             cost = config.costToBuy;
             earn = config.earningPerSecond;
         }
@@ -137,6 +144,14 @@ namespace Game
             isMovingHome = false;
 
             SetPosition(startP, endP);
+
+            if (animator == null)
+            {
+                animator = transform.GetComponentInChildren<Animator>();
+            }
+
+            if (animator != null) animator.SetBool("Move", true);
+
             Setup(rank, isRun);
 
             if (startPoint) transform.position = startPoint.position;
@@ -153,7 +168,7 @@ namespace Game
             targetSlot = null;
             canMove = false;
             isMovingHome = false;
-            animator.SetBool("Move", false);
+
             // Trả về pool
             StealBrainrotPool.instance.Release(this);
         }

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Game
 {
-    public enum PetRank { Common = 0, Uncommon = 1, Rare = 2, Epic = 3, Legendary = 4}
+    public enum PetRank { Common = 0, Uncommon = 1, Rare = 2, Epic = 3, Legendary = 4, Mythic = 5}
     public enum MoveMode { Fly, Run, Hop }
 
     [CreateAssetMenu(menuName = "Game/BrainrotEvo/Pet Config", fileName = "Evo Pet")]
