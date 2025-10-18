@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Upper
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: DeformationSystem
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_L
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_L/Knee_L
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L/Toes_L
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L/Toes_L/ToesEnd_L
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_R
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_R/Knee_R
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R/Toes_R
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R/Toes_R/ToesEnd_R
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Spine1_M
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Neck_M
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Neck_M/Head_M
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Neck_M/Head_M/HeadEnd_M
+    m_Weight: 0
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L/PinkyFinger3_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L/PinkyFinger3_L/PinkyFinger4_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L/IndexFinger4_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L/MiddleFinger4_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L/ThumbFinger4_L
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R/PinkyFinger3_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R/PinkyFinger3_R/PinkyFinger4_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R/IndexFinger4_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R/MiddleFinger4_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R
+    m_Weight: 1
+  - m_Path: DeformationSystem/Root_M/Spine1_M/Chest_M/UpChest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R/ThumbFinger4_R
+    m_Weight: 1
+  - m_Path: Geometry
+    m_Weight: 0
+  - m_Path: Geometry/geo
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/Body
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/Head
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/L_arm
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/L_Hand
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/L_leg1
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/L_leg2
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/R_arm
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/R_hand
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/R_leg1
+    m_Weight: 1
+  - m_Path: Geometry/geo/Body_Base1/R_leg2
+    m_Weight: 1
+  - m_Path: Geometry/geo/Boy_hair
+    m_Weight: 1
+  - m_Path: Geometry/geo/Girl_hair
+    m_Weight: 1

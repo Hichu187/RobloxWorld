@@ -56,6 +56,13 @@ namespace Game
         {
             startPoint = startP;
             endPoint = endP;
+
+            if (animator == null)
+            {
+                animator = transform.GetComponentInChildren<Animator>();
+            }
+
+            if (animator != null) animator.SetBool("Move", true);
         }
 
         public void Setup(PetRank rank, bool isRun)
@@ -114,7 +121,7 @@ namespace Game
             }
 
             GameObject model = config.prefab.Create(modelParent);
-            model.transform.SetScale(0.5f);
+            //model.transform.SetScale(0.5f);
 
             cost = config.costToBuy;
             earn = config.earningPerSecond;
@@ -146,7 +153,7 @@ namespace Game
             targetSlot = null;
             canMove = false;
             isMovingHome = false;
-
+            animator.SetBool("Move", false);
             // Trả về pool
             StealBrainrotPool.instance.Release(this);
         }
@@ -200,6 +207,8 @@ namespace Game
 
                     canMove = false;
                     if (indBase == 0) targetSlot.StartGenerating();
+
+                    animator.SetBool("Move", false);
                 }
 
                 target = null;

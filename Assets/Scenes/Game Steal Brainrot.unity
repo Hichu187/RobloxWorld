@@ -19347,6 +19347,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1622305535884013436, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: groundProbeDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1640433025319689478, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -76014,7 +76018,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799852541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ee8df1bee713e40a5da91d4383fff0, type: 3}
   m_Name: 

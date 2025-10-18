@@ -77,11 +77,11 @@ namespace Game
 
                 if (_character) _character.cAnim.Attack();
 
-                PlayerControl pControl = GetComponentInParent<PlayerControl>();
+/*                PlayerControl pControl = GetComponentInParent<PlayerControl>();
                 if (pControl != null)
                 {
                     pControl.canMove = false;
-                }
+                }*/
 
                 await UniTask.WaitForSeconds(0.4f);
 

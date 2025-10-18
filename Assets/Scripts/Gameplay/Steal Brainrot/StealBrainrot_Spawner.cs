@@ -39,7 +39,6 @@ namespace Game
             StartAutoSpawn();
         }
 
-        [Button("Spawn Test")]
         private void SpawnOne()
         {
             if (_startPos == null || _endPos == null) return;
