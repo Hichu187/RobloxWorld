@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Hichu;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -41,7 +42,7 @@ namespace Game
 
         [Title("State Weights")]
         [SerializeField, Min(0f)] private float wBuyPet = 0.5f; // giảm tỉ lệ Buy
-        [SerializeField, Min(0f)] private float wStealPet = 0.25f;
+        [SerializeField, Min(0f)] private float wStealPet = 0.15f;
         [SerializeField, Min(0f)] private float wChasePlayer = 0.05f;
         [SerializeField, Min(0f)] private float wReturnHome = 1f;
         [SerializeField, Min(0f)] private float wFollowWaypoint = 2f;
@@ -141,6 +142,7 @@ namespace Game
             {
                 RandomStateChase();
             }
+
             HandleState();
         }
 
@@ -280,7 +282,7 @@ namespace Game
                 case 0:
                     LDebug.Log<StealBrainrot_AI>("[STEAL] Case 0 → Kiểm tra slot trống của base mình");
                     _targetSlot = curBase != null ? curBase.GetFirstEmptySlot() : null;
-                    
+
                     if (_targetSlot == null)
                     {
                         LDebug.Log<StealBrainrot_AI>("[STEAL] Base mình KHÔNG có slot trống → Kết thúc trộm");
@@ -298,14 +300,12 @@ namespace Game
                     FollowNearestWaypoint();
                     stepSteal = 1;
                     break;
-
                 case 1:
                     {
-                        LDebug.Log<StealBrainrot_AI>("[STEAL] Case 1 → Tìm slot của base khác có Pet để trộm");
+                        LDebug.Log<StealBrainrot_AI>("[STEAL] Case 1 → Tìm slot của base khác có Pet để trộm (ngẫu nhiên có trọng số)");
 
                         var all = FindObjectsOfType<StealBrainrot_Slot>();
-                        StealBrainrot_Slot best = null;
-                        float bestSqr = float.MaxValue;
+                        var validSlots = new List<StealBrainrot_Slot>();
                         Vector3 pos = _ai.character.transform.position;
 
                         foreach (var s in all)
@@ -313,15 +313,10 @@ namespace Game
                             if (s == null || s.isEmpty) continue;
                             if (curBase != null && curBase.slots.Contains(s)) continue;
 
-                            float d = (s.transform.position - pos).sqrMagnitude;
-                            if (d < bestSqr)
-                            {
-                                bestSqr = d;
-                                best = s;
-                            }
+                            validSlots.Add(s);
                         }
 
-                        if (best == null)
+                        if (validSlots.Count == 0)
                         {
                             LDebug.Log<StealBrainrot_AI>("[STEAL] Không tìm thấy slot hợp lệ để trộm!");
                             SetState(AIState.Empty);
@@ -329,53 +324,97 @@ namespace Game
                             return;
                         }
 
+                        float totalWeight = 0f;
+                        var weights = new float[validSlots.Count];
+                        for (int i = 0; i < validSlots.Count; i++)
+                        {
+                            float dist = (validSlots[i].transform.position - pos).sqrMagnitude;
+                            float w = Mathf.Max(0.01f, 1f / (dist + 1f)); 
+                            weights[i] = w;
+                            totalWeight += w;
+                        }
+
+                        float pick = UnityEngine.Random.Range(0f, totalWeight);
+                        float acc = 0f;
+                        StealBrainrot_Slot best = validSlots[0];
+                        for (int i = 0; i < validSlots.Count; i++)
+                        {
+                            acc += weights[i];
+                            if (pick <= acc)
+                            {
+                                best = validSlots[i];
+                                break;
+                            }
+                        }
+
                         _victimSlot = best;
-                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đã chọn slot mục tiêu: {_victimSlot.name}");
+                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đã chọn slot mục tiêu (ngẫu nhiên): {_victimSlot.name}");
                         _ai.Chase(best.transform.position);
                         stepSteal = 2;
                         break;
                     }
 
+
                 case 2:
                     {
-                        LDebug.Log<StealBrainrot_AI>("[STEAL] Case 2 → Đến vị trí nạn nhân, thực hiện StealingBrainrot()");
-
+                        var fov = _ai?.character?.fov;
                         var br = _victimSlot != null ? _victimSlot.brainrot : null;
-                        if (br == null)
+                        if (fov?.interactables == null || br == null)
                         {
-                            LDebug.Log<StealBrainrot_AI>("[STEAL] Slot nạn nhân không còn brainrot!");
+                            SetState(AIState.Empty);
+                            _ai.Idle();
+                            return;
+                        }
+
+                        bool seen = false;
+                        foreach (var t in fov.interactables)
+                        {
+                            if (t == null) continue;
+                            if (t == br.transform || t.IsChildOf(br.transform) || br.transform.IsChildOf(t))
+                            { seen = true; break; }
+                        }
+                        if (!seen)
+                        {
                             SetState(AIState.Empty);
                             _ai.Idle();
                             return;
                         }
 
                         isStealing = true;
-
                         StealingBrainrot(br);
-                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đã nhặt brainrot: {br.name}");
 
                         _targetSlot ??= curBase != null ? curBase.GetFirstEmptySlot() : null;
                         if (_targetSlot == null)
                         {
-                            LDebug.Log<StealBrainrot_AI>("[STEAL] Base mình KHÔNG còn slot trống → Reset trộm");
                             ResetSteal();
                             SetState(AIState.Empty);
                             _ai.Idle();
                             return;
                         }
 
-                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đang mang brainrot về slot {_targetSlot.name}");
                         _ai.Chase(_targetSlot.transform.position);
                         stepSteal = 3;
                         break;
                     }
 
                 case 3:
-                    LDebug.Log<StealBrainrot_AI>("[STEAL] Case 3 → Đặt brainrot vào slot của mình");
-                    StealingDone(_targetSlot);
-                    LDebug.Log<StealBrainrot_AI>("[STEAL] Đã hoàn tất trộm, trở về trạng thái rỗng");
-                    stepSteal = 4;
-                    break;
+                    {
+                        LDebug.Log<StealBrainrot_AI>("[STEAL] Case 3 → Đặt brainrot vào slot của mình");
+
+                        if (_targetSlot == null)
+                        {
+                            LDebug.Log<StealBrainrot_AI>("[STEAL] TargetSlot null → Reset");
+                            stepSteal = 0;
+                            SetState(AIState.Empty);
+                            _ai.Idle();
+                            return;
+                        }
+
+                        StealingDone(_targetSlot);
+                        LDebug.Log<StealBrainrot_AI>("[STEAL] Đã hoàn tất trộm, trở về trạng thái rỗng");
+                        stepSteal = 4;
+                        break;
+                    }
 
                 case 4:
                     LDebug.Log<StealBrainrot_AI>("[STEAL] Case 4 → Kết thúc hành động trộm, set về Empty");
@@ -392,19 +431,16 @@ namespace Game
             }
         }
 
+
         public void StealingBrainrot(StealBrainrot_Brainrot brainrot)
         {
+            isStealing = true;
+
             _takedBrainrot = brainrot;
             _preTrans = brainrot.transform.parent;
-            brainrot.targetSlot.isEmpty = true;
-            brainrot.canMove = false;
-            brainrot.targetSlot.brainrot = null;
-            brainrot.targetSlot.StopGenerating();
-
             // gắn lên tay AI
-            brainrot.transform.SetParent(_ai.characterHoldingPos, worldPositionStays: false);
-            brainrot.transform.localPosition = Vector3.zero;
-            brainrot.transform.localRotation = Quaternion.identity;
+
+            brainrot.StealBrainrot(_ai.characterHoldingPos);
         }
 
         public void StealingDone(StealBrainrot_Slot slot)
@@ -416,16 +452,15 @@ namespace Game
                 DataStealBrainrot.RemoveBaseSlot(_takedBrainrot.targetSlot.slotId);
             }
 
+            _takedBrainrot.targetSlot.isEmpty = true;
+            _takedBrainrot.targetSlot.brainrot = null;
+
             _takedBrainrot.targetSlot = slot;
             _takedBrainrot.target = slot.transform;
             _takedBrainrot.indBase = slot.baseId;
 
             slot.SetBrainrot(_takedBrainrot);
             slot.StartGenerating();
-
-            int slotIndex = curBase != null ? curBase.slots.IndexOf(slot) : -1;
-            if (slotIndex >= 0)
-                DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, _takedBrainrot.bConfig.ID);
 
             ResetSteal();
         }
@@ -435,6 +470,7 @@ namespace Game
         {
             if (_takedBrainrot != null)
             {
+                _takedBrainrot.target = _takedBrainrot.targetSlot.transform;
                 _takedBrainrot.transform.SetParent(_preTrans, worldPositionStays: true);
                 _takedBrainrot.isMovingHome = true;
                 _takedBrainrot.canMove = true;
@@ -613,7 +649,6 @@ namespace Game
 
             if (!playerInRange)
             {
-                LDebug.Log<StealBrainrot_AI>("Player NOT in range -> no attack");
                 return;
             }
 
@@ -625,7 +660,5 @@ namespace Game
 
             SetState(AIState.Empty);
         }
-
-
     }
 }

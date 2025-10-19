@@ -25,7 +25,7 @@ namespace Game
 
         void IStateMachine.OnStart()
         {
-            _timeOut = 5.0f;
+            _timeOut = 10f;
             _evading = false;
         }
 

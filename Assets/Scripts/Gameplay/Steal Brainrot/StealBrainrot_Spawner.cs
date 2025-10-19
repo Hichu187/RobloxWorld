@@ -153,7 +153,7 @@ namespace Game
                 obj.indBase = 0;
                 obj.isBought = true;
                 obj.canMove = false;
-                obj.GetComponent<Collider>().enabled = false;
+                //obj.GetComponent<Collider>().enabled = false;
 
                 slot.isEmpty = false;
                 slot.brainrot = obj;

@@ -87,7 +87,7 @@ namespace Game
 
             target = tSlot;
 
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
 
             //indBase = 0;
         }
@@ -102,7 +102,7 @@ namespace Game
 
             target = slot;
 
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
         }
 
         public void SellBrainrot()
@@ -111,6 +111,17 @@ namespace Game
 
             indBase = -1;
             DespawnToPool();
+        }
+
+        public void StealBrainrot(Transform t)
+        {
+            //targetSlot.brainrot = null;
+            targetSlot.StopGenerating();
+
+            transform.parent = t;
+            transform.position = t.position;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GetComponent<Collider>().enabled = false;
         }
 
         public void InitBrainrotData(StealBrainrot_BrainrotConfig config)
