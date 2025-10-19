@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace Game
@@ -12,7 +12,7 @@ namespace Game
         private void Awake()
         {
             _collider = GetComponent<BoxCollider>();
-            _base = transform.parent ? transform.parent.GetComponent<StealBrainrot_Base>() : null;
+            _base = GetComponentInParent<StealBrainrot_Base>();
 
             if (_collider == null)
                 Debug.LogWarning($"{name}: Missing BoxCollider component!");
@@ -25,6 +25,8 @@ namespace Game
         {
             if (!IsValidCharacter(other.transform, out var playerBaseID))
                 return;
+
+            Debug.Log("Test");
 
             if (_base != null && playerBaseID == _base.baseID)
                 _collider.isTrigger = true;
@@ -43,28 +45,31 @@ namespace Game
         {
             baseID = -1;
 
-            if (target == null || target.gameObject.layer != LayerMask.NameToLayer("Character"))
+            if (!target || target.gameObject.layer != LayerMask.NameToLayer("Character"))
                 return false;
 
-            var parent = target.parent;
-            if (parent == null)
+            var p = target;
+            if (!p)
                 return false;
 
-            var player = parent.GetComponent<StealBrainrot_Player>();
-            if (player != null && player.baseSlot != null)
+            if (p.TryGetComponent(out StealBrainrot_Player pl) && pl.baseSlot)
             {
-                baseID = player.baseSlot.baseID;
+                baseID = pl.baseSlot.baseID;
+                Debug.Log($"[Gate] Player '{p.name}' baseID = {baseID}");
                 return true;
             }
 
-            var ai = parent.GetComponent<StealBrainrot_AI>();
-            if (ai != null && ai.curBase != null)
+            if (p.TryGetComponent(out StealBrainrot_AI ai) && ai.curBase)
             {
                 baseID = ai.curBase.baseID;
+                Debug.Log($"[Gate] AI '{p.name}' baseID = {baseID}");
                 return true;
             }
 
+            Debug.Log($"[Gate] '{p.name}' không có baseSlot hoặc curBase hợp lệ.");
             return false;
         }
+
+
     }
 }
