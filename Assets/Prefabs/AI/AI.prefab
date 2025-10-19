@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: radius
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: eyeHeight

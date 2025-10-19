@@ -23,35 +23,46 @@ namespace Game
 
         public void SetLock(bool isLock)
         {
-            gateLock.gameObject.SetActive(isLock);
+            if (gateLock)
+                gateLock.SetActive(isLock);
         }
 
-
-        //UTILS
+        // UTILS
         public StealBrainrot_Slot GetFirstEmptySlot()
         {
             if (slots == null || slots.Count == 0)
                 return null;
 
-            var slot = slots
+            return slots
                 .Where(s => s != null && s.isEmpty)
                 .OrderBy(s => s.slotId)
                 .FirstOrDefault();
-
-            return slot;
         }
 
-        //EDITOR
+        public StealBrainrot_Slot GetRandomEmptySlot()
+        {
+            if (slots == null || slots.Count == 0)
+                return null;
 
+            var emptySlots = slots.Where(s => s != null && s.isEmpty).ToList();
+            if (emptySlots.Count == 0)
+                return null;
+
+            return emptySlots[Random.Range(0, emptySlots.Count)];
+        }
+
+        // EDITOR
         [Button]
         public void SetSlotID()
         {
+            if (slots == null) return;
+
             for (int i = 0; i < slots.Count; i++)
             {
+                if (slots[i] == null) continue;
                 slots[i].slotId = i;
                 slots[i].baseId = baseID;
             }
         }
-
     }
 }

@@ -24,9 +24,7 @@ namespace Game
 
             _preTrans = brainrot.transform.parent;
 
-            brainrot.transform.parent = holdingPos;
-            brainrot.transform.position = holdingPos.position;
-            brainrot.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            brainrot.StealBrainrot(holdingPos);
         }
 
         public void StealingDone(StealBrainrot_Slot slot)
