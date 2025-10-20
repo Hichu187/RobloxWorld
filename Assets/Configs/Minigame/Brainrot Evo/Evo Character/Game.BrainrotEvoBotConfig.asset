@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
   m_Name: Game.BrainrotEvoBotConfig
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 3624812079341498224, guid: 4a215aef4eae27c489d77d801aa77944, type: 3}
+  brainrotName: Noobini
+  model: {fileID: 6851113161509528119, guid: 314fbf3e4da0e1d458a89685ab222024, type: 3}
   exp: 0
   damage: 10
   health: 1

@@ -242,6 +242,7 @@ namespace Game
             brainrot.indBase = p.baseSlot.baseID;
 
             int slotIndex = p.baseSlot.slots.IndexOf(slot);
+
             if (slotIndex >= 0)
                 DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, brainrot.bConfig.ID);
 
@@ -262,8 +263,6 @@ namespace Game
             brainrot.indBase = ai.curBase.baseID;
 
             int slotIndex = ai.curBase.slots.IndexOf(slot);
-            if (slotIndex >= 0)
-                DataStealBrainrot.AddOrUpdateBaseSlot(slotIndex, brainrot.bConfig.ID);
 
             brainrot.AIBuyBrainrot(ai);
         }
