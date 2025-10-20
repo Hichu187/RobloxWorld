@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Mythic_Tralalero
   m_EditorClassIdentifier: 
-  ID: 30
+  ID: 20
   brainrotName: Tralalero Tralala
   rank: 5
   earningPerSecond: 50000
   costToBuy: 10000000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 458cf4225e6ea9c4888a0fe79dadfce8, type: 3}
   prefab: {fileID: 7434861169605764909, guid: 697c644cf8231a54fae60933842e36b4, type: 3}
   reward: 0

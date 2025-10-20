@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Legendary_Bombomradiro_croco
   m_EditorClassIdentifier: 
-  ID: 25
+  ID: 17
   brainrotName: Bombardiro Crocodilo
   rank: 4
   earningPerSecond: 2500
   costToBuy: 500000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: b2acf505bd099ce4196172347b4a6aa6, type: 3}
   prefab: {fileID: 8288491458527579291, guid: 661f353917d3fff4bbec628b43c4dff6, type: 3}
   reward: 0

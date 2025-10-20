@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Mythic_Odindin
   m_EditorClassIdentifier: 
-  ID: 27
+  ID: 19
   brainrotName: Odin Din Din Dun
   rank: 5
   earningPerSecond: 75000
   costToBuy: 15000000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: bf9b73106e1155f45b59c00c43ecc220, type: 3}
   prefab: {fileID: 5339647092906819473, guid: c79ad42f92cf8ba4d96b583b375c5ef9, type: 3}
   reward: 0

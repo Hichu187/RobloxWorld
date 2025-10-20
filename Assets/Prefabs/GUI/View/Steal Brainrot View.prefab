@@ -521,6 +521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Remove Ads
       objectReference: {fileID: 0}
+    - target: {fileID: 3307068979200515900, guid: 4eb0c0f91e584b3458c3f1e115859f63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5401203601556072584, guid: 4eb0c0f91e584b3458c3f1e115859f63, type: 3}
       propertyPath: managedReferences[4244441994541400190]._valueStart.y
       value: -100
@@ -641,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 4526524513610318697, guid: 42bd1c21dd0254846abd1c597a6160ac, type: 3}
       propertyPath: m_Name
       value: Button Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526524513610318697, guid: 42bd1c21dd0254846abd1c597a6160ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4999170058888451329, guid: 42bd1c21dd0254846abd1c597a6160ac, type: 3}
       propertyPath: m_Pivot.x

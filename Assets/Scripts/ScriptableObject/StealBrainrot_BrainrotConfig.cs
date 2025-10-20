@@ -3,6 +3,7 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using System.IO;
 #endif
 
 namespace Game
@@ -45,6 +46,38 @@ namespace Game
             }
 
             EditorUtility.SetDirty(this);
+        }
+
+        [Button("Find Texture in Icon Brainrot Folder", ButtonSizes.Large)]
+        private void FindTextureByPrefabName()
+        {
+            if (prefab == null)
+            {
+                Debug.LogWarning($"[{name}] Prefab is missing, cannot search texture.");
+                return;
+            }
+
+            string prefabName = prefab.name.Trim();
+            string searchFolder = "Assets/Arts/2D/Icon Brainrot";
+
+            if (!AssetDatabase.IsValidFolder(searchFolder))
+            {
+                Debug.LogWarning($"❌ Folder not found: {searchFolder}");
+                return;
+            }
+
+            string[] guids = AssetDatabase.FindAssets(prefabName + " t:Sprite", new[] { searchFolder });
+            if (guids.Length > 0)
+            {
+                string texPath = AssetDatabase.GUIDToAssetPath(guids[0]);
+                texture = AssetDatabase.LoadAssetAtPath<Sprite>(texPath);
+                Debug.Log($"🎨 Found texture: {texPath}");
+                EditorUtility.SetDirty(this);
+            }
+            else
+            {
+                Debug.LogWarning($"❌ No texture found with name '{prefabName}' in '{searchFolder}'.");
+            }
         }
 #endif
     }

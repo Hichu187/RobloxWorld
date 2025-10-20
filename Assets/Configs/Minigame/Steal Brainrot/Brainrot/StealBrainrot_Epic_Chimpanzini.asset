@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Epic_Chimpanzini
   m_EditorClassIdentifier: 
-  ID: 19
+  ID: 13
   brainrotName: Chimpanzini Bananini
   rank: 3
   earningPerSecond: 200
   costToBuy: 50000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 2979a51809600ef4aaafd718bd5f5b48, type: 3}
   prefab: {fileID: 1825105457699574325, guid: e6e414054091a1245955fb69f0fda406, type: 3}
   reward: 0

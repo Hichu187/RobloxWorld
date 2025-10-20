@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Rare_Patapim
   m_EditorClassIdentifier: 
-  ID: 13
+  ID: 8
   brainrotName: Brr Brr Patapim
   rank: 2
   earningPerSecond: 100
   costToBuy: 15000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 8be33d4b0a1ec854d9540ae723930427, type: 3}
   prefab: {fileID: 5943693065943383449, guid: 4aeb8a6759f6a254b90ead239d076fbb, type: 3}
   reward: 0

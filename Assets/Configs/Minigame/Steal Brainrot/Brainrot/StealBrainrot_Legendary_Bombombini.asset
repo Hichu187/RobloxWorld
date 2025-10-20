@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Legendary_Bombombini
   m_EditorClassIdentifier: 
-  ID: 26
+  ID: 18
   brainrotName: Bombombini Gusini
   rank: 4
   earningPerSecond: 5000
   costToBuy: 1000000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 2044e7e57c55cea4a8656b790fbed252, type: 3}
   prefab: {fileID: 5110787562075053364, guid: f04b5ff6231d6904796df1f64e35ef83, type: 3}
   reward: 0

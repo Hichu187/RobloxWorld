@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Rare_Brrbrrbicus
   m_EditorClassIdentifier: 
-  ID: 17
+  ID: 11
   brainrotName: Brrbrrbicus
   rank: 2
   earningPerSecond: 250
   costToBuy: 40000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 5b3bb0cbed157354e973753164f46361, type: 3}
   prefab: {fileID: 5389593408821986871, guid: 3370c96bcd79fad41a3d4b663865006e, type: 3}
   reward: 0

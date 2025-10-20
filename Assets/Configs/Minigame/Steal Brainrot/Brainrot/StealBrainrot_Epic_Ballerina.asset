@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Epic_Ballerina
   m_EditorClassIdentifier: 
-  ID: 20
+  ID: 14
   brainrotName: Ballerina
   rank: 3
   earningPerSecond: 500
   costToBuy: 150000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 7bfe468dd7d378b4b9f71a8c0abd91c2, type: 3}
   prefab: {fileID: 5301084505607432249, guid: 2f2a604bcdf989548b2a1a57fad26185, type: 3}
   reward: 0

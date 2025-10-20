@@ -40,8 +40,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 0}
-  m_SizeDelta: {x: 1416, y: 809}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1250, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1719001444144118606
 CanvasRenderer:
@@ -124,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4780252548902351438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -660,6 +660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5a8c1c5090d9a4cb5eb82d9b4bf296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.StealBrainrot_Index
+  optionPrefab: {fileID: 5179482034218015959, guid: a58022bdd4376b44b9566c0dd624f339, type: 3}
+  optionParent: {fileID: 6037793581746903964}
   btn_ranks:
   - {fileID: 8947080882457372894}
   - {fileID: 8792803567512095531}
@@ -875,10 +877,10 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 225, y: 225}
+  m_CellSize: {x: 250, y: 250}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 1
-  m_ConstraintCount: 3
+  m_ConstraintCount: 4
 --- !u!114 &3349652635151565243
 MonoBehaviour:
   m_ObjectHideFlags: 0

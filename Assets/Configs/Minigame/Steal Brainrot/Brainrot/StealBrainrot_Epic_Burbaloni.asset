@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Epic_Burbaloni
   m_EditorClassIdentifier: 
-  ID: 18
+  ID: 12
   brainrotName: Burbaloni Loliloli
   rank: 3
   earningPerSecond: 150
   costToBuy: 35000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 9cdf419969411314abf162ac0fb46bbb, type: 3}
   prefab: {fileID: 6769788189599452180, guid: b9eb804028c9b3c419d6379c6e5f0468, type: 3}
   reward: 0

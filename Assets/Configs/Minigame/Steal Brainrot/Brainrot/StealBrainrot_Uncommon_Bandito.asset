@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Uncommon_Bandito
   m_EditorClassIdentifier: 
-  ID: 8
+  ID: 5
   brainrotName: Bandito Bobritto
   rank: 1
   earningPerSecond: 35
   costToBuy: 4500
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: c5a1fff3be9ab9e4495e883a9f6e0d79, type: 3}
   prefab: {fileID: 2435041935438222147, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
   reward: 0

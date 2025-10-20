@@ -17,6 +17,6 @@ MonoBehaviour:
   rank: 0
   earningPerSecond: 1
   costToBuy: 25
-  texture: {fileID: 21300000, guid: 655d3ffd19f6a3b4492c1c615f90ce10, type: 3}
+  texture: {fileID: 21300000, guid: 59a5786edd19d824dbd72d5449ff6ecf, type: 3}
   prefab: {fileID: 3634492385669359484, guid: df70bcc3a9de3dc408515c3f49e99fe0, type: 3}
   reward: 0

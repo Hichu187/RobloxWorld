@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38bf4b2f731eb4f9e019af3cfa7a3c, type: 3}
   m_Name: StealBrainrot_Legendary_Frigo
   m_EditorClassIdentifier: 
-  ID: 23
+  ID: 15
   brainrotName: Frigo Camelo
   rank: 4
   earningPerSecond: 1400
   costToBuy: 350000
-  texture: {fileID: 21300000, guid: 34fc41381edbddf4b9557dc5a07a4a63, type: 3}
+  texture: {fileID: 21300000, guid: 0fccaceaee5a02a48b84f35473c30b45, type: 3}
   prefab: {fileID: 942401809114017386, guid: 4d60c00025b90d44482960605347286c, type: 3}
   reward: 0
