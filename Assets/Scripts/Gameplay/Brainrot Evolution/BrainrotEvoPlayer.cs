@@ -14,6 +14,7 @@ namespace Game
         [SerializeField] Transform _petTarget;
         [SerializeField] List<BrainrotPet> _pets;
 
+        [SerializeField] GameObject evoVfx;
         private Player _player;
         private void Start()
         {
@@ -100,6 +101,8 @@ namespace Game
         private void EventLevelUp(Event_Player_Level_Up e)
         {
             LDebug.Log<BrainrotEvoPlayer>($"Player level Up {e.level}, exp : {DataBrainrotEvo.exp}");
+
+            evoVfx.SetActive(true);
 
             InitData();
         }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainrotName: Bombomradiro_croco
   model: {fileID: 8288491458527579291, guid: f53f5017f307e404da561858908c5c44, type: 3}
+  texture: {fileID: 21300000, guid: b2acf505bd099ce4196172347b4a6aa6, type: 3}
   exp: 16
   damage: 4
   health: 22

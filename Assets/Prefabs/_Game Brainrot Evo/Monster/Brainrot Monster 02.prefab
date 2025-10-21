@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traits: 1
   isTakeDamage: 1
-  _maxHealth: 100
+  _maxHealth: 15
   _currentHealth: 0
   _damage: 1
   attackSpeed: 1
@@ -239,6 +239,8 @@ MonoBehaviour:
     m_Bits: 127
   _knockbackForce: 10
   _knockbackAngleDeg: 45
+  _autoRegen: 0
+  _regenDelaySeconds: 10
   hasDied: 0
   type: 0
   botName: Chick
