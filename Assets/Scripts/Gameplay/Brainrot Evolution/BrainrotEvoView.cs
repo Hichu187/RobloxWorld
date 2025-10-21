@@ -10,6 +10,7 @@ namespace Game
     public class BrainrotEvoView : MonoBehaviour
     {
         [SerializeField] private Slider _transformProgress;
+        [SerializeField] private Image _brainrotImage;
         [SerializeField] private TextMeshProUGUI _expText;
         [SerializeField] private TextMeshProUGUI _cashText;
         [SerializeField] private float _tweenDuration = 0.35f;   // thời gian tween slider
@@ -65,6 +66,8 @@ namespace Game
         {
             int curExp = DataBrainrotEvo.exp;
             int maxExp = FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level].exp;
+
+            _brainrotImage.sprite = FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level + 1 ].texture;
 
             _expText.text = $"{curExp}/{maxExp}";
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainrotName: Ballerina
   model: {fileID: 5301084505607432249, guid: 6dbd80df9c041a84187b6fd8b0a880f2, type: 3}
+  texture: {fileID: 21300000, guid: 7bfe468dd7d378b4b9f71a8c0abd91c2, type: 3}
   exp: 4926
   damage: 244
   health: 6568

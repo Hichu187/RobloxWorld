@@ -11,7 +11,8 @@ namespace Game
     {
         public string brainrotName;
         public GameObject model;
-
+        [PreviewField(100, ObjectFieldAlignment.Left)]
+        public Sprite texture;
         [Title("Config")]
         public int exp;
         public int damage = 0;

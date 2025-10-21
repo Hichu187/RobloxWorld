@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainrotName: Chimpanzini
   model: {fileID: 1825105457699574325, guid: f7d9a4b4e18258b40bcbff80b2b79730, type: 3}
+  texture: {fileID: 21300000, guid: 2979a51809600ef4aaafd718bd5f5b48, type: 3}
   exp: 25
   damage: 5
   health: 33
