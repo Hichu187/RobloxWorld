@@ -13,7 +13,7 @@ namespace Game
 
         private void Start()
         {
-            _text.text = $"Escape _name_ \n Level {levelOpen}";
+            _text.text = $"Escape _name \n Level {levelOpen}";
         }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {

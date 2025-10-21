@@ -28,9 +28,8 @@ namespace Game
         public TextMeshProUGUI _hpText;
         public Image _hp_Bar;
 
-
         [Title("Damage Bonus")]
-        [Min(1)] public float petBonus = 1;   // đảm bảo tối thiểu = 1
+        [Min(1)] public float petBonus = 1;
         public int specialBonus = 0;
 
         [Title("Knockback Config")]
@@ -45,6 +44,12 @@ namespace Game
         float heightFactor = 0.15f;
         private List<Vector3> trajectoryPoints = new List<Vector3>();
         private Coroutine _coroutineExplosion;
+
+        // === NEW: Auto Regen ===
+        [Title("Auto Regen")]
+        [SerializeField] private bool _autoRegen = false;
+        [ShowIf("_autoRegen")][Min(0.1f)][SerializeField] private float _regenDelaySeconds = 10f;
+        private Coroutine _regenRoutine;
 
         private Character _character;
         private float _lastAttackTime;
@@ -76,12 +81,6 @@ namespace Game
                 _lastAttackTime = Time.time;
 
                 if (_character) _character.cAnim.Attack();
-
-/*                PlayerControl pControl = GetComponentInParent<PlayerControl>();
-                if (pControl != null)
-                {
-                    pControl.canMove = false;
-                }*/
 
                 await UniTask.WaitForSeconds(0.4f);
 
@@ -126,6 +125,9 @@ namespace Game
                 _currentHealth -= amount;
                 _currentHealth = Mathf.Max(_currentHealth, 0);
 
+                // Reset countdown mỗi lần nhận damage
+                ResetRegenCountdown();
+
                 if (_currentHealth <= 0)
                 {
                     Die();
@@ -133,6 +135,8 @@ namespace Game
                 else
                 {
                     LDebug.Log<CharacterCombat>($"take {amount} damage");
+                    // Bắt đầu lại countdown nếu cho phép regen
+                    StartRegenCountdown();
                 }
 
                 if (_character != null && _character.isPlayer)
@@ -152,30 +156,17 @@ namespace Game
                 StealBrainrot_Player p = _character.GetComponent<StealBrainrot_Player>();
                 StealBrainrot_AI ai = _character.GetComponentInParent<StealBrainrot_AI>();
 
-                if(p != null && p.isStealing)
-                {
-                    p.ResetSteal();
-                }
-
-                if(ai != null && ai.isStealing)
-                {
-                    ai.ResetSteal();
-                }
-
+                if (p != null && p.isStealing) p.ResetSteal();
+                if (ai != null && ai.isStealing) ai.ResetSteal();
 
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
                     _character.motor.enabled = true;
-
                     _character.cRagdoll.SetRagdollActive(false);
-
                     _character.cControl.StateMachine.CurrentState = CharacterControl.State.Ground;
-
                     _character.cRagdoll.SetPos(_character);
                 });
             }
-
-
 
             InitData();
         }
@@ -232,25 +223,24 @@ namespace Game
         public void InitData()
         {
             _hpText.text = $"{_currentHealth}/{_maxHealth}";
-
             float denom = Mathf.Max(1, _maxHealth);
             float fill = Mathf.Clamp01((float)_currentHealth / denom);
-
-            _hp_Bar.fillAmount =fill;
+            _hp_Bar.fillAmount = fill;
         }
 
         public void ReSpawn()
         {
             _currentHealth = _maxHealth;
-
             InitData();
+            StopRegen();
+            hasDied = false;
         }
 
         protected virtual void Die()
         {
             hasDied = true;
-
             if (_stats != null) _stats.SetActive(false);
+            StopRegen();
 
             if (_character != null && _character.isPlayer)
             {
@@ -261,6 +251,54 @@ namespace Game
         public bool IsAlive()
         {
             return _currentHealth > 0;
+        }
+
+        // === NEW: Regen helpers ===
+        private void StartRegenCountdown()
+        {
+            if (!_autoRegen || hasDied || !isTakeDamage) return;
+
+            if (_regenRoutine != null)
+                StopCoroutine(_regenRoutine);
+
+            _regenRoutine = StartCoroutine(RegenCountdownRoutine());
+        }
+
+        private void ResetRegenCountdown()
+        {
+            if (_regenRoutine != null)
+            {
+                StopCoroutine(_regenRoutine);
+                _regenRoutine = null;
+            }
+        }
+
+        private void StopRegen()
+        {
+            if (_regenRoutine != null)
+            {
+                StopCoroutine(_regenRoutine);
+                _regenRoutine = null;
+            }
+        }
+
+        private IEnumerator RegenCountdownRoutine()
+        {
+            float t = 0f;
+            while (t < _regenDelaySeconds)
+            {
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            if (!hasDied && isTakeDamage)
+            {
+                _currentHealth = _maxHealth;
+                _stats.SetActive(false);
+                InitData();
+            }
+
+            _regenRoutine = null;
         }
     }
 }

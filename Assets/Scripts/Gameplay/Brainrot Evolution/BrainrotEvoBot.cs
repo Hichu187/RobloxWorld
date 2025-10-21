@@ -38,6 +38,13 @@ namespace Game
         {
             base.TakeDamage(amount, force, direction);
 
+            if (direction != Vector3.zero)
+            {
+                Vector3 lookDir = -direction;
+                lookDir.y = 0f;
+                transform.rotation = Quaternion.LookRotation(lookDir);
+            }
+
             _anim.SetTrigger("TakeDamage");
 
             if (hasDied) return;
@@ -54,11 +61,11 @@ namespace Game
             InitData();
         }
 
+
         private void StartCounterAttackLoop(FieldOfView fov)
         {
             if (fov == null) return;
 
-            // Không có target -> dừng counter-attack nếu đang chạy và thoát
             bool hasAnyTarget = fov.haveTarget || (fov.combatables != null && fov.combatables.Count > 0);
             if (!hasAnyTarget)
             {
