@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5417721969797939372}
+  - {fileID: 5283539517168485858}
   - {fileID: 7427595638503468902}
   m_Father: {fileID: 8535445191675955408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -223,9 +224,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traits: 1
   isTakeDamage: 1
-  _maxHealth: 100
+  _maxHealth: 35
   _currentHealth: 0
-  _damage: 1
+  _damage: 8
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
   _nameText: {fileID: 8366304136907289325}
@@ -239,13 +240,15 @@ MonoBehaviour:
     m_Bits: 127
   _knockbackForce: 10
   _knockbackAngleDeg: 45
+  _autoRegen: 0
+  _regenDelaySeconds: 10
   hasDied: 0
-  type: 0
-  botName: Chick
-  exp: 2
+  type: 1
+  botName: Chimpanzini Bananini
+  exp: 3
   coin: 0
   _model: {fileID: 7399614600194747796}
-  _anim: {fileID: 7427595638510682246}
+  _anim: {fileID: 1257990802032076370}
 --- !u!1001 &21594106712530545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488560510201809826, guid: 30b41f175dee47f46a3192ce9b340a04, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7488560510201809826, guid: 30b41f175dee47f46a3192ce9b340a04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -417,6 +420,10 @@ PrefabInstance:
     - target: {fileID: 3295690693072712635, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
       propertyPath: m_Name
       value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295690693072712635, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295690693073137563, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
       propertyPath: m_LocalScale.x
@@ -504,8 +511,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3295690693073137563, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
   m_PrefabInstance: {fileID: 5379756291450339581}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7427595638510682246 stripped
+--- !u!1001 &6578954352209038701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3251862603602892651}
+    m_Modifications:
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825105457699574325, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+      propertyPath: m_Name
+      value: Chimpanzini
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+--- !u!95 &1257990802032076370 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 3295690693082185851, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
-  m_PrefabInstance: {fileID: 5379756291450339581}
+  m_CorrespondingSourceObject: {fileID: 5348134337960913727, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+  m_PrefabInstance: {fileID: 6578954352209038701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5283539517168485858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1305976902954977423, guid: e6e414054091a1245955fb69f0fda406, type: 3}
+  m_PrefabInstance: {fileID: 6578954352209038701}
   m_PrefabAsset: {fileID: 0}

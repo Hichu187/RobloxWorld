@@ -40,7 +40,7 @@ namespace Game
 
             if (direction != Vector3.zero)
             {
-                Vector3 lookDir = -direction;
+                Vector3 lookDir = - direction;
                 lookDir.y = 0f;
                 transform.rotation = Quaternion.LookRotation(lookDir);
             }
@@ -60,6 +60,7 @@ namespace Game
 
             InitData();
         }
+
 
 
         private void StartCounterAttackLoop(FieldOfView fov)
