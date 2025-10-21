@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 6
+  m_Name: Brainrot_Evo_Odindin
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 3357315975788305218, guid: 9e3fc54f3df075b449c1e96d35900fff, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Odindin
+  model: {fileID: 5339647092906819473, guid: 33af155383ab6664aa3a3c8a56e42f2e, type: 3}
+  exp: 56
+  damage: 9
+  health: 75

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 11
+  m_Name: Brainrot_Evo_Assasino
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 5301084505607432249, guid: 6dbd80df9c041a84187b6fd8b0a880f2, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Assasino
+  model: {fileID: 5734117599952745979, guid: 7c659803993062a458ce6ecf289c430c, type: 3}
+  exp: 1459
+  damage: 99
+  health: 1946

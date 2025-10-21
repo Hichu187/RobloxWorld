@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 8
+  m_Name: Brainrot_Evo_Patapim
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 8169444328227241521, guid: 81676e7bb131cbc4b82bbd6670d7f3fc, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Patapim
+  model: {fileID: 5943693065943383449, guid: a0daf5c9ce79b10458bee4a4cc55ad3f, type: 3}
+  exp: 37
+  damage: 7
+  health: 50

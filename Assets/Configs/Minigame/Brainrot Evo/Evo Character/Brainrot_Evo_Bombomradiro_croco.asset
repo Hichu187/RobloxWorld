@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 4
+  m_Name: Brainrot_Evo_Bombomradiro_croco
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 5943693065943383449, guid: a0daf5c9ce79b10458bee4a4cc55ad3f, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Bombomradiro_croco
+  model: {fileID: 8288491458527579291, guid: f53f5017f307e404da561858908c5c44, type: 3}
+  exp: 16
+  damage: 4
+  health: 22

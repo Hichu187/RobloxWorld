@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 14
+  m_Name: Brainrot_Evo_Chimpanzini
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 5110787562075053364, guid: f3a2aad5d68947342a0383a7fbba9a79, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Chimpanzini
+  model: {fileID: 1825105457699574325, guid: f7d9a4b4e18258b40bcbff80b2b79730, type: 3}
+  exp: 25
+  damage: 5
+  health: 33

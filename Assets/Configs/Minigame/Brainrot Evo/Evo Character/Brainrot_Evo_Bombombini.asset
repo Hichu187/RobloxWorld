@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 9
+  m_Name: Brainrot_Evo_Bombombini
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 5734117599952745979, guid: 7c659803993062a458ce6ecf289c430c, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Bombombini
+  model: {fileID: 5110787562075053364, guid: f3a2aad5d68947342a0383a7fbba9a79, type: 3}
+  exp: 16626
+  damage: 599
+  health: 22168

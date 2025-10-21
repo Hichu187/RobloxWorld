@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 3
+  m_Name: Brainrot_Evo_Tralalero
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 1825105457699574325, guid: f7d9a4b4e18258b40bcbff80b2b79730, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Tralalero
+  model: {fileID: 7434861169605764909, guid: ce4a44878d3f8f6428d75f3300fc9941, type: 3}
+  exp: 11
+  damage: 3
+  health: 15

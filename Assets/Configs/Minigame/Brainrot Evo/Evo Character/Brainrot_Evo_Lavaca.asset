@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 2
+  m_Name: Brainrot_Evo_Lavaca
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 8288491458527579291, guid: f53f5017f307e404da561858908c5c44, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Lavaca
+  model: {fileID: 1107972853954250662, guid: 3850b6adf604d7349a9009e91473b770, type: 3}
+  exp: 3284
+  damage: 181
+  health: 4378

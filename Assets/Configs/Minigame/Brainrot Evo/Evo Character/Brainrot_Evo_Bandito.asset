@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig
+  m_Name: Brainrot_Evo_Bandito
   m_EditorClassIdentifier: 
-  brainrotName: Noobini
-  model: {fileID: 6851113161509528119, guid: 314fbf3e4da0e1d458a89685ab222024, type: 3}
-  exp: 0
-  damage: 10
-  health: 1
+  brainrotName: Bandito
+  model: {fileID: 2435041935438222147, guid: 691dbe49c1ed458469ae451bad1cdfbe, type: 3}
+  exp: 288
+  damage: 41
+  health: 576

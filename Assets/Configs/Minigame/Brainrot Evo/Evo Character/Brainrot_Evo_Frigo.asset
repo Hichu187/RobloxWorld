@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Game.BrainrotEvoBotConfig 5
+  m_Name: Brainrot_Evo_Frigo
   m_EditorClassIdentifier: 
-  brainrotName: 
-  model: {fileID: 5339647092906819473, guid: 33af155383ab6664aa3a3c8a56e42f2e, type: 3}
-  exp: 10
-  damage: 20
-  health: 2
+  brainrotName: Frigo
+  model: {fileID: 942401809114017386, guid: 3e899d9ca48766e469e5228c0c1de10b, type: 3}
+  exp: 7389
+  damage: 329
+  health: 9852
