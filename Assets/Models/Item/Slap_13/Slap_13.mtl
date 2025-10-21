@@ -1,0 +1,24 @@
+newmtl Hand2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0901961 0.0901961 0.0901961 
+
+d 1
+
+Ns 0
+
+map_Ka Hand2_diff.png
+map_Kd Hand2_diff.png
+map_d Hand2_diff.png
+
+newmtl Hand1Mtl
+Material Color
+Ka 1 0 0
+Kd 1 0 0
+Ks 0.0901961 0 0 
+
+d 1
+
+Ns 0
+

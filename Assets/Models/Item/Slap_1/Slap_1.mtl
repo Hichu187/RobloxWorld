@@ -1,0 +1,30 @@
+newmtl Handle1Mtl
+Material Color
+Ka 0.315763 0 0
+Kd 0.315763 0 0
+Ks 0.125067 0 0 
+
+d 1
+
+Ns 0
+
+newmtl Hand1Mtl
+Material Color
+Ka 0.796917 0.0780566 0.0780566
+Kd 0.796917 0.0780566 0.0780566
+Ks 0.315641 0.0309165 0.0309165 
+
+d 1
+
+Ns 0
+
+newmtl Coilmesh1Mtl
+Material Color
+Ka 1 0.101145 0.101145
+Kd 1 0.101145 0.101145
+Ks 0.0901961 0.0091229 0.0091229 
+
+d 1
+
+Ns 0
+
