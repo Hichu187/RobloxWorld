@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9ffd950838fbee54e8c8576920f70eb8
+timeCreated: 1495802959
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Materials/diffuse_camo_jungle.mat
+  uploadId: 411840

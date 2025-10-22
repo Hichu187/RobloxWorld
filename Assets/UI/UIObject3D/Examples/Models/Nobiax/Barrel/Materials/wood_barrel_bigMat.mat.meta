@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 471691f639e56a14689f056f06258766
+timeCreated: 1496319326
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Barrel/Materials/wood_barrel_bigMat.mat
+  uploadId: 411840

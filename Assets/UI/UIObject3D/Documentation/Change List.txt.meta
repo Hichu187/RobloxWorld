@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d5d89b104edb5224894e10e374e067be
+timeCreated: 1496848224
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Documentation/Change List.txt
+  uploadId: 411840

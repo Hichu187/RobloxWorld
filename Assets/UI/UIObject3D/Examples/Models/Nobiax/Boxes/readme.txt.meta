@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4181569f72ce4e749b64b5842e56c631
+timeCreated: 1495803188
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/readme.txt
+  uploadId: 411840

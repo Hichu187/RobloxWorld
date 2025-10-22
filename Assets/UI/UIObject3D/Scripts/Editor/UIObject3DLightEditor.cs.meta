@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a34bb1e171624594cb979393998bcd3e
+timeCreated: 1556306252
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Scripts/Editor/UIObject3DLightEditor.cs
+  uploadId: 411840

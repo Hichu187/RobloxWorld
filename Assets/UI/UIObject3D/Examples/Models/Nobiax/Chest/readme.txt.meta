@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 646f02be138ecce4e84743c688d48dc2
+timeCreated: 1496069332
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Chest/readme.txt
+  uploadId: 411840

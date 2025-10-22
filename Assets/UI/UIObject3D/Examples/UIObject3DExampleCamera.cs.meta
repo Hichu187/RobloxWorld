@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 548e8579cb1ab2441b687e9309c156c9
+timeCreated: 1495718714
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/UIObject3DExampleCamera.cs
+  uploadId: 411840

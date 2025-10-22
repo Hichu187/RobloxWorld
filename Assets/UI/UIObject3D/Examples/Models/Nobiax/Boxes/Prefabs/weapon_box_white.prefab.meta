@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d653a301af37b8341b3959e772a89dbd
+timeCreated: 1496161260
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Prefabs/weapon_box_white.prefab
+  uploadId: 411840

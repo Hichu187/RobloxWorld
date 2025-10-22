@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5bb5c7e68eca7bb4597a1a96124d8c1e
+timeCreated: 1495458875
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Example Scene.unity
+  uploadId: 411840

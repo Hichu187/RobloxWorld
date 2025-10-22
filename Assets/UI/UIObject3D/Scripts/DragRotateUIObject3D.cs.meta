@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fd433ccb6229d614da18a91a27e33c57
+timeCreated: 1496061111
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Scripts/DragRotateUIObject3D.cs
+  uploadId: 411840

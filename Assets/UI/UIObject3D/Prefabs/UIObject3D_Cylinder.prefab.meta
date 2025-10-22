@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a93464a669f69c54993285855615888d
+timeCreated: 1496676273
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Prefabs/UIObject3D_Cylinder.prefab
+  uploadId: 411840

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e40d317a33044484aa7b0352103b7c84
+timeCreated: 1496666370
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Prefabs/UIObject3D.prefab
+  uploadId: 411840
