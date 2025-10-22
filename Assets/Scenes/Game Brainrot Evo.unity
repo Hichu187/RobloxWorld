@@ -1136,6 +1136,7 @@ MonoBehaviour:
   _meshTransform: {fileID: 835827323}
   _petTarget: {fileID: 835827322}
   _pets: []
+  evoVfx: {fileID: 1941566605}
 --- !u!1 &862950757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,6 +1733,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &1941566605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 147642, guid: 685c97d007af49549b239b56b6d2000a, type: 3}
+  m_PrefabInstance: {fileID: 23270069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1984121319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1779972715877576531, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
