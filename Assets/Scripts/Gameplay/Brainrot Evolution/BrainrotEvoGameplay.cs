@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Hichu;
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -11,11 +13,30 @@ namespace Game
         [SerializeField] AssetReference gameView;
         [SerializeField] Transform _mapParent;
 
+        [Title("AI")]
+        private AIWaypointManager _waypointManager;
+        [SerializeField] AI _aiPrefab;
+
+        private List<AI> _ais = new List<AI>();
         private GameObject _currentMap;
-        private void Awake()
+        private async void Awake()
         {
             _currentMap = FactoryBrainrotEvo.maps[DataBrainrotEvo.currentMap].Create(_mapParent);
 
+            await UniTask.WaitForEndOfFrame();
+
+            _waypointManager = FindAnyObjectByType<AIWaypointManager>();
+
+            for(int i = 0; i < 5; i++)
+            {
+                var ai = _aiPrefab.Create(_mapParent);
+
+                ai.character.Revive(_waypointManager.waypoints[i].transform.position, _waypointManager.waypoints[i].transform.rotation);
+
+                ai.gameObject.AddComponent<AIFollowWaypoint>();
+
+                _ais.Add(ai);
+            }
         }
 
         public override void Start()
@@ -23,6 +44,8 @@ namespace Game
             base.Start();
 
             Init();
+
+
         }
         private async void Init()
         {

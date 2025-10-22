@@ -1314,7 +1314,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 982260481}
-  - component: {fileID: 982260482}
   m_Layer: 0
   m_Name: AIWaypointManager
   m_TagString: Untagged
@@ -1337,19 +1336,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1907746299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &982260482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982260480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd018c1078306b4b8291fc15aeb86b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _waypoints: []
 --- !u!1 &1044290533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1615,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   _mapParent: {fileID: 141097496}
+  _aiPrefab: {fileID: 8241151817209661624, guid: 6f0093d8f8911ec4e930e9cba119f088, type: 3}
 --- !u!1 &1907746298
 GameObject:
   m_ObjectHideFlags: 0

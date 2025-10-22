@@ -2,7 +2,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Game.BrainrotEvoGachaRates; // dùng trực tiếp RATE_*
 
 namespace Game
 {
@@ -14,10 +13,10 @@ namespace Game
         [SerializeField] TextMeshProUGUI _petName;
         [SerializeField] TextMeshProUGUI _petRate;
 
-        public void InitData(int index)
+        public void InitData(int eggIndex, int index)
         {
-            BrainrotEvoPetConfig petData = FactoryBrainrotEvo.mapDatas[DataBrainrotEvo.currentMap].petMap[index];
-
+            var mapData = FactoryBrainrotEvo.mapDatas[DataBrainrotEvo.currentMap];
+            var petData = mapData.petMap[index];
             _border.sprite = _borderRankImage[(int)petData.petRank];
             _icon.sprite = petData.petIcon;
             _icon.SetNativeSize();
@@ -27,21 +26,30 @@ namespace Game
 
             _petName.text = petData.petName;
 
-            float rate = GetRateByRank(petData.petRank);
+            float rate = GetRateByRank(petData.petRank, FactoryBrainrotEvo.petRate[eggIndex].rate);
             _petRate.text = $"{rate:P0}";
         }
 
-        private float GetRateByRank(PetRank rank)
+        private float GetRateByRank(PetRank rank, List<int> petRate)
         {
-            switch (rank)
+            if (petRate == null || petRate.Count < 5) return 0f;
+            float c = Mathf.Max(0, petRate[0]);
+            float uc = Mathf.Max(0, petRate[1]);
+            float r = Mathf.Max(0, petRate[2]);
+            float e = Mathf.Max(0, petRate[3]);
+            float l = Mathf.Max(0, petRate[4]);
+            float total = c + uc + r + e + l;
+            if (total <= 0f) return 0f;
+
+            return ((int)rank) switch
             {
-                case PetRank.Common: return RATE_COMMON;
-                case PetRank.Uncommon: return RATE_UNCOMMON;
-                case PetRank.Rare: return RATE_RARE;
-                case PetRank.Epic: return RATE_EPIC;
-                case PetRank.Legendary: return RATE_LEGENDARY;
-                default: return 0f;
-            }
+                0 => c / total,
+                1 => uc / total,
+                2 => r / total,
+                3 => e / total,
+                4 => l / total,
+                _ => 0f
+            };
         }
     }
 }
