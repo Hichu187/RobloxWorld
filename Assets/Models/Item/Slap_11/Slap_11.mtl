@@ -1,0 +1,24 @@
+newmtl Stick2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0901961 0.0901961 0.0901961 
+
+d 1
+
+Ns 0
+
+map_Ka Stick2_diff.png
+map_Kd Stick2_diff.png
+map_d Stick2_diff.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 0
+Kd 1 1 0
+Ks 0.0901961 0.0901961 0 
+
+d 1
+
+Ns 0
+

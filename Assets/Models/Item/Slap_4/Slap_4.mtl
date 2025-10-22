@@ -1,0 +1,24 @@
+newmtl StickHolder1Mtl
+Material Color
+Ka 0.00258583 0.00258583 0.00258583
+Kd 0.00258583 0.00258583 0.00258583
+Ks 0.000162248 0.000162248 0.000162248 
+
+d 1
+
+Ns 0
+
+newmtl MetalHand1Mtl
+Material Color
+Ka 1 0 0
+Kd 1 0 0
+Ks 0.196078 0 0 
+
+d 1
+
+Ns 255
+
+map_Bump MetalHand1_nmap.png
+
+map_Ns MetalHand1_spec.png
+
