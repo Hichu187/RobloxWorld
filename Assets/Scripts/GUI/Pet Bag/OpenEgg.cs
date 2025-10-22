@@ -72,7 +72,7 @@ namespace Game
             if (_btnAdsCash && _btnAdsCash.transform.childCount > 0)
             {
                 var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                if (txt) txt.text = openCash.ToString();
+                if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
             }
         }
 
@@ -105,7 +105,13 @@ namespace Game
 
         private void AdsCash()
         {
-            DataBrainrotEvo.instance.CashUpdate(openCash);
+
+            DataBrainrotEvo.instance.CashUpdate((50 + DataBrainrotEvo.adsCash * 10));
+
+            DataBrainrotEvo.instance.RewardAdsCash();
+
+            var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
         }
 
         private void SpawnOptions()

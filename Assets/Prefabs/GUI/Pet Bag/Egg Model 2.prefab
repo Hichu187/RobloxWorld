@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6198376990882919226}
   - component: {fileID: 8986715220524282594}
   m_Layer: 0
-  m_Name: Egg Model
+  m_Name: Egg Model 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34045,7 +34045,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47206dad27a4141c6baf71ed5ea4ae93, type: 2}
+  - {fileID: 2100000, guid: c57ad6377ebcd4a2584b736e66de5f88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
