@@ -1219,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Open Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 8307097328104348677, guid: 92e00c011bc1dc04c899aae9a0fdf898, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1369,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Remove Ads
       objectReference: {fileID: 0}
+    - target: {fileID: 3307068979200515900, guid: 4eb0c0f91e584b3458c3f1e115859f63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5401203601556072584, guid: 4eb0c0f91e584b3458c3f1e115859f63, type: 3}
       propertyPath: managedReferences[4244441994541400190]._valueStart.y
       value: -100
@@ -1490,6 +1498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4526524513610318697, guid: 42bd1c21dd0254846abd1c597a6160ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4999170058888451329, guid: 42bd1c21dd0254846abd1c597a6160ac, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1602,6 +1614,10 @@ PrefabInstance:
     - target: {fileID: 5028427644998351010, guid: d60e6a39a75f76d48a71a80957bc285c, type: 3}
       propertyPath: m_Name
       value: Button Evo Index
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028427644998351010, guid: d60e6a39a75f76d48a71a80957bc285c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7563501446617519745, guid: d60e6a39a75f76d48a71a80957bc285c, type: 3}
       propertyPath: managedReferences[4244441994541400192]._valueStart.x

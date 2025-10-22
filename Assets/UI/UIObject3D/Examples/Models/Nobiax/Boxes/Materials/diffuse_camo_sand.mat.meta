@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6a61a85d9e373954a855683df4fd8829
+timeCreated: 1495802757
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Materials/diffuse_camo_sand.mat
+  uploadId: 411840

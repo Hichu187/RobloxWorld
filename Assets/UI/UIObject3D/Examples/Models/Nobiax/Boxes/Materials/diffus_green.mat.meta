@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 33a937c59f8943a49b4f7ee2021b0291
+timeCreated: 1496161172
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Materials/diffus_green.mat
+  uploadId: 411840

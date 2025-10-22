@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0b2c96fe078d9d74ea41de87931c46de
+timeCreated: 1495721167
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Scripts/Editor/UIObject3DProcessor.cs
+  uploadId: 411840

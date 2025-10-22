@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0417bf42b98f8d848acfe1cbac3e7122
+timeCreated: 1495815949
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Prefabs/weapon_box_jungle.prefab
+  uploadId: 411840

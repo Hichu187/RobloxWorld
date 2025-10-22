@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2fdab62d64fa631469c07082b61befcb
+timeCreated: 1496668013
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Prefabs/Materials/PlaceholderMaterial.mat
+  uploadId: 411840

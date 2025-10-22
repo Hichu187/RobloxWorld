@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8e1a501fbbce9534684a6b6c73eaaab0
+timeCreated: 1496161198
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Boxes/Materials/diffus_white.mat
+  uploadId: 411840

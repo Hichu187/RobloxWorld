@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 38a93cd9f3448534898baafbc01fa01f
+timeCreated: 1496319397
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Barrel/Prefab/Barrel.prefab
+  uploadId: 411840

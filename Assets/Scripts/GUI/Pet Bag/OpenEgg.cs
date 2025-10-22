@@ -1,4 +1,5 @@
-﻿using Hichu;
+﻿using DG.Tweening;
+using Hichu;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,20 +20,30 @@ namespace Game
     public class OpenEgg : MonoBehaviour
     {
         [SerializeField] private OpenEggOption _optionPrefab;
+        [SerializeField] private PetOpenPreview _preview;
         [SerializeField] private Transform _optionParent;
         [SerializeField] private Button _btnHatch;
         [SerializeField] private Button _btnAdsCash;
+        [SerializeField] private Button _btnClickOpen;
         [SerializeField] private int openCash = 1000;
         [SerializeField] private List<OpenEggOption> _options = new();
         [SerializeField] private List<float> _rankRates = new() { RATE_COMMON, RATE_UNCOMMON, RATE_RARE, RATE_EPIC, RATE_LEGENDARY };
-        private int _mapDataIndex = -1;
 
+        [SerializeField] List<RectTransform> _egg;
+
+        private int _mapDataIndex = -1;
+        private int _clickTime = 3;
+        private GameObject _eggCanvas;
+
+        // thêm:
+        private int _currentClick = 0;
+        private bool _isLocked = false;
+        private float _shakeDuration = 0.25f;
         private void Start()
         {
-
             _btnHatch.onClick.AddListener(Hatch);
             _btnAdsCash.onClick.AddListener(AdsCash);
-
+            _btnClickOpen.onClick.AddListener(ClickOpenEgg);
             
             UpdatePriceLabels();
         }
@@ -61,7 +72,7 @@ namespace Game
             if (_btnAdsCash && _btnAdsCash.transform.childCount > 0)
             {
                 var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                if (txt) txt.text = openCash.ToString();
+                if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
             }
         }
 
@@ -94,7 +105,13 @@ namespace Game
 
         private void AdsCash()
         {
-            DataBrainrotEvo.instance.CashUpdate(openCash);
+
+            DataBrainrotEvo.instance.CashUpdate((50 + DataBrainrotEvo.adsCash * 10));
+
+            DataBrainrotEvo.instance.RewardAdsCash();
+
+            var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
         }
 
         private void SpawnOptions()
@@ -134,13 +151,63 @@ namespace Game
                 return;
             }
             DataBrainrotEvo.instance.CashUpdate(-openCash);
-            PetRank rolledRank = RollRank();
-            BrainrotEvoPetConfig petData = PickPetConfigFromCurrentMapByRankWithFallback(rolledRank);
-            if (petData == null) return;
-            int petId = FactoryBrainrotEvo.pets.IndexOf(petData);
-            if (petId < 0) return;
-            DataBrainrotEvo.AddOwnedPet(petId);
-            ReinitOptions();
+
+            transform.GetChild(0).gameObject.SetActive(false);
+            _btnAdsCash.gameObject.SetActive(false);
+
+            _egg[_mapDataIndex].transform.parent.gameObject.SetActive(true);
+            _egg[_mapDataIndex].gameObject.SetActive(true);
+            _egg[_mapDataIndex].DOScale(1, 0.35f).ChangeStartValue(Vector3.zero).SetEase(Ease.OutBack);
+        }
+
+        public void ClickOpenEgg()
+        {
+            if (_mapDataIndex < 0) return;
+            if (_isLocked) return;
+
+            var rt = _egg[_mapDataIndex];
+            if (rt == null || !rt.gameObject.activeInHierarchy) return;
+
+            _isLocked = true;
+            _currentClick++;
+
+            rt.DOKill(true);
+            if (_currentClick < _clickTime)
+            {
+                rt.DOPunchRotation(new Vector3(0f, 0f, 18f), _shakeDuration, 12, 0.8f)
+                  .OnComplete(() => _isLocked = false);
+                return;
+            }
+
+            Sequence seq = DOTween.Sequence();
+            seq.Append(rt.DOPunchRotation(new Vector3(0f, 0f, 22f), _shakeDuration, 14, 0.9f));
+            seq.Append(rt.DOScale(1.12f, 0.18f));
+            seq.OnComplete(() =>
+            {
+                var parent = rt.transform.parent ? rt.transform.parent.gameObject : null;
+                rt.gameObject.SetActive(false);
+                if (parent) parent.SetActive(false);
+                _currentClick = 0;
+                _isLocked = false;
+
+                PetRank rolledRank = RollRank();
+                var petData = PickPetConfigFromCurrentMapByRankWithFallback(rolledRank);
+                if (petData == null) return;
+                int petId = FactoryBrainrotEvo.pets.IndexOf(petData);
+                if (petId < 0) return;
+                DataBrainrotEvo.AddOwnedPet(petId);
+                ReinitOptions();
+
+
+
+                if (_preview != null)
+                {
+                    _preview.InitData(petData);
+                    _preview.gameObject.SetActive(true);
+                    _preview.transform.localScale = Vector3.zero;
+                    _preview.transform.DOScale(1f, 0.45f).SetEase(Ease.OutBack);
+                }
+            });
         }
 
         private PetRank RollRank()

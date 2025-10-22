@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3393dca1ad1616e438bb44baebb207de
+timeCreated: 1496069332
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 92476
+  packageName: 'UIObject3D: Render 3D Models on any Unity UI Canvas'
+  packageVersion: 1.17
+  assetPath: Assets/UI/UIObject3D/Examples/Models/Nobiax/Chest/Materials/ChestMat.mat
+  uploadId: 411840
