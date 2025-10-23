@@ -17605,6 +17605,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  priceText: {fileID: 5603244911775101692}
   id: 1
 --- !u!1 &8501938125064464802
 GameObject:
@@ -17681,6 +17682,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  priceText: {fileID: 4889512610743920837}
   id: 0
 --- !u!1 &8533597974506563246
 GameObject:
@@ -18468,6 +18470,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  priceText: {fileID: 670811749275051969}
   id: 2
 --- !u!1 &8808168290351453777
 GameObject:

@@ -1,4 +1,5 @@
 using Hichu;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -7,8 +8,14 @@ namespace Game
     public class BrainrotEvoEgg : MonoBehaviour, ICharacterCollidable
     {
         [SerializeField] AssetReferenceGameObject eggView;
+        [SerializeField] TextMeshPro priceText;
         [SerializeField] int id;
         private View view;
+
+        private void Start()
+        {
+            priceText.text = FactoryBrainrotEvo.mapDatas[id].price.ToString();
+        }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
 
