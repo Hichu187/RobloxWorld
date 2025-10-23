@@ -2,12 +2,24 @@ using DG.Tweening.Core.Easing;
 using Hichu;
 using Sirenix.OdinInspector;
 using System.Threading.Tasks;
+using Unity.Cinemachine;
 using UnityEngine;
+
 
 namespace Game
 {
     public class TowerGameplay : BaseGameplay
     {
+        [SerializeField] AnimationSequence cameraSequence;
+        [SerializeField] Transform cameraReviewMap;
+
+        private void Start()
+        {
+            player = Player.Instance;
+
+            //player.character.cCamera.SetFollowTransform(cameraReviewMap);
+        }
+
         protected override void SubscribeEvent()
         {
             base.SubscribeEvent();

@@ -19350,7 +19350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1622305535884013436, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: groundProbeDistance
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 1640433025319689478, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
