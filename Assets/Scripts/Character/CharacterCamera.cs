@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -174,6 +175,34 @@ namespace Game
                 // Apply position
                 Transform.position = targetPosition;
             }
+        }
+
+        public void PlayCam(Transform[] t)
+        {
+            if (t == null || t.Length == 0)
+                return;
+
+            Player.Instance.character.cControl.Motor.enabled = false;
+
+            Sequence seq = DOTween.Sequence();
+
+            float moveDuration = 1.2f;
+            float stayDuration = 0.5f; 
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Transform target = t[i];
+                if (target == null) continue;
+
+                seq.AppendCallback(() => SetFollowTransform(target));
+                seq.AppendInterval(moveDuration);
+                seq.AppendInterval(stayDuration);
+            }
+
+            seq.OnComplete(() =>
+            {
+                Player.Instance.character.cControl.Motor.enabled = true;
+            });
         }
     }
 }

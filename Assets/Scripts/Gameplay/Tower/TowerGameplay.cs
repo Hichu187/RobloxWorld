@@ -1,6 +1,7 @@
 using DG.Tweening.Core.Easing;
 using Hichu;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -17,7 +18,17 @@ namespace Game
         {
             player = Player.Instance;
 
-            //player.character.cCamera.SetFollowTransform(cameraReviewMap);
+            player.control.canMove = false;
+
+            player.character.cCamera.SetFollowTransform(cameraReviewMap);
+        }
+
+        public void InitStart()
+        {
+            player.control.canMove = true;
+
+
+            player.character.cCamera.SetFollowTransform(player.control._cameraFollowTarget);
         }
 
         protected override void SubscribeEvent()
