@@ -28,6 +28,12 @@ namespace Game
             _mpb = new MaterialPropertyBlock();
         }
 
+        [Button]
+        void GetMesh()
+        {
+            _renderer = GetComponent<MeshRenderer>();
+        }
+
         private void Start()
         {
             _origin = _renderer != null ? _renderer.sharedMaterial : null;

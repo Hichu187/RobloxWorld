@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 3512705354490901042}
   - component: {fileID: 7099523407771847612}
   - component: {fileID: 2593960828409894946}
+  - component: {fileID: 7749133841842370749}
   - component: {fileID: 8391187971766255621}
   m_Layer: 0
   m_Name: Character
@@ -315,6 +316,21 @@ MonoBehaviour:
   _autoRegen: 0
   _regenDelaySeconds: 10
   hasDied: 0
+--- !u!114 &7749133841842370749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325134468661154976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319b3646194ac7448fb2d6a92f3a018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.CharacterFallingDetector
+  _threshold: 10
+  _raycastCheckGround: 0
+  _raycastCheckGroundDistance: 15
 --- !u!114 &8391187971766255621
 MonoBehaviour:
   m_ObjectHideFlags: 0
