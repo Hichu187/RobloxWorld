@@ -15,16 +15,15 @@ namespace Game
 
         private void Start()
         {
-            bool isHome = SceneManager.GetActiveScene().buildIndex == 1;
+            bool isHome = SceneManager.GetActiveScene().buildIndex == 0;
 
             _objHome.SetActive(!isHome);
-            //_panel.sizeDelta = new Vector2(_panel.sizeDelta.x, isHome ? 385f : 495f);
             _objHome.GetComponent<Button>().onClick.AddListener(BtnHome_OnClick);
         }
 
         private void BtnHome_OnClick()
         {
-            SceneLoaderHelper.Load(1);
+            SceneLoaderHelper.Load(0);
 
         }
     }

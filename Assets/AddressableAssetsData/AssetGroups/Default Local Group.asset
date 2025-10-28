@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ded84c2ae35aeb343b7cee40276b202b
   m_SerializeEntries:
+  - m_GUID: 450f48f84ca767945becf60c1ce41a18
+    m_Address: Assets/Prefabs/GUI/View/Home View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 697c9a8fb1bd0a04eb0f3c3f75e5254a
     m_Address: Assets/Prefabs/GUI/Slap Bag/Bag View.prefab
     m_ReadOnly: 0

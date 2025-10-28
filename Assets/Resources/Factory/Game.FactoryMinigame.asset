@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108553f656d176640b5367cdad8bb1e1, type: 3}
+  m_Name: Game.FactoryMinigame
+  m_EditorClassIdentifier: Game::Game.FactoryMinigame
+  _minigames:
+  - {fileID: 11400000, guid: f3c3e94ede113394599cf9d564302562, type: 2}
+  - {fileID: 11400000, guid: 455720ff9af649b4699b7db21ab3672f, type: 2}
+  - {fileID: 11400000, guid: 86c8aee388fed264d8b10e5e66d6d112, type: 2}
+  - {fileID: 11400000, guid: 878ada2c1936ce249841bcb134cc15da, type: 2}
+  - {fileID: 11400000, guid: 992ad54a335bd554981928de612bcd80, type: 2}
+  - {fileID: 11400000, guid: 8b777d3247195a24a91d4430541a867f, type: 2}
+  - {fileID: 11400000, guid: c1eac30b7de6e364ca8b2abc3e9765b7, type: 2}
+  - {fileID: 11400000, guid: 2aaf739c968cf3a4eaf2b654135ea18d, type: 2}

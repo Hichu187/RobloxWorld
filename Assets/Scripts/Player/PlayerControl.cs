@@ -33,11 +33,7 @@ namespace Game
         public bool useMobileControl { get { return _useMobileControl; } }
         private void Awake()
         {
-            _characterControl = Player.Instance.character.cControl;
-            _characterCamera = Player.Instance.character.cCamera;
-            _cCombat = Player.Instance.character.cCombat;
-            _gui = Player.Instance.gui;
-            _fov = Player.Instance.character.fov;
+
         }
 
         private void Start()
@@ -45,6 +41,12 @@ namespace Game
 #if !UNITY_EDITOR
 _useMobileControl = true;
 #endif
+            _characterControl = Player.Instance.character.cControl;
+            _characterCamera = Player.Instance.character.cCamera;
+            _cCombat = Player.Instance.character.cCombat;
+            _gui = Player.Instance.gui;
+            _fov = Player.Instance.character.fov;
+
 
             // Tell camera to follow transform
             _characterCamera.SetFollowTransform(_cameraFollowTarget ? _cameraFollowTarget : _characterControl.transformCached);
