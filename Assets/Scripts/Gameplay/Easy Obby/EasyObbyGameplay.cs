@@ -20,17 +20,10 @@ namespace Game
             StaticBus<Event_Player_Dead>.Unsubscribe(EventPlayerDead);
         }
 
-        public void EventPlayerDead(Event_Player_Dead e)
-        {
-            RevivePlayer();
-        }
-
-        public async void RevivePlayer()
+        public override async void EventPlayerDead(Event_Player_Dead e)
         {
             await Task.Delay(1000);
-
-            player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
-            player.character.motor.enabled = true;
+            RespawnCheckpoint();
         }
     }
 }

@@ -7,6 +7,5 @@ namespace Game
         public PlayerControl control;
         public PlayerGUI gui;
         public Character character;
-
     }
 }

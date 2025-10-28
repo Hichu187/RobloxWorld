@@ -66,8 +66,9 @@ namespace Game
             if (_character.isPlayer)
             {
                 StaticBus<Event_Player_Dead>.Post(null);
-
                 LDebug.Log<CharacterDie>("Player Dead");
+
+                _character.motor.enabled = false;
             }
 
 
