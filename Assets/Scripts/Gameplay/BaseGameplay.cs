@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Hichu;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace Game
 {
@@ -13,6 +14,7 @@ namespace Game
 
         public virtual void Start()
         {
+            player.character.motor.SetPositionAndRotation(startPosition.position, startPosition.rotation);
             SubscribeEvent();
         }
 
@@ -43,15 +45,17 @@ namespace Game
             if (curCheckpoint == null) return;
             if (player == null) return;
 
+            Debug.Log($"{curCheckpoint.name} - {curCheckpoint.transform.localPosition}");
+
             player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
+            player.character.motor.enabled = true;
+            player.control.canMove = true;
         }
 
         public virtual async void EventPlayerDead(Event_Player_Dead e)
         {
             await UniTask.WaitForSeconds(2);
 
-            player.character.Revive(transform.position + Vector3.up, transform.rotation);
-            player.control.canMove = true;
         }
 
         private void EventCheckpoint(Event_Checkpoint e)
