@@ -47,7 +47,7 @@ namespace Game
 
             Debug.Log($"{curCheckpoint.name} - {curCheckpoint.transform.localPosition}");
 
-            player.character.Revive(curCheckpoint.transform.localPosition, curCheckpoint.transform.localRotation);
+            player.character.Revive(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
             player.character.motor.enabled = true;
             player.control.canMove = true;
         }
