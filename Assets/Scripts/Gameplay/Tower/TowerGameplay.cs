@@ -14,20 +14,29 @@ namespace Game
         [SerializeField] AnimationSequence cameraSequence;
         [SerializeField] Transform cameraReviewMap;
 
-        private void Start()
+        private void Awake()
         {
+
+        }
+
+        public override void Start()
+        {
+            base.Start();
+
             player = Player.Instance;
 
             player.control.canMove = false;
 
             player.character.cCamera.SetFollowTransform(cameraReviewMap);
+            player.gui.gameObject.SetActive(false);
+
         }
 
         public void InitStart()
         {
             player.control.canMove = true;
 
-
+            player.gui.gameObject.SetActive(true);
             player.character.cCamera.SetFollowTransform(player.control._cameraFollowTarget);
         }
 

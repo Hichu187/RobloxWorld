@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Hichu;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.TextCore.Text;
 
 namespace Game
@@ -11,11 +12,16 @@ namespace Game
         public Player player;
         public Transform startPosition;
         public PlatformCheckpoint curCheckpoint;
+        public AssetReference gameView;
 
         public virtual void Start()
         {
-            player.character.motor.SetPositionAndRotation(startPosition.position, startPosition.rotation);
+            if(startPosition != null) 
+                player.character.motor.SetPositionAndRotation(startPosition.position, startPosition.rotation);
+
             SubscribeEvent();
+
+            Init();
         }
 
         public virtual void OnDestroy()
@@ -31,6 +37,12 @@ namespace Game
         protected virtual void UnsubscribeEvent()
         {
             StaticBus<Event_Checkpoint>.Unsubscribe(EventCheckpoint);
+        }
+
+        private async void Init()
+        {
+            if (gameView == null) return;
+            View view = await ViewHelper.PushAsync(gameView);
         }
 
         public void RespawnStartPosition()

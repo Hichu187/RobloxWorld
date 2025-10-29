@@ -10,7 +10,6 @@ namespace Game
 {
     public class BrainrotEvoGameplay : BaseGameplay
     {
-        [SerializeField] AssetReference gameView;
         [SerializeField] Transform _mapParent;
 
         [Title("AI")]
@@ -43,14 +42,7 @@ namespace Game
         {
             base.Start();
 
-            Init();
-
-
-        }
-        private async void Init()
-        {
-
-            View view = await ViewHelper.PushAsync(gameView);
+            Debug.Log("Test");
         }
 
 

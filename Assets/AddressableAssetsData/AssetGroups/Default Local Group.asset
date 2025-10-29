@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cbdf6070c945d64688c3ea4e9a8fcbb
+    m_Address: Assets/Prefabs/GUI/View/Tower Troll View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ecdec0ef9436e84ebe19b1336392fb9
     m_Address: Assets/Prefabs/GUI/Pet Bag/Open Egg View.prefab
     m_ReadOnly: 0
