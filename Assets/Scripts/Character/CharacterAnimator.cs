@@ -152,7 +152,7 @@ namespace Game
             var tr = transform;
             RaycastHit hit;
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.35f);
             animator.speed = 0.15f;
             while (inAir)
             {
