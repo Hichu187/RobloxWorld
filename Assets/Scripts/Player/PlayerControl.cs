@@ -228,5 +228,16 @@ _useMobileControl = true;
 
             return move;
         }
+
+        [Button]
+        public void SpeedUp()
+        {
+
+        }
+        [Button]
+        public void JumpUp()
+        {
+
+        }
     }
 }

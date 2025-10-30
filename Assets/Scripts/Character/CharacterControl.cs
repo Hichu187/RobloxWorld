@@ -34,6 +34,7 @@ namespace Game
         private float _jumpTimeSinceLast = 0f;
         private float _jumpTimeSinceRequest = Mathf.Infinity;
         private float _jumpSpeedMultiple = 1f;
+        private float _moveSpeedMultiple = 1f;
         private int _jumpCount = 0;
         private Vector3 _additiveVelocity = Vector3.zero;
         private Vector3 _velocityBase;
@@ -46,6 +47,17 @@ namespace Game
         public StateMachine<State> StateMachine { get { return _stateMachine; } }
         public KccMotor Motor { get { return _motor; } }
         public CharacterConfig Config { get { return _config; } }
+
+        public float JumpSpeedMultiple
+        {
+            get => _jumpSpeedMultiple;
+            set => _jumpSpeedMultiple = value;
+        }
+        public float MoveSpeedMultiple
+        {
+            get => _moveSpeedMultiple;
+            set => _moveSpeedMultiple = Mathf.Max(0f, value);
+        }
 
         private void Awake()
         {
@@ -284,18 +296,24 @@ namespace Game
                         float currentVelocityMagnitude = currentVelocity.magnitude;
                         Vector3 effectiveGroundNormal = _motor.GroundingStatus.GroundNormal;
                         currentVelocity = _motor.GetDirectionTangentToSurface(currentVelocity, effectiveGroundNormal) * currentVelocityMagnitude;
+
                         Vector3 inputRight = Vector3.Cross(_inputMove, _motor.CharacterUp);
                         Vector3 reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized * _inputMove.magnitude;
-                        Vector3 targetMovementVelocity = reorientedInput * _config.GroundMoveSpeedMax;
+
+                        float groundMax = _config.GroundMoveSpeedMax * _moveSpeedMultiple;
+                        Vector3 targetMovementVelocity = reorientedInput * groundMax;
+
                         currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1f - Mathf.Exp(-_config.GroundMoveSharpness * deltaTime));
                     }
+
                     if (CanJump()) DoJump(ref currentVelocity);
                     _velocityBase = currentVelocity;
                     HandleAdditiveVelocity(ref currentVelocity);
 
                     float forwardSpeed = Vector3.Dot(Vector3.ProjectOnPlane(currentVelocity, _motor.CharacterUp), _motor.CharacterForward);
-                    float norm = 0f;
-                    if (_config.GroundMoveSpeedMax > 0f) norm = Mathf.Clamp01(Mathf.Abs(forwardSpeed) / _config.GroundMoveSpeedMax);
+                    float groundMaxForAnim = Mathf.Max(0.0001f, _config.GroundMoveSpeedMax * _moveSpeedMultiple);
+                    float norm = Mathf.Clamp01(Mathf.Abs(forwardSpeed) / groundMaxForAnim);
+
                     _animVelZ = Mathf.Lerp(_animVelZ, norm, 1f - Mathf.Exp(-_animVelSharpness * deltaTime));
                     if (_animator != null) _animator.SetVelocityZ(_animVelZ);
                     break;
