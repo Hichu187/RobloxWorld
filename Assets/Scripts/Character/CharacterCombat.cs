@@ -27,7 +27,7 @@ namespace Game
         public TextMeshProUGUI _nameText;
         public TextMeshProUGUI _hpText;
         public Image _hp_Bar;
-
+        public GameObject hitPrefab;
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
         public int specialBonus = 0;
@@ -67,6 +67,8 @@ namespace Game
             return (_damage * safePetBonus) + specialBonus;
         }
 
+
+
         public async void Attack(FieldOfView fov)
         {
             if (hasDied) return;
@@ -80,17 +82,20 @@ namespace Game
             {
                 _lastAttackTime = Time.time;
 
-                if (_character) _character.cAnim.Attack();
+                if (_character)
+                    _character.cAnim.Attack();
 
                 await UniTask.WaitForSeconds(0.4f);
 
                 if (fov.combatables == null || fov.combatables.Count == 0) return;
-                float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
 
+                float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
                 float totalDamage = GetTotalDamage();
 
                 foreach (var target in fov.combatables)
                 {
+                    if (target == null) continue;
+
                     Vector3 toTarget = target.position - transform.position;
 
                     Vector3 horiz = Vector3.ProjectOnPlane(toTarget, Vector3.up);
@@ -104,9 +109,16 @@ namespace Game
                     Vector3 dir = horiz * Mathf.Cos(angRad) + Vector3.up * Mathf.Sin(angRad);
                     dir.Normalize();
 
-                    if (target.GetComponent<CharacterCombat>())
+                    var targetCombat = target.GetComponent<CharacterCombat>();
+                    if (targetCombat)
                     {
-                        target.GetComponent<CharacterCombat>().TakeDamage((int)totalDamage, _knockbackForce, dir);
+                        targetCombat.TakeDamage((int)totalDamage, _knockbackForce, dir);
+
+                        if (hitPrefab != null)
+                        {
+                            hitPrefab.SetActive(true);
+                            hitPrefab.transform.position = target.position;
+                        }
                     }
                 }
             }
@@ -115,6 +127,7 @@ namespace Game
                 float remain = _lastAttackTime + attackSpeed - Time.time;
             }
         }
+
 
         public virtual void TakeDamage(int amount, float force, Vector3 direction)
         {

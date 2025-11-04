@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Hichu;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -54,14 +55,31 @@ namespace Game
             }
 
             var model = Instantiate(_currentConfig.model, _meshTransform);
-
             await UniTask.WaitUntil(() => model != null);
 
+            // ---- Hiệu ứng xuất hiện ----
+
+            Vector3 scale = model.transform.localScale;
+
+            Transform modelT = model.transform;
+            modelT.localScale = Vector3.zero;
+            modelT.localRotation = Quaternion.identity;
+
+            evoVfx.SetActive(true);
+
+            Sequence seq = DOTween.Sequence();
+            seq.Join(modelT.DOScale(scale, 0.8f).SetEase(Ease.OutBack))
+               .Join(modelT.DOLocalRotate(new Vector3(0f, 360f, 0f), 1f, RotateMode.FastBeyond360)
+                           .SetEase(Ease.OutBack));
+
+            // Chờ hiệu ứng hoàn tất
+            await seq.AsyncWaitForCompletion();
+
+            // ---- Sau khi hiệu ứng hoàn thành ----
             _player.character.cAnim.InitAnimator();
             _player.control.canMove = true;
             _player.character.GetComponent<CharacterDie>().ObjRoot = model.gameObject;
         }
-
 
         private async void SpawnPet()
         {
@@ -101,8 +119,6 @@ namespace Game
         private void EventLevelUp(Event_Player_Level_Up e)
         {
             LDebug.Log<BrainrotEvoPlayer>($"Player level Up {e.level}, exp : {DataBrainrotEvo.exp}");
-
-            evoVfx.SetActive(true);
 
             InitData();
         }
