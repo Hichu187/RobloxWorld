@@ -38,8 +38,8 @@ namespace Game
         public void CashUpdate(int cash)
         {
             _cash += cash;
-
-            StaticBus<Event_Cash_Update>.Post(null);
+            bool increase = cash > 0;
+            StaticBus<Event_Cash_Update>.Post(new Event_Cash_Update(cash, increase));
 
             Save();
         }

@@ -51,8 +51,13 @@ namespace Game
             UpdateExpUI(false);
         }
 
-        private void EventCashUpdate(Event_Cash_Update e)
+        private async void EventCashUpdate(Event_Cash_Update e)
         {
+            if (e.encreaseCash)
+            {
+                await UniTask.WaitForSeconds(1f);
+            }
+
             CashUpdate();
         }
 

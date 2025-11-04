@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 1
   botName: Bandito
   exp: 38
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 6172490137524809661}
 --- !u!1001 &21594106712530545

@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 1
   botName: Lavaca
   exp: 437
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 9142869962403012173}
 --- !u!1001 &21594106712530545

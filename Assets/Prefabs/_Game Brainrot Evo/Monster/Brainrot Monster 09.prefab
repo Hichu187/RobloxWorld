@@ -245,7 +245,7 @@ MonoBehaviour:
   type: 1
   botName: Scorpion
   exp: 25
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 1960061426548309052}
 --- !u!1001 &21594106712530545

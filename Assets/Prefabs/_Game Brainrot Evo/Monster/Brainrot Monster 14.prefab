@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 0
   botName: Fledgling
   exp: 194
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 1882509620660879294}
 --- !u!1001 &21594106712530545

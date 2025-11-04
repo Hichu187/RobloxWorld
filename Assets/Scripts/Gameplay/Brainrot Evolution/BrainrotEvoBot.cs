@@ -139,6 +139,8 @@ namespace Game
 
             StaticBus<Event_Player_Add_Exp>.Post(new Event_Player_Add_Exp(exp));
 
+            DataBrainrotEvo.instance.CashUpdate(coin);
+
             _stats.gameObject.SetActive(false);
             GetComponent<Collider>().enabled = false;
             await UniTask.WaitForSeconds(1f);

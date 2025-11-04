@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 0
   botName: Big Dummy
   exp: 129
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 3490539872280399043}
 --- !u!1001 &21594106712530545

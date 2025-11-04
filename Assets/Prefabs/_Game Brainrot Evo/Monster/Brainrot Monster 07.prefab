@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 0
   botName: Egg
   exp: 11
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 7427595638510682246}
 --- !u!1001 &21594106712530545

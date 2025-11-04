@@ -246,7 +246,7 @@ MonoBehaviour:
   type: 1
   botName: Chimpanzini Bananini
   exp: 3
-  coin: 0
+  coin: 100
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 1257990802032076370}
 --- !u!1001 &21594106712530545
