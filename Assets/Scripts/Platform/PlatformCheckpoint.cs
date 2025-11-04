@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Hichu;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -17,11 +18,15 @@ namespace Game
             _index = index;
         }
 
-        public void PlayFX()
+        public async void PlayFX()
         {
-            if (_vfx != null) _vfx.Create(transform.position, transform.rotation);
+            if (_vfx != null) _vfx.gameObject.SetActive(true);
 
             if (_sfx != null) AudioManager.Play(_sfx);
+
+            await UniTask.WaitForSeconds(2f);
+
+            if (_vfx != null) _vfx.gameObject.SetActive(false);
         }
 
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)

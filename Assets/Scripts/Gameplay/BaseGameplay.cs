@@ -72,7 +72,11 @@ namespace Game
 
         private void EventCheckpoint(Event_Checkpoint e)
         {
+            if (curCheckpoint == e.checkpoint) return;
+
             curCheckpoint = e.checkpoint;
+
+            curCheckpoint.PlayFX();
         }
     }
 }
