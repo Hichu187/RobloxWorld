@@ -3,6 +3,7 @@ using DG.Tweening;
 using Hichu;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace Game
@@ -14,7 +15,7 @@ namespace Game
         [SerializeField] Transform _meshTransform;
         [SerializeField] Transform _petTarget;
         [SerializeField] List<BrainrotPet> _pets;
-
+        [SerializeField] TextMeshProUGUI _petname;
         [SerializeField] GameObject evoVfx;
         private Player _player;
         private void Start()
@@ -42,6 +43,8 @@ namespace Game
         public async void InitData()
         {
             _currentConfig = FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level];
+
+            _petname.text = _currentConfig.brainrotName;
 
             characterCombat._maxHealth = (int)_currentConfig.health;
             characterCombat._currentHealth = characterCombat._maxHealth;

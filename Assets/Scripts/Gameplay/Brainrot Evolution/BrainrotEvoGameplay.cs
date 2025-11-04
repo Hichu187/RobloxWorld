@@ -70,11 +70,16 @@ namespace Game
         {
             base.EventPlayerDead(e);
 
-            await UniTask.WaitForSeconds(2);
-            player.character.cCombat.ReSpawn();
-            await UniTask.WaitForSeconds(1);
-            player.character.cCombat.hasDied = false;
+            UINotificationText.Push("YOU DIED");
 
+            await UniTask.WaitForSeconds(1);
+            if (startPosition != null)
+                player.character.motor.SetPositionAndRotation(startPosition.position, startPosition.rotation);
+
+            player.GetComponent<BrainrotEvoPlayer>().InitData();
+            await UniTask.WaitForSeconds(1);
+            player.character.motor.enabled = true;
+            player.character.cCombat.ReSpawn();
         }
     }
 }

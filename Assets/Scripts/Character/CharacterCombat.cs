@@ -28,6 +28,7 @@ namespace Game
         public TextMeshProUGUI _hpText;
         public Image _hp_Bar;
         public GameObject hitPrefab;
+        public GameObject takeDamagePrefab;
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
         public int specialBonus = 0;
@@ -138,6 +139,10 @@ namespace Game
                 _currentHealth -= amount;
                 _currentHealth = Mathf.Max(_currentHealth, 0);
 
+                if (takeDamagePrefab != null)
+                {
+                    takeDamagePrefab.SetActive(true);
+                }
                 // Reset countdown mỗi lần nhận damage
                 ResetRegenCountdown();
 
