@@ -68,11 +68,14 @@ namespace Game
             return (_damage * safePetBonus) + specialBonus;
         }
 
-
-
         public async void Attack(FieldOfView fov)
         {
             if (hasDied) return;
+
+            if (GetComponent<StealBrainrot_Player>())
+            {
+                if (GetComponent<StealBrainrot_Player>().isStealing) return;
+            }
 
             if (_character != null)
             {

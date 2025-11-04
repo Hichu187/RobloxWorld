@@ -438,8 +438,15 @@ namespace Game
 
             _takedBrainrot = brainrot;
             _preTrans = brainrot.transform.parent;
-            // gắn lên tay AI
 
+            if (_takedBrainrot.indBase == 0)
+            {
+                StealBrainrot_View view = FindAnyObjectByType<StealBrainrot_View>();
+                view.StolenNotice();
+            }
+
+            // gắn lên tay AI
+            _ai.character.cAnim.SetSteal(isStealing);
             brainrot.StealBrainrot(_ai.characterHoldingPos);
         }
 
@@ -476,6 +483,7 @@ namespace Game
                 _takedBrainrot.canMove = true;
             }
             isStealing = false;
+            _ai.character.cAnim.SetSteal(isStealing);
             _takedBrainrot = null;
             _preTrans = null;
             _victimSlot = null;

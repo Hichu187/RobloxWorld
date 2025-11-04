@@ -121,6 +121,12 @@ namespace Game
             animator.SetBool("Dead", false);
         }
 
+        public void SetSteal(bool stealing)
+        {
+            if (animator == null) return;
+            animator.SetBool("Stealing", stealing);
+        }
+
         public void PlayKnockback() { }
         public void PlayTug() { }
 

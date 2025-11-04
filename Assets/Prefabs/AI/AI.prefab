@@ -111,6 +111,14 @@ PrefabInstance:
       propertyPath: isTakeDamage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _knockbackForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _knockbackAngleDeg
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 3008969619715825209, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_IsKinematic
       value: 0
@@ -137,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5332152157460525266, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5332152157460525266, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498986407235006946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _upwardsModifier

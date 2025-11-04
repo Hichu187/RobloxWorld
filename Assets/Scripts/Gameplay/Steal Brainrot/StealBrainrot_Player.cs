@@ -25,6 +25,8 @@ namespace Game
             _preTrans = brainrot.transform.parent;
 
             brainrot.StealBrainrot(holdingPos);
+
+            Player.Instance.character.cAnim.SetSteal(isStealing);
         }
 
         public void StealingDone(StealBrainrot_Slot slot)
@@ -51,6 +53,7 @@ namespace Game
             takedBrainrot.canMove = true;
 
             isStealing = false;
+            Player.Instance.character.cAnim.SetSteal(isStealing);
             takedBrainrot = null;
 
         }

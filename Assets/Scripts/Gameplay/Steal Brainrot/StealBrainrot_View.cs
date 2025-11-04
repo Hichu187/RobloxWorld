@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Hichu;
 using TMPro;
@@ -8,6 +9,7 @@ namespace Game
     public class StealBrainrot_View : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _cashText;
+        [SerializeField] private TextMeshProUGUI _cashNotice;
         [SerializeField] private float _tweenDuration = 0.35f;
         [SerializeField] private float _tweenDelay = 0.35f;
 
@@ -77,6 +79,15 @@ namespace Game
             {
                 _cashText.text = totalCash.ToString();
             }
+        }
+
+        public async void StolenNotice()
+        {
+            _cashNotice.gameObject.SetActive(true);
+
+            await UniTask.WaitForSeconds(3);
+
+            _cashNotice.gameObject.SetActive(false);
         }
     }
 }
