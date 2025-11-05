@@ -135,6 +135,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -16.053577
       objectReference: {fileID: 0}
+    - target: {fileID: 380968863022838189, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: CapsuleRadius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 380968863022838189, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: MinRequiredStepDepth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 380968863022838189, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: MaxStableDistanceFromLedge
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 732557866186664776, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.334121
@@ -273,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512705354490901042, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: groundProbeDistance
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023068699714979617, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -426,6 +438,10 @@ PrefabInstance:
     - target: {fileID: 5816867856286402207, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -16.667309
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825415833199005490, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5877842556974005100, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

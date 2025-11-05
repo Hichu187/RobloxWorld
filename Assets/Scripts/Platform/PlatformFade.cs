@@ -8,12 +8,16 @@ namespace Game
     [DisallowMultipleComponent]
     public class PlatformFade : MonoCached, ICharacterCollidable
     {
+        private static int s_triggerIndex = 0;
+
         [Title("Reference")]
         [SerializeField] private MeshRenderer _renderer;
 
         [Title("Config")]
         [SerializeField, Min(0f)] private float _fadeDuration = 0.75f;
         [SerializeField, Min(0f)] private float _appearDelay = 2f;
+
+        [SerializeField] private AudioConfig[] _sfxTrigger;
 
         private Material _origin;
         private Material _runtime;
@@ -83,6 +87,9 @@ namespace Game
                 _mpb.SetColor(_colorProp, c);
                 _renderer.SetPropertyBlock(_mpb);
             }, 0f, _fadeDuration).OnComplete(OnFadeComplete);
+
+            AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
+            s_triggerIndex++;
         }
 
         private void OnFadeComplete()
