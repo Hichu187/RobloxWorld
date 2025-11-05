@@ -15,6 +15,6 @@ MonoBehaviour:
   brainrotName: Lavaca
   model: {fileID: 1107972853954250662, guid: 3850b6adf604d7349a9009e91473b770, type: 3}
   texture: {fileID: 21300000, guid: 803829204cc628441a5123e2cb6d7ba8, type: 3}
-  exp: 3284
-  damage: 181
-  health: 4378
+  exp: 4000000
+  damage: 3000
+  health: 6000

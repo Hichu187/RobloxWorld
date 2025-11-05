@@ -15,6 +15,6 @@ MonoBehaviour:
   brainrotName: Odindin
   model: {fileID: 5339647092906819473, guid: 33af155383ab6664aa3a3c8a56e42f2e, type: 3}
   texture: {fileID: 21300000, guid: bf9b73106e1155f45b59c00c43ecc220, type: 3}
-  exp: 56
-  damage: 9
-  health: 75
+  exp: 4000
+  damage: 50
+  health: 200

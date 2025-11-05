@@ -94,8 +94,6 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -117,7 +115,6 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -151,8 +148,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.98, y: 1.5, z: 5.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3251862603602892651}
   - {fileID: 7466969979125978579}
@@ -223,9 +220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traits: 1
   isTakeDamage: 1
-  _maxHealth: 23
+  _maxHealth: 100
   _currentHealth: 0
-  _damage: 1
+  _damage: 3
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
   _nameText: {fileID: 8366304136907289325}
@@ -246,8 +243,8 @@ MonoBehaviour:
   hasDied: 0
   type: 1
   botName: Wolf
-  exp: 2
-  coin: 100
+  exp: 25
+  coin: 3
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 4698483201328187204}
 --- !u!1001 &21594106712530545

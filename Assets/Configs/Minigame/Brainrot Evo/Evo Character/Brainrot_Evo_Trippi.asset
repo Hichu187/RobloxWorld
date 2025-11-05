@@ -15,6 +15,6 @@ MonoBehaviour:
   brainrotName: Trippi
   model: {fileID: 3357315975788305218, guid: 9e3fc54f3df075b449c1e96d35900fff, type: 3}
   texture: {fileID: 21300000, guid: fd57a7c890c82ae4dbfbca1b50f3e01c, type: 3}
-  exp: 192
-  damage: 23
-  health: 256
+  exp: 50000
+  damage: 300
+  health: 650

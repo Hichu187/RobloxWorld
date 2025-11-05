@@ -16,5 +16,5 @@ MonoBehaviour:
   model: {fileID: 6851113161509528119, guid: 314fbf3e4da0e1d458a89685ab222024, type: 3}
   texture: {fileID: 21300000, guid: 51eac299bddcd034487a1ff9b67f67a7, type: 3}
   exp: 5
-  damage: 2
+  damage: 1
   health: 10

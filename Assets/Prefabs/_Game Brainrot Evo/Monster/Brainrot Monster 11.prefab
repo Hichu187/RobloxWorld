@@ -95,8 +95,6 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -118,7 +116,6 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -224,14 +221,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traits: 1
   isTakeDamage: 1
-  _maxHealth: 608
+  _maxHealth: 500000
   _currentHealth: 0
-  _damage: 62
+  _damage: 200
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
   _nameText: {fileID: 8366304136907289325}
   _hpText: {fileID: 7743320077705937933}
   _hp_Bar: {fileID: 2895114230558305922}
+  hitPrefab: {fileID: 0}
+  takeDamagePrefab: {fileID: 0}
   petBonus: 1
   specialBonus: 0
   _knockback: 0
@@ -245,8 +244,8 @@ MonoBehaviour:
   hasDied: 0
   type: 1
   botName: Bandito
-  exp: 38
-  coin: 100
+  exp: 50000
+  coin: 1200
   _model: {fileID: 7399614600194747796}
   _anim: {fileID: 6172490137524809661}
 --- !u!1001 &21594106712530545

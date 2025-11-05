@@ -15,6 +15,6 @@ MonoBehaviour:
   brainrotName: Frigo
   model: {fileID: 942401809114017386, guid: 3e899d9ca48766e469e5228c0c1de10b, type: 3}
   texture: {fileID: 21300000, guid: 0fccaceaee5a02a48b84f35473c30b45, type: 3}
-  exp: 7389
-  damage: 329
-  health: 9852
+  exp: 6500000
+  damage: 6500
+  health: 8500

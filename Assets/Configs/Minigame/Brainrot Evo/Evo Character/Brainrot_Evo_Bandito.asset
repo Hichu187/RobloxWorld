@@ -15,6 +15,6 @@ MonoBehaviour:
   brainrotName: Bandito
   model: {fileID: 2435041935438222147, guid: 691dbe49c1ed458469ae451bad1cdfbe, type: 3}
   texture: {fileID: 21300000, guid: c5a1fff3be9ab9e4495e883a9f6e0d79, type: 3}
-  exp: 288
-  damage: 41
-  health: 576
+  exp: 7500
+  damage: 70
+  health: 300
