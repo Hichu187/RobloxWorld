@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Hichu;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,6 +14,8 @@ namespace Game
         public Transform startPosition;
         public PlatformCheckpoint curCheckpoint;
         public AssetReference gameView;
+
+        public List<PlatformCheckpoint> checkpoints;
 
         public virtual void Start()
         {
@@ -70,13 +73,9 @@ namespace Game
 
         }
 
-        private void EventCheckpoint(Event_Checkpoint e)
+        public virtual void EventCheckpoint(Event_Checkpoint e)
         {
-            if (curCheckpoint == e.checkpoint) return;
 
-            curCheckpoint = e.checkpoint;
-
-            curCheckpoint.PlayFX();
         }
     }
 }

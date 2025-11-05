@@ -6,6 +6,15 @@ namespace Game
 {
     public class EasyObbyGameplay : BaseGameplay
     {
+        public override void Start()
+        {
+            base.Start();
+
+            int curCheckpoint = DataAchievement.easyObbyCheckpoint;
+
+            player.character.motor.SetPositionAndRotation(checkpoints[curCheckpoint].transform.position, checkpoints[curCheckpoint].transform.rotation);
+        }
+
         protected override void SubscribeEvent()
         {
             base.SubscribeEvent();
@@ -24,6 +33,22 @@ namespace Game
         {
             await Task.Delay(1000);
             RespawnCheckpoint();
+        }
+
+        public override void EventCheckpoint(Event_Checkpoint e)
+        {
+            base.EventCheckpoint(e);
+
+            if (curCheckpoint == e.checkpoint) return;
+
+            int checkpointIndex = checkpoints.IndexOf(e.checkpoint);
+
+            if (DataAchievement.easyObbyCheckpoint >= checkpointIndex) return;
+
+            DataAchievement.SetEasyObbyCheckpoint(checkpointIndex);
+
+            curCheckpoint = e.checkpoint;
+            curCheckpoint.PlayFX();
         }
     }
 }

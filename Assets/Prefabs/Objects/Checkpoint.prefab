@@ -5210,7 +5210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vfx: {fileID: 1219578608815760565}
-  _sfx: {fileID: 0}
+  _sfx: {fileID: 11400000, guid: d7c28bea064e5cc40b3461ca254bf0b2, type: 2}
 --- !u!1001 &3390746260888031780
 PrefabInstance:
   m_ObjectHideFlags: 0
