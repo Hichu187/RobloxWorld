@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5693411763946110306}
-  groundProbeDistance: 3
+  groundProbeDistance: 1.5
   groundMask:
     serializedVersion: 2
     m_Bits: 127
