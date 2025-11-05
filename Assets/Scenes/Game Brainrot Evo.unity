@@ -7700,6 +7700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890016776}
   - component: {fileID: 1890016777}
+  - component: {fileID: 1890016778}
   m_Layer: 0
   m_Name: Gameplay Manager
   m_TagString: Untagged
@@ -7743,8 +7744,23 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  checkpoints: []
   _mapParent: {fileID: 141097496}
   _aiPrefab: {fileID: 8241151817209661624, guid: 6f0093d8f8911ec4e930e9cba119f088, type: 3}
+--- !u!114 &1890016778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890016775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a77f06df5a74944a9fc63494dc9b000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.BGMStarter
+  _bgms:
+  - {fileID: 11400000, guid: c14bca5ec05c2154e9c2c6c649bb6c98, type: 2}
 --- !u!1 &1907746298
 GameObject:
   m_ObjectHideFlags: 0

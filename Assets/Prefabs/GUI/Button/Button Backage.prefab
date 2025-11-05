@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1042765996424392958}
   - component: {fileID: 8220891377412356212}
   - component: {fileID: 604181509517529038}
+  - component: {fileID: -2144212702527311136}
   m_Layer: 0
   m_Name: Button Backage
   m_TagString: Untagged
@@ -168,8 +169,8 @@ MonoBehaviour:
   _view:
     m_AssetGUID: acad8e452a9374741ac371f69fa5e2d3
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   timeDelayOpen: 0
 --- !u!114 &604181509517529038
@@ -199,6 +200,19 @@ MonoBehaviour:
         _valueEnd: {x: 0, y: 0, z: 0}
         _keepStart: 0
         _valueStart: {x: 75, y: 0, z: 0}
+--- !u!114 &-2144212702527311136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2692061666472747501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746ac03a0e5dbb409bc7bf33d69105f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HichuEz::Game.UIButtonSfx
+  _sfxOverride: {fileID: 0}
 --- !u!1 &7879520344944110088
 GameObject:
   m_ObjectHideFlags: 0

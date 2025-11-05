@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1582594796975676072}
   - component: {fileID: 7608935568077656610}
   - component: {fileID: 1435623891283240344}
+  - component: {fileID: 6111839703449605191}
   m_Layer: 0
   m_Name: Button Bag
   m_TagString: Untagged
@@ -168,8 +169,8 @@ MonoBehaviour:
   _view:
     m_AssetGUID: 
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   timeDelayOpen: 0
 --- !u!114 &1435623891283240344
@@ -199,6 +200,19 @@ MonoBehaviour:
         _valueEnd: {x: 0, y: 0, z: 0}
         _keepStart: 0
         _valueStart: {x: 75, y: 0, z: 0}
+--- !u!114 &6111839703449605191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526742567243172795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746ac03a0e5dbb409bc7bf33d69105f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HichuEz::Game.UIButtonSfx
+  _sfxOverride: {fileID: 0}
 --- !u!1 &8563464616237973598
 GameObject:
   m_ObjectHideFlags: 0
