@@ -5,15 +5,15 @@ namespace Game
 {
     public class DataAchievement : LDataBlock<DataAchievement>
     {
-        [SerializeField] private float _endlessHighScore = 0;
+        [SerializeField] private int _easyObbyCheckpoint = 0;
 
-        public static float endlessHighScore { get { return instance._endlessHighScore; } set { instance._endlessHighScore = value; } }
+        public static int easyObbyCheckpoint { get { return instance._easyObbyCheckpoint; } set { instance._easyObbyCheckpoint = value; } }
 
-        public void SetHighScore(float highScore)
+        public static void SetEasyObbyCheckpoint(int checkpoint)
         {
-            if (highScore < _endlessHighScore) return;
+            if (checkpoint < easyObbyCheckpoint) return;
 
-            _endlessHighScore = highScore;
+            easyObbyCheckpoint = checkpoint;
 
             Save();
         }

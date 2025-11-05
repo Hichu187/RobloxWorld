@@ -3602,6 +3602,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &35405733
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5309,6 +5310,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &44111259
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6200,6 +6202,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &58267599
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7462,6 +7465,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1.5
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &64288885
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9840,6 +9844,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &77706305
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13566,6 +13571,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &109434138
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15015,6 +15021,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &113031946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17607,6 +17614,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &139774863
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18386,6 +18394,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 2
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &142653591
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19749,6 +19758,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &155162331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29973,6 +29983,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &232639265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31056,6 +31067,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &233965194
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31427,6 +31439,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &236640345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32236,6 +32249,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &240888374
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34388,6 +34402,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &247908724
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39465,6 +39480,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1.5
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &281717710
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39836,6 +39852,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &283625040
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41868,6 +41885,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &301222442
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47566,6 +47584,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &346179621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47937,6 +47956,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &346655161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51009,6 +51029,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &359069938
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54852,6 +54873,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &394650416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55988,6 +56010,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &398910435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57903,6 +57926,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &406081642
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58356,6 +58380,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &406970332
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61204,6 +61229,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &435882159
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61932,6 +61958,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &447918827
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62303,6 +62330,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &448285517
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63897,6 +63925,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &452667604
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64268,6 +64297,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &452809530
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65639,6 +65669,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &457530804
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69924,6 +69955,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &491087419
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -71089,6 +71121,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &502335914
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -72426,6 +72459,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &508155601
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -73331,6 +73365,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &515470178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -74738,6 +74773,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &526486839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -77659,6 +77695,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &538346517
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -81496,6 +81533,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &564753110
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -83612,6 +83650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583089359}
   - component: {fileID: 583089360}
+  - component: {fileID: 583089361}
   m_Layer: 0
   m_Name: Gameplay Manager
   m_TagString: Untagged
@@ -83656,8 +83695,23 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  checkpoints: []
   cameraSequence: {fileID: 0}
   cameraReviewMap: {fileID: 1773529969}
+--- !u!114 &583089361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583089358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a77f06df5a74944a9fc63494dc9b000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.BGMStarter
+  _bgms:
+  - {fileID: 11400000, guid: dd056f92c395c9640ab131ac84f7e368, type: 2}
 --- !u!1001 &584663462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89191,6 +89245,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &612292991
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -93513,6 +93568,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &632370419
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -95575,6 +95631,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &645270105
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -98908,6 +98965,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &666136406
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -99562,6 +99620,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &670627810
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -101888,6 +101947,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &674984873
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -108783,6 +108843,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &731709883
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -113115,6 +113176,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &762964203
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -115282,6 +115344,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &776656142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -124020,6 +124083,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &830952718
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -124391,6 +124455,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &832655332
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125474,6 +125539,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &837946476
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -127982,6 +128048,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &863410780
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129143,6 +129210,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &874688413
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -130025,6 +130093,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &878730641
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -131636,6 +131705,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &879606846
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -133833,6 +133903,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &893012771
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -138632,6 +138703,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &930592109
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -141174,6 +141246,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &946009524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -145477,6 +145550,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &970021160
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -148619,6 +148693,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &992478745
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -151112,6 +151187,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1003844589
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -153188,6 +153264,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1013984325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -154782,6 +154859,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1024547472
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -157752,6 +157830,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1037644761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -159118,6 +159197,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1051643625
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -160066,6 +160146,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1055485817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -165485,6 +165566,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1082522001
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -169682,6 +169764,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1119099399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -170590,6 +170673,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1119998692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -171955,6 +172039,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1134649775
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -172942,6 +173027,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1140272319
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -173361,6 +173447,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1141437663
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -174193,6 +174280,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1145354518
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -177095,6 +177183,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1154132464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -181074,6 +181163,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1179441068
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -191065,6 +191155,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1273779431
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -191731,6 +191822,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1.5
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &1275199034
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -194199,6 +194291,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1290678821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -194570,6 +194663,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1291241772
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -195655,6 +195749,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1292917535
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -196026,6 +196121,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1296803634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -196842,6 +196938,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1306417343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -199228,6 +199325,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1.5
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &1326598284
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -199599,6 +199697,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1326780364
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -204456,6 +204555,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1359739750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -205110,6 +205210,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1365359913
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -209129,6 +209230,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1391352113
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -210553,6 +210655,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1397490524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -216856,6 +216959,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1477752201
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -218398,6 +218502,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1487647248
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -224562,6 +224667,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1531546272
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -224933,6 +225039,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1533847778
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -226540,6 +226647,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1545513940
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -230615,6 +230723,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1567273273
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -232487,6 +232596,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1576559740
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -235778,6 +235888,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1598076456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -243053,6 +243164,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1651326101
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -243678,6 +243790,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1657288283
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -244305,6 +244418,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &1658747654
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -245032,6 +245146,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1661284165
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -255399,6 +255514,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1725719069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -258320,6 +258436,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1740777608
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -259963,6 +260080,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1750606627
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -263304,6 +263422,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1776812549
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -264184,6 +264303,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1784549201
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -266890,6 +267010,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1802504430
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -269400,6 +269521,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &1815132657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -273008,6 +273130,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1833434324
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -278369,6 +278492,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 1
   _appearDelay: 3
+  _sfxTrigger: []
 --- !u!64 &1854116454
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -282054,6 +282178,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1877614614
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -283646,6 +283771,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1885932235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -285425,6 +285551,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1901569742
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -285974,6 +286101,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1902336941
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -287364,6 +287492,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1914804824
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -288675,6 +288804,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1920812748
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -290083,6 +290213,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1930193314
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -292054,6 +292185,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1934994708
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -296396,6 +296528,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1967137024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -296767,6 +296900,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &1969225679
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -304242,6 +304376,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &2017433226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -309841,6 +309976,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.75
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &2058722653
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -311539,6 +311675,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 0.5
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &2074858186
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -317364,6 +317501,7 @@ MonoBehaviour:
   _renderer: {fileID: 2197984975545020434, guid: 1177dc8bf09805f4e9419c9aaa0971ad, type: 3}
   _fadeDuration: 3
   _appearDelay: 2
+  _sfxTrigger: []
 --- !u!64 &2134351881
 MeshCollider:
   m_ObjectHideFlags: 0

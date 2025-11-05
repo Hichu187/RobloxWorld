@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 6862612559288605164}
   - component: {fileID: 6236799309363009025}
   - component: {fileID: 3553665562007900351}
+  - component: {fileID: -1688820888485449504}
   m_Layer: 5
   m_Name: Game Option
   m_TagString: Untagged
@@ -538,6 +539,19 @@ MonoBehaviour:
   _gametitle: {fileID: 8979670490453728367}
   _like: {fileID: 1317276777871803767}
   _user: {fileID: 8154081012876089199}
+--- !u!114 &-1688820888485449504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194919455883716237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746ac03a0e5dbb409bc7bf33d69105f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HichuEz::Game.UIButtonSfx
+  _sfxOverride: {fileID: 0}
 --- !u!1 &8434180068774166664
 GameObject:
   m_ObjectHideFlags: 0

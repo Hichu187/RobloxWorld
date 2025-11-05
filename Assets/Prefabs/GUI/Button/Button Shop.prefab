@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8548424450989266154}
   - component: {fileID: 3386812215028241192}
   - component: {fileID: 3717048334419531469}
+  - component: {fileID: -7285959030502493690}
   m_Layer: 0
   m_Name: Button Shop
   m_TagString: Untagged
@@ -168,8 +169,8 @@ MonoBehaviour:
   _view:
     m_AssetGUID: acad8e452a9374741ac371f69fa5e2d3
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   timeDelayOpen: 0
 --- !u!114 &3717048334419531469
@@ -199,6 +200,19 @@ MonoBehaviour:
         _valueEnd: {x: 0, y: 0, z: 0}
         _keepStart: 0
         _valueStart: {x: 0, y: -75, z: 0}
+--- !u!114 &-7285959030502493690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526524513610318697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746ac03a0e5dbb409bc7bf33d69105f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HichuEz::Game.UIButtonSfx
+  _sfxOverride: {fileID: 0}
 --- !u!1 &4564466810965634678
 GameObject:
   m_ObjectHideFlags: 0

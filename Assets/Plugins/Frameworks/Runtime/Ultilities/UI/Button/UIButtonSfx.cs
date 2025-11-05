@@ -1,9 +1,8 @@
-using Hichu;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Game
+namespace Hichu
 {
     public class UIButtonSfx : MonoBehaviour, IPointerDownHandler
     {
@@ -14,8 +13,8 @@ namespace Game
         {
             if (_sfxOverride != null)
                 AudioManager.Play(_sfxOverride);
-/*            else
-                AudioManager.Play(FactorySFX.click);*/
+            else
+                AudioManager.Play(FactorySfx.click);
         }
     }
 }

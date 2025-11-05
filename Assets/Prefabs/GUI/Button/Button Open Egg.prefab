@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 6371473024804654358}
   - component: {fileID: 2594878182988465564}
   - component: {fileID: 6806866699840303654}
+  - component: {fileID: -1033939251082622210}
   m_Layer: 0
   m_Name: Button Open Egg
   m_TagString: Untagged
@@ -243,8 +244,8 @@ MonoBehaviour:
   _view:
     m_AssetGUID: a1bc1554a75470e4197a8c03b5e73eb5
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   timeDelayOpen: 0
 --- !u!114 &6806866699840303654
@@ -274,3 +275,16 @@ MonoBehaviour:
         _valueEnd: {x: 0, y: 0, z: 0}
         _keepStart: 0
         _valueStart: {x: 75, y: 0, z: 0}
+--- !u!114 &-1033939251082622210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307097328104348677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746ac03a0e5dbb409bc7bf33d69105f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HichuEz::Game.UIButtonSfx
+  _sfxOverride: {fileID: 0}
