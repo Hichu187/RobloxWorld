@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Tungtungtun
+  m_Name: Brainrot_Evo_13_Assasino
   m_EditorClassIdentifier: 
-  brainrotName: Tungtungtun
-  model: {fileID: 6851113161509528119, guid: 314fbf3e4da0e1d458a89685ab222024, type: 3}
-  texture: {fileID: 21300000, guid: 51eac299bddcd034487a1ff9b67f67a7, type: 3}
-  exp: 5
-  damage: 1
-  health: 10
+  id: 13
+  brainrotName: Assasino
+  model: {fileID: 5734117599952745979, guid: 7c659803993062a458ce6ecf289c430c, type: 3}
+  texture: {fileID: 21300000, guid: 569faeca819ad2646990df64fe6490dd, type: 3}
+  exp: 1000000
+  damage: 1500
+  health: 3000

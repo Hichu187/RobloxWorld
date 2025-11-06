@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_CactoHipo
+  m_Name: Brainrot_Evo_10_Fluri
   m_EditorClassIdentifier: 
-  brainrotName: CactoHipo
-  model: {fileID: 8169444328227241521, guid: 81676e7bb131cbc4b82bbd6670d7f3fc, type: 3}
-  texture: {fileID: 21300000, guid: 8cb75c71fc2fa1f428a140024277f0e9, type: 3}
-  exp: 500000
-  damage: 1000
-  health: 2000
+  id: 10
+  brainrotName: Fluri
+  model: {fileID: 5219950741027241312, guid: eaefc5d8d1e6e384aaeb78b4c179ee00, type: 3}
+  texture: {fileID: 21300000, guid: bc1d3104e3a633a4fa3accbedfcd5f8d, type: 3}
+  exp: 250000
+  damage: 750
+  health: 1500

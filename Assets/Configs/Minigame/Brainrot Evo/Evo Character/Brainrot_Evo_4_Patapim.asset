@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Patapim
+  m_Name: Brainrot_Evo_4_Patapim
   m_EditorClassIdentifier: 
+  id: 4
   brainrotName: Patapim
   model: {fileID: 5943693065943383449, guid: a0daf5c9ce79b10458bee4a4cc55ad3f, type: 3}
   texture: {fileID: 21300000, guid: 8be33d4b0a1ec854d9540ae723930427, type: 3}

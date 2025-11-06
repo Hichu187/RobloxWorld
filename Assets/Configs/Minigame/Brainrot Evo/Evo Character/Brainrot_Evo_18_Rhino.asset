@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Frigo
+  m_Name: Brainrot_Evo_18_Rhino
   m_EditorClassIdentifier: 
-  brainrotName: Frigo
-  model: {fileID: 942401809114017386, guid: 3e899d9ca48766e469e5228c0c1de10b, type: 3}
-  texture: {fileID: 21300000, guid: 0fccaceaee5a02a48b84f35473c30b45, type: 3}
-  exp: 6500000
-  damage: 6500
-  health: 8500
+  id: 18
+  brainrotName: Rhino
+  model: {fileID: 5103063059145072828, guid: 80bffd74326f88349a53fb307e29c164, type: 3}
+  texture: {fileID: 21300000, guid: c0c0dcb64bd67e84f9957bccebcdb132, type: 3}
+  exp: 11084
+  damage: 444
+  health: 14778

@@ -9,6 +9,7 @@ namespace Game
 
     public class BrainrotEvoConfig : ScriptableObject
     {
+        public int id;
         public string brainrotName;
         public GameObject model;
         [PreviewField(100, ObjectFieldAlignment.Left)]
@@ -28,7 +29,6 @@ namespace Game
                 return;
             }
 
-            // Lấy tên model và xử lý
             string rawName = model.name;
             rawName = rawName.Replace("Evo", "");       // bỏ chữ Evo
             rawName = rawName.Replace(" ", "");         // bỏ dấu cách
@@ -38,7 +38,7 @@ namespace Game
             string path = AssetDatabase.GetAssetPath(this);
             if (!string.IsNullOrEmpty(path))
             {
-                string newName = $"Brainrot_Evo_{brainrotName}";
+                string newName = $"Brainrot_Evo_{id}_{brainrotName}";
                 AssetDatabase.RenameAsset(path, newName);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();

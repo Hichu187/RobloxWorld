@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Chimpanzini
+  m_Name: Brainrot_Evo_20_Noobini
   m_EditorClassIdentifier: 
-  brainrotName: Chimpanzini
-  model: {fileID: 1825105457699574325, guid: f7d9a4b4e18258b40bcbff80b2b79730, type: 3}
-  texture: {fileID: 21300000, guid: 2979a51809600ef4aaafd718bd5f5b48, type: 3}
-  exp: 500
-  damage: 20
-  health: 50
+  id: 20
+  brainrotName: Noobini
+  model: {fileID: 3634492385669359484, guid: 03ab6e22d6fd9b1479b503d133f298fc, type: 3}
+  texture: {fileID: 21300000, guid: 59a5786edd19d824dbd72d5449ff6ecf, type: 3}
+  exp: 15000000
+  damage: 10000
+  health: 15000

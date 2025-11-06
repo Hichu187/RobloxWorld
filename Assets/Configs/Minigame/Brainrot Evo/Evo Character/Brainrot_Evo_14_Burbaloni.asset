@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Bombombini
+  m_Name: Brainrot_Evo_14_Burbaloni
   m_EditorClassIdentifier: 
-  brainrotName: Bombombini
-  model: {fileID: 5110787562075053364, guid: f3a2aad5d68947342a0383a7fbba9a79, type: 3}
-  texture: {fileID: 21300000, guid: 2044e7e57c55cea4a8656b790fbed252, type: 3}
-  exp: 16626
-  damage: 599
-  health: 22168
+  id: 14
+  brainrotName: Burbaloni
+  model: {fileID: 6769788189599452180, guid: c47f925f405efa841ac52d69393a007f, type: 3}
+  texture: {fileID: 21300000, guid: 9cdf419969411314abf162ac0fb46bbb, type: 3}
+  exp: 3000000
+  damage: 2500
+  health: 5500

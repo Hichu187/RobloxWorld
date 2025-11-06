@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Tralalero
+  m_Name: Brainrot_Evo_7_Dophinita
   m_EditorClassIdentifier: 
-  brainrotName: Tralalero
-  model: {fileID: 7434861169605764909, guid: ce4a44878d3f8f6428d75f3300fc9941, type: 3}
-  texture: {fileID: 21300000, guid: 458cf4225e6ea9c4888a0fe79dadfce8, type: 3}
-  exp: 36
-  damage: 3
-  health: 20
+  id: 7
+  brainrotName: Dophinita
+  model: {fileID: 4803017512587579249, guid: 6148798378b20be44b0f287d362cc371, type: 3}
+  texture: {fileID: 21300000, guid: dd31f53657015b04f80502b2955cf40e, type: 3}
+  exp: 20000
+  damage: 175
+  health: 400

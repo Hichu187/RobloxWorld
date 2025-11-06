@@ -8,12 +8,13 @@ namespace Game
 {
     public class BrainrotEvoGate : MonoBehaviour, ICharacterCollidable
     {
+        [SerializeField] string mapName;
         [SerializeField] TextMeshPro _text;
         [SerializeField] int levelOpen = 0;
 
         private void Start()
         {
-            _text.text = $"Escape _name \n Level {levelOpen}";
+            _text.text = $"{mapName} \n Level {levelOpen}";
         }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {

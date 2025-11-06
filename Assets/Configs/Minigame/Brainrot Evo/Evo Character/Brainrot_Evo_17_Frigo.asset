@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a2d552fd8cac04fa693990aad1d8ca, type: 3}
-  m_Name: Brainrot_Evo_Lavaca
+  m_Name: Brainrot_Evo_17_Frigo
   m_EditorClassIdentifier: 
-  brainrotName: Lavaca
-  model: {fileID: 1107972853954250662, guid: 3850b6adf604d7349a9009e91473b770, type: 3}
-  texture: {fileID: 21300000, guid: 803829204cc628441a5123e2cb6d7ba8, type: 3}
-  exp: 4000000
-  damage: 3000
-  health: 6000
+  id: 17
+  brainrotName: Frigo
+  model: {fileID: 942401809114017386, guid: 3e899d9ca48766e469e5228c0c1de10b, type: 3}
+  texture: {fileID: 21300000, guid: 0fccaceaee5a02a48b84f35473c30b45, type: 3}
+  exp: 6500000
+  damage: 6500
+  health: 8500
