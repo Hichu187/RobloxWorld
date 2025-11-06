@@ -9,12 +9,13 @@ namespace Game
     {
         [SerializeField] AssetReferenceGameObject eggView;
         [SerializeField] TextMeshPro priceText;
+        [SerializeField] int map;
         [SerializeField] int id;
         private View view;
 
         private void Start()
         {
-            priceText.text = FactoryBrainrotEvo.mapDatas[id].price.ToString();
+            priceText.text = FactoryBrainrotEvo.mapDatas[map].eggData[id].price.ToString();
         }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {

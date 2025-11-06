@@ -53,7 +53,7 @@ namespace Game
             var mapDatas = FactoryBrainrotEvo.mapDatas;
             if (mapDatas == null || mapDatas.Count == 0 || index < 0 || index >= mapDatas.Count) return;
             _mapDataIndex = index;
-            var md = mapDatas[_mapDataIndex];
+            var md = mapDatas[DataBrainrotEvo.currentMap].eggData[index];
             openCash = md.price;
 
             SpawnOptions();
