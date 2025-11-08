@@ -7,6 +7,7 @@ namespace Game
     {
         public static StealBrainrot_Manager instance;
 
+        [Range(0f, 1f)] public float chanceStealFromBase0 = 0.5f;
         public Transform startPoint;
         public Transform endPoint;
 

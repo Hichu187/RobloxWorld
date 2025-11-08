@@ -41,12 +41,12 @@ namespace Game
         private float _attackCdTimer;
 
         [Title("State Weights")]
-        [SerializeField, Min(0f)] private float wBuyPet = 0.5f; // giảm tỉ lệ Buy
-        [SerializeField, Min(0f)] private float wStealPet = 0.15f;
-        [SerializeField, Min(0f)] private float wChasePlayer = 0.05f;
-        [SerializeField, Min(0f)] private float wReturnHome = 1f;
-        [SerializeField, Min(0f)] private float wFollowWaypoint = 2f;
-        [SerializeField, Min(0f)] private float wLockDoor = 1f;
+        [SerializeField, Min(0f)] private float wBuyPet = 35f;
+        [SerializeField, Min(0f)] private float wStealPet = 15f;
+        [SerializeField, Min(0f)] private float wChasePlayer = 15f;
+        [SerializeField, Min(0f)] private float wReturnHome = 10f;
+        [SerializeField, Min(0f)] private float wFollowWaypoint = 15f;
+        [SerializeField, Min(0f)] private float wLockDoor = 10f;
 
         private void Awake()
         {
@@ -300,6 +300,7 @@ namespace Game
                     FollowNearestWaypoint();
                     stepSteal = 1;
                     break;
+
                 case 1:
                     {
                         LDebug.Log<StealBrainrot_AI>("[STEAL] Case 1 → Tìm slot của base khác có Pet để trộm (ngẫu nhiên có trọng số)");
@@ -308,12 +309,26 @@ namespace Game
                         var validSlots = new List<StealBrainrot_Slot>();
                         Vector3 pos = _ai.character.transform.position;
 
+                        // Cấu hình tỉ lệ chọn base0
+                        float chanceStealFromBase0 = StealBrainrot_Manager.instance.chanceStealFromBase0;
+                        bool stealFromBase0 = UnityEngine.Random.value <= chanceStealFromBase0;
+
                         foreach (var s in all)
                         {
                             if (s == null || s.isEmpty) continue;
                             if (curBase != null && curBase.slots.Contains(s)) continue;
 
-                            validSlots.Add(s);
+                            // Nếu chọn base 0, chỉ lấy slot thuộc base 0
+                            if (stealFromBase0)
+                            {
+                                if (s.baseId == 0)
+                                    validSlots.Add(s);
+                            }
+                            else
+                            {
+                                if (s.baseId != 0)
+                                    validSlots.Add(s);
+                            }
                         }
 
                         if (validSlots.Count == 0)
@@ -324,16 +339,18 @@ namespace Game
                             return;
                         }
 
+                        // Tính trọng số theo khoảng cách
                         float totalWeight = 0f;
                         var weights = new float[validSlots.Count];
                         for (int i = 0; i < validSlots.Count; i++)
                         {
                             float dist = (validSlots[i].transform.position - pos).sqrMagnitude;
-                            float w = Mathf.Max(0.01f, 1f / (dist + 1f)); 
+                            float w = Mathf.Max(0.01f, 1f / (dist + 1f));
                             weights[i] = w;
                             totalWeight += w;
                         }
 
+                        // Chọn slot mục tiêu theo trọng số
                         float pick = UnityEngine.Random.Range(0f, totalWeight);
                         float acc = 0f;
                         StealBrainrot_Slot best = validSlots[0];
@@ -348,12 +365,11 @@ namespace Game
                         }
 
                         _victimSlot = best;
-                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đã chọn slot mục tiêu (ngẫu nhiên): {_victimSlot.name}");
+                        LDebug.Log<StealBrainrot_AI>($"[STEAL] Đã chọn slot mục tiêu (ngẫu nhiên): {_victimSlot.name} (from base {best.baseId})");
                         _ai.Chase(best.transform.position);
                         stepSteal = 2;
                         break;
                     }
-
 
                 case 2:
                     {

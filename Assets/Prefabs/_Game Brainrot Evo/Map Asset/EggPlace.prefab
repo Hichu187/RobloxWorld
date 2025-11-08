@@ -17606,6 +17606,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   priceText: {fileID: 5603244911775101692}
+  map: 0
   id: 1
 --- !u!1 &8501938125064464802
 GameObject:
@@ -17683,6 +17684,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   priceText: {fileID: 4889512610743920837}
+  map: 0
   id: 0
 --- !u!1 &8533597974506563246
 GameObject:
@@ -18471,6 +18473,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   priceText: {fileID: 670811749275051969}
+  map: 0
   id: 2
 --- !u!1 &8808168290351453777
 GameObject:
@@ -19265,6 +19268,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Egg Model
       objectReference: {fileID: 0}
+    - target: {fileID: 5580491038397590726, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198376990882919226, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467946202074000663, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
+      propertyPath: m_VersionIndex
+      value: 622
+      objectReference: {fileID: 0}
     - target: {fileID: 8632449313147129629, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000047683676
@@ -19303,10 +19318,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632449313147129629, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8632449313147129629, guid: be476f3f4c38edf4e8ba79a6261abc11, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
