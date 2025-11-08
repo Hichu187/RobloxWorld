@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Hichu;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,9 +11,10 @@ namespace Game
         {
             base.Start();
 
-            int curCheckpoint = DataAchievement.easyObbyCheckpoint;
+            int curCheckpointIndex = DataAchievement.easyObbyCheckpoint;
 
-            player.character.motor.SetPositionAndRotation(checkpoints[curCheckpoint].transform.position, checkpoints[curCheckpoint].transform.rotation);
+            curCheckpoint = checkpoints[curCheckpointIndex];
+            player.character.motor.SetPositionAndRotation(checkpoints[curCheckpointIndex].transform.position, checkpoints[curCheckpointIndex].transform.rotation);
         }
 
         protected override void SubscribeEvent()
@@ -31,7 +33,9 @@ namespace Game
 
         public override async void EventPlayerDead(Event_Player_Dead e)
         {
-            await Task.Delay(1000);
+            base.EventPlayerDead(e);
+
+            await UniTask.WaitForSeconds(2f);
             RespawnCheckpoint();
         }
 

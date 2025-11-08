@@ -74,9 +74,7 @@ namespace Game
 
             if (_objVfx == null)
             {
-                Debug.Log("test");
-
-                _objVfx = _vfx.Create(_character.transformCached.position + Vector3.up, _character.transformCached.rotation);
+                if(_vfx != null) _objVfx = _vfx.Create(_character.transformCached.position + Vector3.up, _character.transformCached.rotation);
             }
 
             if (_sfx != null)

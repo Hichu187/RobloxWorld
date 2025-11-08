@@ -159,7 +159,7 @@ namespace Game
             RaycastHit hit;
 
             yield return new WaitForSeconds(0.35f);
-            animator.speed = 0.15f;
+            animator.speed = 0.02f;
             while (inAir)
             {
                 Vector3 origin = tr.position;
