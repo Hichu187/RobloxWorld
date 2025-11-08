@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Hichu;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEditor.Graphs;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ namespace Game
 
         [Title("VFX")]
         public Material outline;
+        [SerializeField] private List<GameObject> auras;
 
         [Title("Runtime")]
         public StealBrainrot_Slot targetSlot;
@@ -73,6 +75,8 @@ namespace Game
         public void Setup(PetRank rank, bool isRun)
         {
             SetSkinBrainrot(rank, isRun);
+
+
         }
 
         public void BuyBrainrot()
@@ -180,6 +184,11 @@ namespace Game
             canMove = false;
             isMovingHome = false;
 
+            foreach (var a in auras)
+            {
+                a.gameObject.SetActive(false);
+            }
+
             // Trả về pool
             StealBrainrotPool.instance.Release(this);
         }
@@ -189,7 +198,9 @@ namespace Game
         private void SetSkinBrainrot(PetRank rank, bool isRun)
         {
             this.rank = rank;
+
             // TODO: áp skin/anim theo rank/isRun nếu cần
+            auras[(int)rank].gameObject.SetActive(true);
         }
 
         private void MoveToTarget(Transform target)
