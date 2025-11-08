@@ -156,7 +156,6 @@ namespace Game
                 else
                 {
                     LDebug.Log<CharacterCombat>($"take {amount} damage");
-                    // Bắt đầu lại countdown nếu cho phép regen
                     StartRegenCountdown();
                 }
 

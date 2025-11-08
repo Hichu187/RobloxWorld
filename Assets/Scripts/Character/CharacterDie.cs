@@ -72,8 +72,10 @@ namespace Game
             }
 
 
-            if (_objVfx != null)
+            if (_objVfx == null)
             {
+                Debug.Log("test");
+
                 _objVfx = _vfx.Create(_character.transformCached.position + Vector3.up, _character.transformCached.rotation);
             }
 

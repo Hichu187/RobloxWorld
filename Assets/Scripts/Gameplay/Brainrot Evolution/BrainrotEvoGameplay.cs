@@ -72,14 +72,16 @@ namespace Game
 
             UINotificationText.Push("YOU DIED");
 
-            await UniTask.WaitForSeconds(1);
+            await UniTask.WaitForSeconds(0.5f);
             if (startPosition != null)
-                player.character.motor.SetPositionAndRotation(startPosition.position, startPosition.rotation);
+                player.character.Revive(startPosition.position, startPosition.rotation);
 
             player.GetComponent<BrainrotEvoPlayer>().InitData();
-            await UniTask.WaitForSeconds(1);
+
+            await UniTask.WaitForSeconds(0.25f);
             player.character.motor.enabled = true;
             player.character.cCombat.ReSpawn();
+
         }
     }
 }

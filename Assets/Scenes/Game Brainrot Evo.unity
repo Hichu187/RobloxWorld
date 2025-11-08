@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 1747526130}
     - target: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: _regenDelaySeconds
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 473612726743057711, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
@@ -1306,6 +1306,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2886286129439413762, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886286129439413762, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3015004146473688705, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1410,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5931040197694610763, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: _vfx
+      value: 
+      objectReference: {fileID: 1574473899128564, guid: 816673e544e95a948a142c322572f9af, type: 3}
     - target: {fileID: 5931040197694610763, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: _objRoot
       value: 
