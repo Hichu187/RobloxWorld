@@ -25,11 +25,17 @@ namespace Game
         public CharacterInteract cInteract;
         public CharacterRagdoll cRagdoll;
         public FieldOfView fov;
+        public CharacterItemManager itemManager;
 
         private State _state = State.Normal;
 
         public event Action eventDie;
         public event Action eventRevive;
+
+        private void OnEnable()
+        {
+            SetItemManager();
+        }
 
 
         private void OnCollisionEnter(Collision collision)
@@ -64,7 +70,20 @@ namespace Game
                 collidable.OnTriggerExit(GetComponent<CharacterControl>());
         }
 
+        public void SetItemManager()
+        {
+            itemManager = GetComponentInChildren<CharacterItemManager>();
+            if (itemManager == null) return;
+            if (isPlayer)
+            {
+                itemManager.ActiveItem(0);
+            }
+            else
+            {
+                itemManager.ActiveItem(UnityEngine.Random.Range(0,7));
+            }
 
+        }
         public void Kill()
         {
             Die();
