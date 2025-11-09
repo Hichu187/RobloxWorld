@@ -70,6 +70,10 @@ namespace Game
 
                 _character.motor.enabled = false;
             }
+            else
+            {
+                StaticBus<Event_AI_Dead>.Post(new Event_AI_Dead(GetComponentInParent<AI>()));
+            }
 
 
             if (_objVfx == null)

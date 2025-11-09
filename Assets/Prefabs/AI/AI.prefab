@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: cRagdoll
       value: 
       objectReference: {fileID: 5830135808131578491}
+    - target: {fileID: 214178629716720430, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: isPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 399563061187182491, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

@@ -66,12 +66,22 @@ namespace Game
             if (_runtime != null) Destroy(_runtime);
         }
 
-        void ICharacterCollidable.OnCollisionEnter(CharacterControl character) => FadeOut();
+        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
+        {
+            bool isPlayer = character.GetComponent<Character>().isPlayer;
+
+            FadeOut(isPlayer);
+        }
         void ICharacterCollidable.OnCollisionExit(CharacterControl character) { }
-        void ICharacterCollidable.OnTriggerEnter(CharacterControl character) => FadeOut();
+        void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
+        {
+            bool isPlayer = character.GetComponent<Character>().isPlayer;
+
+            FadeOut(isPlayer);
+        }
         void ICharacterCollidable.OnTriggerExit(CharacterControl character) { }
 
-        private void FadeOut()
+        private void FadeOut(bool isPlayer)
         {
             if (_renderer == null || _runtime == null) return;
             if (_tween != null && _tween.IsActive()) return;
@@ -88,8 +98,11 @@ namespace Game
                 _renderer.SetPropertyBlock(_mpb);
             }, 0f, _fadeDuration).OnComplete(OnFadeComplete);
 
-            AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
-            s_triggerIndex++;
+            if (isPlayer)
+            {
+                AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
+                s_triggerIndex++;
+            }
         }
 
         private void OnFadeComplete()

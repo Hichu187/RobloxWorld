@@ -77,5 +77,13 @@ namespace Game
         {
 
         }
+
+        public int CurrentCheckpointIndex()
+        {
+            if (curCheckpoint == null)
+                return 0;
+
+            return checkpoints.IndexOf(curCheckpoint);
+        }
     }
 }
