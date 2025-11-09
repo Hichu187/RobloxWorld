@@ -370,6 +370,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 928a14c75a29ecf4bb4f01dd7ddb30b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8817579069048505084}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 928a14c75a29ecf4bb4f01dd7ddb30b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 515780686460259872}
     - targetCorrespondingSourceObject: {fileID: -5067417469064874575, guid: 928a14c75a29ecf4bb4f01dd7ddb30b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6822524974907033114}
@@ -1053,6 +1056,19 @@ MonoBehaviour:
   _explodeRadius: 5
   _upwardsModifier: 0
   _useGravityOnClones: 1
+--- !u!114 &515780686460259872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624812079341498224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774249cd859a9104fa4ffed04634831b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.CharacterWeapon
+  listWeapons: []
 --- !u!1 &3930682294325766742 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 576482781132535927, guid: 928a14c75a29ecf4bb4f01dd7ddb30b8, type: 3}

@@ -1,6 +1,8 @@
 using Hichu;
 using Kcc;
+using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -23,7 +25,6 @@ namespace Game
         public CharacterInteract cInteract;
         public CharacterRagdoll cRagdoll;
         public FieldOfView fov;
-
 
         private State _state = State.Normal;
 
