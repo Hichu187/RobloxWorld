@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Game
 {
@@ -12,6 +13,15 @@ namespace Game
     {
         public ItemType itemType;
         public string itemName;
+        public Sprite sprite;
+
+        [NonSerialized] private ItemData _data;
+        public ItemData data { get { if (_data == null) _data = DataItem.Get(itemName); return _data; } }
+
+        public bool IsCurrent()
+        {
+            return string.CompareOrdinal(DataItem.current, this.itemName) == 0;
+        }
 
 #if UNITY_EDITOR
         [Button("Rename Asset", ButtonSizes.Large)]
@@ -42,5 +52,18 @@ namespace Game
             AssetDatabase.SaveAssets();
         }
 #endif
+    }
+
+    [SerializeField]
+    public class ItemData
+    {
+        [SerializeField] private bool _isUnlocked;
+
+        public bool isUnlocked { get { return _isUnlocked; } }
+
+        public void Unlock()
+        {
+            _isUnlocked = true;
+        }
     }
 }

@@ -23,5 +23,11 @@ namespace Game
 
             items[id].ActiveItem();
         }
+        [Button]
+        public void UnlockItem(int id)
+        {
+            if (FactoryItem.items[id].data.isUnlocked) return;
+            FactoryItem.items[id].data.Unlock();
+        }
     }
 }

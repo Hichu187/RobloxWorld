@@ -1,3 +1,5 @@
+using Hichu;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,22 +9,29 @@ namespace Game
 {
     public class BagView : MonoBehaviour
     {
+        public SlapBagOption optionPrefab;
         public List<SlapBagOption> option;
+        public Transform content;
 
         private void Start()
         {
-            for (int i = 0; i < option.Count; i++)
+            for (int i = 0; i < FactoryItem.items.Count; i++)
             {
                 int index = i;
 
-                option[index].GetComponent<Button>().onClick.AddListener(() => { SelectOption(index); });
+                if (FactoryItem.items[index].data.isUnlocked)
+                {
+                    SlapBagOption opt = optionPrefab.Create(content);
+                    option.Add(opt);
+                }
             }
 
-            switch (SceneManager.GetActiveScene().name)
+            for (int i = 0; i < option.Count; i++)
             {
-                case "Game Steal Brainrot":
-                    SelectOption(DataStealBrainrot.curSlap);
-                    break;
+                int index = i;
+                option[index].InitData(FactoryItem.items[index]);
+
+                option[index].GetComponent<Button>().onClick.AddListener(() => { SelectOption(index); });
             }
         }
 
@@ -35,14 +44,9 @@ namespace Game
 
             option[id].status.SetActive(true);
 
+            DataItem.SetCurrentItem(option[id].data.itemName);
 
-            //Logic equipment
-            switch (SceneManager.GetActiveScene().name)
-            {
-                case "Game Steal Brainrot":
-                    DataStealBrainrot.SetSlapIndex(id);
-                    break;
-            }
+            Player.Instance.character.itemManager.ActiveItem(FactoryItem.items.IndexOf(option[id].data));
         }
     }
 }

@@ -53271,6 +53271,10 @@ PrefabInstance:
       propertyPath: DefaultVerticalAngle
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8273305162692901111, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: ObstructionLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8567038874143789692, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Height
       value: 2
