@@ -53167,6 +53167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 719333563}
     m_Modifications:
+    - target: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: damageMask.m_Bits
+      value: 4095
+      objectReference: {fileID: 0}
     - target: {fileID: 1622305535884013436, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: groundProbeDistance
       value: 2

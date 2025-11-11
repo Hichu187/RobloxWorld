@@ -14,13 +14,12 @@ namespace Game
     {
         [Title("Stats")]
         [SerializeField] private bool isTakeDamage = false;
-        [ShowIf("isTakeDamage", true)]
-        public int _maxHealth = 100;
-        [ShowIf("isTakeDamage", true)]
-        public int _currentHealth;
-        [ShowIf("isTakeDamage", true)]
-        public int _damage = 10;
-        public float attackSpeed = 1f;
+        [ShowIf("isTakeDamage")] public int _maxHealth = 100;
+        [ShowIf("isTakeDamage")] public int _currentHealth;
+        [ShowIf("isTakeDamage")] public int _damage = 10;
+
+        [Title("Attack Interval")]
+        [Min(0.1f)] public float attackSpeed = 1f;
 
         [Title("Reference")]
         public GameObject _stats;
@@ -29,15 +28,21 @@ namespace Game
         public Image _hp_Bar;
         public GameObject hitPrefab;
         public GameObject takeDamagePrefab;
+
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
         public int specialBonus = 0;
 
         [Title("Knockback Config")]
         [SerializeField] private bool _knockback = false;
-        [SerializeField, ShowIf("_knockback", true)] private LayerMask _hitMask = ~0;
-        [SerializeField, ShowIf("_knockback", true)] private float _knockbackForce = 10f;
-        [SerializeField, ShowIf("_knockback", true), Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
+        [SerializeField, ShowIf("_knockback")] private LayerMask _hitMask = ~0;
+        [SerializeField, ShowIf("_knockback")] private float _knockbackForce = 10f;
+        [SerializeField, ShowIf("_knockback"), Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
+
+        [Title("Hit Filters (Early & Cheap)")]
+        [SerializeField, Min(0f)] private float maxAttackDistance = 10f;
+        [SerializeField, Range(-1f, 1f)] private float minFacingDot = -0.2f;
+        [SerializeField] private LayerMask damageMask = ~0;
 
         [Title("Explosion")]
         float distanceFactor = 1f;
@@ -46,20 +51,73 @@ namespace Game
         private List<Vector3> trajectoryPoints = new List<Vector3>();
         private Coroutine _coroutineExplosion;
 
-        // === NEW: Auto Regen ===
         [Title("Auto Regen")]
         [SerializeField] private bool _autoRegen = false;
-        [ShowIf("_autoRegen")][Min(0.1f)][SerializeField] private float _regenDelaySeconds = 10f;
+        [ShowIf("_autoRegen"), Min(0.1f)][SerializeField] private float _regenDelaySeconds = 10f;
         private Coroutine _regenRoutine;
 
+        [Title("AI Auto Attack")]
+        public bool isAIAutoAttack = false;
+        [ShowIf("isAIAutoAttack"), Range(0f, 1f)] public float autoAttackChance = 0.6f;
+        [ShowIf("isAIAutoAttack"), Min(0.05f)] public float autoThinkInterval = 0.2f;
+        [ShowIf("isAIAutoAttack"), Min(0f)] public float startDelay = 1.2f;
+
+        // Cached refs
+        private Coroutine _autoAttackRoutine;
         private Character _character;
-        private float _lastAttackTime;
+        private CharacterAnimator _anim;
+        private CharacterControl _control;
+        private Kcc.KccMotor _motor;
+        private CharacterRagdoll _ragdoll;
+        private FieldOfView _fov;
+        private StealBrainrot_Player _stealPlayer;
+        private StealBrainrot_AI _stealAI;
+
+        private bool _isAttackAttempting = false;
+        private float _nextAttackTime = 0f;
+        private readonly List<Transform> _bufTargets = new List<Transform>(16);
+        private float MaxDistSqr => maxAttackDistance <= 0f ? float.PositiveInfinity : maxAttackDistance * maxAttackDistance;
+
         public bool hasDied = false;
 
         private void Awake()
         {
             _currentHealth = _maxHealth;
+
             _character = GetComponent<Character>();
+            if (_character != null)
+            {
+                _anim = _character.cAnim;
+                _control = _character.cControl;
+                _motor = _character.motor;
+                _ragdoll = _character.cRagdoll;
+            }
+
+            _fov = GetComponent<FieldOfView>();
+            _stealPlayer = GetComponent<StealBrainrot_Player>();
+            _stealAI = GetComponentInParent<StealBrainrot_AI>();
+
+            if (isAIAutoAttack)
+            {
+                attackSpeed = Random.Range(3f, 5f);
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (isAIAutoAttack && _autoAttackRoutine == null)
+            {
+                _autoAttackRoutine = StartCoroutine(Co_AutoAttackLoop());
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_autoAttackRoutine != null)
+            {
+                StopCoroutine(_autoAttackRoutine);
+                _autoAttackRoutine = null;
+            }
         }
 
         public float GetTotalDamage()
@@ -71,67 +129,78 @@ namespace Game
         public async void Attack(FieldOfView fov)
         {
             if (hasDied) return;
+            if (_stealPlayer && _stealPlayer.isStealing) return;
+            if (_control != null && _control.StateMachine.CurrentState != CharacterControl.State.Ground) return;
+            if (Time.time < _nextAttackTime) return;
 
-            if (GetComponent<StealBrainrot_Player>())
+            _isAttackAttempting = true;
+            _nextAttackTime = Time.time + attackSpeed;
+
+            _anim?.Attack();
+            await UniTask.WaitForSeconds(0.4f);
+
+            if (fov == null || fov.combatables == null || fov.combatables.Count == 0)
             {
-                if (GetComponent<StealBrainrot_Player>().isStealing) return;
+                _isAttackAttempting = false;
+                return;
             }
 
-            if (_character != null)
+            _bufTargets.Clear();
+            Vector3 selfPos = transform.position;
+            Vector3 fwd = transform.forward;
+
+            for (int i = 0; i < fov.combatables.Count; i++)
             {
-                if (_character.cControl.StateMachine.CurrentState != CharacterControl.State.Ground) return;
+                Transform t = fov.combatables[i];
+                if (!t) continue;
+
+                if (((1 << t.gameObject.layer) & damageMask) == 0) continue;
+
+                Vector3 to = t.position - selfPos;
+                float d2 = to.sqrMagnitude;
+                if (d2 > MaxDistSqr) continue;
+
+                Vector3 dir = d2 > 1e-6f ? (to / Mathf.Sqrt(d2)) : transform.forward;
+                float dot = Vector3.Dot(fwd, dir);
+                if (dot < minFacingDot) continue;
+
+                _bufTargets.Add(t);
             }
 
-            if (Time.time >= _lastAttackTime + attackSpeed)
+            float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
+            float totalDamage = GetTotalDamage();
+
+            for (int i = 0; i < _bufTargets.Count; i++)
             {
-                _lastAttackTime = Time.time;
+                Transform target = _bufTargets[i];
+                if (!target) continue;
 
-                if (_character)
-                    _character.cAnim.Attack();
-
-                await UniTask.WaitForSeconds(0.4f);
-
-                if (fov.combatables == null || fov.combatables.Count == 0) return;
-
-                float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
-                float totalDamage = GetTotalDamage();
-
-                foreach (var target in fov.combatables)
+                Vector3 toTarget = target.position - selfPos;
+                Vector3 horiz = Vector3.ProjectOnPlane(toTarget, Vector3.up);
+                if (horiz.sqrMagnitude < 1e-6f)
                 {
-                    if (target == null) continue;
+                    horiz = Vector3.ProjectOnPlane(fwd, Vector3.up);
+                    if (horiz.sqrMagnitude < 1e-6f) horiz = Vector3.forward;
+                }
+                horiz.Normalize();
 
-                    Vector3 toTarget = target.position - transform.position;
+                Vector3 dirKnock = horiz * Mathf.Cos(angRad) + Vector3.up * Mathf.Sin(angRad);
+                dirKnock.Normalize();
 
-                    Vector3 horiz = Vector3.ProjectOnPlane(toTarget, Vector3.up);
-                    if (horiz.sqrMagnitude < 1e-6f)
+                if (target.TryGetComponent<CharacterCombat>(out var cc))
+                {
+                    cc.TakeDamage((int)totalDamage, _knockbackForce, dirKnock);
+
+                    if (hitPrefab)
                     {
-                        horiz = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
-                        if (horiz.sqrMagnitude < 1e-6f) horiz = Vector3.forward;
-                    }
-                    horiz.Normalize();
-
-                    Vector3 dir = horiz * Mathf.Cos(angRad) + Vector3.up * Mathf.Sin(angRad);
-                    dir.Normalize();
-
-                    var targetCombat = target.GetComponent<CharacterCombat>();
-                    if (targetCombat)
-                    {
-                        targetCombat.TakeDamage((int)totalDamage, _knockbackForce, dir);
-
-                        if (hitPrefab != null)
-                        {
-                            hitPrefab.SetActive(true);
-                            hitPrefab.transform.position = target.position;
-                        }
+                        hitPrefab.SetActive(true);
+                        hitPrefab.transform.position = target.position;
                     }
                 }
             }
-            else
-            {
-                float remain = _lastAttackTime + attackSpeed - Time.time;
-            }
-        }
 
+            _isAttackAttempting = false;
+        }
 
         public virtual void TakeDamage(int amount, float force, Vector3 direction)
         {
@@ -140,13 +209,9 @@ namespace Game
             if (isTakeDamage)
             {
                 _currentHealth -= amount;
-                _currentHealth = Mathf.Max(_currentHealth, 0);
+                if (_currentHealth < 0) _currentHealth = 0;
 
-                if (takeDamagePrefab != null)
-                {
-                    takeDamagePrefab.SetActive(true);
-                }
-                // Reset countdown mỗi lần nhận damage
+                if (takeDamagePrefab) takeDamagePrefab.SetActive(true);
                 ResetRegenCountdown();
 
                 if (_currentHealth <= 0)
@@ -155,36 +220,29 @@ namespace Game
                 }
                 else
                 {
-                    LDebug.Log<CharacterCombat>($"take {amount} damage");
                     StartRegenCountdown();
                 }
 
                 if (_character != null && _character.isPlayer)
-                {
                     _stats.SetActive(true);
-                }
             }
 
             if (_knockback)
             {
                 KnockBack(force, direction);
 
-                _character.motor.enabled = false;
+                if (_motor) _motor.enabled = false;
+                _ragdoll?.ActivateRagdoll(Vector3.up * 5f, direction);
 
-                _character.cRagdoll.ActivateRagdoll(Vector3.up * 5f, direction);
-
-                StealBrainrot_Player p = _character.GetComponent<StealBrainrot_Player>();
-                StealBrainrot_AI ai = _character.GetComponentInParent<StealBrainrot_AI>();
-
-                if (p != null && p.isStealing) p.ResetSteal();
-                if (ai != null && ai.isStealing) ai.ResetSteal();
+                if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
+                if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
 
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
-                    _character.motor.enabled = true;
-                    _character.cRagdoll.SetRagdollActive(false);
-                    _character.cControl.StateMachine.CurrentState = CharacterControl.State.Ground;
-                    _character.cRagdoll.SetPos(_character);
+                    if (_motor) _motor.enabled = true;
+                    if (_ragdoll != null) _ragdoll.SetRagdollActive(false);
+                    if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
+                    _ragdoll?.SetPos(_character);
                 });
             }
 
@@ -193,12 +251,10 @@ namespace Game
 
         private void KnockBack(float force, Vector3 direction)
         {
-            LDebug.Log<CharacterCombat>($"KnockBack");
-
             if (_coroutineExplosion != null)
                 StopCoroutine(_coroutineExplosion);
 
-            Vector3 dirNormalized = direction.normalized;
+            Vector3 dirNormalized = direction.sqrMagnitude > 1e-8f ? direction.normalized : Vector3.up;
             _coroutineExplosion = StartCoroutine(HandleExplosion(force, dirNormalized));
         }
 
@@ -211,7 +267,7 @@ namespace Game
             float maxHeight = force * heightFactor;
 
             Vector3 start = _character.transformCached.position;
-            Vector3 destination = start + direction.normalized * explodeDst;
+            Vector3 destination = start + direction * explodeDst;
 
             float elapsedTime = 0f;
             Vector3 lastPos = start;
@@ -227,13 +283,13 @@ namespace Game
 
                 if (Physics.Linecast(lastPos, newPosition, out RaycastHit hit, _hitMask, QueryTriggerInteraction.Ignore))
                 {
-                    _character.motor.SetPosition(hit.point);
+                    _motor.SetPosition(hit.point);
                     trajectoryPoints.Add(hit.point);
                     break;
                 }
 
                 trajectoryPoints.Add(newPosition);
-                _character.motor.SetPosition(newPosition);
+                _motor.SetPosition(newPosition);
                 lastPos = newPosition;
 
                 yield return null;
@@ -254,26 +310,27 @@ namespace Game
             InitData();
             StopRegen();
             hasDied = false;
+
+            if (isAIAutoAttack)
+            {
+                attackSpeed = Random.Range(0.6f, 1.2f);
+            }
+
+            _nextAttackTime = Time.time + startDelay;
         }
 
         protected virtual void Die()
         {
             hasDied = true;
-            if (_stats != null) _stats.SetActive(false);
+            if (_stats) _stats.SetActive(false);
             StopRegen();
 
             if (_character != null && _character.isPlayer)
-            {
                 _character.Kill();
-            }
         }
 
-        public bool IsAlive()
-        {
-            return _currentHealth > 0;
-        }
+        public bool IsAlive() => _currentHealth > 0;
 
-        // === NEW: Regen helpers ===
         private void StartRegenCountdown()
         {
             if (!_autoRegen || hasDied || !isTakeDamage) return;
@@ -314,11 +371,33 @@ namespace Game
             if (!hasDied && isTakeDamage)
             {
                 _currentHealth = _maxHealth;
-                _stats.SetActive(false);
+                if (_stats) _stats.SetActive(false);
                 InitData();
             }
 
             _regenRoutine = null;
+        }
+
+        private IEnumerator Co_AutoAttackLoop()
+        {
+            if (startDelay > 0f)
+                yield return new WaitForSeconds(startDelay);
+
+            var wait = new WaitForSeconds(autoThinkInterval);
+
+            while (isAIAutoAttack)
+            {
+                if (Time.time >= _nextAttackTime)
+                {
+                    if (!hasDied && !_isAttackAttempting)
+                        Attack(_fov);
+
+                    if (_nextAttackTime <= Time.time)
+                        _nextAttackTime = Time.time + attackSpeed;
+                }
+
+                yield return wait;
+            }
         }
     }
 }

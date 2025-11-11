@@ -25,6 +25,7 @@ namespace Game
         [SerializeField] private Transform _characterHoldingPos;
 
         [Title("Config")]
+        [SerializeField] private bool isAutoAttack;
         [SerializeField] private float _turnSpeed = 120f;
         [SerializeField] private Vector2 _idleDurationRange = new Vector2(0.5f, 1f);
 

@@ -49,8 +49,9 @@ MonoBehaviour:
   _character: {fileID: 2179870812557324471}
   _characterFoward: {fileID: 7156024377573279560}
   _characterHoldingPos: {fileID: 6144882976250559307}
+  isAutoAttack: 0
   _turnSpeed: 120
-  _idleDurationRange: {x: 0.5, y: 1}
+  _idleDurationRange: {x: 1, y: 1}
 --- !u!114 &4179443667529744318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +109,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: debugLog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _knockback
       value: 1
       objectReference: {fileID: 0}
@@ -116,8 +121,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: isAIAutoAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _knockbackForce
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: autoAttackChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: autoThinkInterval
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: damageMask.m_Bits
+      value: 4095
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _knockbackAngleDeg
@@ -313,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: targetMask.m_Bits
-      value: 1032
+      value: 1288
       objectReference: {fileID: 0}
     - target: {fileID: 7099523407771847612, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: obstructionMask.m_Bits

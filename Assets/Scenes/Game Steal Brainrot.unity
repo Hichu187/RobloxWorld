@@ -19566,6 +19566,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: damageMask.m_Bits
+      value: 4095
+      objectReference: {fileID: 0}
+    - target: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: _knockbackAngleDeg
       value: 89
       objectReference: {fileID: 0}
@@ -92720,6 +92724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b83fcd1a9e10c04f85ff32069e11a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chanceStealFromBase0: 0.5
   startPoint: {fileID: 688325557}
   endPoint: {fileID: 991338285}
   baseLists:
@@ -92782,7 +92787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ee8df1bee713e40a5da91d4383fff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiPrefab: {fileID: 8241151817209661624, guid: 55fa5490c7c878e4e9bbe4a1447f9aa9, type: 3}
+  _aiPrefab: {fileID: 3689898767674299497, guid: a3c2b0ff76a690f41aae206791209b37, type: 3}
   _spawnPos:
   - {fileID: 1168890234}
   - {fileID: 1687667193}
