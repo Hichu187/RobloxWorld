@@ -8,7 +8,7 @@ namespace Game
 {
     public class AI : MonoBehaviour
     {
-        static readonly float s_distanceThreshold = 0.2f;
+        static readonly float s_distanceThreshold = 1f;
 
         private enum State
         {
