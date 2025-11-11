@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grow Obby
   m_EditorClassIdentifier: Game::Game.MinigameConfig
   gameTitle: Grow Obby
-  gameIcon: {fileID: 21300000, guid: b864b9fd87e07294698368f96202997c, type: 3}
+  gameIcon: {fileID: 21300000, guid: 57dff2cebecf6ed49a0a3947d19ab517, type: 3}
   like: 75
   user: 0
   commingSoon: 1

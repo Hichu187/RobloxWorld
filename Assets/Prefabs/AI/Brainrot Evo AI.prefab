@@ -50,8 +50,9 @@ MonoBehaviour:
   _character: {fileID: 2179870812557324471}
   _characterFoward: {fileID: 7156024377573279560}
   _characterHoldingPos: {fileID: 6144882976250559307}
+  isAutoAttack: 0
   _turnSpeed: 120
-  _idleDurationRange: {x: 0.5, y: 1}
+  _idleDurationRange: {x: 0.5, y: 0.5}
 --- !u!114 &4179443667529744318
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Steal a Brainrot
   m_EditorClassIdentifier: Game::Game.MinigameConfig
   gameTitle: Steal a Brainrot
-  gameIcon: {fileID: 21300000, guid: 3bb2f8499a3ad0a4485db8c10f92b98f, type: 3}
+  gameIcon: {fileID: 21300000, guid: b864b9fd87e07294698368f96202997c, type: 3}
   like: 75
   user: 0
+  commingSoon: 0
   gameSceneName: Game Steal Brainrot
