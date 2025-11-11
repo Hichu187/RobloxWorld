@@ -15,12 +15,12 @@ MonoBehaviour:
   _orientationBonusMethod: 1
   _orientationSharpness: 10
   _orientationBonusSharpness: 1000
-  _groundMoveSpeedMax: 8
+  _groundMoveSpeedMax: 7
   _groundMoveSharpness: 1000
   _airMoveSpeedMax: 5
   _airAccelerationSpeed: 1000
   _airDrag: 0.1
-  _jumpSpeed: 7
+  _jumpSpeed: 12
   _jumpMultipleCount: 1
   _jumpMultipleDelayBetween: 0.5
   _jumpRequestBufferTime: 0.5
