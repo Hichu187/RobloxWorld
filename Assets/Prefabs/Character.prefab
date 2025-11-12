@@ -179,6 +179,7 @@ MonoBehaviour:
   cInteract: {fileID: 0}
   cRagdoll: {fileID: 0}
   fov: {fileID: 7099523407771847612}
+  itemManager: {fileID: 0}
 --- !u!114 &380968863022838189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,8 +316,17 @@ MonoBehaviour:
     m_Bits: 119
   _knockbackForce: 10
   _knockbackAngleDeg: 60
+  maxAttackDistance: 10
+  minFacingDot: -0.2
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 4095
   _autoRegen: 0
   _regenDelaySeconds: 10
+  isAIAutoAttack: 0
+  autoAttackChance: 0.6
+  autoThinkInterval: 0.2
+  startDelay: 1.2
   hasDied: 0
 --- !u!114 &7749133841842370749
 MonoBehaviour:

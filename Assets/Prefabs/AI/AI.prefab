@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _knockbackForce
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: autoAttackChance
@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: _knockbackAngleDeg
-      value: 89
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3008969619715825209, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_IsKinematic

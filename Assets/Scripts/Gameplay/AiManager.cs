@@ -120,7 +120,7 @@ namespace Game
                 case Minigame.TowerHell:
                     var t = GetPlayerTransform();
                     int near = t != null ? FindNearestSpawnIndex(t.position) : _spawnPos.Count / 2;
-                    return near + UnityEngine.Random.Range(-2, 3);
+                    return near + UnityEngine.Random.Range(-4, 4);
 
                 default:
                     return UnityEngine.Random.Range(0, _spawnPos.Count);

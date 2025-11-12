@@ -400,8 +400,16 @@ PrefabInstance:
       value: -1.154556
       objectReference: {fileID: 0}
     - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _knockback
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: damageMask.m_Bits
       value: 4095
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _knockbackAngleDeg
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2675437538863323988, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

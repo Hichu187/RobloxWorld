@@ -229,10 +229,10 @@ namespace Game
 
             if (_knockback)
             {
-                KnockBack(force, direction);
+                //KnockBack(force, direction);
 
                 if (_motor) _motor.enabled = false;
-                _ragdoll?.ActivateRagdoll(Vector3.up * 5f, direction);
+                _ragdoll?.ActivateRagdoll(force* direction, direction);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
@@ -242,7 +242,9 @@ namespace Game
                     if (_motor) _motor.enabled = true;
                     if (_ragdoll != null) _ragdoll.SetRagdollActive(false);
                     if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
+                    _ragdoll?.gameObject.SetActive(false);
                     _ragdoll?.SetPos(_character);
+                    _ragdoll?.gameObject.SetActive(true);
                 });
             }
 
