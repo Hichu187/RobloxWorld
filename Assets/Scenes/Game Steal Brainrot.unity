@@ -19571,7 +19571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415365823107466604, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: _knockbackAngleDeg
-      value: 89
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 473612726743057711, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer

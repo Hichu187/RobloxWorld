@@ -242,9 +242,8 @@ namespace Game
                     if (_motor) _motor.enabled = true;
                     if (_ragdoll != null) _ragdoll.SetRagdollActive(false);
                     if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
-                    _ragdoll?.gameObject.SetActive(false);
+
                     _ragdoll?.SetPos(_character);
-                    _ragdoll?.gameObject.SetActive(true);
                 });
             }
 
