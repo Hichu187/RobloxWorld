@@ -80,7 +80,7 @@ namespace Game
 
         public bool hasDied = false;
 
-        private void Awake()
+        private void Start()
         {
             _currentHealth = _maxHealth;
 
@@ -229,10 +229,8 @@ namespace Game
 
             if (_knockback)
             {
-                //KnockBack(force, direction);
-
                 if (_motor) _motor.enabled = false;
-                _ragdoll?.ActivateRagdoll(force* direction, direction);
+                _character?.cRagdoll.ActivateRagdoll(force* direction, direction);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
@@ -240,10 +238,10 @@ namespace Game
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
                     if (_motor) _motor.enabled = true;
-                    if (_ragdoll != null) _ragdoll.SetRagdollActive(false);
+                    _character?.cRagdoll.SetRagdollActive(false);
                     if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
 
-                    _ragdoll?.SetPos(_character);
+                    _character?.cRagdoll.SetPos(_character);
                 });
             }
 

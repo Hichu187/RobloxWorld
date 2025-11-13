@@ -1,8 +1,10 @@
+using Cysharp.Threading.Tasks;
 using Hichu;
 using Kcc;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -16,9 +18,11 @@ namespace Game
         }
 
         public bool isPlayer = false;
+        public bool isAutoLoadSkin = false;
 
         public KccMotor motor;
         public CharacterControl cControl;
+        public CharacterRenderer cRender;
         public CharacterCamera cCamera;
         public CharacterCombat cCombat;
         public CharacterAnimator cAnim;
@@ -33,6 +37,26 @@ namespace Game
         public event Action eventRevive;
 
         private void OnEnable()
+        {
+
+        }
+
+        private void Awake()
+        {
+            if (isAutoLoadSkin)
+            {
+                if (isPlayer)
+                {
+                    cRender.LoadSkin(0);
+                }
+                else
+                {
+                    cRender.LoadSkin(UnityEngine.Random.Range(0, FactorySkin.skin.Count));
+                }
+            }
+        }
+
+        private void Start()
         {
             SetItemManager();
         }

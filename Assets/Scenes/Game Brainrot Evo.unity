@@ -1242,6 +1242,10 @@ PrefabInstance:
       propertyPath: cRagdoll
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2649487631329551968, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: isAutoLoadSkin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2707060846007274579, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 8

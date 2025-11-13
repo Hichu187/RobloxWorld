@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: cAnim
       value: 
       objectReference: {fileID: 3172570745914849707}
+    - target: {fileID: 214178629716720430, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: isAutoLoadSkin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 399563061187182491, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

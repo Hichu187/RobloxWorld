@@ -15,8 +15,48 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ded84c2ae35aeb343b7cee40276b202b
   m_SerializeEntries:
+  - m_GUID: 038d48795a2a6324e8cebc21609d06c8
+    m_Address: Assets/Prefabs/Character/Human/Girl 05.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a7a2f4ff981fd640b7b71443f5688e6
+    m_Address: Assets/Prefabs/Character/Human/Boy 06.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15c81c4e2f7306647877724212ed2140
+    m_Address: Assets/Prefabs/Character/Human/Boy 08.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 183b1d2abec63824f88579cf53f845f7
+    m_Address: Assets/Prefabs/Character/Human/Boy 01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 322817afa39ef2848b7b8e5aca9c1351
+    m_Address: Assets/Prefabs/Character/Human/Girl 03.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 450f48f84ca767945becf60c1ce41a18
     m_Address: Assets/Prefabs/GUI/View/Home View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46433a831ef74544eafe1f84dbc991cc
+    m_Address: Assets/Prefabs/Character/Human/Boy 10.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a215aef4eae27c489d77d801aa77944
+    m_Address: Assets/Prefabs/Character/Human/Boy Base.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e59d72007cd33a428b2943b02cb9a20
+    m_Address: Assets/Prefabs/Character/Human/Boy 09.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,8 +75,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83aa693d8fca83c469e4f405cf0d4bfc
+    m_Address: Assets/Prefabs/Character/Human/Girl 01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ecdec0ef9436e84ebe19b1336392fb9
     m_Address: Assets/Prefabs/GUI/Pet Bag/Open Egg View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8facff9d177a48b4cbef928cb4ff9476
+    m_Address: Assets/Prefabs/Character/Human/Boy 03.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,8 +100,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a199b08c9a17312488afd832e1815ee1
+    m_Address: Assets/Prefabs/Character/Human/Boy 04.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a1bc1554a75470e4197a8c03b5e73eb5
     m_Address: Assets/Prefabs/GUI/Pet Bag/Pet Bag View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abd04a65a5364fe4ca6f5d96e37ab9f9
+    m_Address: Assets/Prefabs/Character/Human/Boy 07.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -60,8 +120,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3afab23914b1c544b2f30a3e61f2297
+    m_Address: Assets/Prefabs/Character/Human/Boy 05.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8848f60a7ee4e24a89084f7d2da6bed
     m_Address: Assets/Prefabs/GUI/View/Steal Brainrot View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d21a8755941d4a04f95be681b2dcad8a
+    m_Address: Assets/Prefabs/Character/Human/Girl 04.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3d65fe8984579740bf005f40eca3799
+    m_Address: Assets/Prefabs/Character/Human/Girl 02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edceb1be506efbd439aa1e85424ac8f0
+    m_Address: Assets/Prefabs/Character/Human/Girl Base.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef0b61fb485e00144ba29b35430d8a3a
+    m_Address: Assets/Prefabs/Character/Human/Boy 02.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -31,6 +31,8 @@ namespace Game
         private void Start()
         {
             if (_nameText.text != botName) _nameText.text = botName;
+
+            _currentHealth = _maxHealth;
             InitData();
         }
 
