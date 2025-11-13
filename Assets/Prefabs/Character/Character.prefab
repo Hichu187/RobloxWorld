@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3001c64952cbbf24e9c4e2bfe562e374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.CharacterRenderer
+  _character: {fileID: 214178629716720430}
   _meshParent: {fileID: 9214181465551165935}
 --- !u!114 &7749133841842370749
 MonoBehaviour:

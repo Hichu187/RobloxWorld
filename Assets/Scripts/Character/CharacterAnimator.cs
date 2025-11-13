@@ -41,10 +41,7 @@ namespace Game
 
             animator.SetBool(HashDictionary.climbing, isClimbing);
 
-            if (isClimbing == false)
-            {
-                animator.speed = 1f;
-            }
+            animator.speed = 1f;
 
             if (isClimbing)
             {
@@ -159,7 +156,7 @@ namespace Game
             RaycastHit hit;
 
             yield return new WaitForSeconds(0.35f);
-            animator.speed = 0.02f;
+            //animator.speed = 0.02f;
             while (inAir)
             {
                 Vector3 origin = tr.position;

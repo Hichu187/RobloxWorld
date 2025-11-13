@@ -13,58 +13,20 @@ MonoBehaviour:
   m_Name: Game.FactorySkin
   m_EditorClassIdentifier: Game::Game.FactorySkin
   _skin:
-  - m_AssetGUID: 4a215aef4eae27c489d77d801aa77944
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 183b1d2abec63824f88579cf53f845f7
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: ef0b61fb485e00144ba29b35430d8a3a
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 8facff9d177a48b4cbef928cb4ff9476
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: a199b08c9a17312488afd832e1815ee1
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: c3afab23914b1c544b2f30a3e61f2297
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 0a7a2f4ff981fd640b7b71443f5688e6
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: abd04a65a5364fe4ca6f5d96e37ab9f9
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 15c81c4e2f7306647877724212ed2140
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 5e59d72007cd33a428b2943b02cb9a20
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  - m_AssetGUID: 46433a831ef74544eafe1f84dbc991cc
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
+  - {fileID: 3624812079341498224, guid: 4a215aef4eae27c489d77d801aa77944, type: 3}
+  - {fileID: 9066133033705193572, guid: edceb1be506efbd439aa1e85424ac8f0, type: 3}
+  - {fileID: 7023706950413892583, guid: 183b1d2abec63824f88579cf53f845f7, type: 3}
+  - {fileID: 7023706950413892583, guid: ef0b61fb485e00144ba29b35430d8a3a, type: 3}
+  - {fileID: 7023706950413892583, guid: 8facff9d177a48b4cbef928cb4ff9476, type: 3}
+  - {fileID: 7023706950413892583, guid: a199b08c9a17312488afd832e1815ee1, type: 3}
+  - {fileID: 7023706950413892583, guid: c3afab23914b1c544b2f30a3e61f2297, type: 3}
+  - {fileID: 7023706950413892583, guid: 0a7a2f4ff981fd640b7b71443f5688e6, type: 3}
+  - {fileID: 7023706950413892583, guid: abd04a65a5364fe4ca6f5d96e37ab9f9, type: 3}
+  - {fileID: 7023706950413892583, guid: 15c81c4e2f7306647877724212ed2140, type: 3}
+  - {fileID: 7023706950413892583, guid: 5e59d72007cd33a428b2943b02cb9a20, type: 3}
+  - {fileID: 7023706950413892583, guid: 46433a831ef74544eafe1f84dbc991cc, type: 3}
+  - {fileID: 9066133033705193572, guid: 83aa693d8fca83c469e4f405cf0d4bfc, type: 3}
+  - {fileID: 9066133033705193572, guid: d3d65fe8984579740bf005f40eca3799, type: 3}
+  - {fileID: 9066133033705193572, guid: 322817afa39ef2848b7b8e5aca9c1351, type: 3}
+  - {fileID: 9066133033705193572, guid: d21a8755941d4a04f95be681b2dcad8a, type: 3}
+  - {fileID: 9066133033705193572, guid: 038d48795a2a6324e8cebc21609d06c8, type: 3}

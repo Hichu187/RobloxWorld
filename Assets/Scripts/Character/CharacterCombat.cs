@@ -243,6 +243,8 @@ namespace Game
 
                     _character?.cRagdoll.SetPos(_character);
                 });
+                _character.cRagdoll.gameObject.SetActive(false);
+                _character.cRagdoll.gameObject.SetActive(true);
             }
 
             InitData();

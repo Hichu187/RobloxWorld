@@ -7,8 +7,8 @@ namespace Game
 {
     public class FactorySkin : ScriptableObjectSingleton<FactorySkin>
     {
-        [SerializeField] private List<AssetReferenceGameObject> _skin;
+        [SerializeField] private List<GameObject> _skin;
 
-        public static List<AssetReferenceGameObject> skin => instance._skin;
+        public static List<GameObject> skin => instance._skin;
     }
 }

@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Hichu;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -8,20 +9,18 @@ namespace Game
 {
     public class CharacterRenderer : MonoBehaviour
     {
-        private Character _character;
+        [SerializeField] private Character _character;
         [SerializeField] Transform _meshParent;
         private void Awake()
         {
             _character = GetComponent<Character>();
         }
 
-        public async void LoadSkin(int skinIndex)
+        public void LoadSkin(int skinIndex)
         {
             if (_meshParent == null) return;
 
-            var handle = FactorySkin.skin[skinIndex].InstantiateAsync(_meshParent);
-
-            GameObject obj = await handle.Task;
+            GameObject obj = FactorySkin.skin[skinIndex].Create(_meshParent);
 
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
@@ -31,8 +30,7 @@ namespace Game
             _character.itemManager = obj.GetComponentInChildren<CharacterItemManager>();
             _character.SetItemManager();
             _character.cAnim._animator = obj.GetComponent<Animator>();
-
-
+            _character.GetComponent<CharacterDie>().ObjRoot = obj;
         }
     }
 }
