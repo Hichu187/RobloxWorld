@@ -230,7 +230,8 @@ namespace Game
             if (_knockback)
             {
                 if (_motor) _motor.enabled = false;
-                _character?.cRagdoll.ActivateRagdoll(force* direction, direction);
+
+                _character?.cRagdoll.ActivateRagdoll(force * direction, direction);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
