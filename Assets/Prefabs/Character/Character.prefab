@@ -361,7 +361,7 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 119
-  _knockbackForce: 10
+  _knockbackForce: 20
   _knockbackAngleDeg: 60
   maxAttackDistance: 10
   minFacingDot: -0.2
@@ -375,6 +375,7 @@ MonoBehaviour:
   autoThinkInterval: 0.2
   startDelay: 1.2
   hasDied: 0
+  attackNearestOnly: 1
 --- !u!1 &4472486398177683177
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2122130179071160216}
   - component: {fileID: 6134096633040707657}
   - component: {fileID: 5272063478848882591}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8808563277959368291}
   - component: {fileID: 3292391147115669734}
   - component: {fileID: 5672850809789732167}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -475, y: 350}
-  m_SizeDelta: {x: 177, y: 177}
+  m_AnchoredPosition: {x: -160, y: 545}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7249188541294172201
 CanvasRenderer:
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 6528632811554731701}
   - component: {fileID: 5540043238634764083}
   - component: {fileID: 2363807116726032218}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,15 +210,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2122130179071160216}
   m_Father: {fileID: 8409761036786090265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -200, y: 225}
-  m_SizeDelta: {x: 177, y: 177}
+  m_AnchoredPosition: {x: -325, y: 325}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &169193558241780966
 CanvasRenderer:
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 7733670119239036521}
   - component: {fileID: 5736811005815837182}
   - component: {fileID: 8507130768609359378}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 7016920640519894077}
   - component: {fileID: 6167443616847819495}
   - component: {fileID: 6631028547268977617}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 5089625321926864133}
   - component: {fileID: 3988228827710081236}
   - component: {fileID: 2863458575180393}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Look
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 5438911845887197333}
   - component: {fileID: 4256683472632189586}
   - component: {fileID: 7554597481117584801}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Interactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,9 +768,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Variable Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: joystickType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881087803815115468, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803815115470, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_Sprite
@@ -778,11 +786,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d92948be2549b514980f50cb854c706f, type: 3}
     - target: {fileID: 3881087803815115471, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 258
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803815115471, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 257
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3881087804030458057, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_Sprite
@@ -790,11 +798,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1092206460bfe0346a6ba89c39c3e7e5, type: 3}
     - target: {fileID: 3881087804030458062, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 82
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3881087804030458062, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 82
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881087804030458063, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

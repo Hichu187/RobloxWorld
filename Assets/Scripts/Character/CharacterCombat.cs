@@ -126,6 +126,8 @@ namespace Game
             return (_damage * safePetBonus) + specialBonus;
         }
 
+        [SerializeField] private bool attackNearestOnly = false;
+
         public async void Attack(FieldOfView fov)
         {
             if (hasDied) return;
@@ -149,7 +151,9 @@ namespace Game
             Vector3 selfPos = transform.position;
             Vector3 fwd = transform.forward;
 
-            for (int i = 0; i < fov.combatables.Count; i++)
+            _bufTargets.Add(fov.combatables[0]);
+
+/*            for (int i = 0; i < fov.combatables.Count; i++)
             {
                 Transform t = fov.combatables[i];
                 if (!t) continue;
@@ -165,7 +169,7 @@ namespace Game
                 if (dot < minFacingDot) continue;
 
                 _bufTargets.Add(t);
-            }
+            }*/
 
             float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
             float totalDamage = GetTotalDamage();
@@ -244,8 +248,6 @@ namespace Game
 
                     _character?.cRagdoll.SetPos(_character);
                 });
-                _character.cRagdoll.gameObject.SetActive(false);
-                _character.cRagdoll.gameObject.SetActive(true);
             }
 
             InitData();
