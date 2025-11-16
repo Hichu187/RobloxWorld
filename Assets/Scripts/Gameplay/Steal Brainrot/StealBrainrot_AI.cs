@@ -41,12 +41,12 @@ namespace Game
         private float _attackCdTimer;
 
         [Title("State Weights")]
-        [SerializeField, Min(0f)] private float wBuyPet = 35f;
-        [SerializeField, Min(0f)] private float wStealPet = 15f;
-        [SerializeField, Min(0f)] private float wChasePlayer = 10f;
-        [SerializeField, Min(0f)] private float wReturnHome = 15f;
-        [SerializeField, Min(0f)] private float wFollowWaypoint = 15f;
-        [SerializeField, Min(0f)] private float wLockDoor = 10f;
+        [SerializeField, Min(0f)] private float wBuyPet = 40f;
+        [SerializeField, Min(0f)] private float wStealPet = 25f;
+        [SerializeField, Min(0f)] private float wChasePlayer = 5;
+        [SerializeField, Min(0f)] private float wReturnHome = 5f;
+        [SerializeField, Min(0f)] private float wFollowWaypoint = 10f;
+        [SerializeField, Min(0f)] private float wLockDoor = 5f;
 
         private void Awake()
         {
@@ -309,7 +309,6 @@ namespace Game
                         var validSlots = new List<StealBrainrot_Slot>();
                         Vector3 pos = _ai.character.transform.position;
 
-                        // Cấu hình tỉ lệ chọn base0
                         float chanceStealFromBase0 = StealBrainrot_Manager.instance.chanceStealFromBase0;
                         bool stealFromBase0 = UnityEngine.Random.value <= chanceStealFromBase0;
 
@@ -547,7 +546,7 @@ namespace Game
                         var c = p.character;
                         var sp = c.GetComponent<StealBrainrot_Player>();
 
-                        _ai.Chase(c.transform.position);
+                        _ai.Chase(c.transform);
 
                         if (sp != null && sp.isStealing == false)
                         {

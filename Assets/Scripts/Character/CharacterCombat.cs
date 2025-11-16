@@ -206,7 +206,7 @@ namespace Game
             _isAttackAttempting = false;
         }
 
-        public virtual void TakeDamage(int amount, float force, Vector3 direction)
+        public async virtual void TakeDamage(int amount, float force, Vector3 direction)
         {
             if (hasDied) return;
 
@@ -234,8 +234,9 @@ namespace Game
             if (_knockback)
             {
                 if (_motor) _motor.enabled = false;
-
+                if (GetComponent<Rigidbody>() != null) GetComponent<Rigidbody>().isKinematic = true;
                 _character?.cRagdoll.ActivateRagdoll(force * direction, direction);
+                _character.cCamera?.SetFollowTransform(_character.cRender.skin);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
@@ -243,11 +244,17 @@ namespace Game
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
                     if (_motor) _motor.enabled = true;
+                    if (GetComponent<Rigidbody>() != null) GetComponent<Rigidbody>().isKinematic = false;
                     _character?.cRagdoll.SetRagdollActive(false);
                     if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
 
                     _character?.cRagdoll.SetPos(_character);
+                    _character.cCamera?.SetFollowTransform(_character.cCamera.defaultTarget);
+                }).OnComplete(async () =>
+                {
+                    _character.cRagdoll.gameObject.SetActive(true);
                 });
+
             }
 
             InitData();

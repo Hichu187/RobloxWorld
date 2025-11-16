@@ -30,7 +30,7 @@ namespace Game
         {
             if (!character.GetComponent<Character>().isPlayer) return;
             
-            if(DataBrainrotEvo.level >= levelOpen)
+            if(DataBrainrotEvo.level >= levelOpen - 1)
             {
                 DataBrainrotEvo.MoveNextMap();
                 character.Motor.enabled = false;

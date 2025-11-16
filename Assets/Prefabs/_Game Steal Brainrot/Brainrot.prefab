@@ -1949,7 +1949,7 @@ MonoBehaviour:
   indBase: -1
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 3
   outline: {fileID: 0}
   auras:
   - {fileID: 2846419249060362312}

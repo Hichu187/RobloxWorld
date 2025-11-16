@@ -11,6 +11,8 @@ namespace Game
     {
         [SerializeField] private Character _character;
         [SerializeField] Transform _meshParent;
+
+        public Transform skin;
         private void Awake()
         {
             _character = GetComponent<Character>();
@@ -21,6 +23,8 @@ namespace Game
             if (_meshParent == null) return;
 
             GameObject obj = FactorySkin.skin[skinIndex].Create(_meshParent);
+
+            skin = obj.transform;
 
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;

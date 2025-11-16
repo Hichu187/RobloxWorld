@@ -8,6 +8,7 @@ namespace Game
 {
     public class CharacterCamera : MonoBehaviour
     {
+        public Transform defaultTarget;
         [Header("Framing")]
         public Camera Camera;
         public Vector2 FollowPointFraming = new Vector2(0f, 0f);

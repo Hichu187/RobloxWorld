@@ -12,6 +12,7 @@ namespace Game
     {
         [Title("Reference")]
         [SerializeField] private StealBrainrot_Base playerBase;
+        [SerializeField] private List<StealBrainrot_Base> aiBase;
         [SerializeField] private StealBrainrot_Brainrot _prefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private Transform _startPos;
@@ -37,6 +38,7 @@ namespace Game
         {
             SpawnFromData();
             StartAutoSpawn();
+            AIBaseRandomSpawn();
         }
 
         private void SpawnOne()
@@ -153,12 +155,68 @@ namespace Game
                 obj.indBase = 0;
                 obj.isBought = true;
                 obj.canMove = false;
-                //obj.GetComponent<Collider>().enabled = false;
 
                 slot.isEmpty = false;
                 slot.brainrot = obj;
                 slot.StartGenerating();
             }
         }
+
+        public void AIBaseRandomSpawn()
+        {
+            if (aiBase == null || aiBase.Count == 0) return;
+            if (FactoryStealBrainrot.brainrotConfigs == null || FactoryStealBrainrot.brainrotConfigs.Count == 0) return;
+
+            foreach (var baseAI in aiBase)
+            {
+                if (baseAI == null || baseAI.slots == null || baseAI.slots.Count == 0)
+                    continue;
+
+                int spawnCount = Random.Range(1, 5);
+
+                List<StealBrainrot_Slot> slots = baseAI.slots;
+
+                if (slots.Count == 0) continue;
+
+                // giới hạn spawn theo số slot trống
+                spawnCount = Mathf.Min(spawnCount, slots.Count);
+
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    // chọn slot trống random
+                    int randSlotIndex = Random.Range(0, slots.Count);
+                    var slot = slots[randSlotIndex];
+                    slots.RemoveAt(randSlotIndex);
+
+                    // chọn brainrot config random
+                    int randConfigIndex = Random.Range(0, FactoryStealBrainrot.brainrotConfigs.Count);
+                    var config = FactoryStealBrainrot.brainrotConfigs[randConfigIndex];
+
+                    // tạo brainrot
+                    var obj = StealBrainrotPool.instance.Get();
+                    obj.InitBrainrotData(config);
+                    obj.Setup(config.rank, true);
+
+                    obj.targetSlot = slot;
+                    obj.indBase = baseAI.baseID;  // base index của AI
+                    obj.isBought = true;
+                    obj.canMove = false;
+
+                    // set vị trí
+                    obj.transform.position = slot.stayPosition != null ?
+                        slot.stayPosition.position : slot.transform.position;
+
+                    obj.transform.rotation = slot.stayPosition != null ?
+                        slot.stayPosition.rotation * Quaternion.Euler(0, 180, 0) :
+                        Quaternion.identity;
+
+                    // update slot
+                    slot.isEmpty = false;
+                    slot.brainrot = obj;
+                    slot.StartGenerating();
+                }
+            }
+        }
+
     }
 }

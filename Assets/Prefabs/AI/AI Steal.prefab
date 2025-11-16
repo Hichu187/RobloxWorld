@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: isAIAutoAttack
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4559620849193210811, guid: 55fa5490c7c878e4e9bbe4a1447f9aa9, type: 3}
+      propertyPath: _knockbackForce
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4629359596593675146, guid: 55fa5490c7c878e4e9bbe4a1447f9aa9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

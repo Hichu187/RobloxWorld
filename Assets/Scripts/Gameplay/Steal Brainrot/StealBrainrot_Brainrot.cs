@@ -118,7 +118,7 @@ namespace Game
 
         public void StealBrainrot(Transform t)
         {
-            //targetSlot.brainrot = null;
+            target = targetSlot.transform;
             targetSlot.StopGenerating();
 
             transform.parent = t;
@@ -222,12 +222,10 @@ namespace Game
             {
                 if (!isBought)
                 {
-                    // CHƯA MUA -> trả về pool
                     DespawnToPool();
                     return;
                 }
 
-                // ĐÃ MUA -> cập bến slot
                 if (targetSlot != null)
                 {
                     targetSlot.isEmpty = false;
