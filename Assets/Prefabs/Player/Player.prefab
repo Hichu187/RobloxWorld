@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   _useMobileControl: 0
-  _lookSensitive: 20
+  _lookSensitive: 40
   _cameraFollowTarget: {fileID: 4724365333293295708}
 --- !u!1001 &2755134945529617742
 PrefabInstance:
