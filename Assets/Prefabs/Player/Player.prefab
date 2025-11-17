@@ -1474,6 +1474,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
+      propertyPath: defaultTarget
+      value: 
+      objectReference: {fileID: 4724365333293295708}
+    - target: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
       propertyPath: DefaultDistance
       value: 5
       objectReference: {fileID: 0}

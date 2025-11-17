@@ -16,7 +16,7 @@ namespace Game
         public AssetReference gameView;
 
         public List<PlatformCheckpoint> checkpoints;
-
+        protected View view;
         public virtual void Start()
         {
             if(startPosition != null) 
@@ -45,7 +45,7 @@ namespace Game
         private async void Init()
         {
             if (gameView == null) return;
-            View view = await ViewHelper.PushAsync(gameView);
+            view = await ViewHelper.PushAsync(gameView);
         }
 
         public void RespawnStartPosition()

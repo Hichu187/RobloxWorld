@@ -55,8 +55,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d01195033a547a44b8f8862fee2f590
+    m_Address: Assets/Prefabs/GUI/View/Easy Obby View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5e59d72007cd33a428b2943b02cb9a20
     m_Address: Assets/Prefabs/Character/Human/Boy 09.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 670f9d70d4b3f684a87e522eb0fad6d4
+    m_Address: Assets/Prefabs/GUI/View/Mega Obby View.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

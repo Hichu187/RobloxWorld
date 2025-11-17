@@ -10,6 +10,7 @@ namespace Game
         [Title("Config")]
         [SerializeField] private GameObject _vfx;
         [SerializeField] private AudioConfig _sfx;
+        [SerializeField] private GameObject _arrow;
 
         private int _index;
         public int index { get { return _index; } }
@@ -34,6 +35,7 @@ namespace Game
             if (character.GetComponentInParent<Player>())
             {
                 StaticBus<Event_Checkpoint>.Post(new Event_Checkpoint(this, character));
+                _arrow.gameObject.SetActive(false);
             }
         }
         void ICharacterCollidable.OnCollisionExit(CharacterControl character)
@@ -51,6 +53,11 @@ namespace Game
         void ICharacterCollidable.OnTriggerExit(CharacterControl character)
         {
 
+        }
+
+        public void ActiveArrow(bool active)
+        {
+            _arrow.gameObject.SetActive(active);
         }
     }
 }

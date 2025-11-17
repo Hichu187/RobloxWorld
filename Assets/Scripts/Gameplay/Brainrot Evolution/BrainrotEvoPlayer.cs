@@ -124,6 +124,8 @@ namespace Game
             LDebug.Log<BrainrotEvoPlayer>($"Player level Up {e.level}, exp : {DataBrainrotEvo.exp}");
 
             InitData();
+
+            characterCombat.EvoUplevel();
         }
 
         private void EventEquipPet(Event_BrainrotEvo_EquipPet e)

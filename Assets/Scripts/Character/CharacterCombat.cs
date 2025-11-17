@@ -23,8 +23,10 @@ namespace Game
 
         [Title("Reference")]
         public GameObject _stats;
+        public GameObject _level;
         public TextMeshProUGUI _nameText;
         public TextMeshProUGUI _hpText;
+        public TextMeshProUGUI _levelText;
         public Image _hp_Bar;
         public GameObject hitPrefab;
         public GameObject takeDamagePrefab;
@@ -101,6 +103,12 @@ namespace Game
             {
                 attackSpeed = Random.Range(3f, 5f);
             }
+            if (_level != null)
+            {
+                _level.gameObject.SetActive(true);
+                _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
+
+            }
         }
 
         private void OnEnable()
@@ -152,24 +160,6 @@ namespace Game
             Vector3 fwd = transform.forward;
 
             _bufTargets.Add(fov.combatables[0]);
-
-/*            for (int i = 0; i < fov.combatables.Count; i++)
-            {
-                Transform t = fov.combatables[i];
-                if (!t) continue;
-
-                if (((1 << t.gameObject.layer) & damageMask) == 0) continue;
-
-                Vector3 to = t.position - selfPos;
-                float d2 = to.sqrMagnitude;
-                if (d2 > MaxDistSqr) continue;
-
-                Vector3 dir = d2 > 1e-6f ? (to / Mathf.Sqrt(d2)) : transform.forward;
-                float dot = Vector3.Dot(fwd, dir);
-                if (dot < minFacingDot) continue;
-
-                _bufTargets.Add(t);
-            }*/
 
             float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
             float totalDamage = GetTotalDamage();
@@ -228,7 +218,15 @@ namespace Game
                 }
 
                 if (_character != null && _character.isPlayer)
+                {
                     _stats.SetActive(true);
+                    if(_level != null)
+                    {
+                        _level.gameObject.SetActive(false);
+                        _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
+                    }
+                }
+
             }
 
             if (_knockback)
@@ -333,7 +331,16 @@ namespace Game
         protected virtual void Die()
         {
             hasDied = true;
-            if (_stats) _stats.SetActive(false);
+            if (_stats)
+            {
+                _stats.SetActive(false);
+                if (_level != null)
+                {
+                    _level.gameObject.SetActive(true);
+                    _levelText.text = $"Level {DataBrainrotEvo.level +1}";
+
+                }
+            }
             StopRegen();
 
             if (_character != null && _character.isPlayer)
@@ -382,7 +389,16 @@ namespace Game
             if (!hasDied && isTakeDamage)
             {
                 _currentHealth = _maxHealth;
-                if (_stats) _stats.SetActive(false);
+                if (_stats)
+                {
+                    _stats.SetActive(false);
+                    if (_level != null)
+                    {
+                        _level.gameObject.SetActive(true);
+                        _levelText.text = $"Level {DataBrainrotEvo.level +1}";
+
+                    }
+                }
                 InitData();
             }
 
@@ -408,6 +424,14 @@ namespace Game
                 }
 
                 yield return wait;
+            }
+        }
+
+        public void EvoUplevel()
+        {
+            if (_level != null && _level.activeSelf)
+            {
+                _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
             }
         }
     }

@@ -15,6 +15,12 @@ namespace Game
 
             curCheckpoint = checkpoints[curCheckpointIndex];
             player.character.motor.SetPositionAndRotation(checkpoints[curCheckpointIndex].transform.position, checkpoints[curCheckpointIndex].transform.rotation);
+
+            foreach (var c in checkpoints)
+            {
+                c.ActiveArrow(false);
+            }
+            checkpoints[DataAchievement.easyObbyCheckpoint + 1].ActiveArrow(true);
         }
 
         protected override void SubscribeEvent()
@@ -51,6 +57,8 @@ namespace Game
 
             DataAchievement.SetEasyObbyCheckpoint(checkpointIndex);
 
+            checkpoints[checkpointIndex + 1].ActiveArrow(true);
+            view.GetComponent<ObbyCanvas>().InitProgress(checkpointIndex + 1, checkpoints.Count);
             curCheckpoint = e.checkpoint;
             curCheckpoint.PlayFX();
         }
