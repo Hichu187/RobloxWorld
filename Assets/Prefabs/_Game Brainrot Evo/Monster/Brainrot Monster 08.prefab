@@ -95,6 +95,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -116,6 +118,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -226,8 +229,10 @@ MonoBehaviour:
   _damage: 70
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
+  _level: {fileID: 0}
   _nameText: {fileID: 8366304136907289325}
   _hpText: {fileID: 7743320077705937933}
+  _levelText: {fileID: 0}
   _hp_Bar: {fileID: 2895114230558305922}
   hitPrefab: {fileID: 0}
   takeDamagePrefab: {fileID: 0}
@@ -239,9 +244,19 @@ MonoBehaviour:
     m_Bits: 127
   _knockbackForce: 10
   _knockbackAngleDeg: 45
+  maxAttackDistance: 10
+  minFacingDot: -0.2
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 8191
   _autoRegen: 0
   _regenDelaySeconds: 10
+  isAIAutoAttack: 0
+  autoAttackChance: 0.6
+  autoThinkInterval: 0.2
+  startDelay: 1.2
   hasDied: 0
+  attackNearestOnly: 0
   type: 0
   botName: Shell
   exp: 15000

@@ -95,6 +95,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -116,6 +118,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -226,8 +229,10 @@ MonoBehaviour:
   _damage: 300
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
+  _level: {fileID: 0}
   _nameText: {fileID: 8366304136907289325}
   _hpText: {fileID: 7743320077705937933}
+  _levelText: {fileID: 0}
   _hp_Bar: {fileID: 2895114230558305922}
   hitPrefab: {fileID: 0}
   takeDamagePrefab: {fileID: 0}
@@ -239,9 +244,19 @@ MonoBehaviour:
     m_Bits: 127
   _knockbackForce: 10
   _knockbackAngleDeg: 45
+  maxAttackDistance: 10
+  minFacingDot: -0.2
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 8191
   _autoRegen: 0
   _regenDelaySeconds: 10
+  isAIAutoAttack: 0
+  autoAttackChance: 0.6
+  autoThinkInterval: 0.2
+  startDelay: 1.2
   hasDied: 0
+  attackNearestOnly: 0
   type: 1
   botName: Hippo
   exp: 75000
@@ -420,6 +435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandito
       objectReference: {fileID: 0}
+    - target: {fileID: 2435041935438222147, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.12227011
@@ -478,6 +497,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3251862603602892651}
     m_Modifications:
+    - target: {fileID: 6836785439952142053, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aa02a0cb0da0bc54eabda315ea4bcd1d, type: 2}
     - target: {fileID: 8169444328227241521, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_Name
       value: CactoHipo
@@ -496,7 +519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -504,7 +527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -516,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8796764796547507339, guid: a333dbc8ffcdad24999ccf3d70e7016c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

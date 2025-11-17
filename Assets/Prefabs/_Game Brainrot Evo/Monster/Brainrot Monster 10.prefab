@@ -95,6 +95,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -116,6 +118,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -226,8 +229,10 @@ MonoBehaviour:
   _damage: 105
   attackSpeed: 1
   _stats: {fileID: 3484420462094047509}
+  _level: {fileID: 0}
   _nameText: {fileID: 8366304136907289325}
   _hpText: {fileID: 7743320077705937933}
+  _levelText: {fileID: 0}
   _hp_Bar: {fileID: 2895114230558305922}
   hitPrefab: {fileID: 0}
   takeDamagePrefab: {fileID: 0}
@@ -239,9 +244,19 @@ MonoBehaviour:
     m_Bits: 127
   _knockbackForce: 10
   _knockbackAngleDeg: 45
+  maxAttackDistance: 10
+  minFacingDot: -0.2
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 8191
   _autoRegen: 0
   _regenDelaySeconds: 10
+  isAIAutoAttack: 0
+  autoAttackChance: 0.6
+  autoThinkInterval: 0.2
+  startDelay: 1.2
   hasDied: 0
+  attackNearestOnly: 0
   type: 1
   botName: Bandito
   exp: 30000
@@ -434,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -442,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -454,12 +469,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3062677620715538937, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6635997043749971855, guid: 6fd46f2353379fd4aab233441afc5d2a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f9392503d8a330e4484060b0e6720d44, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
