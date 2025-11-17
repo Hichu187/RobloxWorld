@@ -12,7 +12,7 @@ namespace Game
         [SerializeField] private int _currentMap = 0;
         [SerializeField] private int _cash = 0;
         [SerializeField] private int _adsCash = 0;
-        // Multi-instance: cho phép trùng
+
         [SerializeField] private List<int> _ownedPet = new List<int>();
         [SerializeField] private List<int> _equippedPet = new List<int>(); // ≤ 5 tổng phần tử
 
@@ -75,8 +75,11 @@ namespace Game
         {
             instance._ownedPet.Add(petId);
             instance.SortOwnedDesc();
+
             instance.SanitizeEquippedAgainstOwnedAndLimit();
-            Save();
+
+            EquipPet(petId);  // đã tự check slot, quota, bắn event, Save()
+
         }
 
         /// <summary>Gỡ 1 bản sao pet sở hữu. Nếu đang equip nhiều hơn số bản sao còn lại thì tự cắt bớt.</summary>
@@ -155,7 +158,6 @@ namespace Game
             return false;
         }
 
-        /// <summary>Set danh sách trang bị (có thể trùng). Tự lọc để không vượt quota (owned) và không quá 5 slot.</summary>
         public static void SetEquippedPets(IEnumerable<int> petIds)
         {
             var input = (petIds ?? System.Array.Empty<int>()).ToList();

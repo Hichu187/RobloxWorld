@@ -1,6 +1,7 @@
 ﻿using Hichu;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace Game
         [SerializeField] private PetBagPreview _preview;
         [SerializeField] private PetOption _optionPrefab;
         [SerializeField] private Transform _optionParent;
+        [SerializeField] private TextMeshProUGUI _amount;
 
         [SerializeField] private List<PetOption> _options = new List<PetOption>();
 
@@ -20,6 +22,8 @@ namespace Game
         {
             Refresh();
             WireOptionButtons();
+
+            _amount.text = $"{DataBrainrotEvo.equippedPet.Count}/5";
         }
 
         [Button("Refresh Spawn")]
@@ -142,6 +146,8 @@ namespace Game
             bool ok = DataBrainrotEvo.UnequipPet(petId);
             if (ok) Refresh();
             else Debug.Log($"[PetBag] Unequip failed for id={petId} (not equipped?).");
+
+            _amount.text = $"{DataBrainrotEvo.equippedPet.Count}/5";
         }
 
         public void EquipOne(int petId)
@@ -149,6 +155,13 @@ namespace Game
             bool ok = DataBrainrotEvo.EquipPet(petId);
             if (ok) Refresh();
             else Debug.Log($"[PetBag] Equip failed for id={petId} (limit/quota?).");
+
+            _amount.text = $"{DataBrainrotEvo.equippedPet.Count}/5";
+        }
+
+        public void ReloadBag()
+        {
+            _amount.text = $"{DataBrainrotEvo.equippedPet.Count}/5";
         }
 
         public void UnequipAtIndex(int index)
@@ -211,6 +224,8 @@ namespace Game
             int idx = GetIndexOfPetId(petId);
             if (idx >= 0) ShowPreview(idx);
             else if (_preview != null) _preview.InitPreview(-1);
+
+            _amount.text = $"{DataBrainrotEvo.equippedPet.Count}/5";
         }
     }
 }
