@@ -234,7 +234,7 @@ namespace Game
                 if (_motor) _motor.enabled = false;
                 if (GetComponent<Rigidbody>() != null) GetComponent<Rigidbody>().isKinematic = true;
                 _character?.cRagdoll.ActivateRagdoll(force * direction, direction);
-                _character.cCamera?.SetFollowTransform(_character.cRender.skin);
+                _character.cCamera?.SetFollowTransform(_character.cRagdoll.transform.GetChild(0).GetChild(0), true);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();

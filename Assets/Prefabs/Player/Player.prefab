@@ -1540,10 +1540,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1530098000896015437, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7448025150264975797}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
 --- !u!4 &1561853334102774964 stripped
 Transform:
@@ -1555,46 +1552,9 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2100398375134326709, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
   m_PrefabInstance: {fileID: 8067831528568608578}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8848080138893945615}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24092a40b02616e479baeb940325e339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8848080138893945615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1530098000896015437, guid: 69414bcd61347ab42887fbae2388a69f, type: 3}
-  m_PrefabInstance: {fileID: 8067831528568608578}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7448025150264975797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8848080138893945615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
-  ShowDebugText: 0
-  ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
-  WorldUpOverride: {fileID: 0}
-  ChannelMask: -1
-  UpdateMethod: 2
-  BlendUpdateMethod: 1
-  LensModeOverride:
-    Enabled: 0
-    DefaultMode: 2
-  DefaultBlend:
-    Style: 1
-    Time: 2
-    CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  CustomBlends: {fileID: 0}

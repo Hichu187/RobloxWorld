@@ -14,11 +14,6 @@ namespace Game
         [SerializeField] AnimationSequence cameraSequence;
         [SerializeField] Transform cameraReviewMap;
 
-        private void Awake()
-        {
-
-        }
-
         public override void Start()
         {
             base.Start();
