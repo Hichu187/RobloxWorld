@@ -92745,7 +92745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b83fcd1a9e10c04f85ff32069e11a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceStealFromBase0: 0.75
+  chanceStealFromBase0: 0.5
   startPoint: {fileID: 688325557}
   endPoint: {fileID: 991338285}
   baseLists:
