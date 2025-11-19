@@ -52,6 +52,9 @@ namespace Game
         private float _savedMaxVerticalAngle;
         private float _savedDefaultVerticalAngle;
 
+        private bool _lockVerticalAngle;
+        private bool _ignoreTargetRotation;
+
         private const int MaxObstructions = 32;
 
         void OnValidate()
@@ -86,22 +89,40 @@ namespace Game
 
             if (FollowTransform != null)
             {
-                PlanarDirection = FollowTransform.forward;
                 _currentFollowPosition = FollowTransform.position;
             }
 
             if (forceZeroVertical)
             {
+                _lockVerticalAngle = true;
+                _ignoreTargetRotation = true;
+
                 MinVerticalAngle = 30f;
                 MaxVerticalAngle = 30f;
+                DefaultVerticalAngle = 30f;
+                _targetVerticalAngle = 30f;
+
+                Vector3 fwd = Transform.forward;
+                fwd.y = 0f;
+                if (fwd.sqrMagnitude < 0.0001f)
+                    fwd = Vector3.forward;
+                PlanarDirection = fwd.normalized;
             }
             else
             {
+                _lockVerticalAngle = false;
+                _ignoreTargetRotation = false;
+
                 MinVerticalAngle = _savedMinVerticalAngle;
                 MaxVerticalAngle = _savedMaxVerticalAngle;
                 DefaultVerticalAngle = _savedDefaultVerticalAngle;
 
                 _targetVerticalAngle = DefaultVerticalAngle;
+
+                if (FollowTransform != null)
+                {
+                    PlanarDirection = FollowTransform.forward;
+                }
             }
         }
 
@@ -111,22 +132,29 @@ namespace Game
                 return;
 
             if (InvertX)
-            {
                 rotationInput.x *= -1f;
-            }
             if (InvertY)
-            {
                 rotationInput.y *= -1f;
+
+            Vector3 up = _ignoreTargetRotation || FollowTransform == null ? Vector3.up : FollowTransform.up;
+
+            if (_lockVerticalAngle)
+            {
+                rotationInput.y = 0f;
+                _targetVerticalAngle = MinVerticalAngle;
+            }
+            else
+            {
+                _targetVerticalAngle -= rotationInput.y * RotationSpeed;
+                _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
             }
 
-            Quaternion rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * RotationSpeed));
+            Quaternion rotationFromInput = Quaternion.Euler(up * (rotationInput.x * RotationSpeed));
             PlanarDirection = rotationFromInput * PlanarDirection;
-            PlanarDirection = Vector3.Cross(FollowTransform.up, Vector3.Cross(PlanarDirection, FollowTransform.up));
-            Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, FollowTransform.up);
+            PlanarDirection = Vector3.Cross(up, Vector3.Cross(PlanarDirection, up));
+            Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, up);
 
-            _targetVerticalAngle -= rotationInput.y * RotationSpeed;
-            _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
-            Quaternion verticalRot = Quaternion.Euler(_targetVerticalAngle, 0, 0);
+            Quaternion verticalRot = Quaternion.Euler(_targetVerticalAngle, 0f, 0f);
 
             Quaternion targetRotation = Quaternion.Slerp(
                 Transform.rotation,
@@ -174,7 +202,7 @@ namespace Game
 
                 if (!isIgnored &&
                     _obstructions[i].distance < closestHit.distance &&
-                    _obstructions[i].distance > 0)
+                    _obstructions[i].distance > 0f)
                 {
                     closestHit = _obstructions[i];
                 }
