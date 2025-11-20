@@ -13,6 +13,8 @@ namespace Game
         [SerializeField] private List<Transform> _spawnPos;
         [SerializeField] private Transform _spawnParent;
         [SerializeField] private List<AIWaypoint> _buyBrainrotWaypoints;
+
+        public List<StealBrainrot_AI> ais;
         public List<AIWaypoint> buyBrainrotWaypoints { get { return _buyBrainrotWaypoints; } }
 
 
@@ -32,10 +34,10 @@ namespace Game
                 AI ai = _aiPrefab.Create(_spawnParent);
 
                 ai.character.motor.SetPositionAndRotation(StealBrainrot_Manager.instance.baseLists[i].playerSpawnPosition.position, StealBrainrot_Manager.instance.baseLists[i].playerSpawnPosition.rotation);
-                //ai.gameObject.AddComponent<AIFollowWaypoint>();
-                ai.gameObject.AddComponent<StealBrainrot_AI>();
 
+                ai.gameObject.AddComponent<StealBrainrot_AI>();
                 ai.gameObject.GetComponent<StealBrainrot_AI>().curBase = StealBrainrot_Manager.instance.baseLists[i];
+                ais.Add(ai.GetComponent<StealBrainrot_AI>());
             }
         }
     }

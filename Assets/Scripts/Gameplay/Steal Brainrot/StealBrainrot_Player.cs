@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Hichu;
 
 namespace Game
 {
@@ -27,6 +28,11 @@ namespace Game
             brainrot.StealBrainrot(holdingPos);
 
             Player.Instance.character.cAnim.SetSteal(isStealing);
+
+            int victimID = brainrot.targetSlot.baseId;
+            StealBrainrot_AiManager aiManager = FindAnyObjectByType<StealBrainrot_AiManager>();
+            StealBrainrot_AI victim = aiManager.ais[victimID];
+            if (!victim.isStealing) victim.SetState(AIState.ChasePlayer);
         }
 
         public void StealingDone(StealBrainrot_Slot slot)

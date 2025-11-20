@@ -424,6 +424,11 @@ namespace Game
                             return;
                         }
 
+                        if(_takedBrainrot.indBase == 0)
+                        {
+                            //UINotificationText.Push("Alert! Someone just stole a Brainrot from your base!");
+                        }
+
                         LDebug.Log<StealBrainrot_AI>("[STEAL] Case 3 → Đã cầm brainrot, chạy về slot của base mình");
                         _ai.Chase(victimSpawn.transform.position);
                         stepSteal = 4;

@@ -124,7 +124,7 @@ namespace Game
             transform.parent = t;
             transform.position = t.position;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
         }
 
         public void InitBrainrotData(StealBrainrot_BrainrotConfig config)

@@ -19697,12 +19697,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2555033623778241763, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2596298184153460083, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2649487631329551968, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649487631329551968, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2649487631329551968, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
@@ -19869,6 +19877,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5599734167986644467, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5919157030780233243, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -20025,6 +20037,10 @@ PrefabInstance:
       propertyPath: _config
       value: 
       objectReference: {fileID: 11400000, guid: 105f9575700a2e94e9cae63e9f57af12, type: 2}
+    - target: {fileID: 8077890535010075691, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8111930580999093452, guid: dbc716bd6ebb74148b3bbc62f88962a1, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -92825,6 +92841,7 @@ MonoBehaviour:
   - {fileID: 97223618}
   - {fileID: 622624811}
   - {fileID: 612849724}
+  ais: []
 --- !u!114 &1799852546
 MonoBehaviour:
   m_ObjectHideFlags: 0
