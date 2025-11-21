@@ -18,24 +18,36 @@ namespace Game
         private void OnCollisionEnter(Collision other)
         {
             if (!IsValidCharacter(other.transform, out var playerBaseID))
+            {
+                TryRandomAIState(other.transform);
                 return;
+            }
 
-            if (_base != null && playerBaseID == _base.baseID)
+            if (_base && playerBaseID == _base.baseID)
                 _collider.isTrigger = true;
+            else
+                TryRandomAIState(other.transform);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!IsValidCharacter(other.transform, out var playerBaseID))
+            {
+                TryRandomAIState(other.transform);
                 return;
+            }
 
-            if (_base != null && playerBaseID != _base.baseID)
+            if (_base && playerBaseID != _base.baseID)
+            {
                 _collider.isTrigger = false;
+                TryRandomAIState(other.transform);
+            }
         }
 
         private bool IsValidCharacter(Transform target, out int baseID)
         {
             baseID = -1;
+
             if (!target || target.gameObject.layer != LayerMask.NameToLayer("Character"))
                 return false;
 
@@ -53,6 +65,37 @@ namespace Game
             }
 
             return false;
+        }
+
+        private void TryRandomAIState(Transform target)
+        {
+
+            if (!target) return;
+
+            StealBrainrot_AI ai = null;
+
+            if (!target.TryGetComponent(out ai))
+            {
+                if (target.parent)
+                    target.parent.TryGetComponent(out ai);
+            }
+
+            if (ai == null) return;
+
+            AIState[] randomStates = new AIState[]
+            {
+                AIState.BuyPet,
+                AIState.FollowWaypoint,
+                AIState.ReturnHome
+            };
+
+            int r = Random.Range(0, randomStates.Length);
+            ai.SetState(randomStates[r]);
+
+            ai.GetComponent<AI>().Chase(_base.playerSpawnPosition);
+
+            Debug.Log(randomStates[r].ToString());
+
         }
     }
 }
