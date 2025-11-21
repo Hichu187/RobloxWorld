@@ -18,6 +18,8 @@ namespace Game
 
         private void InitSettings()
         {
+            Application.targetFrameRate = 60;
+
             AudioManager.volumeMusic.value = DataSettings.musicVolume.value;
             AudioManager.volumeSound.value = DataSettings.soundVolume.value;
 

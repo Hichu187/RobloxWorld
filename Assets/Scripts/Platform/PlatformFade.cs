@@ -19,17 +19,13 @@ namespace Game
 
         [SerializeField] private AudioConfig[] _sfxTrigger;
 
-        private Material _origin;
-        private Material _runtime;
-        private string _colorProp = "_Color";
+
+        private Material _materialOrigin;
         private Tween _tween;
-        private MaterialPropertyBlock _mpb;
-        private float _alpha = 1f;
 
         private void Awake()
         {
-            if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
-            _mpb = new MaterialPropertyBlock();
+
         }
 
         [Button]
@@ -40,117 +36,71 @@ namespace Game
 
         private void Start()
         {
-            _origin = _renderer != null ? _renderer.sharedMaterial : null;
-            if (_origin == null) return;
+            _renderer = GetComponent<MeshRenderer>();
 
-            _runtime = new Material(_origin);
-            _renderer.material = _runtime;
+            if (_renderer == null)
+                _renderer = GetComponentInChildren<MeshRenderer>();
 
-            _colorProp = _runtime.HasProperty("_BaseColor") ? "_BaseColor" : "_Color";
-
-            MakeTransparent(_runtime);
-
-            var c = _runtime.GetColor(_colorProp);
-            c.a = 1f;
-            _runtime.SetColor(_colorProp, c);
-
-            _renderer.GetPropertyBlock(_mpb);
-            _mpb.SetColor(_colorProp, c);
-            _renderer.SetPropertyBlock(_mpb);
-            _alpha = 1f;
+            if (_renderer != null)
+                _materialOrigin = _renderer.sharedMaterial;
         }
 
         private void OnDestroy()
         {
             _tween?.Kill();
-            if (_runtime != null) Destroy(_runtime);
         }
 
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
-            bool isPlayer = character.GetComponent<Character>().isPlayer;
-
-            FadeOut(isPlayer);
+            FadeOut(character.GetComponent<Character>().isPlayer);
         }
+
         void ICharacterCollidable.OnCollisionExit(CharacterControl character) { }
+
         void ICharacterCollidable.OnTriggerEnter(CharacterControl character)
         {
-            bool isPlayer = character.GetComponent<Character>().isPlayer;
-
-            FadeOut(isPlayer);
+            FadeOut(character.GetComponent<Character>().isPlayer);
         }
+
         void ICharacterCollidable.OnTriggerExit(CharacterControl character) { }
 
         private void FadeOut(bool isPlayer)
         {
-            if (_renderer == null || _runtime == null) return;
-            if (_tween != null && _tween.IsActive()) return;
+            if (_tween.IsActive())
+                return;
 
-            _renderer.GetPropertyBlock(_mpb);
-            var start = _mpb.GetColor(_colorProp);
-            _alpha = start.a;
+            Color colorStart = Color.white;
+            Color colorEnd = Color.white;
 
-            _tween = DOTween.To(() => _alpha, v =>
+            if (_materialOrigin != null)
             {
-                _alpha = v;
-                var c = start; c.a = _alpha;
-                _mpb.SetColor(_colorProp, c);
-                _renderer.SetPropertyBlock(_mpb);
-            }, 0f, _fadeDuration).OnComplete(OnFadeComplete);
-
-            if (isPlayer)
-            {
-                AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
-                s_triggerIndex++;
+                colorStart = _materialOrigin.color;
+                colorEnd = _materialOrigin.color;
             }
+
+            colorEnd.a = 0f;
+
+            Material materialReplace = new Material(_materialOrigin);
+
+            _renderer.material = materialReplace;
+
+            _tween = materialReplace.DOColor(colorEnd, _fadeDuration)
+                                    .OnComplete(OnFadeComplete)
+                                    .ChangeStartValue(colorStart);
+
+            // Play sfx
+            AudioManager.Play(_sfxTrigger.GetLoop(s_triggerIndex)).transformCached.position = transformCached.position;
+            s_triggerIndex++;
         }
 
         private void OnFadeComplete()
         {
             gameObjectCached.SetActive(false);
 
+            _renderer.material = _materialOrigin;
+
             _tween?.Kill();
-            _tween = DOVirtual.DelayedCall(_appearDelay, () =>
-            {
-                if (_renderer == null || _runtime == null) return;
-
-                _renderer.GetPropertyBlock(_mpb);
-                var c = _mpb.GetColor(_colorProp);
-                c.a = 1f;
-                _mpb.SetColor(_colorProp, c);
-                _renderer.SetPropertyBlock(_mpb);
-                _alpha = 1f;
-
-                gameObjectCached.SetActive(true);
-            }, false);
-        }
-
-        private static void MakeTransparent(Material m)
-        {
-            if (m.shader != null && m.shader.name.Contains("Universal Render Pipeline"))
-            {
-                m.SetFloat("_Surface", 1f);
-                m.SetFloat("_ZWrite", 0f);
-                m.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                m.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                m.DisableKeyword("_ALPHATEST_ON");
-                m.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
-                m.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
-                return;
-            }
-
-            if (m.shader != null && m.shader.name.Contains("Standard"))
-            {
-                m.SetFloat("_Mode", 2f);
-                m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                m.SetInt("_ZWrite", 0);
-                m.DisableKeyword("_ALPHATEST_ON");
-                m.EnableKeyword("_ALPHABLEND_ON");
-                m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                m.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
-                return;
-            }
+            _tween = DOVirtual.DelayedCall(_appearDelay, () => { gameObjectCached.SetActive(true); }, false);
         }
     }
 }

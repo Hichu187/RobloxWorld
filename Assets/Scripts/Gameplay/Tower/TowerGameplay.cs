@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening.Core.Easing;
 using Hichu;
 using Sirenix.OdinInspector;
@@ -20,19 +21,15 @@ namespace Game
 
             player = Player.Instance;
 
-            player.control.canMove = false;
-
             player.character.cCamera.SetFollowTransform(cameraReviewMap);
             player.gui.gameObject.SetActive(false);
-
         }
 
         public void InitStart()
         {
-            player.control.canMove = true;
-
-            player.gui.gameObject.SetActive(true);
+            cameraReviewMap.gameObject.SetActive(false);
             player.character.cCamera.SetFollowTransform(player.control._cameraFollowTarget);
+            player.gui.gameObject.SetActive(true);
         }
 
         protected override void SubscribeEvent()
