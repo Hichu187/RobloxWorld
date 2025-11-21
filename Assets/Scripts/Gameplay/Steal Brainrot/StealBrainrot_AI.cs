@@ -43,7 +43,7 @@ namespace Game
         [Title("State Weights")]
         [SerializeField, Min(0f)] private float wBuyPet = 40f;
         [SerializeField, Min(0f)] private float wStealPet = 25f;
-        [SerializeField, Min(0f)] private float wChasePlayer = 5;
+        [SerializeField, Min(0f)] private float wChasePlayer = 5f;
         [SerializeField, Min(0f)] private float wReturnHome = 5f;
         [SerializeField, Min(0f)] private float wFollowWaypoint = 10f;
         [SerializeField, Min(0f)] private float wLockDoor = 5f;

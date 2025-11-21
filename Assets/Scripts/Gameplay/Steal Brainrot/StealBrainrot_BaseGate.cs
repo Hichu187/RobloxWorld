@@ -13,12 +13,6 @@ namespace Game
         {
             _collider = GetComponent<BoxCollider>();
             _base = GetComponentInParent<StealBrainrot_Base>();
-
-            if (_collider == null)
-                Debug.LogWarning($"{name}: Missing BoxCollider component!");
-
-            if (_base == null)
-                Debug.LogWarning($"{name}: Missing parent StealBrainrot_Base!");
         }
 
         private void OnCollisionEnter(Collision other)
