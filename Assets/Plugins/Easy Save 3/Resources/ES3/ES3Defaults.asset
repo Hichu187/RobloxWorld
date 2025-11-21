@@ -40,6 +40,7 @@ MonoBehaviour:
     - Assembly-CSharp
     - UniTask.Linq
     - Boxophobic.SkyboxCubemapExtended.Editor
+    - DamageNumbersPro
     - DOTween.Modules
     - Coffee.UIParticle
     - Boxophobic.Utils.Scripts

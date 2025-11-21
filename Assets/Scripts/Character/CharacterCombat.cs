@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using DamageNumbersPro;
 
 namespace Game
 {
@@ -30,7 +31,7 @@ namespace Game
         public Image _hp_Bar;
         public GameObject hitPrefab;
         public GameObject takeDamagePrefab;
-
+        public DamageNumberMesh damageText;
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
         public int specialBonus = 0;
@@ -185,6 +186,12 @@ namespace Game
                 {
                     cc.TakeDamage((int)totalDamage, _knockbackForce, dirKnock);
 
+                    if (damageText != null)
+                    {
+                        DamageNumber damageNumber = damageText.Spawn(cc.transform.position, -(int)totalDamage);
+                    }
+
+
                     if (hitPrefab)
                     {
                         hitPrefab.SetActive(true);
@@ -202,6 +209,11 @@ namespace Game
 
             if (isTakeDamage)
             {
+                if(damageText != null)
+                {
+                    DamageNumber damageNumber = damageText.Spawn(transform.position, -amount);
+                }
+
                 _currentHealth -= amount;
                 if (_currentHealth < 0) _currentHealth = 0;
 
