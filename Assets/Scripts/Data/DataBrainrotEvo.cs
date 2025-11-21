@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private int _currentMap = 0;
         [SerializeField] private int _cash = 0;
         [SerializeField] private int _adsCash = 0;
+        [SerializeField] private bool _isTutorial = false;
 
         [SerializeField] private List<int> _ownedPet = new List<int>();
         [SerializeField] private List<int> _equippedPet = new List<int>(); // ≤ 5 tổng phần tử
@@ -22,6 +23,7 @@ namespace Game
         public static int currentMap { get { return instance._currentMap; } set { instance._currentMap = value; } }
         public static int cash { get { return instance._cash; } set { instance._cash = value; } }
         public static int adsCash { get { return instance._adsCash; } set { instance._adsCash = value; } }
+        public static bool isTutorial { get { return instance._isTutorial; } set { instance._isTutorial = value; } }
 
         // Cho phép set trực tiếp nhưng sẽ sanitize + sort
         public static List<int> ownedPet { get { return instance._ownedPet; } set { instance.SetOwnedPets(value); } }
@@ -39,6 +41,7 @@ namespace Game
         {
             _cash += cash;
             bool increase = cash > 0;
+
             StaticBus<Event_Cash_Update>.Post(new Event_Cash_Update(cash, increase));
 
             Save();
@@ -48,6 +51,8 @@ namespace Game
         {
             if (_adsCash >= 5) return;
             _adsCash++;
+
+
             Save();
         }
 
@@ -68,6 +73,13 @@ namespace Game
         public static void MoveNextMap()
         {
             currentMap++;
+            Save();
+        }
+
+        public static void Tutorial()
+        {
+            isTutorial = true;
+
             Save();
         }
 
