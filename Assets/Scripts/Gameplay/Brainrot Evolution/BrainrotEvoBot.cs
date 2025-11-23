@@ -24,7 +24,7 @@ namespace Game
 
         [Title("Reference")]
         [SerializeField] private GameObject _model;
-        [SerializeField] private Animator _anim;
+        [SerializeField] private Animator _animator;
 
         // === CounterAttack state ===
         private CancellationTokenSource _counterAttackCts;
@@ -47,7 +47,7 @@ namespace Game
                 transform.rotation = Quaternion.LookRotation(lookDir);
             }
 
-            _anim.SetTrigger("TakeDamage");
+            _animator.SetTrigger("TakeDamage");
 
             if (hasDied) return;
 
@@ -105,7 +105,7 @@ namespace Game
                     if (!fov.haveTarget)
                         break;
 
-                    _anim.SetTrigger("Attack");
+                    _animator.SetTrigger("Attack");
                     Attack(fov);
 
                     await UniTask.WaitForSeconds(interval, cancellationToken: token);
@@ -137,7 +137,7 @@ namespace Game
         {
             base.Die();
 
-            _anim.SetTrigger("Die");
+            _animator.SetTrigger("Die");
 
             StaticBus<Event_Player_Add_Exp>.Post(new Event_Player_Add_Exp(exp));
 
