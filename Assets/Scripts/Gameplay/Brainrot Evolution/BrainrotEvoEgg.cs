@@ -10,7 +10,7 @@ namespace Game
         [SerializeField] AssetReferenceGameObject eggView;
         [SerializeField] TextMeshPro priceText;
         [SerializeField] int map;
-        [SerializeField] int id;
+        public int id;
         private View view;
 
         private void Start()
