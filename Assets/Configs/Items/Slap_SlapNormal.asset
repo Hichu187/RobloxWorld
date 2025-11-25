@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.ItemConfig
   itemType: 0
   itemName: Slap Normal
+  sprite: {fileID: 0}
+  hitForce: 10
+  hitRange: 3

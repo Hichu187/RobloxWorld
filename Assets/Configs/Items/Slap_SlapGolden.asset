@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.ItemConfig
   itemType: 0
   itemName: Slap Golden
+  sprite: {fileID: 0}
+  hitForce: 0
+  hitRange: 3

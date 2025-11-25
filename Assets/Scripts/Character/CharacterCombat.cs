@@ -37,10 +37,10 @@ namespace Game
         public int specialBonus = 0;
 
         [Title("Knockback Config")]
-        [SerializeField] private bool _knockback = false;
-        [SerializeField, ShowIf("_knockback")] private LayerMask _hitMask = ~0;
-        [SerializeField, ShowIf("_knockback")] private float _knockbackForce = 10f;
-        [SerializeField, ShowIf("_knockback"), Range(0f, 89f)] private float _knockbackAngleDeg = 45f;
+        public bool _knockback = false;
+        [ShowIf("_knockback")] public LayerMask _hitMask = ~0;
+        [ShowIf("_knockback")] public float _knockbackForce = 10f;
+        [ShowIf("_knockback"), Range(0f, 89f)] public float _knockbackAngleDeg = 45f;
 
         [Title("Hit Filters (Early & Cheap)")]
         [SerializeField, Min(0f)] private float maxAttackDistance = 10f;
