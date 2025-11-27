@@ -42,5 +42,43 @@ namespace Game
 
             FactoryItem.items[id].data.Unlock();
         }
+
+        public void ActiveItem(ItemConfig config)
+        {
+            if (config == null) return;
+            if (items == null || items.Count == 0) return;
+
+            int index = items.FindIndex(i => i != null && i.config == config);
+            if (index < 0) return;
+
+            // (Optional) Nếu muốn chỉ cho dùng item đã unlock:
+            // if (!config.data.isUnlocked) return;
+
+            ActiveItem(index);
+        }
+        public void ActiveItem(string itemName)
+        {
+            if (string.IsNullOrEmpty(itemName)) return;
+            if (items == null || items.Count == 0) return;
+
+            int index = items.FindIndex(i =>
+                i != null &&
+                i.config != null &&
+                i.config.itemName == itemName
+            );
+
+            if (index < 0) return;
+
+            if (!items[index].config.data.isUnlocked)
+                return;   // chưa mở khóa thì không active
+
+            ActiveItem(index);
+        }
+
+        public void UnlockItem(ItemConfig config)
+        {
+            config.data.Unlock();
+            ActiveItem(config);
+        }
     }
 }

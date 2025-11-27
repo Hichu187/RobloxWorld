@@ -65,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6668f98228726ef42a16014aa8dc9e7f
+    m_Address: Assets/Prefabs/GUI/View/ItemUnlock View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 670f9d70d4b3f684a87e522eb0fad6d4
     m_Address: Assets/Prefabs/GUI/View/Mega Obby View.prefab
     m_ReadOnly: 0

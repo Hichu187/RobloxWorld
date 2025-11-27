@@ -7,6 +7,7 @@ using System;
 namespace Game
 {
     public enum ItemType { Slap, Buff, Control, Debuff }
+    public enum Currency { Cash, Ads}
 
     [CreateAssetMenu(menuName = "Game/Item Config", fileName = "ItemConfig")]
     public class ItemConfig : ScriptableObject
@@ -15,10 +16,15 @@ namespace Game
         public ItemType itemType;
         public string itemName;
         public Sprite sprite;
+        public Currency currency;
+        public int price;
 
         [Title("Combat Config")]
+        [ShowIf("itemType", ItemType.Slap)]
         [Min(0f)] public float hitForce = 0f;
+        [ShowIf("itemType", ItemType.Slap)]
         [Min(0f)] public float hitRange = 0f;
+        [ShowIf("itemType", ItemType.Slap)]
         public GameObject hitVfx;
 
         [NonSerialized] private ItemData _data;

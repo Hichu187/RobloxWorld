@@ -100,7 +100,7 @@ namespace Game
             if (itemManager == null) return;
             if (isPlayer)
             {
-                itemManager.ActiveItem(DataItem.currentIndex);
+                itemManager.ActiveItem(DataItem.current);
             }
             else
             {

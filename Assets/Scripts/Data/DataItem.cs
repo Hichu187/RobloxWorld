@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] private string _current;
         [SerializeField] private int _currentIndex;
 
+        public static Dictionary<string, ItemData> datas { get { return instance._datas; } set { instance._datas = value; } }
         public static string current { get { return instance._current; } set { instance._current = value; } }
         public static int currentIndex { get { return instance._currentIndex; } set { instance._currentIndex = value; } }
 
@@ -45,5 +46,14 @@ namespace Game
 
             Save();
         }
+
+        public static bool IsUnlocked(string itemName)
+        {
+            if (string.IsNullOrEmpty(itemName))
+                return false;
+
+            return Get(itemName).isUnlocked;
+        }
+
     }
 }
