@@ -24,6 +24,7 @@ namespace Game
             adsUnlock.onClick.AddListener(AdsBuy);
 
             view = GetComponent<View>();
+
         }
 
         public async void InitItem(ItemConfig data)
@@ -67,6 +68,8 @@ namespace Game
                 Player.Instance.character.itemManager.UnlockItem(curData);
                 DataItem.SetCurrentItem(curData.itemName);
 
+                StaticBus<Event_Buy_Item>.Post(null);
+
                 view.Close();
             }
         }
@@ -77,6 +80,7 @@ namespace Game
 
             Player.Instance.character.itemManager.UnlockItem(curData);
             DataItem.SetCurrentItem(curData.itemName);
+            StaticBus<Event_Buy_Item>.Post(null);
 
             view.Close();
         }

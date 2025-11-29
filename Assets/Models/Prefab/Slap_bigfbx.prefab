@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1290723354654209743, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1290723354654209743, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1290723354654209743, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
       propertyPath: m_Name
       value: Slap_bigfbx
@@ -56,6 +68,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 80f1fdd0efa954bed86ca67d99baa012, type: 2}
+    - target: {fileID: 8933343218226094969, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933343218226094969, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933343218226094969, guid: 43d53ae6f1dc3408eafdf06920920bec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -17,6 +17,20 @@ namespace Game
             {
                 this.gameObject.SetActive(false);
             }
+
+            StaticBus<Event_Buy_Item>.Subscribe(EventBuy);
+        }
+        private void OnDestroy()
+        {
+            StaticBus<Event_Buy_Item>.Unsubscribe(EventBuy);
+        }
+
+        public void EventBuy(Event_Buy_Item e)
+        {
+            if (DataItem.IsUnlocked(itemData.itemName))
+            {
+                this.gameObject.SetActive(false);
+            }
         }
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {

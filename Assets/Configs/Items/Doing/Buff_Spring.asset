@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2aa1bba26cdbf96448dce2a89c49410e, type: 3}
-  m_Name: Slap_SlapDevil
+  m_Name: Buff_Spring
   m_EditorClassIdentifier: Game::Game.ItemConfig
-  itemType: 0
-  itemName: Slap Devil
-  sprite: {fileID: 0}
+  itemType: 1
+  itemName: Spring
+  sprite: {fileID: 21300000, guid: e3054126f80501a4c890dfa2ca26936f, type: 3}
+  currency: 0
+  price: 0
   hitForce: 0
-  hitRange: 3
+  hitRange: 0
+  hitVfx: {fileID: 0}
