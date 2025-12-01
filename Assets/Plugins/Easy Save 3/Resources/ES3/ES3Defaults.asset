@@ -43,7 +43,6 @@ MonoBehaviour:
     - DamageNumbersPro
     - DOTween.Modules
     - Coffee.UIParticle
-    - GoogleMobileAds.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro

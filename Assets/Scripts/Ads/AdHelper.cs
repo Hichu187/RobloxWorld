@@ -5,7 +5,7 @@ namespace Game
 {
     public static class AdHelper
     {
-        private static AdManager M
+        /*private static AdManager M
         {
             get
             {
@@ -184,6 +184,6 @@ namespace Game
             Debug.Log("[AdHelper] AppOpen chưa sẵn sàng → Load lại");
             M.LoadAppOpen();
             return false;
-        }
+        }*/
     }
 }

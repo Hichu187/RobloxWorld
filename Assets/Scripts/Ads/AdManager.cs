@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
-using GoogleMobileAds;
-using GoogleMobileAds.Api;
+//using GoogleMobileAds;
+//using GoogleMobileAds.Api;
 
 namespace Game
 {
     public class AdManager : MonoBehaviour
     {
-        public static AdManager Instance { get; private set; }
+/*        public static AdManager Instance { get; private set; }
 
         [Header("Config")]
         [SerializeField] private AdConfig adConfig;
@@ -518,6 +518,6 @@ namespace Game
             }
         }
 
-        #endregion
+        #endregion*/
     }
 }

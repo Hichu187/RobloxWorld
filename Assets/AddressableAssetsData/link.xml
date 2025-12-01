@@ -7,7 +7,6 @@
     <type fullname="DG.Tweening.DOTweenAnimation" preserve="all" />
   </assembly>
   <assembly fullname="Game, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="Game.AdConfig" preserve="all" />
     <type fullname="Game.AdManager" preserve="all" />
     <type fullname="Game.BagView" preserve="all" />
     <type fullname="Game.BrainrotEvoView" preserve="all" />

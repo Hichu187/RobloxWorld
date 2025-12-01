@@ -105,14 +105,16 @@ namespace Game
 
         private void AdsCash()
         {
-            AdHelper.ShowRewarded(() =>
-            {
-                DataBrainrotEvo.instance.CashUpdate((50 + DataBrainrotEvo.adsCash * 10));
-                DataBrainrotEvo.instance.RewardAdsCash();
+            DataBrainrotEvo.instance.CashUpdate((50 + DataBrainrotEvo.adsCash * 10));
+            DataBrainrotEvo.instance.RewardAdsCash();
 
-                var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
-            });
+            var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
+
+/*            AdHelper.ShowRewarded(() =>
+            {
+
+            });*/
         }
 
         private void SpawnOptions()
