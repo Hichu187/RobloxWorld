@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8fa58a77b5c2f458f90f8bb91f4547, type: 3}
   m_Name: Game.AdConfig
   m_EditorClassIdentifier: Game::Game.AdConfig
-  androidBannerId: 
-  androidInterstitialId: 
-  androidRewardedId: 
-  androidAppOpenId: 
+  androidBannerId: ca-app-pub-1228100221585439/2137313401
+  androidInterstitialId: ca-app-pub-1228100221585439/5749363150
+  androidRewardedId: ca-app-pub-1228100221585439/9963122098
+  androidAppOpenId: ca-app-pub-1228100221585439/8511150061
   iosBannerId: 
   iosInterstitialId: 
   iosRewardedId: 
