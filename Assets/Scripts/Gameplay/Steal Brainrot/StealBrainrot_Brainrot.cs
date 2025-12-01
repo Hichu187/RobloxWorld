@@ -36,6 +36,7 @@ namespace Game
         public bool isBought = false;
         public bool canMove = true;
         public bool isMovingHome = false;
+        public bool isStealing = false;
 
         private void OnEnable()
         {
@@ -74,8 +75,6 @@ namespace Game
         public void Setup(PetRank rank, bool isRun)
         {
             SetSkinBrainrot(rank, isRun);
-
-
         }
 
         public void BuyBrainrot()
@@ -125,6 +124,7 @@ namespace Game
             transform.position = t.position;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             //GetComponent<Collider>().enabled = false;
+            isStealing = true;
         }
 
         public void InitBrainrotData(StealBrainrot_BrainrotConfig config)
@@ -182,6 +182,7 @@ namespace Game
             targetSlot = null;
             canMove = false;
             isMovingHome = false;
+            isStealing = false;
 
             foreach (var a in auras)
             {

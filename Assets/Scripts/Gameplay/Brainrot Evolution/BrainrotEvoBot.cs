@@ -34,6 +34,8 @@ namespace Game
 
             _currentHealth = _maxHealth;
             InitData();
+
+            if (_animator == null) _animator = GetComponentInChildren<Animator>();
         }
 
         public override void TakeDamage(int amount, float force, Vector3 direction)

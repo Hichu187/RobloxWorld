@@ -57,6 +57,7 @@ namespace Game
             takedBrainrot.transform.parent = _preTrans;
             takedBrainrot.isMovingHome = true;
             takedBrainrot.canMove = true;
+            takedBrainrot.isStealing = false;
 
             isStealing = false;
             Player.Instance.character.cAnim.SetSteal(isStealing);

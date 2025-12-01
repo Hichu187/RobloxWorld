@@ -509,6 +509,9 @@ namespace Game
             isStealing = true;
 
             _takedBrainrot = brainrot;
+
+            _takedBrainrot.isStealing = true;
+
             _preTrans = brainrot.transform.parent;
 
             if (_takedBrainrot.indBase == 0)
@@ -550,6 +553,7 @@ namespace Game
                 _takedBrainrot.transform.SetParent(_preTrans, worldPositionStays: true);
                 _takedBrainrot.isMovingHome = true;
                 _takedBrainrot.canMove = true;
+                _takedBrainrot.isStealing = false;
             }
             isStealing = false;
             _ai.character.cAnim.SetSteal(isStealing);

@@ -81,7 +81,7 @@ namespace Game
 
         private void LateUpdate()
         {
-            if (_playerT == null || _brainrotHead == null || brainrot == null)
+            if (_playerT == null || _brainrotHead == null || brainrot == null || brainrot.isStealing)
             {
                 SafeSetActive(btnColect, false);
                 SafeSetActive(btnSteal, false);
