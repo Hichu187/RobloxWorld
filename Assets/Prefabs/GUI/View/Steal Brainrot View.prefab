@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cashText: {fileID: 2631828431849846434}
   _cashNotice: {fileID: 8403741686517822477}
+  warningFX: {fileID: 11400000, guid: 07d3031f636b8e4459a8c6c72829ea49, type: 2}
   _tweenDuration: 0.35
   _tweenDelay: 1
 --- !u!1 &6545543901655424840

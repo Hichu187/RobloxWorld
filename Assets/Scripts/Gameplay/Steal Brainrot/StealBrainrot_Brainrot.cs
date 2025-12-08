@@ -104,7 +104,7 @@ namespace Game
 
             target = slot;
 
-            //GetComponent<Collider>().enabled = false;
+            GetComponent<Collider>().enabled = false;
         }
 
         public void SellBrainrot()
@@ -123,7 +123,7 @@ namespace Game
             transform.parent = t;
             transform.position = t.position;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            //GetComponent<Collider>().enabled = false;
+            GetComponent<Collider>().enabled = false;
             isStealing = true;
         }
 
@@ -177,6 +177,8 @@ namespace Game
         public void DespawnToPool()
         {
             // Reset tối thiểu trước khi trả về pool
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Collider>().isTrigger = true;
             transform.DOKill();
             target = null;
             targetSlot = null;
@@ -206,6 +208,8 @@ namespace Game
         private void MoveToTarget(Transform target)
         {
             if (target == null) return;
+
+            GetComponent<Collider>().enabled = true;
 
             Vector3 to = target.position - transform.position;
             to.y = 0f;

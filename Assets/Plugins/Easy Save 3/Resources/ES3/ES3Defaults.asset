@@ -43,12 +43,15 @@ MonoBehaviour:
     - DamageNumbersPro
     - DOTween.Modules
     - Coffee.UIParticle
+    - MaxSdk.Scripts
+    - MaxSdk.Scripts.IntegrationManager.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro
     - Hichu.Editor
     - JoystickPack
     - Coffee.UIParticle.Editor
+    - EasypapaSDK
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - IconCreator.Core
     - Kcc

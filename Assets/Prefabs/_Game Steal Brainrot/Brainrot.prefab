@@ -1963,6 +1963,7 @@ MonoBehaviour:
   isBought: 0
   canMove: 1
   isMovingHome: 0
+  isStealing: 0
 --- !u!136 &5505152885067001489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1978,7 +1979,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

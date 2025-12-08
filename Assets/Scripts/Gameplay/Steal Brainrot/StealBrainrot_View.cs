@@ -10,6 +10,7 @@ namespace Game
     {
         [SerializeField] private TextMeshProUGUI _cashText;
         [SerializeField] private TextMeshProUGUI _cashNotice;
+        [SerializeField] private AudioConfig warningFX;
         [SerializeField] private float _tweenDuration = 0.35f;
         [SerializeField] private float _tweenDelay = 0.35f;
 
@@ -84,6 +85,7 @@ namespace Game
         public async void StolenNotice()
         {
             _cashNotice.gameObject.SetActive(true);
+            AudioManager.Play(warningFX);
 
             await UniTask.WaitForSeconds(3);
 

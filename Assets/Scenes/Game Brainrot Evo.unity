@@ -3025,6 +3025,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 814934193}
     m_Modifications:
+    - target: {fileID: 2254952935303662644, guid: e8bf94d53e6df924bbf31c9e34d8e272, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4519314676158398694, guid: e8bf94d53e6df924bbf31c9e34d8e272, type: 3}
       propertyPath: m_Name
       value: Canvas VFX
