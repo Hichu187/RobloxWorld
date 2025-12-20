@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AppLovinSettings
   m_EditorClassIdentifier: MaxSdk.Scripts.IntegrationManager.Editor::AppLovinSettings
   qualityServiceEnabled: 1
-  sdkKey: 
+  sdkKey: szyUmwGA0KXmgPKVL0LcrqGVCNJUXwL6FOdJtte_WI9GRLkuJRUAxA0NXFC2gxegRxaCJk2gX1CIfIbfQBQ9wW
   setAttributionReportEndpoint: 0
   customGradleVersionUrl: 
   customGradleToolsVersion: 

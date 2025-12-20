@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Easypapa
@@ -157,6 +157,50 @@ namespace Easypapa
                 if (RC.logEnable)
                     Debug.Log($"[AdHelper] Rewarded complete: {placement}, rewarded = {rewarded}");
             });
+        }
+
+        #endregion
+
+        #region App Open
+
+        public static void ShowAppOpen(string placement = "appopen_default")
+        {
+            EnsureInitialized();
+
+            if (!AdsEnabled) return;
+            if (Manager == null || !Manager.IsSdkInitialized) return;
+            if (RC.IsBlockAds(placement)) return;
+            if (!RC.IsShowAppOpenFirst()) return;
+
+            double now = AppUtils.CurrentTimeSeconds();
+            float timeStart = RC.GetTimeStartToShowAppOpen();
+            if (now < timeStart) return;
+
+            if (!Manager.IsAppOpenReady) return;
+
+            Manager.ShowAppOpen(placement);
+
+            if (RC.logEnable)
+                Debug.Log($"[AdHelper] Show app open: {placement}");
+        }
+
+        #endregion
+
+        #region Native
+
+        public static void ShowNative(string placement = "native_default")
+        {
+            EnsureInitialized();
+
+            if (!AdsEnabled) return;
+            if (RC.IsBlockAds(placement)) return;
+
+            Debug.LogWarning("[AdHelper] ShowNative được gọi nhưng hiện tại chưa implement SDK cụ thể cho Native. Bạn cần tự gắn logic vào đây theo SDK bạn dùng.");
+        }
+
+        public static void HideNative()
+        {
+            Debug.LogWarning("[AdHelper] HideNative được gọi nhưng hiện tại chưa implement SDK cụ thể cho Native.");
         }
 
         #endregion

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Easypapa
@@ -8,17 +8,21 @@ namespace Easypapa
         public static AdManager Instance { get; private set; }
 
         [Header("MAX SDK")]
-        [SerializeField] private string maxSdkKey;
+        [SerializeField] private string maxSdkKey; // không dùng nữa, SDK key set trong AppLovin Integration Manager
 
         [Header("Ad Unit Ids - Android")]
         [SerializeField] private string androidBannerAdUnitId;
         [SerializeField] private string androidInterstitialAdUnitId;
         [SerializeField] private string androidRewardedAdUnitId;
+        [SerializeField] private string androidAppOpenAdUnitId;
+        [SerializeField] private string androidNativeAdUnitId;
 
         [Header("Ad Unit Ids - iOS")]
         [SerializeField] private string iosBannerAdUnitId;
         [SerializeField] private string iosInterstitialAdUnitId;
         [SerializeField] private string iosRewardedAdUnitId;
+        [SerializeField] private string iosAppOpenAdUnitId;
+        [SerializeField] private string iosNativeAdUnitId;
 
         [Header("Banner Settings")]
         [SerializeField] private MaxSdkBase.BannerPosition bannerPosition = MaxSdkBase.BannerPosition.BottomCenter;
@@ -54,8 +58,27 @@ namespace Easypapa
             string.Empty;
 #endif
 
+        private string AppOpenUnitId =>
+#if UNITY_ANDROID
+            androidAppOpenAdUnitId;
+#elif UNITY_IOS
+            iosAppOpenAdUnitId;
+#else
+            string.Empty;
+#endif
+
+        private string NativeUnitId =>
+#if UNITY_ANDROID
+            androidNativeAdUnitId;
+#elif UNITY_IOS
+            iosNativeAdUnitId;
+#else
+            string.Empty;
+#endif
+
         private int _interstitialRetryAttempt;
         private int _rewardedRetryAttempt;
+        private int _appOpenRetryAttempt;
 
         private Action<bool> _onRewardedComplete;
 
@@ -77,12 +100,6 @@ namespace Easypapa
 
         private void InitializeMaxSdk()
         {
-            if (string.IsNullOrEmpty(maxSdkKey))
-            {
-                Debug.LogError("[AdManager] MAX SDK key is empty!");
-                return;
-            }
-
             MaxSdkCallbacks.OnSdkInitializedEvent += _ =>
             {
                 IsSdkInitialized = true;
@@ -93,6 +110,7 @@ namespace Easypapa
                 InitializeBanner();
                 InitializeInterstitial();
                 InitializeRewarded();
+                InitializeAppOpen();
             };
 
             MaxSdk.InitializeSdk();
@@ -107,6 +125,8 @@ namespace Easypapa
             MaxSdk.CreateBanner(BannerUnitId, bannerPosition);
             MaxSdk.SetBannerBackgroundColor(BannerUnitId, Color.clear);
             MaxSdk.HideBanner(BannerUnitId);
+
+            ShowBanner();
         }
 
         public void ShowBanner()
@@ -287,6 +307,82 @@ namespace Easypapa
         {
             _onRewardedComplete?.Invoke(true);
             _onRewardedComplete = null;
+        }
+
+        #endregion
+
+        #region App Open
+
+        private void InitializeAppOpen()
+        {
+            if (string.IsNullOrEmpty(AppOpenUnitId)) return;
+
+            MaxSdkCallbacks.AppOpen.OnAdLoadedEvent += OnAppOpenLoaded;
+            MaxSdkCallbacks.AppOpen.OnAdLoadFailedEvent += OnAppOpenFailedLoad;
+            MaxSdkCallbacks.AppOpen.OnAdDisplayFailedEvent += OnAppOpenFailedDisplay;
+            MaxSdkCallbacks.AppOpen.OnAdHiddenEvent += OnAppOpenHidden;
+
+            LoadAppOpen();
+        }
+
+        private void LoadAppOpen()
+        {
+            if (!IsSdkInitialized || string.IsNullOrEmpty(AppOpenUnitId)) return;
+
+            if (logDebug)
+                Debug.Log("[AdManager] Load app open");
+
+            MaxSdk.LoadAppOpenAd(AppOpenUnitId);
+        }
+
+        public bool IsAppOpenReady =>
+            IsSdkInitialized &&
+            !string.IsNullOrEmpty(AppOpenUnitId) &&
+            MaxSdk.IsAppOpenAdReady(AppOpenUnitId);
+
+        public void ShowAppOpen(string placement = null)
+        {
+            if (!IsAppOpenReady) return;
+
+            if (string.IsNullOrEmpty(placement))
+                MaxSdk.ShowAppOpenAd(AppOpenUnitId);
+            else
+                MaxSdk.ShowAppOpenAd(AppOpenUnitId, placement);
+        }
+
+        private void OnAppOpenLoaded(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            _appOpenRetryAttempt = 0;
+
+            if (logDebug)
+                Debug.Log("[AdManager] App open loaded");
+        }
+
+        private void OnAppOpenFailedLoad(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
+        {
+            _appOpenRetryAttempt++;
+            double retryDelay = Math.Pow(2, Math.Min(6, _appOpenRetryAttempt));
+
+            if (logDebug)
+                Debug.LogWarning($"[AdManager] App open failed load: {errorInfo.Message}, retry in {retryDelay}s");
+
+            Invoke(nameof(LoadAppOpen), (float)retryDelay);
+        }
+
+        private void OnAppOpenFailedDisplay(string adUnitId, MaxSdkBase.ErrorInfo errorInfo, MaxSdkBase.AdInfo adInfo)
+        {
+            if (logDebug)
+                Debug.LogWarning($"[AdManager] App open failed display: {errorInfo.Message}");
+
+            LoadAppOpen();
+        }
+
+        private void OnAppOpenHidden(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            if (logDebug)
+                Debug.Log("[AdManager] App open hidden, preload next");
+
+            LoadAppOpen();
         }
 
         #endregion

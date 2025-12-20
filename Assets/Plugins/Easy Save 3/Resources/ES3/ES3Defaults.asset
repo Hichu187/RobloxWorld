@@ -44,6 +44,7 @@ MonoBehaviour:
     - DOTween.Modules
     - Coffee.UIParticle
     - MaxSdk.Scripts
+    - EasypapaSDK
     - MaxSdk.Scripts.IntegrationManager.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
@@ -51,7 +52,6 @@ MonoBehaviour:
     - Hichu.Editor
     - JoystickPack
     - Coffee.UIParticle.Editor
-    - EasypapaSDK
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - IconCreator.Core
     - Kcc
@@ -65,6 +65,7 @@ MonoBehaviour:
     - ScriptablePacker
     - UniTask.Addressables
     - UniTask.DOTween
+    - FirebaseMessagingActivityGenerator
     showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

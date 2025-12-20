@@ -17,6 +17,44 @@
       "dependencies": {},
       "hash": "64285ae060c9fe2aeb2a73b076b160939ce3be1a"
     },
+    "com.google.external-dependency-manager": {
+      "version": "file:D:/quarantine-zone-new/Packages/com.google.external-dependency-manager-1.2.185.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
+    "com.google.firebase.analytics": {
+      "version": "file:D:/quarantine-zone-new/Packages/com.google.firebase.analytics-12.5.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "12.5.0"
+      }
+    },
+    "com.google.firebase.app": {
+      "version": "file:D:/quarantine-zone-new/Packages/com.google.firebase.app-12.5.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.183"
+      }
+    },
+    "com.google.firebase.messaging": {
+      "version": "file:D:/quarantine-zone-new/Packages/com.google.firebase.messaging-12.5.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "12.5.0"
+      }
+    },
+    "com.google.firebase.remote-config": {
+      "version": "file:D:/quarantine-zone-new/Packages/com.google.firebase.remote-config-12.5.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "12.5.0"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "12.0.2",
       "depth": 0,

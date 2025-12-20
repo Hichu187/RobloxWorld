@@ -14,6 +14,8 @@ namespace Game
         private void Start()
         {
             OpenView();
+
+            Easypapa.AdHelper.ShowBanner();
         }
 
         public async void OpenView()

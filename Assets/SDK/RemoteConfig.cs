@@ -26,20 +26,12 @@ namespace Easypapa
         [JsonIgnore]
         private HashSet<string> setBlockAds = new HashSet<string>();
 
-        public bool IsBlockAds(string placement)
-        {
-            if (string.IsNullOrEmpty(placement)) return false;
-            return setBlockAds.Contains(placement);
-        }
-
         #endregion
-
 
         public static void Init() { }
 
         public void DecodeData()
         {
-            // AdsConfig
             if (!string.IsNullOrEmpty(adsConfigStr))
             {
                 try
@@ -53,7 +45,6 @@ namespace Easypapa
                 }
             }
 
-            // Block placement
             if (!string.IsNullOrEmpty(blockAdsStr))
             {
                 try
@@ -72,9 +63,13 @@ namespace Easypapa
             }
         }
 
-        // ==========================
-        // ADS CONFIG ACCESSORS
-        // ==========================
+        public bool IsBlockAds(string placement)
+        {
+            if (string.IsNullOrEmpty(placement)) return false;
+            return setBlockAds.Contains(placement);
+        }
+
+        #region ADS CONFIG ACCESSORS
 
         public bool IsShowAppOpenFirst()
         {
@@ -146,15 +141,11 @@ namespace Easypapa
         public bool IsUpAppVersion()
         {
             if (upAppVersion <= 0) return false;
-
-            var versionStr = Application.version;
-            var digitStr = new string(versionStr.Where(char.IsDigit).ToArray());
-
-            if (!int.TryParse(digitStr, out var versionNumber))
-                return false;
-
-            return versionNumber >= upAppVersion;
+            int appVersion = AppUtils.GetAppVersion();
+            return appVersion >= upAppVersion;
         }
+
+        #endregion
     }
 
     [Serializable]

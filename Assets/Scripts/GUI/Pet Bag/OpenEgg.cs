@@ -105,17 +105,27 @@ namespace Game
 
         private void AdsCash()
         {
-            DataBrainrotEvo.instance.CashUpdate((50 + DataBrainrotEvo.adsCash * 10));
-            DataBrainrotEvo.instance.RewardAdsCash();
+            int rewardAmount = 50 + DataBrainrotEvo.adsCash * 10;
 
             var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            if (txt) txt.text = (50 + DataBrainrotEvo.adsCash * 10).ToString();
+            if (txt) txt.text = rewardAmount.ToString();
 
-/*            AdHelper.ShowRewarded(() =>
-            {
-
-            });*/
+            Easypapa.AdHelper.ShowRewarded(
+                "brainrot_cash_reward",
+                rewarded =>
+                {
+                    if (rewarded)
+                    {
+                        DataBrainrotEvo.instance.CashUpdate(rewardAmount);
+                        DataBrainrotEvo.instance.RewardAdsCash();
+                    }
+                    else
+                    {
+                        Debug.Log("Rewarded NOT completed.");
+                    }
+                });
         }
+
 
         private void SpawnOptions()
         {
