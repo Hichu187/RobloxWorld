@@ -30,8 +30,8 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - ES3
-    - Boxophobic.Utils.Editor
     - Game
+    - Boxophobic.Utils.Editor
     - HichuEz
     - BetterHierarchy
     - OdinSerializer

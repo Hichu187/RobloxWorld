@@ -165,6 +165,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eee992b51a0eed04890ccef7b511033c
+    m_Address: Assets/Prefabs/GUI/Popup/Popup Evo Power.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef0b61fb485e00144ba29b35430d8a3a
     m_Address: Assets/Prefabs/Character/Human/Boy 02.prefab
     m_ReadOnly: 0

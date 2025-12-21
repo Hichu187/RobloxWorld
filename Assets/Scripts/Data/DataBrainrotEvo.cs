@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] private int _cash = 0;
         [SerializeField] private int _adsCash = 0;
         [SerializeField] private bool _isTutorial = false;
+        [SerializeField] private bool _boostFree = true;
 
         [SerializeField] private List<int> _ownedPet = new List<int>();
         [SerializeField] private List<int> _equippedPet = new List<int>(); // ≤ 5 tổng phần tử
@@ -24,6 +25,7 @@ namespace Game
         public static int cash { get { return instance._cash; } set { instance._cash = value; } }
         public static int adsCash { get { return instance._adsCash; } set { instance._adsCash = value; } }
         public static bool isTutorial { get { return instance._isTutorial; } set { instance._isTutorial = value; } }
+        public static bool boostFree { get { return instance._boostFree; } set { instance._boostFree = value; } }
 
         // Cho phép set trực tiếp nhưng sẽ sanitize + sort
         public static List<int> ownedPet { get { return instance._ownedPet; } set { instance.SetOwnedPets(value); } }
@@ -103,6 +105,12 @@ namespace Game
         {
             isTutorial = true;
 
+            Save();
+        }
+
+        public static void BoostFree()
+        {
+            boostFree = false;
             Save();
         }
 

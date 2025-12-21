@@ -15,7 +15,7 @@ namespace Game
 
         private void Start()
         {
-            bool isHome = SceneManager.GetActiveScene().buildIndex == 0;
+            bool isHome = SceneManager.GetActiveScene().buildIndex == 1;
 
             _objHome.SetActive(!isHome);
             _objHome.GetComponent<Button>().onClick.AddListener(BtnHome_OnClick);
@@ -25,7 +25,7 @@ namespace Game
         {
             Easypapa.AdHelper.ShowInterstitial("button_home");
 
-            SceneLoaderHelper.Load(0);
+            SceneLoaderHelper.Load(1);
 
         }
     }

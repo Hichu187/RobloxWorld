@@ -14,6 +14,7 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _expText;
         [SerializeField] private TextMeshProUGUI _cashText;
         [SerializeField] private float _tweenDuration = 0.35f;   // thời gian tween slider
+        [SerializeField] private GameObject buffNotice;
 
         private Tween _expTween;
         private Tween _cashTween;
@@ -26,6 +27,11 @@ namespace Game
             InitProgress();
 
             CashUpdate();
+
+            if (DataBrainrotEvo.boostFree)
+            {
+                buffNotice.SetActive(true);
+            }
         }
 
         private void OnDestroy()
@@ -115,6 +121,12 @@ namespace Game
                     _cashText.text = v.ToString();
                 }, target, _tweenDuration)
                 .SetEase(Ease.OutCubic);
+        }
+
+        public void BuffActive()
+        {
+            buffNotice.SetActive(false);
+            DataBrainrotEvo.BoostFree();
         }
     }
 }

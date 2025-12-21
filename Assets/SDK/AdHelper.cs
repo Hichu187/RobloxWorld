@@ -165,7 +165,7 @@ namespace Easypapa
 
         public static void ShowAppOpen(string placement = "appopen_default")
         {
-            EnsureInitialized();
+/*            EnsureInitialized();
 
             if (!AdsEnabled) return;
             if (Manager == null || !Manager.IsSdkInitialized) return;
@@ -176,12 +176,10 @@ namespace Easypapa
             float timeStart = RC.GetTimeStartToShowAppOpen();
             if (now < timeStart) return;
 
-            if (!Manager.IsAppOpenReady) return;
+            if (!Manager.IsAppOpenReady) return;*/
 
             Manager.ShowAppOpen(placement);
-
-            if (RC.logEnable)
-                Debug.Log($"[AdHelper] Show app open: {placement}");
+            Debug.Log($"[AdHelper] Show app open: {placement}");
         }
 
         #endregion
