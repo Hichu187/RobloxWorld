@@ -60,6 +60,8 @@ namespace Game
             view.GetComponent<ObbyCanvas>().InitProgress(checkpointIndex + 1, checkpoints.Count);
             curCheckpoint = e.checkpoint;
             curCheckpoint.PlayFX();
+
+            Easypapa.AdHelper.ShowInterstitial("checkpoint");
         }
     }
 }

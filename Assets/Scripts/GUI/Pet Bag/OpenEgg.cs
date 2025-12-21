@@ -69,6 +69,7 @@ namespace Game
                 var txt = _btnHatch.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                 if (txt) txt.text = openCash.ToString();
             }
+
             if (_btnAdsCash && _btnAdsCash.transform.childCount > 0)
             {
                 var txt = _btnAdsCash.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -118,6 +119,8 @@ namespace Game
                     {
                         DataBrainrotEvo.instance.CashUpdate(rewardAmount);
                         DataBrainrotEvo.instance.RewardAdsCash();
+
+                        UpdatePriceLabels();
                     }
                     else
                     {

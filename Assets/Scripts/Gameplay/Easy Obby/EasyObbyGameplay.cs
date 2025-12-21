@@ -41,6 +41,8 @@ namespace Game
         {
             base.EventPlayerDead(e);
 
+            Easypapa.AdHelper.ShowInterstitial("player_dead");
+
             await UniTask.WaitForSeconds(2f);
             RespawnCheckpoint();
         }
@@ -61,6 +63,8 @@ namespace Game
             view.GetComponent<ObbyCanvas>().InitProgress(checkpointIndex + 1, checkpoints.Count);
             curCheckpoint = e.checkpoint;
             curCheckpoint.PlayFX();
+
+            Easypapa.AdHelper.ShowInterstitial("checkpoint");
         }
     }
 }

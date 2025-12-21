@@ -32,8 +32,24 @@ namespace Game
         // ===== EXP / Level =====
         public void AddExp(int amount)
         {
+            int expBefore = _exp;
+            int expToNext = GetExpToNextLevel();
+
             _exp += amount;
-            while (CanLevelUp()) LevelUp();
+
+            if (_level >= 2)
+            {
+                float threshold = expToNext * 0.7f;
+
+                if (expBefore < threshold && _exp >= threshold)
+                {
+                    ViewHelper.PushAsync(FactoryPrefab.popupEvoNow);
+                }
+            }
+
+            while (CanLevelUp())
+                LevelUp();
+
             Save();
         }
 
@@ -62,10 +78,17 @@ namespace Game
                    _exp >= FactoryBrainrotEvo.brainrotConfigs[_level].exp;
         }
 
-        private void LevelUp()
+        public void LevelUp()
         {
             int requiredExp = Mathf.RoundToInt(FactoryBrainrotEvo.brainrotConfigs[_level].exp);
             _exp -= requiredExp;
+            _level++;
+            StaticBus<Event_Player_Level_Up>.Post(new Event_Player_Level_Up(_level));
+        }
+
+        public void LevelUpBoost()
+        {
+            _exp = 0;
             _level++;
             StaticBus<Event_Player_Level_Up>.Post(new Event_Player_Level_Up(_level));
         }
@@ -245,6 +268,19 @@ namespace Game
             int cnt = 0;
             for (int i = 0; i < _equippedPet.Count; i++) if (_equippedPet[i] == petId) cnt++;
             return cnt;
+        }
+
+        private int GetExpToNextLevel()
+        {
+            if (FactoryBrainrotEvo.brainrotConfigs == null || FactoryBrainrotEvo.brainrotConfigs.Count == 0)
+                return int.MaxValue;
+
+            if (_level < 0)
+                return int.MaxValue;
+
+            if (_level >= FactoryBrainrotEvo.brainrotConfigs.Count)
+                return int.MaxValue;
+            return Mathf.RoundToInt(FactoryBrainrotEvo.brainrotConfigs[_level].exp);
         }
 
         private Dictionary<int, int> CountMap(List<int> list)

@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 461c5540175e49144924656f40e1ec14
+    m_Address: Assets/Prefabs/GUI/Popup/Popup Reward Level Up.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46433a831ef74544eafe1f84dbc991cc
     m_Address: Assets/Prefabs/Character/Human/Boy 10.prefab
     m_ReadOnly: 0

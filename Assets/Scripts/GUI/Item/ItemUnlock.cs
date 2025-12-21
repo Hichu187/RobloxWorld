@@ -77,11 +77,23 @@ namespace Game
         private void AdsBuy()
         {
             // reward
-                Player.Instance.character.itemManager.UnlockItem(curData);
-                DataItem.SetCurrentItem(curData.itemName);
-                StaticBus<Event_Buy_Item>.Post(null);
+            Easypapa.AdHelper.ShowRewarded(
+                "brainrot_Unlock_Item",
+                rewarded =>
+                {
+                    if (rewarded)
+                    {
+                        Player.Instance.character.itemManager.UnlockItem(curData);
+                        DataItem.SetCurrentItem(curData.itemName);
+                        StaticBus<Event_Buy_Item>.Post(null);
 
-                view.Close();
+                        view.Close();
+                    }
+                    else
+                    {
+                        Debug.Log("Rewarded NOT completed.");
+                    }
+                });
         }
     }
 }

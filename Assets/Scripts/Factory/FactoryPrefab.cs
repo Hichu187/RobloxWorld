@@ -9,7 +9,9 @@ namespace Game
         [SerializeField] private GameObject _gameInit;
         [SerializeField] private GameObject _uiNotificationText;
 
+        [SerializeField] private AssetReferenceGameObject _popupEvoNow;
         public static GameObject gameInit => instance._gameInit;
         public static GameObject uiNotificationText => instance._uiNotificationText;
+        public static AssetReferenceGameObject popupEvoNow => instance._popupEvoNow;
     }
 }

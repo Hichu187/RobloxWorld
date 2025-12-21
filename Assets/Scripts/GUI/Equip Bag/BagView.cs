@@ -15,7 +15,6 @@ namespace Game
         {
             option.Clear();
 
-            // Lặp qua toàn bộ item trong DataItem
             foreach (var pair in DataItem.datas)
             {
                 string itemName = pair.Key;
@@ -23,7 +22,6 @@ namespace Game
 
                 if (data.isUnlocked)
                 {
-                    // Tạo option UI
                     SlapBagOption opt = optionPrefab.Create(content);
                     option.Add(opt);
                 }
