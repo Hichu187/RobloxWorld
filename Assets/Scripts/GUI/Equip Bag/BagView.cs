@@ -32,7 +32,6 @@ namespace Game
             {
                 if (!pair.Value.isUnlocked) continue;
 
-                // Lấy config tương ứng từ FactoryItem
                 ItemConfig config = FactoryItem.items.Find(x => x.itemName == pair.Key);
                 if (config == null) continue;
 
