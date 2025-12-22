@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d57c39a6545be543a657841913509fc
+    m_Address: Assets/Prefabs/GUI/Popup/Popup Obby Next Stage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 322817afa39ef2848b7b8e5aca9c1351
     m_Address: Assets/Prefabs/Character/Human/Girl 03.prefab
     m_ReadOnly: 0

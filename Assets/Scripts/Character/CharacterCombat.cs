@@ -34,7 +34,7 @@ namespace Game
         public DamageNumberMesh damageText;
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
-        public int specialBonus = 0;
+        public int specialBonus = 1;
 
         [Title("Knockback Config")]
         public bool _knockback = false;
@@ -110,6 +110,9 @@ namespace Game
                 _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
 
             }
+
+            StaticBus<Event_Buff_Countdown_Start>.Subscribe(DamageBuff);
+            StaticBus<Event_Buff_Countdown_End>.Subscribe(StopBuff);
         }
 
         private void OnEnable()
@@ -128,11 +131,27 @@ namespace Game
                 _autoAttackRoutine = null;
             }
         }
+        private void OnDestroy()
+        {
+            StaticBus<Event_Buff_Countdown_Start>.Unsubscribe(DamageBuff);
+            StaticBus<Event_Buff_Countdown_End>.Unsubscribe(StopBuff);
+        }
+
+        private void DamageBuff(Event_Buff_Countdown_Start e)
+        {
+            specialBonus = 2;
+            GetComponent<CharacterControl>().MoveSpeedMultiple = 1.5f;
+        }
+        private void StopBuff(Event_Buff_Countdown_End e)
+        {
+            specialBonus = 1;
+            GetComponent<CharacterControl>().MoveSpeedMultiple = 1f;
+        }
 
         public float GetTotalDamage()
         {
             float safePetBonus = Mathf.Max(1, petBonus);
-            return (_damage * safePetBonus) + specialBonus;
+            return (_damage * safePetBonus) * specialBonus;
         }
 
         [SerializeField] private bool attackNearestOnly = false;

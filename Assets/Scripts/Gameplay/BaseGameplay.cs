@@ -85,5 +85,41 @@ namespace Game
 
             return checkpoints.IndexOf(curCheckpoint);
         }
+
+        public void GotoNextCheckPoint()
+        {
+            if (player == null) return;
+            if (checkpoints == null || checkpoints.Count == 0) return;
+
+            int curIndex = CurrentCheckpointIndex();
+
+            int nextIndex = Mathf.Clamp(curIndex + 1, 0, checkpoints.Count - 1);
+
+            PlatformCheckpoint nextCheckpoint = checkpoints[nextIndex];
+            if (nextCheckpoint == null) return;
+
+            curCheckpoint = nextCheckpoint;
+
+            var pos = curCheckpoint.transform.position;
+            var rot = curCheckpoint.transform.rotation;
+
+            if (player.character != null && player.character.motor != null)
+            {
+                player.character.motor.SetPositionAndRotation(pos, rot);
+            }
+            else
+            {
+                player.transform.SetPositionAndRotation(pos, rot);
+            }
+
+            if (player.character != null && player.character.motor != null)
+                player.character.motor.enabled = true;
+
+            if (player.control != null)
+                player.control.canMove = true;
+
+            Debug.Log($"GotoNextCheckPoint -> {curCheckpoint.name} ({nextIndex}/{checkpoints.Count - 1})");
+        }
+
     }
 }
