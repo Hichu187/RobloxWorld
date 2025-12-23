@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Hichu;
 using UnityEngine;
 
 namespace Game
@@ -9,14 +10,27 @@ namespace Game
         private BoxCollider _collider;
         private StealBrainrot_Base _base;
 
+        private View _view;
         private void Awake()
         {
             _collider = GetComponent<BoxCollider>();
             _base = GetComponentInParent<StealBrainrot_Base>();
         }
 
-        private void OnCollisionEnter(Collision other)
+        private async void OnCollisionEnter(Collision other)
         {
+            if (other.transform.TryGetComponent(out StealBrainrot_Player player))
+            {
+                if (_base.baseID != 0)
+                {
+                    _view = await ViewHelper.PushAsync(FactoryPrefab.popupBreakLock);
+                    _view.GetComponent<Popup_Steal_BreakLock>().baseM = _base;
+
+                    return;
+                }
+            }
+
+
             if (!IsValidCharacter(other.transform, out var playerBaseID))
             {
                 TryRandomAIState(other.transform);

@@ -1,4 +1,5 @@
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,19 +16,55 @@ namespace Game
         public GameObject gateLock;
         public List<StealBrainrot_Slot> slots;
 
+        private Coroutine _lockRoutine;
+        private bool _isLocked;
+
+        private const float SPECIAL_LOCK_DURATION = 300f; // 5 phút = 300 giây
+
         private void Awake()
         {
             SetSlotID();
             SetLock(false);
         }
 
+        // ===================== LOCK CONTROL =====================
+
         public void SetLock(bool isLock)
         {
+            _isLocked = isLock;
+
             if (gateLock)
                 gateLock.SetActive(isLock);
         }
 
-        // UTILS
+        /// <summary>
+        /// Lock base ngay lập tức trong 5 phút
+        /// </summary>
+        public void LockSpecial5Minutes()
+        {
+            SetLock(true);
+            if (buttonLock != null)
+                buttonLock.StartLockCountdown(300f);
+        }
+        /// <summary>
+        /// Mở khóa base ngay lập tức, hủy mọi lock timer
+        /// </summary>
+        public void BreakLock()
+        {
+            if (buttonLock != null)
+                buttonLock.ForceUnlockImmediate();
+            else
+                SetLock(false);
+        }
+        private IEnumerator LockCountdown(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            _lockRoutine = null;
+            SetLock(false);
+        }
+
+        // ===================== UTILS =====================
+
         public StealBrainrot_Slot GetFirstEmptySlot()
         {
             if (slots == null || slots.Count == 0)
@@ -51,7 +88,8 @@ namespace Game
             return emptySlots[Random.Range(0, emptySlots.Count)];
         }
 
-        // EDITOR
+        // ===================== EDITOR =====================
+
         [Button]
         public void SetSlotID()
         {

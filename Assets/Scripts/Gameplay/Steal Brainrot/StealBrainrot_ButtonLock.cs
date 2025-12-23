@@ -11,7 +11,7 @@ namespace Game
         [SerializeField] private TextMeshPro lockTxt;
         [SerializeField] private float lockTime = 60f;
 
-        public bool isLocked = false;
+        public bool isLocked;
         private Coroutine lockRoutine;
 
         void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
@@ -20,40 +20,88 @@ namespace Game
             {
                 if (character.GetComponent<StealBrainrot_Player>().baseSlot != _base) return;
                 if (!isLocked)
-                    Lock();
+                    Lock(lockTime);
             }
 
             if (character.GetComponentInParent<StealBrainrot_AI>())
             {
                 if (character.GetComponentInParent<StealBrainrot_AI>().curBase != _base) return;
                 if (!isLocked)
-                    Lock();
+                    Lock(lockTime);
             }
-
         }
 
         void ICharacterCollidable.OnTriggerEnter(CharacterControl character) { }
         void ICharacterCollidable.OnTriggerExit(CharacterControl character) { }
         void ICharacterCollidable.OnCollisionExit(CharacterControl character) { }
 
-        // Lock Logic
-        public void Lock()
+        public void SetLock(bool locked)
+        {
+            isLocked = locked;
+
+            if (lockTxt != null)
+            {
+                lockTxt.gameObject.SetActive(true);
+                lockTxt.color = locked ? Color.green : Color.red;
+                if (!locked)
+                    lockTxt.text = "Lock";
+            }
+        }
+
+        public void StartLockCountdown(float duration)
+        {
+            if (_base != null)
+                _base.SetLock(true);
+
+            if (lockRoutine != null)
+                StopCoroutine(lockRoutine);
+
+            isLocked = true;
+
+            if (lockTxt != null)
+            {
+                lockTxt.gameObject.SetActive(true);
+                lockTxt.color = Color.green;
+            }
+
+            lockRoutine = StartCoroutine(Co_LockCountdown(duration));
+        }
+
+        public void ForceUnlockImmediate()
+        {
+            if (lockRoutine != null)
+            {
+                StopCoroutine(lockRoutine);
+                lockRoutine = null;
+            }
+
+            UnlockInternal();
+        }
+
+        private void Lock(float duration)
         {
             if (isLocked) return;
 
             isLocked = true;
-            _base.SetLock(true);
-            lockTxt.color = Color.green;
-            if (lockRoutine != null) StopCoroutine(lockRoutine);
-            lockRoutine = StartCoroutine(Co_LockCountdown());
-        }
 
-        private IEnumerator Co_LockCountdown()
-        {
-            float timer = lockTime;
+            if (_base != null)
+                _base.SetLock(true);
 
             if (lockTxt != null)
+            {
                 lockTxt.gameObject.SetActive(true);
+                lockTxt.color = Color.green;
+            }
+
+            if (lockRoutine != null)
+                StopCoroutine(lockRoutine);
+
+            lockRoutine = StartCoroutine(Co_LockCountdown(duration));
+        }
+
+        private IEnumerator Co_LockCountdown(float duration)
+        {
+            float timer = Mathf.Max(0f, duration);
 
             while (timer > 0f)
             {
@@ -65,22 +113,22 @@ namespace Game
                 yield return null;
             }
 
-            Unlock();
+            lockRoutine = null;
+            UnlockInternal();
         }
 
-        private void Unlock()
+        private void UnlockInternal()
         {
             isLocked = false;
-            _base.SetLock(false);
+
+            if (_base != null)
+                _base.SetLock(false);
 
             if (lockTxt != null)
             {
                 lockTxt.text = "Lock";
                 lockTxt.color = Color.red;
             }
-
-
-            lockRoutine = null;
         }
     }
 }

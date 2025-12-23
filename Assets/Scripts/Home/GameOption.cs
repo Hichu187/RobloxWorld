@@ -1,3 +1,4 @@
+using Easypapa;
 using Hichu;
 using TMPro;
 using UnityEngine;
@@ -29,6 +30,8 @@ namespace Game
         {
             if (data.gameSceneName == "") return;
             SceneLoaderHelper.Load(data.gameSceneName);
+
+            LogHelper.Event("mode_start", FirebaseLogger.P("mode", data.gameSceneName.Trim()));
         }
     }
 }
