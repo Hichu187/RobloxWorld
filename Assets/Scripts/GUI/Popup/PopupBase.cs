@@ -19,8 +19,6 @@ namespace Game
 
             view = GetComponent<View>();
 
-            btn_nothnanks.onClick.AddListener(() => view.Close());
-
         }
         private IEnumerator NothankCoroutine()
         {

@@ -27,7 +27,6 @@ namespace Game
         protected override void Start()
         {
             base.Start();
-
         }
 
 
@@ -70,6 +69,7 @@ namespace Game
                     if (rewarded)
                     {
                         TowerGameplay gameplay = FindAnyObjectByType<TowerGameplay>();
+                        gameplay.ResetCurrent();
                         gameplay.ReturnCheckPoint();
                     }
                     else
@@ -84,7 +84,8 @@ namespace Game
         public void NothanksClick()
         {
             Easypapa.AdHelper.ShowInterstitial("button_nothank_popup_tower");
-
+            TowerGameplay gameplay = FindAnyObjectByType<TowerGameplay>();
+            gameplay.ResetCurrent();
             view.Close();
         }
     }

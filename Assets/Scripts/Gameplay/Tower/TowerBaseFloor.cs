@@ -16,7 +16,7 @@ namespace Game
             {
                 TowerGameplay gameplay = GameObject.FindAnyObjectByType<TowerGameplay>();
 
-                if (gameplay.checkpoints.IndexOf(gameplay.curCheckpoint) < 2) return;
+                if (gameplay.curCheckpoint == null) return;
 
                 StaticBus<Event_DropFloor>.Post(null);
             }

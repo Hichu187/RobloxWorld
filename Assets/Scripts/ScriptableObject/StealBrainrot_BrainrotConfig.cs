@@ -13,6 +13,7 @@ namespace Game
     {
         public int ID;
         public string brainrotName;
+        public Currency currency;
         public PetRank rank;
         public int earningPerSecond;
         public int costToBuy;
