@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace Game
@@ -15,6 +16,8 @@ namespace Game
         [SerializeField] AnimationSequence cameraSequence;
         [SerializeField] Transform cameraReviewMap;
 
+        [SerializeField] AssetReferenceGameObject dropView;
+
         public override void Start()
         {
             base.Start();
@@ -23,6 +26,8 @@ namespace Game
 
             player.character.cCamera.SetFollowTransform(cameraReviewMap);
             player.gui.gameObject.SetActive(false);
+
+
         }
 
         public void InitStart()
@@ -37,6 +42,7 @@ namespace Game
             base.SubscribeEvent();
 
             StaticBus<Event_Player_Dead>.Subscribe(EventPlayerDead);
+            StaticBus<Event_DropFloor>.Subscribe(EventDropFloor);
         }
 
         protected override void UnsubscribeEvent()
@@ -44,11 +50,33 @@ namespace Game
             base.UnsubscribeEvent();
 
             StaticBus<Event_Player_Dead>.Unsubscribe(EventPlayerDead);
+            StaticBus<Event_DropFloor>.Unsubscribe(EventDropFloor);
         }
 
         public void EventPlayerDead(Event_Player_Dead e)
         {
             RevivePlayer();
+        }
+
+        public override void EventCheckpoint(Event_Checkpoint e)
+        {
+            base.EventCheckpoint(e);
+
+            curCheckpoint = e.checkpoint;
+            curCheckpoint.PlayFX();
+
+            //Easypapa.AdHelper.ShowInterstitial("checkpoint");
+        }
+
+        public async void EventDropFloor(Event_DropFloor e)
+        {
+            View drop = await ViewHelper.PushAsync(dropView);
+        }
+
+        public void ReturnCheckPoint()
+        {
+            player.character.motor.SetPositionAndRotation(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
+
         }
 
         public async void RevivePlayer()

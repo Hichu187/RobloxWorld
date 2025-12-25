@@ -175,6 +175,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e81e8940632c008419f8ba70d2c78ee5
+    m_Address: Assets/Prefabs/GUI/Popup/Popup Tower Drop.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: edceb1be506efbd439aa1e85424ac8f0
     m_Address: Assets/Prefabs/Character/Human/Girl Base.prefab
     m_ReadOnly: 0
