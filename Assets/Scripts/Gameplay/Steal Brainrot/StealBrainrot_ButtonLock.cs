@@ -2,6 +2,7 @@ using Hichu;
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AddressableAssets;
 
 namespace Game
 {
@@ -11,16 +12,23 @@ namespace Game
         [SerializeField] private TextMeshPro lockTxt;
         [SerializeField] private float lockTime = 60f;
 
+        [SerializeField] AssetReferenceGameObject lockView;
+
         public bool isLocked;
         private Coroutine lockRoutine;
 
-        void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
+        async void ICharacterCollidable.OnCollisionEnter(CharacterControl character)
         {
             if (character.GetComponent<StealBrainrot_Player>())
             {
                 if (character.GetComponent<StealBrainrot_Player>().baseSlot != _base) return;
+
+                View view = await ViewHelper.PushAsync(lockView);
                 if (!isLocked)
+                {
                     Lock(lockTime);
+                }
+
             }
 
             if (character.GetComponentInParent<StealBrainrot_AI>())
@@ -80,6 +88,7 @@ namespace Game
 
         private void Lock(float duration)
         {
+
             if (isLocked) return;
 
             isLocked = true;

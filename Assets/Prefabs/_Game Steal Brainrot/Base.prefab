@@ -5300,6 +5300,12 @@ MonoBehaviour:
   _base: {fileID: 650858653212479101}
   lockTxt: {fileID: 8827809949697214463}
   lockTime: 60
+  lockView:
+    m_AssetGUID: 675efbf9c0c41554ca524f70baf4e21f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
   isLocked: 0
 --- !u!65 &4860036392864459267
 BoxCollider:
