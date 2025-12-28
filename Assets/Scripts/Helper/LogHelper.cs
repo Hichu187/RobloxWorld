@@ -13,7 +13,7 @@ namespace Game
             if (LogToUnity)
                 Debug.Log($"[Evt] {eventName}");
 
-            FirebaseLogger.Log(eventName);
+            //FirebaseLogger.Log(eventName);
         }
 
         public static void Event(string eventName, params Firebase.Analytics.Parameter[] parameters)
@@ -23,7 +23,7 @@ namespace Game
                 Debug.Log($"[Evt] {eventName}");
             }
 
-            FirebaseLogger.Log(eventName, parameters);
+            //FirebaseLogger.Log(eventName, parameters);
         }
 
         public static void Event(string eventName, IReadOnlyDictionary<string, object> parameters)
@@ -33,7 +33,7 @@ namespace Game
                 Debug.Log($"[Evt] {eventName}");
             }
 
-            FirebaseLogger.Log(eventName, parameters);
+           // FirebaseLogger.Log(eventName, parameters);
         }
 
         public static void Warn(string message)

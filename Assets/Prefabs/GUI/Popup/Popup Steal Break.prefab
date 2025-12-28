@@ -475,6 +475,7 @@ MonoBehaviour:
   btn_Get: {fileID: 4937884844006037984}
   btn_nothnanks: {fileID: 5507840740797234103}
   view: {fileID: 0}
+  baseM: {fileID: 0}
 --- !u!1 &3818155442356595481
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,9 +642,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1878490732168849453}
-        m_TargetAssemblyTypeName: Hichu.View, HichuEz
-        m_MethodName: Close
+      - m_Target: {fileID: 5534228303026005301}
+        m_TargetAssemblyTypeName: Game.Popup_Steal_BreakLock, Game
+        m_MethodName: Nothank
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

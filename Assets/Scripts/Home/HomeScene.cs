@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using Easypapa;
 using Hichu;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,9 +15,9 @@ namespace Game
 
         private void Start()
         {
-            LogAppLaunch();
+            //LogAppLaunch();
             OpenView();
-            Easypapa.AdHelper.ShowBanner();
+
         }
 
         private void LogAppLaunch()
@@ -30,6 +32,10 @@ namespace Game
 
         public async void OpenView()
         {
+            EasypapaAdSdk.InitOnStartup();
+
+            await UniTask.WaitForSeconds(3);
+
             _view = await ViewHelper.PushAsync(_homeView);
         }
     }

@@ -39,12 +39,15 @@ MonoBehaviour:
     - Vertx.Debugging.Runtime
     - Assembly-CSharp
     - UniTask.Linq
+    - StompyRobot.SRF
     - Boxophobic.SkyboxCubemapExtended.Editor
+    - StompyRobot.SRDebugger.Editor
+    - EasypapaSDK
+    - StompyRobot.SRDebugger
     - DamageNumbersPro
     - DOTween.Modules
     - Coffee.UIParticle
     - MaxSdk.Scripts
-    - EasypapaSDK
     - MaxSdk.Scripts.IntegrationManager.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
@@ -61,6 +64,7 @@ MonoBehaviour:
     - VoxelLabs.UltimatePreview.Lib
     - UniTask.Editor
     - DOTweenPro.Scripts
+    - StompyRobot.SRF.Editor
     - Sirenix.OdinInspector.Modules.UnityMathematics
     - ScriptablePacker
     - UniTask.Addressables

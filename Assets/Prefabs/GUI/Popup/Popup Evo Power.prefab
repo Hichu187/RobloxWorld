@@ -866,9 +866,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 724737349687957649}
-        m_TargetAssemblyTypeName: Hichu.View, HichuEz
-        m_MethodName: Close
+      - m_Target: {fileID: 289156649955642179}
+        m_TargetAssemblyTypeName: Game.PopupEvoBuff, Game
+        m_MethodName: Nothank
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

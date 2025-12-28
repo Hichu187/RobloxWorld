@@ -54,5 +54,11 @@ namespace Game
 
             easyObby.GotoNextCheckPoint();
         }
+
+        public void Nothank()
+        {
+            Easypapa.AdHelper.ShowInterstitial("button_nothanks_obby_next_stage");
+            view.Close();
+        }
     }
 }

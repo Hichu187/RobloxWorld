@@ -31,7 +31,8 @@ namespace Game
             if (data.gameSceneName == "") return;
             SceneLoaderHelper.Load(data.gameSceneName);
 
-            LogHelper.Event("mode_start", FirebaseLogger.P("mode", data.gameSceneName.Trim()));
+            Easypapa.AdHelper.ShowBanner();
+            Easypapa.LogHelper.P("mode_start", data.gameSceneName.Trim());
         }
     }
 }

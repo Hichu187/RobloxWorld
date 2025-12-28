@@ -25,7 +25,6 @@ namespace Game
 
             view = GetComponent<View>();
 
-            btn_nothanks.onClick.AddListener(() => view.Close());
             btn_Evo.onClick.AddListener(EvoNow);
         }
 
@@ -46,6 +45,12 @@ namespace Game
                     }
                 });
 
+        }
+
+        public void Nothank()
+        {
+            Easypapa.AdHelper.ShowInterstitial("button_nothanks_evo_now");
+            view.Close();
         }
     }
 }

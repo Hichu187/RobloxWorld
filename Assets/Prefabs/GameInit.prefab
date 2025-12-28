@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &711066693225115127
+--- !u!1 &1043550856794621028
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2648410402067099920}
-  - component: {fileID: 7653279370619327853}
+  - component: {fileID: 5711747087991790466}
+  - component: {fileID: 4021402822157269366}
   m_Layer: 0
-  m_Name: Ad Manager
+  m_Name: AdInit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2648410402067099920
+--- !u!4 &5711747087991790466
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711066693225115127}
+  m_GameObject: {fileID: 1043550856794621028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,27 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6770762797115526743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7653279370619327853
+--- !u!114 &4021402822157269366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711066693225115127}
+  m_GameObject: {fileID: 1043550856794621028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22142c32a57f8e248a89fce117931391, type: 3}
+  m_Script: {fileID: 11500000, guid: 51a7cd8447bdef149b262d04497e6267, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: EasypapaSDK::Easypapa.AdManager
-  maxSdkKey: szyUmwGA0KXmgPKVL0LcrqGVCNJUXwL6FOdJtte_WI9GRLkuJRUAxA0NXFC2gxegRxaCJk2gX1CIfIbfQBQ9wW
-  androidBannerAdUnitId: 51128d8b1d852b71
-  androidInterstitialAdUnitId: 7b4c82e04d464aa0
-  androidRewardedAdUnitId: e13b994121112c51
-  iosBannerAdUnitId: 
-  iosInterstitialAdUnitId: 
-  iosRewardedAdUnitId: 
-  bannerPosition: 7
-  logDebug: 1
+  m_EditorClassIdentifier: EasypapaSDK::Easypapa.AdInit
 --- !u!1 &2130317772011630505
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,52 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f37dffd426f11546b04611824df4805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2589514754452772595
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6862393520108500161}
-  - component: {fileID: 3891483453673319534}
-  m_Layer: 0
-  m_Name: SDK
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6862393520108500161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2589514754452772595}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6770762797115526743}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3891483453673319534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2589514754452772595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6008870a7329aa34c867afaad0eb161b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: EasypapaSDK::Easypapa.EasypapaSDK
-  initFirebase: 1
-  initRemoteConfig: 1
 --- !u!1 &4337960712945406443
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3509667837003630175}
-  - {fileID: 6862393520108500161}
-  - {fileID: 2648410402067099920}
+  - {fileID: 5711747087991790466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3806092847353463679

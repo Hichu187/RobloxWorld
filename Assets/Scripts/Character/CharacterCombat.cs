@@ -113,6 +113,7 @@ namespace Game
 
             StaticBus<Event_Buff_Countdown_Start>.Subscribe(DamageBuff);
             StaticBus<Event_Buff_Countdown_End>.Subscribe(StopBuff);
+            specialBonus = 1;
         }
 
         private void OnEnable()

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Firebase.RemoteConfig;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,40 +12,53 @@ namespace Easypapa
     {
         public static RemoteConfig CONFIG = new RemoteConfig();
 
-        #region sdk var
+        public const string KEY_UP_APP_VERSION = "upAppVersion";
+        public const string KEY_ADS_CONFIG_STR = "adsConfigStr";
+        public const string KEY_LOG_ENABLE = "logEnable";
+        public const string KEY_BLOCK_ADS_STR = "blockAdsStr";
+        public const string KEY_ADS_TIME = "adsTime";
+        public const string KEY_MODE_SORT = "modeSort";
 
         public int upAppVersion = -1;
 
         public string adsConfigStr;
         public bool logEnable = true;
 
-        [JsonIgnore]
-        private AdsConfig adsConfig = new AdsConfig();
-
         public string blockAdsStr = "test1,test2";
 
-        [JsonIgnore]
-        private HashSet<string> setBlockAds = new HashSet<string>();
+        public string adsTimeStr = "";
+        public string modeSort = "";
 
-        #endregion
+        [JsonIgnore] private HashSet<string> setBlockAds = new HashSet<string>();
+        [JsonIgnore] private AdsTimeConfig adsTime = new AdsTimeConfig();
+        [JsonIgnore] private List<string> modeSortList = new List<string>();
 
         public static void Init() { }
 
+        public void ApplyFromFirebase(FirebaseRemoteConfig rc)
+        {
+            if (rc == null) return;
+
+            upAppVersion = GetInt(rc, KEY_UP_APP_VERSION, upAppVersion);
+            adsConfigStr = GetString(rc, KEY_ADS_CONFIG_STR, adsConfigStr);
+            logEnable = GetBool(rc, KEY_LOG_ENABLE, logEnable);
+            blockAdsStr = GetString(rc, KEY_BLOCK_ADS_STR, blockAdsStr);
+
+            adsTimeStr = GetString(rc, KEY_ADS_TIME, adsTimeStr);
+            modeSort = GetString(rc, KEY_MODE_SORT, modeSort);
+
+            DecodeData();
+        }
+
         public void DecodeData()
         {
-            if (!string.IsNullOrEmpty(adsConfigStr))
-            {
-                try
-                {
-                    adsConfig = JsonConvert.DeserializeObject<AdsConfig>(adsConfigStr) ?? new AdsConfig();
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e);
-                    adsConfig = new AdsConfig();
-                }
-            }
+            DecodeBlockAds();
+            DecodeAdsTime();
+            DecodeModeSort();
+        }
 
+        private void DecodeBlockAds()
+        {
             if (!string.IsNullOrEmpty(blockAdsStr))
             {
                 try
@@ -52,7 +66,8 @@ namespace Easypapa
                     setBlockAds = new HashSet<string>(
                         blockAdsStr
                             .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(x => x.Trim())
+                            .Select(x => x.Trim().ToLower())
+                            .Where(x => !string.IsNullOrEmpty(x))
                     );
                 }
                 catch (Exception e)
@@ -61,81 +76,99 @@ namespace Easypapa
                     setBlockAds = new HashSet<string>();
                 }
             }
+            else
+            {
+                setBlockAds = new HashSet<string>();
+            }
+        }
+
+        private void DecodeAdsTime()
+        {
+            if (string.IsNullOrEmpty(adsTimeStr))
+            {
+                adsTime = new AdsTimeConfig();
+                adsTime.BuildCache();
+                return;
+            }
+
+            try
+            {
+                adsTime = JsonConvert.DeserializeObject<AdsTimeConfig>(adsTimeStr) ?? new AdsTimeConfig();
+                adsTime.BuildCache();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                adsTime = new AdsTimeConfig();
+                adsTime.BuildCache();
+            }
+        }
+
+        private void DecodeModeSort()
+        {
+            if (string.IsNullOrEmpty(modeSort))
+            {
+                modeSortList = new List<string>();
+                return;
+            }
+
+            try
+            {
+                modeSortList = modeSort
+                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => x.Trim().ToLower())
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                modeSortList = new List<string>();
+            }
         }
 
         public bool IsBlockAds(string placement)
         {
             if (string.IsNullOrEmpty(placement)) return false;
-            return setBlockAds.Contains(placement);
+
+            var key = placement.Trim().ToLower();
+            if (adsTime != null && adsTime.IsBlocked(key)) return true;
+            return setBlockAds != null && setBlockAds.Contains(key);
         }
 
-        #region ADS CONFIG ACCESSORS
-
-        public bool IsShowAppOpenFirst()
+        public bool IsOpenAds()
         {
-            if (adsConfig == null) return false;
-            if (IsUpAppVersion()) return false;
-            return adsConfig.showAppOpenFirst;
+            if (adsTime == null) return true;
+            return adsTime.openAds;
         }
 
-        public float GetTimeStartToShowBanner()
+        public float GetTimeStartAppOpenAds()
         {
-            if (adsConfig == null) return 0f;
-            return adsConfig.timeStartToShowBanner;
+            if (adsTime == null) return 0f;
+            return adsTime.timeStartShowAds;
         }
 
-        public float GetTimeStartToShowMREC()
+        public bool IsBannerAds()
         {
-            if (adsConfig == null) return 0f;
-            return adsConfig.timeStartToShowMREC;
+            if (adsTime == null) return true;
+            return adsTime.bannerAds;
         }
 
-        public float GetTimeStartToShowAppOpen()
+        public float GetTimeStartShowAds()
         {
-            if (adsConfig == null) return 0f;
-            return adsConfig.timeStartToShowAppOpen;
+            if (adsTime == null) return 0f;
+            return adsTime.timeStartShowAds;
         }
 
-        public float GetTimeBetweenShowBannerCollapsible()
+        public float GetTimeBetweenShowAds()
         {
-            if (adsConfig == null) return 30f;
-            return adsConfig.timeBetweenShowBannerCollapsible;
+            if (adsTime == null) return 60f;
+            return adsTime.timeBetweenShowAds;
         }
 
-        public float GetTimeStartToShowInterstitial()
+        public IReadOnlyList<string> GetModeSortList()
         {
-            if (adsConfig == null) return 60f;
-            if (adsConfig.listTimeStartToShowInterstitial == null ||
-                adsConfig.listTimeStartToShowInterstitial.Length < 1)
-                return 60f;
-
-            return adsConfig.listTimeStartToShowInterstitial[0];
-        }
-
-        public float GetTimeBetweenShowInterstitial()
-        {
-            if (adsConfig == null) return 60f;
-
-            var startList = adsConfig.listTimeStartToShowInterstitial;
-            var betweenList = adsConfig.listTimeBetweenShowInterstitial;
-
-            if (startList == null || startList.Length < 1) return 60f;
-            if (betweenList == null || betweenList.Length < 1) return 60f;
-
-            double timeInGame = AppUtils.CurrentTimeSeconds();
-
-            for (int i = startList.Length - 1; i >= 0; i--)
-            {
-                if (timeInGame > startList[i])
-                {
-                    if (i < betweenList.Length)
-                        return betweenList[i];
-
-                    return betweenList[betweenList.Length - 1];
-                }
-            }
-
-            return 60f;
+            return modeSortList;
         }
 
         public bool IsUpAppVersion()
@@ -145,19 +178,64 @@ namespace Easypapa
             return appVersion >= upAppVersion;
         }
 
-        #endregion
+        private static int GetInt(FirebaseRemoteConfig rc, string key, int fallback)
+        {
+            try { return (int)rc.GetValue(key).LongValue; }
+            catch { return fallback; }
+        }
+
+        private static bool GetBool(FirebaseRemoteConfig rc, string key, bool fallback)
+        {
+            try { return rc.GetValue(key).BooleanValue; }
+            catch { return fallback; }
+        }
+
+        private static string GetString(FirebaseRemoteConfig rc, string key, string fallback)
+        {
+            try { return rc.GetValue(key).StringValue ?? fallback; }
+            catch { return fallback; }
+        }
     }
 
     [Serializable]
-    public class AdsConfig
+    public class AdsTimeConfig
     {
-        public float timeStartToShowBanner = 0f;
-        public float timeStartToShowMREC = 0f;
-        public float timeStartToShowAppOpen = 0f;
-        public bool showAppOpenFirst = true;
+        public bool openAds = true;
+        public bool bannerAds = true;
+        public string blockAds = "";
+        public float timeStartShowAds = 0f;
+        public float timeBetweenShowAds = 30f;
 
-        public float timeBetweenShowBannerCollapsible = 30f;
-        public float[] listTimeBetweenShowInterstitial = { 30f, 22f };
-        public float[] listTimeStartToShowInterstitial = { 60f, 300f };
+        [JsonIgnore] private HashSet<string> _blockSet = new HashSet<string>();
+
+        public void BuildCache()
+        {
+            try
+            {
+                _blockSet = new HashSet<string>();
+
+                if (string.IsNullOrEmpty(blockAds))
+                    return;
+
+                var parts = blockAds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    var k = parts[i].Trim().ToLower();
+                    if (!string.IsNullOrEmpty(k))
+                        _blockSet.Add(k);
+                }
+            }
+            catch
+            {
+                _blockSet = new HashSet<string>();
+            }
+        }
+
+        public bool IsBlocked(string placement)
+        {
+            if (string.IsNullOrEmpty(placement)) return false;
+            if (_blockSet == null) return false;
+            return _blockSet.Contains(placement.Trim().ToLower());
+        }
     }
 }

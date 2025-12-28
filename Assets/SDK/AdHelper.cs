@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static MaxSdkBase;
 
 namespace Easypapa
 {
@@ -18,145 +19,87 @@ namespace Easypapa
 
         private static void EnsureInitialized()
         {
-            if (_initialized) return;
 
-            _lastInterstitialTime = -1;
-            _lastBannerCollapsibleTime = -1;
-            _initialized = true;
         }
 
         #region Banner
 
-        public static void ShowBanner(string placement = "banner_default")
+        public static void ShowBanner()
         {
-            EnsureInitialized();
-
-            if (!AdsEnabled) return;
-            if (Manager == null || !Manager.IsSdkInitialized) return;
-            if (RC.IsBlockAds(placement)) return;
-
-            double now = AppUtils.CurrentTimeSeconds();
-            float timeStart = RC.GetTimeStartToShowBanner();
-            if (now < timeStart) return;
-
-            Manager.ShowBanner();
-
-            if (RC.logEnable)
-                Debug.Log($"[AdHelper] Show banner: {placement}");
+            AdSdk.ShowBanner();
         }
 
         public static void HideBanner()
         {
-            Manager?.HideBanner();
+            AdSdk.HideBanner();
         }
 
-        public static void ShowBannerCollapsible(string placement = "banner_collapsible")
+        public static void ShowBannerCollapsible()
         {
-            EnsureInitialized();
 
-            if (!AdsEnabled) return;
-            if (Manager == null || !Manager.IsSdkInitialized) return;
-            if (RC.IsBlockAds(placement)) return;
-
-            double now = AppUtils.CurrentTimeSeconds();
-            float timeStart = RC.GetTimeStartToShowBanner();
-            if (now < timeStart) return;
-
-            float timeBetween = RC.GetTimeBetweenShowBannerCollapsible();
-
-            if (_lastBannerCollapsibleTime > 0)
-            {
-                double sinceLast = now - _lastBannerCollapsibleTime;
-                if (sinceLast < timeBetween) return;
-            }
-
-            _lastBannerCollapsibleTime = now;
-
-            Manager.ShowBanner();
-
-            if (RC.logEnable)
-                Debug.Log($"[AdHelper] Show collapsible banner: {placement}");
         }
 
         #endregion
 
         #region Interstitial
-
-        private static bool CanShowInterstitial(string placement)
+        public static async void ShowInterstitialBreak()
         {
-            EnsureInitialized();
 
-            if (!AdsEnabled) return false;
-            if (Manager == null || !Manager.IsSdkInitialized) return false;
-            if (RC.IsBlockAds(placement)) return false;
+            //View view = await ViewHelper.PushAsync(FactoryPrefab.adsBreakPopup);
 
-            double now = AppUtils.CurrentTimeSeconds();
-            float timeStart = RC.GetTimeStartToShowInterstitial();
-            if (now < timeStart) return false;
+            //await .WaitForSeconds(2f);
 
-            float timeBetween = RC.GetTimeBetweenShowInterstitial();
+            //view.Close();
 
-            if (_lastInterstitialTime > 0)
-            {
-                double sinceLast = now - _lastInterstitialTime;
-                if (sinceLast < timeBetween) return false;
-            }
-
-            return true;
+            ShowInterstitial("inter_break");
         }
 
-        public static void ShowInterstitial(string placement = "interstitial_default")
+        public static void ShowInterstitial(string placement)
         {
-            if (!CanShowInterstitial(placement)) return;
-            if (!Manager.IsInterstitialReady) return;
+            if (AdConfig.CONFIG.freeAds) return;
 
-            _lastInterstitialTime = AppUtils.CurrentTimeSeconds();
-
-            Manager.ShowInterstitial(placement);
-
-            if (RC.logEnable)
-                Debug.Log($"[AdHelper] Show interstitial: {placement}");
+            AdSdk.ShowInterstitial(placement);
         }
 
         #endregion
 
         #region Rewarded
 
-        public static void ShowRewarded(string placement, Action<bool> onRewarded)
+        public static void ShowRewarded(string placement, Action<bool> onReward)
         {
-            EnsureInitialized();
+            onReward ??= _ => { };
 
-            if (!AdsEnabled)
+            if (AdConfig.CONFIG.freeAds)
             {
-                onRewarded?.Invoke(true);
+                onReward(true);
                 return;
             }
 
-            if (Manager == null || !Manager.IsSdkInitialized)
+            bool invoked = false;
+            void SafeInvoke(bool rewarded)
             {
-                onRewarded?.Invoke(false);
-                return;
+                if (invoked) return;
+                invoked = true;
+                onReward(rewarded);
             }
 
-            if (RC.IsBlockAds(placement))
+            try
             {
-                onRewarded?.Invoke(false);
-                return;
+                if (!AdSdk.IsRewardedReady())
+                {
+                    //UINotificationText.Push("No ads available at the moment,\ntry again later!");
+                    SafeInvoke(false);
+                    return;
+                }
+
+                AdSdk.ShowRewarded(SafeInvoke, placement?.ToLower());
             }
-
-            if (!Manager.IsRewardedReady)
+            catch (System.Exception ex)
             {
-                onRewarded?.Invoke(false);
-                return;
+                Debug.LogException(ex);
+                SafeInvoke(false);
             }
-
-            Manager.ShowRewarded(placement, rewarded =>
-            {
-                onRewarded?.Invoke(rewarded);
-
-                if (RC.logEnable)
-                    Debug.Log($"[AdHelper] Rewarded complete: {placement}, rewarded = {rewarded}");
-            });
+            ;
         }
 
         #endregion
@@ -165,21 +108,7 @@ namespace Easypapa
 
         public static void ShowAppOpen(string placement = "appopen_default")
         {
-/*            EnsureInitialized();
-
-            if (!AdsEnabled) return;
-            if (Manager == null || !Manager.IsSdkInitialized) return;
-            if (RC.IsBlockAds(placement)) return;
-            if (!RC.IsShowAppOpenFirst()) return;
-
-            double now = AppUtils.CurrentTimeSeconds();
-            float timeStart = RC.GetTimeStartToShowAppOpen();
-            if (now < timeStart) return;
-
-            if (!Manager.IsAppOpenReady) return;*/
-
-            Manager.ShowAppOpen(placement);
-            Debug.Log($"[AdHelper] Show app open: {placement}");
+            AdSdk.ShowAppOpen();
         }
 
         #endregion

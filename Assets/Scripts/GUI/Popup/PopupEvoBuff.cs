@@ -69,5 +69,11 @@ namespace Game
             BrainrotEvoView brainrotView = FindAnyObjectByType<BrainrotEvoView>();
             brainrotView.BuffActive();
         }
+
+        public void Nothank()
+        {
+            Easypapa.AdHelper.ShowInterstitial("button_nothanks_evo_buff");
+            view.Close();
+        }
     }
 }

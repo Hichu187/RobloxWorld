@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae82fd5cd1a0c104194f7cabc11b2bb4, type: 3}
+  m_Name: AdConfig
+  m_EditorClassIdentifier: EasypapaSDK::Easypapa.AdConfig
+  freeAds: 0
+  admobBanner: 
+  admobInterstitial: 
+  admobRewarded: 
+  admobAppOpen: 
+  admobBannerIos: 
+  admobInterstitialIos: 
+  admobRewardedIos: 
+  admobAppOpenIos: 
+  admobTestAdsOnDevelopmentBuild: 0
+  maxSdkKey: Um2rsugkCoTO3BZ3WiVaPVfbhvKwEepRlJiNNG4_chMvrTCsZH4HaBNbxEmNswwTRa69uIxRZf7k3CCBl2fbTI
+  maxBanner: b84a6395e9758dca
+  maxInterstitial: 0e7dfed2cbbf7e08
+  maxRewarded: 1402ccd327ec7e15
+  maxMREC: 
+  maxAppOpen: 63bd563e3f3c1bb8
+  maxBannerIos: 
+  maxInterstitialIos: 
+  maxRewardedIos: 
+  maxMRECIos: 
+  maxAppOpenIos: 

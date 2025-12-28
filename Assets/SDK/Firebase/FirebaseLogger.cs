@@ -1,179 +1,207 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
+using UnityEngine;
+
+#if EASYPAPA_FIREBASE
 using Firebase.Analytics;
+#endif
 
 namespace Easypapa
 {
     public static class FirebaseLogger
     {
-        public const int MaxEventNameLength = 40;
-        public const int MaxParamNameLength = 40;
-        public const int MaxParamStringValueLength = 100;
+        public static bool Enabled { get; set; } = true;
 
-        public static bool Enabled
-        {
-            get
-            {
-                if (!FirebaseInitializer.IsInitialized) return false;
-                return RemoteConfig.CONFIG == null || RemoteConfig.CONFIG.logEnable;
-            }
-        }
-
-        public static void Log(string eventName)
-        {
-            if (!Enabled) return;
-            eventName = NormalizeEventName(eventName);
-            if (string.IsNullOrEmpty(eventName)) return;
-
-            FirebaseAnalytics.LogEvent(eventName);
-        }
-
-        public static void Log(string eventName, params Parameter[] parameters)
+        public static void LogEvent(string eventName)
         {
             if (!Enabled) return;
 
-            eventName = NormalizeEventName(eventName);
+            eventName = SanitizeEventName(eventName);
             if (string.IsNullOrEmpty(eventName)) return;
 
-            if (parameters == null || parameters.Length == 0)
+#if EASYPAPA_FIREBASE
+            try
             {
                 FirebaseAnalytics.LogEvent(eventName);
-                return;
             }
-
-            FirebaseAnalytics.LogEvent(eventName, NormalizeParameters(parameters));
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+#else
+            Debug.Log($"[FirebaseLogger] {eventName}");
+#endif
         }
 
-        public static void Log(string eventName, IReadOnlyDictionary<string, object> parameters)
+        public static void LogEvent(string eventName, IReadOnlyDictionary<string, object> parameters)
         {
             if (!Enabled) return;
 
-            eventName = NormalizeEventName(eventName);
+            eventName = SanitizeEventName(eventName);
             if (string.IsNullOrEmpty(eventName)) return;
 
-            if (parameters == null || parameters.Count == 0)
+#if EASYPAPA_FIREBASE
+            try
             {
-                FirebaseAnalytics.LogEvent(eventName);
-                return;
-            }
+                if (parameters == null || parameters.Count == 0)
+                {
+                    FirebaseAnalytics.LogEvent(eventName);
+                    return;
+                }
 
-            var list = new List<Parameter>(Math.Min(25, parameters.Count));
-            foreach (var kv in parameters)
+                var list = new List<Parameter>(parameters.Count);
+                foreach (var kv in parameters)
+                {
+                    if (string.IsNullOrEmpty(kv.Key)) continue;
+
+                    var key = SanitizeParamName(kv.Key);
+                    if (string.IsNullOrEmpty(key)) continue;
+
+                    if (TryToParameter(key, kv.Value, out var p))
+                        list.Add(p);
+                }
+
+                if (list.Count == 0)
+                    FirebaseAnalytics.LogEvent(eventName);
+                else
+                    FirebaseAnalytics.LogEvent(eventName, list.ToArray());
+            }
+            catch (Exception e)
             {
-                if (list.Count >= 25) break;
-
-                var key = NormalizeParamName(kv.Key);
-                if (string.IsNullOrEmpty(key)) continue;
-
-                if (TryConvertToParameter(key, kv.Value, out var p))
-                    list.Add(p);
+                Debug.LogException(e);
             }
-
-            if (list.Count == 0)
-            {
-                FirebaseAnalytics.LogEvent(eventName);
-                return;
-            }
-
-            FirebaseAnalytics.LogEvent(eventName, list.ToArray());
+#else
+            Debug.Log($"[FirebaseLogger] {eventName} | params={(parameters == null ? "null" : parameters.Count.ToString())}");
+#endif
         }
 
-        public static Parameter P(string key, string value)
-            => new Parameter(NormalizeParamName(key), NormalizeParamString(value));
-
-        public static Parameter P(string key, int value)
-            => new Parameter(NormalizeParamName(key), value);
-
-        public static Parameter P(string key, long value)
-            => new Parameter(NormalizeParamName(key), value);
-
-        public static Parameter P(string key, double value)
-            => new Parameter(NormalizeParamName(key), value);
-
-        public static Parameter P(string key, bool value)
-            => new Parameter(NormalizeParamName(key), value ? 1 : 0);
-
-        private static Parameter[] NormalizeParameters(Parameter[] parameters)
+        public static void SetUserId(string userId)
         {
-            var list = new List<Parameter>(Math.Min(25, parameters.Length));
-            for (int i = 0; i < parameters.Length && list.Count < 25; i++)
-            {
-                var p = parameters[i];
-                if (p == null) continue;
+            if (!Enabled) return;
 
-                // Firebase Parameter type is immutable; we rebuild via ToString() is not possible.
-                // So we keep parameter names normalized at creation via FirebaseLogger.P(...)
-                // If caller passes raw Parameter, we accept as-is.
-                list.Add(p);
-            }
-            return list.ToArray();
+#if EASYPAPA_FIREBASE
+            try { FirebaseAnalytics.SetUserId(userId); }
+            catch (Exception e) { Debug.LogException(e); }
+#else
+            Debug.Log($"[FirebaseLogger] SetUserId: {userId}");
+#endif
         }
 
-        private static bool TryConvertToParameter(string key, object value, out Parameter p)
+        public static void SetUserProperty(string name, string value)
         {
+            if (!Enabled) return;
+
+            name = SanitizeParamName(name);
+            if (string.IsNullOrEmpty(name)) return;
+
+#if EASYPAPA_FIREBASE
+            try { FirebaseAnalytics.SetUserProperty(name, value); }
+            catch (Exception e) { Debug.LogException(e); }
+#else
+            Debug.Log($"[FirebaseLogger] SetUserProperty: {name}={value}");
+#endif
+        }
+
+        public static void SetAnalyticsCollectionEnabled(bool enabled)
+        {
+#if EASYPAPA_FIREBASE
+            try { FirebaseAnalytics.SetAnalyticsCollectionEnabled(enabled); }
+            catch (Exception e) { Debug.LogException(e); }
+#else
+            Debug.Log($"[FirebaseLogger] CollectionEnabled: {enabled}");
+#endif
+        }
+
+#if EASYPAPA_FIREBASE
+        private static bool TryToParameter(string key, object value, out Parameter parameter)
+        {
+            parameter = default;
+
             if (value == null)
             {
-                p = new Parameter(key, "null");
+                parameter = new Parameter(key, string.Empty);
                 return true;
             }
 
             switch (value)
             {
                 case string s:
-                    p = new Parameter(key, NormalizeParamString(s));
+                    parameter = new Parameter(key, s);
                     return true;
+
                 case bool b:
-                    p = new Parameter(key, b ? 1 : 0);
+                    parameter = new Parameter(key, b ? 1L : 0L);
                     return true;
+
                 case int i:
-                    p = new Parameter(key, i);
+                    parameter = new Parameter(key, (long)i);
                     return true;
+
                 case long l:
-                    p = new Parameter(key, l);
+                    parameter = new Parameter(key, l);
                     return true;
+
                 case float f:
-                    p = new Parameter(key, (double)f);
+                    parameter = new Parameter(key, (double)f);
                     return true;
+
                 case double d:
-                    p = new Parameter(key, d);
+                    parameter = new Parameter(key, d);
                     return true;
+
+                case decimal m:
+                    parameter = new Parameter(key, (double)m);
+                    return true;
+
                 default:
-                    p = new Parameter(key, NormalizeParamString(value.ToString()));
+                    parameter = new Parameter(key, Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty);
                     return true;
             }
         }
+#endif
 
-        private static string NormalizeEventName(string name)
+        private static string SanitizeEventName(string s)
         {
-            if (string.IsNullOrWhiteSpace(name)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(s)) return string.Empty;
 
-            name = name.Trim().ToLowerInvariant().Replace(" ", "_");
-            if (name.Length > MaxEventNameLength)
-                name = name.Substring(0, MaxEventNameLength);
+            s = s.Trim();
+            var sb = new StringBuilder(s.Length);
 
-            return name;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = s[i];
+                if (char.IsLetterOrDigit(c) || c == '_') sb.Append(c);
+                else if (c == ' ' || c == '-' || c == '.') sb.Append('_');
+            }
+
+            var r = sb.ToString();
+            if (r.Length == 0) return string.Empty;
+            if (char.IsDigit(r[0])) r = "_" + r;
+            if (r.Length > 40) r = r.Substring(0, 40);
+            return r;
         }
 
-        private static string NormalizeParamName(string name)
+        private static string SanitizeParamName(string s)
         {
-            if (string.IsNullOrWhiteSpace(name)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(s)) return string.Empty;
 
-            name = name.Trim().ToLowerInvariant().Replace(" ", "_");
-            if (name.Length > MaxParamNameLength)
-                name = name.Substring(0, MaxParamNameLength);
+            s = s.Trim();
+            var sb = new StringBuilder(s.Length);
 
-            return name;
-        }
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = s[i];
+                if (char.IsLetterOrDigit(c) || c == '_') sb.Append(c);
+                else if (c == ' ' || c == '-' || c == '.') sb.Append('_');
+            }
 
-        private static string NormalizeParamString(string value)
-        {
-            if (value == null) return string.Empty;
-
-            value = value.Trim();
-            if (value.Length > MaxParamStringValueLength)
-                value = value.Substring(0, MaxParamStringValueLength);
-
-            return value;
+            var r = sb.ToString();
+            if (r.Length == 0) return string.Empty;
+            if (char.IsDigit(r[0])) r = "_" + r;
+            if (r.Length > 40) r = r.Substring(0, 40);
+            return r;
         }
     }
 }

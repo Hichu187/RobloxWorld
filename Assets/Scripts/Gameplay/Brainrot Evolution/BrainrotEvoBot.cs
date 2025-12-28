@@ -36,6 +36,8 @@ namespace Game
             InitData();
 
             if (_animator == null) _animator = GetComponentInChildren<Animator>();
+
+            specialBonus = 1;
         }
 
         public override void TakeDamage(int amount, float force, Vector3 direction)

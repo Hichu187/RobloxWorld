@@ -30,5 +30,11 @@ namespace Game
 
             view.Close();
         }
+
+        public void Nothank()
+        {
+            Easypapa.AdHelper.ShowInterstitial("button_nothanks_steal_lock");
+            view.Close();
+        }
     }
 }
