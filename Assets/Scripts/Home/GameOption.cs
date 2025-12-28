@@ -32,7 +32,8 @@ namespace Game
             SceneLoaderHelper.Load(data.gameSceneName);
 
             Easypapa.AdHelper.ShowBanner();
-            Easypapa.LogHelper.P("mode_start", data.gameSceneName.Trim());
+            //Easypapa.LogHelper.P("mode_start", data.gameSceneName.Trim());
+            Easypapa.EasypapaAdSdk.LogEvent("mode_start", data.gameSceneName.Trim());
         }
     }
 }

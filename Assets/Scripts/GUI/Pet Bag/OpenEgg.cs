@@ -166,6 +166,9 @@ namespace Game
                 UINotificationText.Push("Not enough money");
                 return;
             }
+
+            Easypapa.EasypapaAdSdk.LogEvent("brainrot_openegg", openCash.ToString());
+
             DataBrainrotEvo.instance.CashUpdate(-openCash);
 
             transform.GetChild(0).gameObject.SetActive(false);

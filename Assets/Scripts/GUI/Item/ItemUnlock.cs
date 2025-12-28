@@ -70,6 +70,8 @@ namespace Game
 
                 StaticBus<Event_Buy_Item>.Post(null);
 
+                Easypapa.EasypapaAdSdk.LogEvent("item_unlock", curData.itemName);
+
                 view.Close();
             }
         }
@@ -86,7 +88,7 @@ namespace Game
                         Player.Instance.character.itemManager.UnlockItem(curData);
                         DataItem.SetCurrentItem(curData.itemName);
                         StaticBus<Event_Buy_Item>.Post(null);
-
+                        Easypapa.EasypapaAdSdk.LogEvent("item_unlock", curData.itemName);
                         view.Close();
                     }
                     else

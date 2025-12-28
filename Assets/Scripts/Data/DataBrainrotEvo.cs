@@ -86,6 +86,8 @@ namespace Game
             _exp -= requiredExp;
             _level++;
             StaticBus<Event_Player_Level_Up>.Post(new Event_Player_Level_Up(_level));
+
+
         }
 
         public void LevelUpBoost()
