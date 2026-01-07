@@ -2,7 +2,8 @@
     "name": "EasypapaSDK",
     "rootNamespace": "Easypapa",
     "references": [
-        "GUID:a4cfc1a18fa3a469b96d885db522f42e"
+        "GUID:a4cfc1a18fa3a469b96d885db522f42e",
+        "GUID:7d8924c6e6beb44e18f19e8c0b5068cd"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

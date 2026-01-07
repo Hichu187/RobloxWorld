@@ -32,6 +32,7 @@ namespace Easypapa
             Debug.Log("Game Start Session " + session);
 
             AdConfig.Init();
+            AdjustManager.Init();
             RemoteConfig.Init();
             FirebaseManager.Init();
             AdSdk.InitAds();

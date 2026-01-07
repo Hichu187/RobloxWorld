@@ -13,6 +13,8 @@ namespace Game
 {
     public class CharacterCombat : TargetTrait
     {
+        private static int s_triggerIndex = 0;
+
         [Title("Stats")]
         [SerializeField] private bool isTakeDamage = false;
         [ShowIf("isTakeDamage")] public int _maxHealth = 100;
@@ -32,6 +34,9 @@ namespace Game
         public GameObject hitPrefab;
         public GameObject takeDamagePrefab;
         public DamageNumberMesh damageText;
+
+        [SerializeField] private AudioConfig[] _sfxSlap;
+
         [Title("Damage Bonus")]
         [Min(1)] public float petBonus = 1;
         public int specialBonus = 1;
@@ -184,6 +189,12 @@ namespace Game
 
             float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
             float totalDamage = GetTotalDamage();
+
+            if(_sfxSlap.Length > 0)
+            {
+                AudioManager.Play(_sfxSlap.GetLoop(s_triggerIndex));
+                s_triggerIndex++;
+            }
 
             for (int i = 0; i < _bufTargets.Count; i++)
             {

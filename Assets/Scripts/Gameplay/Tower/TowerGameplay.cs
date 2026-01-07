@@ -76,6 +76,7 @@ namespace Game
         public void ReturnCheckPoint()
         {
             player.character.motor.SetPositionAndRotation(curCheckpoint.transform.position, curCheckpoint.transform.rotation);
+            curCheckpoint = null;
         }
 
         public void ResetCurrent()

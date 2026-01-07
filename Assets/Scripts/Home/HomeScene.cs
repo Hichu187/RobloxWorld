@@ -17,7 +17,6 @@ namespace Game
         {
             //LogAppLaunch();
             OpenView();
-
         }
 
         private void LogAppLaunch()
@@ -32,10 +31,6 @@ namespace Game
 
         public async void OpenView()
         {
-            EasypapaAdSdk.InitOnStartup();
-
-            await UniTask.WaitForSeconds(3);
-
             _view = await ViewHelper.PushAsync(_homeView);
         }
     }

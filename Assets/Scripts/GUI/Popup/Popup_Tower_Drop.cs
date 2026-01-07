@@ -69,7 +69,6 @@ namespace Game
                     if (rewarded)
                     {
                         TowerGameplay gameplay = FindAnyObjectByType<TowerGameplay>();
-                        gameplay.ResetCurrent();
                         gameplay.ReturnCheckPoint();
                     }
                     else

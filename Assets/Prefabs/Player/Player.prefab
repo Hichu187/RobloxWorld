@@ -443,6 +443,30 @@ PrefabInstance:
       propertyPath: _knockbackAngleDeg
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _sfxSlap.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: '_sfxSlap.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 897ed677567aa674dbc46bfa930a5441, type: 2}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: '_sfxSlap.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 706ede4b2d79294448ec727a8d468d7d, type: 2}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: '_sfxSlap.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fcfd34fc3cbcf3d42a4b8a3b83148670, type: 2}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: '_sfxSlap.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 405887efd39a6ed4285c175c28860101, type: 2}
+    - target: {fileID: 2593960828409894946, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: '_sfxSlap.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f583493cfa23e5b4f94ba2d6141a240a, type: 2}
     - target: {fileID: 2675437538863323988, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 26.476166
@@ -1211,6 +1235,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8391187971766255621, guid: dc96789db64aab744963b5dad5656c52, type: 3}
+      propertyPath: _sfx
+      value: 
+      objectReference: {fileID: 11400000, guid: ddd2568a1f0a18049beb55198b199d14, type: 2}
     - target: {fileID: 8440639820896010042, guid: dc96789db64aab744963b5dad5656c52, type: 3}
       propertyPath: m_Layer
       value: 8

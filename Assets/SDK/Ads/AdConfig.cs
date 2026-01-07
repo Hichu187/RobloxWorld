@@ -105,8 +105,11 @@ namespace Easypapa
         public string maxMRECIos;
         public string maxAppOpenIos;
 
-/*        [Header("IronSource")]
-        public string ironKey;
-        public string ironRewarded;*/
+        [Header("Adjust")]
+        public string adjustAppToken = "";
+
+        /*        [Header("IronSource")]
+                public string ironKey;
+                public string ironRewarded;*/
     }
 }

@@ -17,6 +17,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 137151b46b9e2dc41b2f51305c8ef46d, type: 3}
   currency: 1
   price: 0
-  hitForce: 20
+  hitForce: 50
   hitRange: 5
   hitVfx: {fileID: 0}
