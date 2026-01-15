@@ -63,9 +63,9 @@ namespace Game
             curCheckpoint = e.checkpoint;
             curCheckpoint.PlayFX();
 
-            Easypapa.AdHelper.ShowInterstitial("checkpoint");
+            //Easypapa.AdHelper.ShowInterstitial("checkpoint");
 
-            Easypapa.EasypapaAdSdk.LogEvent($"slaptower_checkpoint {checkpoints.IndexOf(curCheckpoint)}", "checkpoint", checkpoints.IndexOf(curCheckpoint));
+            Easypapa.EasypapaAdSdk.LogEvent($"slaptower_checkpoint_{checkpoints.IndexOf(curCheckpoint)}");
         }
 
         public async void EventDropFloor(Event_DropFloor e)

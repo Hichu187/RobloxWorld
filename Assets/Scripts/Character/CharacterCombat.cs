@@ -34,6 +34,7 @@ namespace Game
         public GameObject hitPrefab;
         public GameObject takeDamagePrefab;
         public DamageNumberMesh damageText;
+        public GameObject buffVfx;
 
         [SerializeField] private AudioConfig[] _sfxSlap;
 
@@ -147,11 +148,13 @@ namespace Game
         {
             specialBonus = 2;
             GetComponent<CharacterControl>().MoveSpeedMultiple = 1.5f;
+            if (buffVfx != null) buffVfx.gameObject.SetActive(true);
         }
         private void StopBuff(Event_Buff_Countdown_End e)
         {
             specialBonus = 1;
             GetComponent<CharacterControl>().MoveSpeedMultiple = 1f;
+            if (buffVfx != null) buffVfx.gameObject.SetActive(false);
         }
 
         public float GetTotalDamage()

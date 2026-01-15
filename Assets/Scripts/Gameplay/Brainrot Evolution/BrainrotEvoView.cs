@@ -50,7 +50,7 @@ namespace Game
 
             if (DataBrainrotEvo.boostFree)
             {
-                buffNotice.SetActive(false);
+                buffNotice.SetActive(true);
             }
 
             if (buffCountdownText != null)
