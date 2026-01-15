@@ -167,7 +167,7 @@ namespace Game
                 return;
             }
 
-            Easypapa.EasypapaAdSdk.LogEvent("brainrot_openegg", openCash.ToString());
+            Easypapa.EasypapaAdSdk.LogEvent($"brainrot_openegg {openCash}","egg", openCash.ToString());
 
             DataBrainrotEvo.instance.CashUpdate(-openCash);
 

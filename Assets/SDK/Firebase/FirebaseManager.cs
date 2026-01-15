@@ -76,6 +76,40 @@ namespace Easypapa
             FirebaseAnalytics.LogEvent(key, new Parameter("success", 1));
 #endif
         }
+
+        public static void Log(string eventName, params object[] parameters)
+        {
+            Parameter[] pr = null;
+
+            if (parameters != null && parameters.Length > 0 && parameters.Length % 2 == 0)
+            {
+                pr = new Parameter[parameters.Length / 2];
+
+                for (int i = 0; i < pr.Length; i++)
+                {
+                    string key = parameters[i * 2].ToString();
+                    object val = parameters[i * 2 + 1];
+
+                    if (val is int)
+                        pr[i] = new Parameter(key, (int)val);
+                    else if (val is long)
+                        pr[i] = new Parameter(key, (long)val);
+                    else if (val is float)
+                        pr[i] = new Parameter(key, (double)(float)val);
+                    else if (val is double)
+                        pr[i] = new Parameter(key, (double)val);
+                    else if (val is bool)
+                        pr[i] = new Parameter(key, (bool)val ? 1 : 0);
+                    else
+                        pr[i] = new Parameter(key, val.ToString());
+                }
+            }
+
+            if (pr != null)
+                FirebaseAnalytics.LogEvent(eventName, pr);
+            else
+                FirebaseAnalytics.LogEvent(eventName);
+        }
         #endregion
 
         #region remote config

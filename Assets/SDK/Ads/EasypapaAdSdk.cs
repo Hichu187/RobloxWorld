@@ -63,6 +63,10 @@ namespace Easypapa
             {
                 FirebaseManager.Log($"ad_inter_place_{placement}");
             }
+            else if (adsType == GameLoggerAdsType.INTERSTITIAL && state == GameLoggerAdsState.COMPLETE)
+            {
+                FirebaseManager.Log($"ad_inter_complete");
+            }
             else if (adsType == GameLoggerAdsType.REWARDED && state == GameLoggerAdsState.SHOW)
             {
                 FirebaseManager.Log($"ad_reward_place_{placement}");

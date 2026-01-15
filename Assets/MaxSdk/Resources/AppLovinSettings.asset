@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: MaxSdk.Scripts.IntegrationManager.Editor::AppLovinSettings
   qualityServiceEnabled: 1
   sdkKey: Um2rsugkCoTO3BZ3WiVaPVfbhvKwEepRlJiNNG4_chMvrTCsZH4HaBNbxEmNswwTRa69uIxRZf7k3CCBl2fbTI
-  setAttributionReportEndpoint: 0
   customGradleVersionUrl: 
   customGradleToolsVersion: 
   adMobAndroidAppId: 

@@ -91,6 +91,7 @@ namespace Easypapa
                 s_lastTimeShowInter = Time.time;
 
                 Debug.Log("Show Rewarded");
+
                 s_adsManager?.ShowRewarded((success) =>
                 {
                     if (success) EasypapaAdSdk.LogAds(GameLoggerAdsType.REWARDED, GameLoggerAdsState.COMPLETE, placement, parameters);

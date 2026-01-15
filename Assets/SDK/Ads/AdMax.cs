@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using AdjustSdk;
+using DG.Tweening;
 //using GoogleMobileAds.Ump.Api;
 using System;
 using System.Diagnostics;
@@ -74,7 +75,16 @@ namespace Easypapa
             new Firebase.Analytics.Parameter("value", revenue),
             new Firebase.Analytics.Parameter("currency", "USD"),
             };
+
             Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_impression_max", impressionParameters);
+
+            AdjustAdRevenue adjustAdRevenue = new AdjustAdRevenue("applovin_max_sdk");
+            adjustAdRevenue.SetRevenue(adInfo.Revenue, "USD");
+            adjustAdRevenue.AdRevenueNetwork = adInfo.NetworkName;
+            adjustAdRevenue.AdRevenueUnit = adInfo.AdUnitIdentifier;
+            adjustAdRevenue.AdRevenuePlacement = adInfo.Placement;
+
+            Adjust.TrackAdRevenue(adjustAdRevenue);
         }
 
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]

@@ -123,7 +123,7 @@ namespace Game
         {
             LDebug.Log<BrainrotEvoPlayer>($"Player level Up {e.level}, exp : {DataBrainrotEvo.exp}");
 
-            Easypapa.EasypapaAdSdk.LogEvent("branrot_evo", FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level].brainrotName.Trim());
+            Easypapa.EasypapaAdSdk.LogEvent($"branrot_evo {FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level].brainrotName.Trim()}", "brainrot",FactoryBrainrotEvo.brainrotConfigs[DataBrainrotEvo.level].brainrotName.Trim());
 
             InitData();
 

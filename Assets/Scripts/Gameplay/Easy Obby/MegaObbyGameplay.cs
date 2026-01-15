@@ -63,7 +63,7 @@ namespace Game
 
             Easypapa.AdHelper.ShowInterstitial("checkpoint");
 
-            Easypapa.EasypapaAdSdk.LogEvent("megaobby_checkpoint", checkpoints.IndexOf(curCheckpoint));
+            Easypapa.EasypapaAdSdk.LogEvent($"megaobby_checkpoint {checkpoints.IndexOf(curCheckpoint)}", "checkpoint", checkpoints.IndexOf(curCheckpoint));
         }
     }
 }
