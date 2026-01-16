@@ -43,8 +43,8 @@ MonoBehaviour:
     - Boxophobic.SkyboxCubemapExtended.Editor
     - StompyRobot.SRDebugger.Editor
     - EasypapaSDK
-    - MaxSdk.Scripts
     - StompyRobot.SRDebugger
+    - MaxSdk.Scripts
     - DamageNumbersPro
     - DOTween.Modules
     - Coffee.UIParticle

@@ -2,10 +2,8 @@ using Hichu;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-
 
 namespace Game
 {
@@ -15,6 +13,12 @@ namespace Game
         [SerializeField] Transform cameraReviewMap;
 
         [SerializeField] AssetReferenceGameObject dropView;
+        [SerializeField] List<TowerFloor> floors;
+
+        public int curFloorID = 0;
+
+        private bool _isShowingDropView;
+        private int _dropViewGuardToken;
 
         public override void Start()
         {
@@ -24,8 +28,6 @@ namespace Game
 
             player.character.cCamera.SetFollowTransform(cameraReviewMap);
             player.gui.gameObject.SetActive(false);
-
-
         }
 
         public void InitStart()
@@ -63,14 +65,37 @@ namespace Game
             curCheckpoint = e.checkpoint;
             curCheckpoint.PlayFX();
 
-            //Easypapa.AdHelper.ShowInterstitial("checkpoint");
+            foreach (var f in floors)
+            {
+                if (f.checkpoints.Contains(curCheckpoint))
+                    curFloorID = f.floorId;
+            }
 
             Easypapa.EasypapaAdSdk.LogEvent($"slaptower_checkpoint_{checkpoints.IndexOf(curCheckpoint)}");
         }
 
-        public async void EventDropFloor(Event_DropFloor e)
+        public void EventDropFloor(Event_DropFloor e)
         {
-            View drop = await ViewHelper.PushAsync(dropView);
+            _ = ShowDropViewOnceAsync();
+        }
+
+        private async Task ShowDropViewOnceAsync()
+        {
+            if (_isShowingDropView) return;
+
+            _isShowingDropView = true;
+            int token = ++_dropViewGuardToken;
+
+            try
+            {
+                await ViewHelper.PushAsync(dropView);
+            }
+            finally
+            {
+                await Task.Delay(5000);
+                if (token == _dropViewGuardToken)
+                    _isShowingDropView = false;
+            }
         }
 
         public void ReturnCheckPoint()
@@ -82,6 +107,7 @@ namespace Game
         public void ResetCurrent()
         {
             curCheckpoint = null;
+            curFloorID = 0;
         }
 
         public async void RevivePlayer()

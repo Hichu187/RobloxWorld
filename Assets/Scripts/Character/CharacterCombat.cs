@@ -1,4 +1,5 @@
-﻿using Hichu;
+﻿// CharacterCombat.cs
+using Hichu;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -71,7 +72,6 @@ namespace Game
         [ShowIf("isAIAutoAttack"), Min(0.05f)] public float autoThinkInterval = 0.2f;
         [ShowIf("isAIAutoAttack"), Min(0f)] public float startDelay = 1.2f;
 
-        // Cached refs
         private Coroutine _autoAttackRoutine;
         private Character _character;
         private CharacterAnimator _anim;
@@ -107,14 +107,12 @@ namespace Game
             _stealAI = GetComponentInParent<StealBrainrot_AI>();
 
             if (isAIAutoAttack)
-            {
                 attackSpeed = Random.Range(3f, 5f);
-            }
+
             if (_level != null)
             {
                 _level.gameObject.SetActive(true);
                 _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
-
             }
 
             StaticBus<Event_Buff_Countdown_Start>.Subscribe(DamageBuff);
@@ -125,9 +123,7 @@ namespace Game
         private void OnEnable()
         {
             if (isAIAutoAttack && _autoAttackRoutine == null)
-            {
                 _autoAttackRoutine = StartCoroutine(Co_AutoAttackLoop());
-            }
         }
 
         private void OnDisable()
@@ -138,6 +134,7 @@ namespace Game
                 _autoAttackRoutine = null;
             }
         }
+
         private void OnDestroy()
         {
             StaticBus<Event_Buff_Countdown_Start>.Unsubscribe(DamageBuff);
@@ -150,6 +147,7 @@ namespace Game
             GetComponent<CharacterControl>().MoveSpeedMultiple = 1.5f;
             if (buffVfx != null) buffVfx.gameObject.SetActive(true);
         }
+
         private void StopBuff(Event_Buff_Countdown_End e)
         {
             specialBonus = 1;
@@ -193,7 +191,7 @@ namespace Game
             float angRad = _knockbackAngleDeg * Mathf.Deg2Rad;
             float totalDamage = GetTotalDamage();
 
-            if(_sfxSlap.Length > 0)
+            if (_sfxSlap.Length > 0)
             {
                 AudioManager.Play(_sfxSlap.GetLoop(s_triggerIndex));
                 s_triggerIndex++;
@@ -221,10 +219,7 @@ namespace Game
                     cc.TakeDamage((int)totalDamage, _knockbackForce, dirKnock);
 
                     if (damageText != null)
-                    {
-                        DamageNumber damageNumber = damageText.Spawn(cc.transform.position, -(int)totalDamage);
-                    }
-
+                        damageText.Spawn(cc.transform.position, -(int)totalDamage);
 
                     if (hitPrefab)
                     {
@@ -243,10 +238,8 @@ namespace Game
 
             if (isTakeDamage)
             {
-                if(damageText != null)
-                {
-                    DamageNumber damageNumber = damageText.Spawn(transform.position, -amount);
-                }
+                if (damageText != null)
+                    damageText.Spawn(transform.position, -amount);
 
                 _currentHealth -= amount;
                 if (_currentHealth < 0) _currentHealth = 0;
@@ -255,50 +248,60 @@ namespace Game
                 ResetRegenCountdown();
 
                 if (_currentHealth <= 0)
-                {
                     Die();
-                }
                 else
-                {
                     StartRegenCountdown();
-                }
 
                 if (_character != null && _character.isPlayer)
                 {
                     _stats.SetActive(true);
-                    if(_level != null)
+                    if (_level != null)
                     {
                         _level.gameObject.SetActive(false);
                         _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
                     }
                 }
-
             }
 
-            if (_knockback)
+            if (_knockback && _character != null && _ragdoll != null)
             {
                 if (_motor) _motor.enabled = false;
-                if (GetComponent<Rigidbody>() != null) GetComponent<Rigidbody>().isKinematic = true;
-                _character?.cRagdoll.ActivateRagdoll(force * direction, direction);
-                _character.cCamera?.SetFollowTransform(_character.cRagdoll.transform.GetChild(0).GetChild(0), true);
+
+                var rbRoot = GetComponent<Rigidbody>();
+                if (rbRoot != null) rbRoot.isKinematic = true;
+
+                Vector3 hitPos = transform.position + direction.normalized * 0.5f;
+                _ragdoll.ActivateRagdoll(force * direction, hitPos);
+
+                if (_character.cCamera != null)
+                    _character.cCamera.SetFollowTransform(_ragdoll.transform.GetChild(0).GetChild(0), true);
 
                 if (_stealPlayer != null && _stealPlayer.isStealing) _stealPlayer.ResetSteal();
                 if (_stealAI != null && _stealAI.isStealing) _stealAI.ResetSteal();
 
-                DOVirtual.DelayedCall(2.5f, () =>
+                DOVirtual.DelayedCall(2.5f, async () =>
                 {
+                    if (_ragdoll != null)
+                    {
+                        _ragdoll.SnapMotorToRagdollAnchor(_character);
+                        _ragdoll.SetRagdollActive(false);
+                    }
+
+                    await UniTask.NextFrame();
+
+                    if (_control != null)
+                        _control.StateMachine.CurrentState = CharacterControl.State.Ground;
+
                     if (_motor) _motor.enabled = true;
-                    if (GetComponent<Rigidbody>() != null) GetComponent<Rigidbody>().isKinematic = false;
-                    _character?.cRagdoll.SetRagdollActive(false);
-                    if (_control != null) _control.StateMachine.CurrentState = CharacterControl.State.Ground;
 
-                    _character?.cRagdoll.SetPos(_character);
-                    _character.cCamera?.SetFollowTransform(_character.cCamera.defaultTarget);
-                }).OnComplete(async () =>
+                    if (rbRoot != null) rbRoot.isKinematic = false;
+
+                    if (_character.cCamera != null)
+                        _character.cCamera.SetFollowTransform(_character.cCamera.defaultTarget);
+                }).OnComplete(() =>
                 {
-                    _character.cRagdoll.gameObject.SetActive(true);
+                    if (_ragdoll) _ragdoll.gameObject.SetActive(true);
                 });
-
             }
 
             InitData();
@@ -367,9 +370,7 @@ namespace Game
             hasDied = false;
 
             if (isAIAutoAttack)
-            {
                 attackSpeed = Random.Range(0.6f, 1.2f);
-            }
 
             _nextAttackTime = Time.time + startDelay;
         }
@@ -383,8 +384,7 @@ namespace Game
                 if (_level != null)
                 {
                     _level.gameObject.SetActive(true);
-                    _levelText.text = $"Level {DataBrainrotEvo.level +1}";
-
+                    _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
                 }
             }
             StopRegen();
@@ -441,8 +441,7 @@ namespace Game
                     if (_level != null)
                     {
                         _level.gameObject.SetActive(true);
-                        _levelText.text = $"Level {DataBrainrotEvo.level +1}";
-
+                        _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
                     }
                 }
                 InitData();
@@ -476,9 +475,7 @@ namespace Game
         public void EvoUplevel()
         {
             if (_level != null && _level.activeSelf)
-            {
                 _levelText.text = $"Level {DataBrainrotEvo.level + 1}";
-            }
         }
     }
 }
