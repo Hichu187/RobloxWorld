@@ -1,6 +1,6 @@
-﻿using AdjustSdk;
+﻿#if USE_MAX
+using AdjustSdk;
 using DG.Tweening;
-//using GoogleMobileAds.Ump.Api;
 using System;
 using System.Diagnostics;
 using UnityEngine;
@@ -31,10 +31,13 @@ namespace Easypapa
         AdsMaxUseAdmobCollap adsMaxUseAdmobCollap = new AdsMaxUseAdmobCollap();
 #endif
 
+        public bool IsInitialized { get; private set; }
+
         public AdMax()
         {
             MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
             {
+                IsInitialized = true;
                 Log("Initialized");
 
                 InitializeInterstitial();
@@ -536,3 +539,4 @@ namespace Easypapa
         #endregion
     }
 }
+#endif

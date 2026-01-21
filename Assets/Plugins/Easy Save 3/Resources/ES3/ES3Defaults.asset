@@ -50,6 +50,7 @@ MonoBehaviour:
     - Coffee.UIParticle
     - AdjustSdk.Scripts
     - MaxSdk.Scripts.IntegrationManager.Editor
+    - GoogleMobileAds.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
     - UniTask.TextMeshPro

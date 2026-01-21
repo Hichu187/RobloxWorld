@@ -8,6 +8,12 @@ using UnityEditor;
 
 namespace Easypapa
 {
+    public enum AdsProviderMode
+    {
+        Max = 0,
+        AdMob = 1
+    }
+
     [CreateAssetMenu(
         fileName = "AdConfig",
         menuName = "Easypapa/Config/Ad Config",
@@ -51,6 +57,7 @@ namespace Easypapa
         public static void Init()
         {
 #if !UNITY_EDITOR && (UNITY_IOS || UNITY_IPHONE)
+            CONFIG.admobAppId = CONFIG.admobAppIdIos;
             CONFIG.admobBanner = CONFIG.admobBannerIos;
             CONFIG.admobInterstitial = CONFIG.admobInterstitialIos;
             CONFIG.admobRewarded = CONFIG.admobRewardedIos;
@@ -77,7 +84,15 @@ namespace Easypapa
         [Header("Common")]
         public bool freeAds;
 
-        [Header("Admob")]
+        [Header("Provider")]
+        public AdsProviderMode provider = AdsProviderMode.Max;
+        public bool fallbackToOtherProviderIfInitFailed = true;
+
+        [Header("AdMob App ID (Required for Google Mobile Ads SDK)")]
+        public string admobAppId;       // ca-app-pub-xxxxx~yyyyy (Android by default)
+        public string admobAppIdIos;    // iOS App ID
+
+        [Header("Admob AdUnit")]
         public string admobBanner;
         public string admobInterstitial;
         public string admobRewarded;
@@ -107,9 +122,5 @@ namespace Easypapa
 
         [Header("Adjust")]
         public string adjustAppToken = "";
-
-        /*        [Header("IronSource")]
-                public string ironKey;
-                public string ironRewarded;*/
     }
 }

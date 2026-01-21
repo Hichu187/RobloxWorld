@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: AdConfig
   m_EditorClassIdentifier: EasypapaSDK::Easypapa.AdConfig
   freeAds: 0
-  admobBanner: 
-  admobInterstitial: 
-  admobRewarded: 
-  admobAppOpen: 
+  provider: 1
+  fallbackToOtherProviderIfInitFailed: 1
+  admobAppId: ca-app-pub-6691965685689933~1416580835
+  admobAppIdIos: 
+  admobBanner: ca-app-pub-6691965685689933/6840297905
+  admobInterstitial: ca-app-pub-6691965685689933/1537173791
+  admobRewarded: ca-app-pub-6691965685689933/2645902020
+  admobAppOpen: ca-app-pub-6691965685689933/9466461242
   admobBannerIos: 
   admobInterstitialIos: 
   admobRewardedIos: 

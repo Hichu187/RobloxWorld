@@ -1,9 +1,5 @@
-#define USE_MAX
-
-using System;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 namespace Easypapa
 {
@@ -12,49 +8,83 @@ namespace Easypapa
         static IAdManager s_adsManager;
 
         static float s_lastTimeShowInter = 0;
-        static float s_lastTimeShowBannerCollapsible = 0;
-        static bool s_isRemoveAds = false;
+        static float s_isRemoveAds = false ? 1 : 0; // giữ để không phát sinh warning (bạn có thể bỏ)
+        static bool s_removeAds = false;
 
         public static void InitAds()
         {
             s_lastTimeShowInter = 0;
 
-            s_adsManager = new AdMax();
+            CreateProvider();
 
-            var appOpen = new GameObject("AppOpen");
-            appOpen.AddComponent<AppOpenAdManager>();
+            var appOpen = GameObject.Find("AppOpen") ?? new GameObject("AppOpen");
+            if (appOpen.GetComponent<AppOpenAdManager>() == null)
+                appOpen.AddComponent<AppOpenAdManager>();
         }
+
+        private static void CreateProvider()
+        {
+            TryDisposeProvider();
+
+            s_adsManager = null;
+
+            if (AdConfig.CONFIG.provider == AdsProviderMode.Max)
+            {
+#if USE_MAX
+                s_adsManager = new AdMax();
+#else
+                Debug.LogWarning("[AdSdk] Provider=MAX but USE_MAX is not defined / MAX SDK not available.");
+#endif
+                if (s_adsManager == null && AdConfig.CONFIG.fallbackToOtherProviderIfInitFailed)
+                {
+#if USE_ADMOB
+                    s_adsManager = new AdAdmob();
+#endif
+                }
+            }
+            else
+            {
+#if USE_ADMOB
+                s_adsManager = new AdAdmob();
+#else
+                Debug.LogWarning("[AdSdk] Provider=AdMob but USE_ADMOB is not defined / AdMob SDK not available.");
+#endif
+                if (s_adsManager == null && AdConfig.CONFIG.fallbackToOtherProviderIfInitFailed)
+                {
+#if USE_MAX
+                    s_adsManager = new AdMax();
+#endif
+                }
+            }
+
+            Debug.Log($"[AdSdk] Provider selected: {(s_adsManager != null ? s_adsManager.GetType().Name : "NULL")}");
+        }
+
+        private static void TryDisposeProvider()
+        {
+            if (s_adsManager is IDisposable d)
+            {
+                try { d.Dispose(); } catch { }
+            }
+        }
+
         public static void SetRemoveAds(bool removeAds)
         {
-            s_isRemoveAds = removeAds;
+            s_removeAds = removeAds;
         }
 
         public static void ShowAppOpen(Action actionComplete = null)
         {
-            if (s_isRemoveAds)
-            {
-                actionComplete?.Invoke();
-                return;
-            }
+            if (s_removeAds) { actionComplete?.Invoke(); return; }
+            if (AdConfig.CONFIG.freeAds) { actionComplete?.Invoke(); return; }
+
             if (AppUtils.CurrentTimeSeconds() - EasypapaAdSdk.timeFirstOpen < RemoteConfig.CONFIG.GetTimeStartAppOpenAds())
             {
                 actionComplete?.Invoke();
                 return;
             }
 
-            if (RemoteConfig.CONFIG.IsUpAppVersion())
-            {
-                actionComplete?.Invoke();
-                return;
-            }
-
-            if (!RemoteConfig.CONFIG.IsOpenAds())
-            {
-                actionComplete?.Invoke();
-                return;
-            }
-
-            if (AdConfig.CONFIG.freeAds)
+            if (RemoteConfig.CONFIG.IsUpAppVersion() || !RemoteConfig.CONFIG.IsOpenAds())
             {
                 actionComplete?.Invoke();
                 return;
@@ -62,16 +92,14 @@ namespace Easypapa
 
             if (s_lastTimeShowInter > 15 && Time.time - s_lastTimeShowInter < 30)
             {
-                Debug.Log("AppOpen not show: Time diff to last interstitial show time is not enough " + (Time.time - s_lastTimeShowInter) + "s");
                 actionComplete?.Invoke();
                 return;
             }
+
             s_lastTimeShowInter = Time.time;
 
-            EasypapaAdSdk.LogAds(GameLoggerAdsType.OPEN_ADS, GameLoggerAdsState.SHOW, "AppOpen");
             s_adsManager?.ShowAppOpen(() =>
             {
-                EasypapaAdSdk.LogAds(GameLoggerAdsType.OPEN_ADS, GameLoggerAdsState.COMPLETE, "AppOpen");
                 actionComplete?.Invoke();
                 s_lastTimeShowInter = Time.time;
             });
@@ -81,21 +109,16 @@ namespace Easypapa
         {
             if (AdConfig.CONFIG.freeAds)
             {
-                onReward(true);
+                onReward?.Invoke(true);
                 return;
             }
 
             if (s_adsManager != null && s_adsManager.IsRewardedReady())
             {
-                EasypapaAdSdk.LogAds(GameLoggerAdsType.REWARDED, GameLoggerAdsState.SHOW, placement, parameters);
                 s_lastTimeShowInter = Time.time;
 
-                Debug.Log("Show Rewarded");
-
-                s_adsManager?.ShowRewarded((success) =>
+                s_adsManager.ShowRewarded(success =>
                 {
-                    if (success) EasypapaAdSdk.LogAds(GameLoggerAdsType.REWARDED, GameLoggerAdsState.COMPLETE, placement, parameters);
-                    else EasypapaAdSdk.LogAds(GameLoggerAdsType.REWARDED, GameLoggerAdsState.FAIL, placement, parameters);
                     onReward?.Invoke(success);
                     s_lastTimeShowInter = Time.time;
                 });
@@ -106,18 +129,43 @@ namespace Easypapa
             }
         }
 
-        public static bool IsRewardedReady()
-        {
-            if (s_adsManager == null) return false;
-            return s_adsManager.IsRewardedReady();
-        }
+        public static bool IsRewardedReady() => s_adsManager != null && s_adsManager.IsRewardedReady();
 
-        public static bool CheckShowInterstitialAble(string placement = null)
+        public static bool IsInterstitialReady() => s_adsManager != null && s_adsManager.IsInterstitialReady();
+
+        public static bool ShowInterstitial(Action onClosed, string placement, params object[] parameters)
         {
-            if (AdConfig.CONFIG.freeAds) return false;
-            if (!IsInterstitialOKToShow(placement)) return false;
-            if (s_isRemoveAds) return false;
-            if (s_adsManager == null || !s_adsManager.IsInterstitialReady()) return false;
+            if (AdConfig.CONFIG.freeAds) { onClosed?.Invoke(); return true; }
+            if (s_removeAds) { onClosed?.Invoke(); return false; }
+            if (RemoteConfig.CONFIG.IsBlockAds(placement)) { onClosed?.Invoke(); return false; }
+            if (RemoteConfig.CONFIG.IsUpAppVersion()) { onClosed?.Invoke(); return false; }
+
+            if (AppUtils.CurrentTimeSeconds() - EasypapaAdSdk.timeFirstOpen < RemoteConfig.CONFIG.GetTimeStartShowAds())
+            {
+                onClosed?.Invoke();
+                return false;
+            }
+
+            if (Time.time - s_lastTimeShowInter < RemoteConfig.CONFIG.GetTimeBetweenShowAds())
+            {
+                onClosed?.Invoke();
+                return false;
+            }
+
+            if (s_adsManager == null || !s_adsManager.IsInterstitialReady())
+            {
+                onClosed?.Invoke();
+                return false;
+            }
+
+            s_lastTimeShowInter = Time.time;
+
+            s_adsManager.ShowInterstitial(() =>
+            {
+                onClosed?.Invoke();
+                s_lastTimeShowInter = Time.time;
+            });
+
             return true;
         }
 
@@ -126,113 +174,13 @@ namespace Easypapa
             return ShowInterstitial(null, placement, parameters);
         }
 
-        public static bool IsBlockInterstitial(string placement)
-        {
-            if (RemoteConfig.CONFIG.IsBlockAds(placement))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool ShowInterstitial(Action onClosed, string placement, params object[] parameters)
-        {
-            if (AdConfig.CONFIG.freeAds)
-            {
-                onClosed?.Invoke();
-                return true;
-            }
-
-            if (!IsInterstitialOKToShow(placement))
-            {
-                onClosed?.Invoke();
-                return false;
-            }
-
-            // Check if interstitial ready
-            if (s_adsManager == null || !s_adsManager.IsInterstitialReady())
-            {
-                onClosed?.Invoke();
-                return false;
-            }
-
-            EasypapaAdSdk.LogAds(GameLoggerAdsType.INTERSTITIAL, GameLoggerAdsState.SHOW, placement, parameters);
-            s_lastTimeShowInter = Time.time;
-
-            Debug.Log("Show Interstitial");
-            s_adsManager?.ShowInterstitial(() =>
-            {
-                onClosed?.Invoke();
-                EasypapaAdSdk.LogAds(GameLoggerAdsType.INTERSTITIAL, GameLoggerAdsState.COMPLETE, placement, parameters);
-                s_lastTimeShowInter = Time.time;
-            });
-
-            return true;
-        }
-
-        private static bool IsInterstitialOKToShow(string placement = null)
-        {
-            // Check if remove ads
-            if (s_isRemoveAds)
-            {
-                return false;
-            }
-
-            if (IsBlockInterstitial(placement))
-            {
-                return false;
-            }
-
-            if (RemoteConfig.CONFIG.IsUpAppVersion())
-            {
-                return false;
-            }
-
-            //check time start to show
-            if (AppUtils.CurrentTimeSeconds() - EasypapaAdSdk.timeFirstOpen < RemoteConfig.CONFIG.GetTimeStartShowAds())
-                return false;
-
-            // Check time between time show inter
-            if (Time.time - s_lastTimeShowInter < RemoteConfig.CONFIG.GetTimeBetweenShowAds())
-            {
-                Debug.Log("Interstitial not show: Time diff to last interstitial show time is not enough " + (Time.time - s_lastTimeShowInter) + "s");
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsBannerOKToShow()
-        {
-            // Check remove ads
-            if (s_isRemoveAds)
-                return false;
-
-            if (RemoteConfig.CONFIG.IsUpAppVersion())
-            {
-                return false;
-            }
-
-            if (!RemoteConfig.CONFIG.IsBannerAds())
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public static bool IsInterstitialReady()
-        {
-            if (s_adsManager == null) return false;
-            return s_adsManager.IsInterstitialReady();
-        }
-
         public static void ShowBanner()
         {
-            if (!IsBannerOKToShow())
-                return;
+            if (s_removeAds) return;
+            if (AdConfig.CONFIG.freeAds) return;
+            if (RemoteConfig.CONFIG.IsUpAppVersion()) return;
+            if (!RemoteConfig.CONFIG.IsBannerAds()) return;
 
-            Debug.Log("Show Banner");
             s_adsManager?.ShowBanner();
         }
 
@@ -246,36 +194,20 @@ namespace Easypapa
             s_adsManager?.ReloadBanner();
         }
 
-        #if USE_MAX
-                public static bool ShowMREC(string placement, AdsViewPosition position = AdsViewPosition.BottomCenter)
-                {
-                    if (AdConfig.CONFIG.freeAds)
-                        return false;
+#if USE_MAX
+        public static bool ShowMREC(string placement, AdsViewPosition position = AdsViewPosition.BottomCenter)
+        {
+            if (AdConfig.CONFIG.freeAds) return false;
+            if (s_removeAds) return false;
 
-                    if (!IsMRECOKToShow())
-                        return false;
+            s_adsManager?.ShowMREC(position);
+            return true;
+        }
 
-                    s_adsManager?.ShowMREC(position);
-
-                    return true;
-                }
-
-                public static void HideMREC()
-                {
-                    s_adsManager?.HideMREC();
-                }
-
-                public static bool IsMRECOKToShow()
-                {
-                    // Check remove ads
-                    if (s_isRemoveAds)
-                        return false;
-
-/*                    if (AppUtils.CurrentTimeSeconds() - EasypapaAdSdk.timeFirstOpen < RemoteConfig.CONFIG.GetTimeStartToShowMREC())
-                        return false;*/
-
-                    return true;
-                }
+        public static void HideMREC()
+        {
+            s_adsManager?.HideMREC();
+        }
 #endif
     }
 }
