@@ -71,7 +71,7 @@ namespace Game
                     curFloorID = f.floorId;
             }
 
-            Easypapa.EasypapaAdSdk.LogEvent($"slaptower_checkpoint_{checkpoints.IndexOf(curCheckpoint)}");
+            Easypapa.EasypapaAdSdk.LogEvent($"slaptower_checkpoint_{checkpoints.IndexOf(curCheckpoint):00}");
         }
 
         public void EventDropFloor(Event_DropFloor e)

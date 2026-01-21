@@ -57,7 +57,7 @@ namespace Game
 
         public void Nothank()
         {
-            Easypapa.AdHelper.ShowInterstitial("button_nothanks_obby_next_stage");
+            Easypapa.AdHelper.ShowInterstitial("btn_no_obby_next");
             view.Close();
         }
     }

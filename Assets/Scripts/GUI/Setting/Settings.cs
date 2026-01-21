@@ -23,7 +23,7 @@ namespace Game
 
         private void BtnHome_OnClick()
         {
-            Easypapa.AdHelper.ShowInterstitial("button_home");
+            Easypapa.AdHelper.ShowInterstitial("btn_home");
 
             SceneLoaderHelper.Load(1);
 

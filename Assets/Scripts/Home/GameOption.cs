@@ -33,7 +33,12 @@ namespace Game
 
             Easypapa.AdHelper.ShowBanner();
             //Easypapa.LogHelper.P("mode_start", data.gameSceneName.Trim());
-            Easypapa.EasypapaAdSdk.LogEvent($"mode_start_{data.gameSceneName.Trim()}","mode", data.gameSceneName.Trim());
+            string gameName = data.gameSceneName
+                .Replace(" ", "_")
+                .ToLowerInvariant();
+
+            Debug.Log(gameName);
+            Easypapa.EasypapaAdSdk.LogEvent($"mode_start_{gameName}","mode", gameName);
         }
     }
 }

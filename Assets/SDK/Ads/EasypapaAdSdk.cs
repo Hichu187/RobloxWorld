@@ -17,7 +17,7 @@ namespace Easypapa
 
         public static void InitOnStartup()
         {
-            Debug.Log("Bounce SDK RuntimeInit");
+            Debug.Log("Easypapa SDK RuntimeInit");
 
             timeFirstOpen = long.Parse(PlayerPrefs.GetString("pref_time_first_open", "0"));
             if (timeFirstOpen == 0)
@@ -65,7 +65,8 @@ namespace Easypapa
             }
             else if (adsType == GameLoggerAdsType.INTERSTITIAL && state == GameLoggerAdsState.COMPLETE)
             {
-                FirebaseManager.Log($"ad_inter_complete");
+                FirebaseManager.Log($"ad_inter_cp_{placement}");
+                FirebaseManager.Log($"ad_inter_all");
             }
             else if (adsType == GameLoggerAdsType.REWARDED && state == GameLoggerAdsState.SHOW)
             {
@@ -73,7 +74,8 @@ namespace Easypapa
             }
             else if (adsType == GameLoggerAdsType.REWARDED && state == GameLoggerAdsState.COMPLETE)
             {
-                FirebaseManager.Log($"ad_reward_complete");
+                FirebaseManager.Log($"ad_reward_cp_{placement}");
+                FirebaseManager.Log($"ad_reward_all");
             }
         }
         public static void LogEvent(string eventName, params object[] keyValues)

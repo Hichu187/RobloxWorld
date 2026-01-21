@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Easypapa;
 using Hichu;
 using System.Threading.Tasks;
 using TMPro;
@@ -11,6 +12,7 @@ namespace Game
         [SerializeField] string mapName;
         [SerializeField] TextMeshPro _text;
         [SerializeField] int levelOpen = 0;
+        
 
         private void Start()
         {
@@ -38,6 +40,8 @@ namespace Game
                 await UniTask.WaitForEndOfFrame();
 
                 StaticBus<Event_BrainrotEvo_Change_Space>.Post(null);
+
+                Easypapa.EasypapaAdSdk.LogEvent($"unlock_map_{levelOpen}", "map", levelOpen);
 
             }
             else

@@ -49,7 +49,7 @@ namespace Game
 
         public void Nothank()
         {
-            Easypapa.AdHelper.ShowInterstitial("button_nothanks_evo_now");
+            Easypapa.AdHelper.ShowInterstitial("btn_no_evo_now");
             view.Close();
         }
     }

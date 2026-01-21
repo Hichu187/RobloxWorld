@@ -33,7 +33,7 @@ namespace Game
 
         public void Nothank()
         {
-            Easypapa.AdHelper.ShowInterstitial("button_nothanks_steal_break_lock");
+            Easypapa.AdHelper.ShowInterstitial("btn_no_steal_break");
             view.Close();
         }
     }

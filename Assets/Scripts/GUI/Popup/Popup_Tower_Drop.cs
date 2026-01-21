@@ -82,7 +82,7 @@ namespace Game
 
         public void NothanksClick()
         {
-            Easypapa.AdHelper.ShowInterstitial("button_nothank_popup_tower");
+            Easypapa.AdHelper.ShowInterstitial("btn_no_drop");
             TowerGameplay gameplay = FindAnyObjectByType<TowerGameplay>();
             gameplay.ResetCurrent();
             view.Close();
