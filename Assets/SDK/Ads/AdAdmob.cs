@@ -1,4 +1,5 @@
 #if USE_ADMOB
+using AdjustSdk;
 using GoogleMobileAds.Api;
 using System;
 using UnityEngine;
@@ -42,6 +43,26 @@ namespace Easypapa
             });
         }
 
+        private void LogRevenue(AdValue adValue)
+        {
+            AdjustAdRevenue adRevenue = new AdjustAdRevenue("admob_sdk");
+            adRevenue.SetRevenue(adValue.Value / 1000000f, adValue.CurrencyCode);
+            Adjust.TrackAdRevenue(adRevenue);
+
+            var impressionParameters = new[] {
+            new Firebase.Analytics.Parameter("ad_platform", "Admob"),
+            new Firebase.Analytics.Parameter("value", adValue.Value / 1000000f ),
+            new Firebase.Analytics.Parameter("currency", adValue.CurrencyCode),
+            };
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_impression", impressionParameters);
+
+            Log($"Adjust revenue: {adValue.Value / 1000000f} {adValue.CurrencyCode}");
+        }
+        private void Log(object msg)
+        {
+            UnityEngine.Debug.Log($"AdsAdmob: {msg}");
+        }
+
         #region Banner
 
         private void CreateBanner()
@@ -51,7 +72,10 @@ namespace Easypapa
             DestroyBanner();
 
             _banner = new BannerView(AdConfig.CONFIG.admobBanner, AdSize.Banner, AdPosition.Bottom);
+            _banner.OnAdPaid += LogRevenue;
             _banner.LoadAd(new AdRequest());
+
+
         }
 
         private void DestroyBanner()
@@ -103,6 +127,7 @@ namespace Easypapa
                 }
 
                 _interstitial = ad;
+                _interstitial.OnAdPaid += LogRevenue;
                 _interstitial.OnAdFullScreenContentClosed += () =>
                 {
                     _onInterstitialClosed?.Invoke();
@@ -164,6 +189,7 @@ namespace Easypapa
                 }
 
                 _rewarded = ad;
+                _rewarded.OnAdPaid += LogRevenue;
                 _rewarded.OnAdFullScreenContentClosed += () =>
                 {
                     _rewarded?.Destroy();
@@ -223,6 +249,7 @@ namespace Easypapa
                 }
 
                 _appOpen = ad;
+                _appOpen.OnAdPaid += LogRevenue;
                 _appOpen.OnAdFullScreenContentClosed += () =>
                 {
                     _appOpen?.Destroy();

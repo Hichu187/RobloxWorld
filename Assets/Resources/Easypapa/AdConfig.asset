@@ -17,10 +17,10 @@ MonoBehaviour:
   fallbackToOtherProviderIfInitFailed: 1
   admobAppId: ca-app-pub-6691965685689933~1416580835
   admobAppIdIos: 
-  admobBanner: ca-app-pub-6691965685689933/6840297905
-  admobInterstitial: ca-app-pub-6691965685689933/1537173791
-  admobRewarded: ca-app-pub-6691965685689933/2645902020
-  admobAppOpen: ca-app-pub-6691965685689933/9466461242
+  admobBanner: ca-app-pub-6691965685689933/5430665234
+  admobInterstitial: ca-app-pub-6691965685689933/5120524108
+  admobRewarded: ca-app-pub-6691965685689933/1212412143
+  admobAppOpen: ca-app-pub-6691965685689933/8328291318
   admobBannerIos: 
   admobInterstitialIos: 
   admobRewardedIos: 
