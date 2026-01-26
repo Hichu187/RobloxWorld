@@ -46,6 +46,7 @@ MonoBehaviour:
     - StompyRobot.SRDebugger
     - MaxSdk.Scripts
     - DamageNumbersPro
+    - GoogleMobileAds.Mediation.Mintegral.Common
     - DOTween.Modules
     - Coffee.UIParticle
     - AdjustSdk.Scripts
@@ -53,26 +54,51 @@ MonoBehaviour:
     - GoogleMobileAds.Editor
     - Boxophobic.Utils.Scripts
     - BetterHierarchyDemoScripts
+    - Purchasing.Common
     - UniTask.TextMeshPro
     - Hichu.Editor
     - JoystickPack
     - Coffee.UIParticle.Editor
+    - GoogleMobileAds.Mediation.LiftoffMonetize.Api
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - IconCreator.Core
     - Kcc
+    - GoogleMobileAds.Mediation.LiftoffMonetize.iOS
     - AdjustSdk.Editor
+    - GoogleMobileAds.Mediation.UnityAds.iOS
     - Assembly-CSharp-firstpass
     - DOTweenPro.EditorScripts
     - Vertx.Debugging.Editor
+    - GoogleMobileAds.Mediation.AppLovin.Common
+    - IAPResolver
+    - GoogleMobileAds.Mediation.Pangle.iOS
     - VoxelLabs.UltimatePreview.Lib
     - UniTask.Editor
     - DOTweenPro.Scripts
+    - GoogleMobileAds.Mediation.UnityAds.Common
+    - GoogleMobileAds.Mediation.AppLovin.iOS
+    - GoogleMobileAds.Mediation.UnityAds.Api
+    - GoogleMobileAds.Mediation.AppLovin.Android
+    - GoogleMobileAds.Mediation.LiftoffMonetize.Mediation
     - StompyRobot.SRF.Editor
+    - GoogleMobileAds.Mediation.Pangle.Android
+    - GoogleMobileAds.Mediation.LiftoffMonetize.Android
     - Sirenix.OdinInspector.Modules.UnityMathematics
     - ScriptablePacker
+    - GoogleMobileAds.Mediation.UnityAds.Android
+    - GoogleMobileAds.Mediation.LiftoffMonetize.Common
+    - GoogleMobileAds.Mediation.Mintegral.iOS
+    - GoogleMobileAds.Mediation.Mintegral.Android
+    - GoogleMobileAds.Mediation.AppLovin.Api
+    - Analytics
+    - GoogleMobileAds.Mediation.Mintegral.Mediation
     - UniTask.Addressables
+    - GoogleMobileAds.Mediation.Pangle.Common
+    - GoogleMobileAds.Mediation.Pangle.Mediation
     - UniTask.DOTween
     - FirebaseMessagingActivityGenerator
+    - GoogleMobileAds.Mediation.Mintegral.Api
+    - GoogleMobileAds.Mediation.Pangle
     showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
